@@ -1,0 +1,3 @@
+[submodule "submodule_of_master"]
+	path = submodule_of_master
+	url = https://github.com/chennanni/TechNote.git
