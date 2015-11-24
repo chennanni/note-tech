@@ -65,11 +65,13 @@ data itself should be stored as element
 
 ## Others
 Namespace
+
 ~~~
 xmlns="namespaceURI"
 ~~~
 
 Encoding
+
 ~~~
 <?xml version="1.0" encoding="UTF-8"?>
 ~~~
@@ -98,6 +100,7 @@ Example
 XQuery is designed to query XML data
 
 Example
+
 ~~~
 doc("books.xml")/bookstore/book[price<30]
 ~~~
