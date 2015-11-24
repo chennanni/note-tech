@@ -63,14 +63,13 @@ an element can contains:
 metadata should be stored as attribute
 data itself should be stored as element
 
-## Others
-Namespace
+## Namespace
 
 ~~~
 xmlns="namespaceURI"
 ~~~
 
-Encoding
+## Encoding
 
 ~~~
 <?xml version="1.0" encoding="UTF-8"?>
