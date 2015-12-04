@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Fitneese
-permalink: /fitneese/
+title: Fitnesse
+permalink: /fitnesse/
 ---
 
 # FitNesse
