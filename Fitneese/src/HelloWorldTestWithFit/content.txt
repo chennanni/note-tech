@@ -1,0 +1,22 @@
+<test page>
+
+This page uses Fit as underlying TEST SYSTEM.
+
+!path /Users/Max/Documents/j2ee_workspace/Fitnesse/build/
+
+Test 1: Division by Fitnesse
+| eg.Division |
+| numerator | denominator | quotient? |
+| 10 | 2 | 5.0 |
+| 12.6 | 3 | 4.2 |
+| 22 | 7 | ~=3.14 |
+| 9 | 3 | <5 |
+| 11 | 2 | 4<_<6 |
+| 100 | 4 | 33 |
+
+Test 2: My Say Hello Example
+!| myexample.SayHelloWithFit |
+| name | sayHello()? |
+| Alice | Hello Alice |
+| Bob | Hello Bob |
+
