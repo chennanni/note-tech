@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Test
-permalink: /test/
+folder: test
+permalink: /archive/test/
 ---
 
 This is a test page.
