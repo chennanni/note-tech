@@ -1,3 +1,6 @@
 [submodule "TechNoteMaster"]
 	path = TechNoteMaster
 	url = https://github.com/chennanni/TechNote.git
+[submodule "MyNoteMaster"]
+	path = MyNoteMaster
+	url = https://github.com/chennanni/TechNote.git
