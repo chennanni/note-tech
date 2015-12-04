@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Web Service
+folder: webservice
 permalink: /webservice/
 ---
 
