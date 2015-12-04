@@ -37,7 +37,7 @@ In the example of SOAP web service
 - Interface packages: WSDL
 - Lookup Directory: UDDI
 
-![web service](img/web_service.png){:height="240px"}
+![web service](img/web-service.png){:height="240px"}
 
 ## Where to use WS
 Used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to **communicate data** without intimate knowledge of each other's IT systems behind the firewall.
