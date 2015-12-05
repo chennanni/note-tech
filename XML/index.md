@@ -1,7 +1,8 @@
 ---
 layout: default
 title: XML
-permalink: /xml/
+folder: xml
+permalink: /archive/xml/
 ---
 
 # XML

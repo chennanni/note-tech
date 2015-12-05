@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Bugs
-permalink: /bugs/
+folder: bugs
+permalink: /archive/bugs/
 ---
 
 # Bugs

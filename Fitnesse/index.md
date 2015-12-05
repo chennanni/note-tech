@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Fitnesse
-permalink: /fitnesse/
+folder: fitnesse
+permalink: /archive/fitnesse/
 ---
 
 # FitNesse

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: AJAX
-permalink: /ajax/
+folder: ajax
+permalink: /archive/ajax/
 ---
 
 #AJAX

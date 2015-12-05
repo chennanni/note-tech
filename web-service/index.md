@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Web Service
-folder: webservice
-permalink: /webservice/
+folder: web-service
+permalink: /archive/web-service/
 ---
 
 # Web Service
