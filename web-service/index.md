@@ -155,7 +155,7 @@ a directory service where businesses can register and search for Web services
 **JAX-WS**
 
 - [JAX-WS Five Minute Tutorial](http://java.dzone.com/articles/jax-ws-hello-world)
-- [Create JAXWS Web Services](http://www.java2blog.com/2013/03/jaxws-web-service-eclipse-tutorial.html) - Local: LearnWebServices
+- [Create JAXWS Web Services](http://www.java2blog.com/2013/03/jaxws-web-service-eclipse-tutorial.html) - see src
 
 Steps:
 
@@ -181,3 +181,5 @@ Steps:
 
 - [Web Service Tutorial](http://www.java2blog.com/2013/03/soap-web-service-tutorial.html)
 - [Where to use Web Services](http://www.computerworld.com/article/2566429/app-development/book-excerpt--when-to-use-web-services.html)
+
+:mailbox: example-src: https://github.com/chennanni/tech-note/tree/master/web-service/src
