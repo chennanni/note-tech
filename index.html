@@ -22,7 +22,8 @@ layout: default
 
   <div class="trigger">
     <ui>
-      {% for page in site.pages %}
+      {% assign sorted_pages = site.pages | sort:"name" %}
+      {% for page in sorted_pages %}
         {% if page.title %}
         <li><a class="page-link" href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a></li>
         {% endif %}
