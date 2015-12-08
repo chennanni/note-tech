@@ -38,4 +38,4 @@ Slim is a light version for Fit. Fit takes in HTML and output HTML as result whi
 - <http://www.fitnesse.org/>
 - <http://fit.c2.com/>
 
-:mailbox: example-src: https://github.com/chennanni/tech-note/tree/master/fitnesse/src
+:mailbox: example-src: <https://github.com/chennanni/tech-note/tree/master/fitnesse/src>

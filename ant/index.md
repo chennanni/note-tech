@@ -15,7 +15,7 @@ The main known usage of Ant is the build of Java applications.
 
 ## Usage example
 
-http://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html
+<http://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html>
 
 ~~~
 <project name="HelloWorld" basedir="." default="main">

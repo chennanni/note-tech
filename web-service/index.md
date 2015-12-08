@@ -182,4 +182,4 @@ Steps:
 - [Web Service Tutorial](http://www.java2blog.com/2013/03/soap-web-service-tutorial.html)
 - [Where to use Web Services](http://www.computerworld.com/article/2566429/app-development/book-excerpt--when-to-use-web-services.html)
 
-:mailbox: example-src: https://github.com/chennanni/tech-note/tree/master/web-service/src
+:mailbox: example-src: <https://github.com/chennanni/tech-note/tree/master/web-service/src>

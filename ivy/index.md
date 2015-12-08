@@ -28,7 +28,7 @@ go to the `src/example/hello-ivy` dir and run `ant`
 - Install: Installs a module to a specified repository.
 - Publish: Publish a module to a repository.
 
-http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/
+<http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/>
 
 ## Repository Management
 
@@ -36,7 +36,7 @@ http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/
 - Shared
 - Public
 
-http://ant.apache.org/ivy/history/latest-milestone/tutorial/defaultconf.html
+<http://ant.apache.org/ivy/history/latest-milestone/tutorial/defaultconf.html>
 
 ## Dependency Management
 
@@ -72,7 +72,7 @@ In ant resolve task, give what `conf` you want to use.
 </target>
 ~~~
 
-http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html
+<http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html>
 
 ## Situations
 
@@ -83,5 +83,5 @@ http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html
 
 ## Links
 
-- http://www.codetab.org/apache-ivy-tutorial/
-- http://ant.apache.org/ivy/history/latest-milestone/tutorial.html
+- <http://www.codetab.org/apache-ivy-tutorial/>
+- <http://ant.apache.org/ivy/history/latest-milestone/tutorial.html>
