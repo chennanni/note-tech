@@ -18,54 +18,31 @@ The main known usage of Ant is the build of Java applications.
 <http://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html>
 
 ~~~
-<project name="HelloWorld" basedir="." default="main">
+<target name="compile">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    <copy todir="${classes.dir}">
+      <fileset dir="${src.dir}" excludes="**/*.java"/>
+    </copy>
+</target>
 
-    <property name="src.dir"     value="src"/>
-    <property name="build.dir"   value="build"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
-    <property name="jar.dir"     value="${build.dir}/jar"/>
-    <property name="main-class"  value="HelloWorld"/>
-    <property name="lib.dir"     value="lib"/>
+<target name="jar" depends="compile">
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+        <manifest>
+            <attribute name="Main-Class" value="${main-class}"/>
+        </manifest>
+    </jar>
+</target>
 
-    <path id="classpath">
-        <fileset dir="${lib.dir}" includes="**/*.jar"/>
-    </path>
-
-    <target name="clean">
-        <delete dir="${build.dir}"/>
-    </target>
-
-    <target name="compile">
-        <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
-        <copy todir="${classes.dir}">
-          <fileset dir="${src.dir}" excludes="**/*.java"/>
-        </copy>
-    </target>
-
-    <target name="jar" depends="compile">
-        <mkdir dir="${jar.dir}"/>
-        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
-            <manifest>
-                <attribute name="Main-Class" value="${main-class}"/>
-            </manifest>
-        </jar>
-    </target>
-
-    <target name="run" depends="jar">
-      <java fork="true" classname="${main-class}">
-        <classpath>
-            <path refid="classpath"/>
-            <path location="${jar.dir}/${ant.project.name}.jar"/>
-        </classpath>
-      </java>
-    </target>
-
-    <target name="clean-build" depends="clean,jar"/>
-
-    <target name="main" depends="clean,run"/>
-
-</project>
+<target name="run" depends="jar">
+  <java fork="true" classname="${main-class}">
+    <classpath>
+        <path refid="classpath"/>
+        <path location="${jar.dir}/${ant.project.name}.jar"/>
+    </classpath>
+  </java>
+</target>
 ~~~
 
 ## Links
