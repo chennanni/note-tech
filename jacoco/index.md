@@ -1,3 +1,10 @@
+---
+layout: default
+title: Jacoco
+folder: jacoco
+permalink: /archive/jacoco/
+---
+
 # Jacoco
 
 ## What is Jacoco
