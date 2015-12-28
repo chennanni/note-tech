@@ -8,5 +8,3 @@ env:
 
 after_success:
 - bash update-ghpages.sh
-
-sudo: false
