@@ -1,22 +1,29 @@
 ## Website Tech Details (git remote & submodule)
 
 -- clone gh-pages branch to local
+
 `$ git clone -b <branch-name> <repo-url> <local-repo-name>`
+
 -- init submodule repo (after clone)
+
 `$ cd <sub-module-name>`
 `$ git init`
 
 -- add submodule to a local repo
+
 `$ git submodule add <sub-module-repo-url> <sub-module-repo-name>`
 
 -- after making some changes in submodule remote
 -- update sub-module
+
 `$ git pull`
 
 -- push changes from gh-pages local to remote
+
 `$ git push origin HEAD:gh-pages`
 
 -- serve jekyll with baseurl
+
 `$ jekyll serve —baseurl “/<baseurl>/"`
 
 -- git remote
