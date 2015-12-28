@@ -6,5 +6,4 @@ env:
   global:
   - GH_REF: https://github.com/chennanni/tech-note.git
 
-after_success:
-- bash update-ghpages.sh
+script: ./update-ghpages.sh
