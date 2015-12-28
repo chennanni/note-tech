@@ -6,8 +6,10 @@ clone gh-pages branch to local
 
 init submodule repo (after clone)
 <br/>
-`$ cd <sub-module-name>`
-`$ git init`
+```
+$ cd <sub-module-name>
+$ git init
+```
 
 add submodule to a local repo
 <br/>
