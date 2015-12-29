@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# causes the shell to exit if any subcommand or pipeline returns a non-zero status
+set -e
+
 # Clone gh-pages
 git clone -b gh-pages "https://${GH_REF}" ghpagesclone
 cd ghpagesclone
