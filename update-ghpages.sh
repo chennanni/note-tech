@@ -10,7 +10,7 @@ git submodule update --remote
 
 # Setup Git
 git config user.name "chennanni"
-git config user.email "travis@no.reply"
+git config user.email "chennancd@gmail.com"
 
 # If there is a new version of the master branch
 if git status | grep archive > /dev/null 2>&1
