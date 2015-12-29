@@ -7,3 +7,10 @@ env:
   - GH_REF: github.com/chennanni/tech-note.git
   - secure: "aCi8ImF3gweKaXVXTykHRGmbiiQ4CWdMihJVWlg3NmZxmndX4MCfSuX+7fbKWgkgoO+pY93GoG4OxtEYi6V2hTHeH28ij8vH4gASKvYiVjK/fLqEWXCgWgM0eqPV/0RL81s4HZvEKZq7KEm/2L7DTiGHc8Rz3+ZTUu7YHfnpSfij6sn5kcgf/0+UCFgZJmWI46iokYCPUDoVRLgwzZUGQtANDsOagh8Oo5vdyGWxHwEZoq/SBEsJEklUGJ5V0xCcys9YiCwXKgV02fZgumgTtlufQMaV97PASC7JcNSeLi/7sXjOyW7mTUfdXlx2LRGhmJ1KXCVb4CrVhzMsC+iVXxAFfhjYSQOqW3Jcq7/WpQcI+kVoHXhel7S0/ESu7CkCJ1sMBfoEhhbKSPrEMvV6X/4v4tlHxxcSyaLABrOIRAlYoqF2LU33Vl1msAMwlgmVmhxBNxIcvY4ZjfWa0JKutX7/d6zzeMyI6PiqktQxxytWKz1pinZ5AJBg6LXZFpwCChEry66mkfu51w/g2C8PvECRPhw7u+PHTvbZaKWfJ9cuu0VsfWgHsRtR1urf10ym6lz1SWKoUl1dpqkHwEEIcw7506VSMq99BowsM9tmxbNVxd2ZCsD/PwOYAxMufzztHn4xMLjhrlwtTzBB3JauN+o6O76nPszXINTd/prD/zg="
 script: bash ./update-ghpages.sh
+
+notifications:
+  email:
+    recipients:
+      - chennancd@gmail.com
+    on_success: never
+    on_failure: change
