@@ -13,7 +13,7 @@ git config user.name "Travis-CI"
 git config user.email "travis@no.reply"
 
 # If there is a new version of the master branch
-if git status | grep patterns > /dev/null 2>&1
+if git status | grep archive > /dev/null 2>&1
 then
   # it should be committed
   git add .
