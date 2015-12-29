@@ -1,4 +1,6 @@
-## Website Tech Details (git remote & submodule)
+# Tech Details (Website Build)
+
+## Git Remote & Submodule
 
 clone gh-pages branch to local
 ```
@@ -39,3 +41,13 @@ git remote
 git submodule
 - http://git-scm.com/book/en/v2/Git-Tools-Submodules
 - https://github.com/iluwatar/java-design-patterns/wiki/07.-Working-with-the-web-site
+
+## Travis CI
+Everytime I update the master branch, I also need to update the submodule in the gh-pages to sync with the master branch. It's better to leave this kind of work to some automation tool. So here comes [travis ci](https://docs.travis-ci.com/user/languages/java).
+
+Auto-deploying built products to gh-pages with Travis
+- https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
+
+Very good reference
+- https://github.com/iluwatar/java-design-patterns/blob/master/.travis.yml
+- https://github.com/iluwatar/java-design-patterns/blob/master/update-ghpages.sh
