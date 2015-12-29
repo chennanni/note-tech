@@ -1,7 +1,0 @@
-<project name="TechNoteTemp" default="test" basedir=".">
-  <description>
-    This is an empty build file.
-  </description>
-  <target name="testqqq">
-  </target>
-</project>
