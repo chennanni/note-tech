@@ -10,3 +10,7 @@ github_username:  chennanni
 
 # Build settings
 markdown: kramdown
+
+# Markdown settings
+kramdown:
+  input: GFM
