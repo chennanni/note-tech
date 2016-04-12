@@ -83,11 +83,14 @@ JS statements are composed of
 * onkeydown()
 * onload()
 
-## For/In Loop
+## For-in & For-of Loop
 
 ```
-for (var x in person) { }
+// iterates over the values of object's properties
+for (var name in person) { }
 
+// iterating over iterable objects
+for (var oneperson of person) { }
 ```
 
 ## Funciton
