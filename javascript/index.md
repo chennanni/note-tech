@@ -11,8 +11,9 @@ permalink: /archive/javascript/
  * HTML to define the content of web pages
  * CSS to specify the layout of web pages
  * JavaScript to program the behavior of web pages
+ * (Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.)
 
-## What JS do?
+## What does (Client Side) JS do?
 - dynamically add content
 - dynamically change styling (CSS)
 - dynamically do some funciton
@@ -65,10 +66,64 @@ JS statements are composed of
 * Arrays
 * Objects
 
+## Array & Object
+```
+var anArray = [a,b,c];
+var anObject = {name:"Jams", id:007, weight:70};
+```
+
 ## Scope
 * Local, declared inside a function
 * Global, declared outside a function
 * undeclared variable becomes Global
+
+## Funciton
+* function name return the function itself, e.g. `myFunciton`
+* function name + () return the execution of the function, e.g. `myFunction()`
+
+**Closure**
+A closure is a function having access to the parent scope, even after the parent function has closed.
+
+## Event
+* onchange()
+* onclick()
+* onmouseover()
+* onmouseout()
+* onkeydown()
+* onload()
+
+## Loop Control
+For-in & For-of
+```
+// iterates over the values of object's properties
+for (var name in person) { }
+
+// iterating over iterable objects
+for (var oneperson of person) { }
+```
+
+Break & Continuie & Labels
+```
+<script type="text/javascript">
+    document.write("Entering the loop!<br /> ");
+    outerloop: // This is the label name
+ 
+    for (var i = 0; i < 5; i++)
+    {
+       document.write("Outerloop: " + i + "<br />");
+       innerloop:
+       for (var j = 0; j < 5; j++)
+       {
+          if (j > 3 ) break ; // Quit the innermost loop
+          if (i == 2) break innerloop; // Do the same thing
+          if (i == 4) break outerloop; // Quit the outer loop
+          document.write("Innerloop: " + j + " <br />");
+       }
+    }
+ 
+    document.write("Exiting the loop!<br /> ");
+</script>
+```
 
 ## Global Reference
 - Global Properties
@@ -81,34 +136,6 @@ JS statements are composed of
   -  isNaN()
   -  parstInt()
   -  parseFloat()
-
-## Event
-* onchange()
-* onclick()
-* onmouseover()
-* onmouseout()
-* onkeydown()
-* onload()
-
-## For-in & For-of Loop
-
-```
-// iterates over the values of object's properties
-for (var name in person) { }
-
-// iterating over iterable objects
-for (var oneperson of person) { }
-```
-
-## Funciton
-* function name return the function itself, e.g. `myFunciton`
-* function name + () return the execution of the function, e.g. `myFunction()`
-
-## Array & Object
-```
-var anArray = [a,b,c];
-var anObject = {name:"Jams", id:007, weight:70};
-```
 
 ## DOM
 In the HTML DOM (Document Object Model), everything is a node
@@ -153,9 +180,6 @@ element.style.property=
 ```
 document.getElementById(id).onclick=function(){code}
 ```
-
-## Closure
-A closure is a function having access to the parent scope, even after the parent function has closed.
 
 ## JS OOP
 
