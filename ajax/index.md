@@ -5,7 +5,8 @@ folder: ajax
 permalink: /archive/ajax/
 ---
 
-#AJAX
+# AJAX
+
 AJAX = Asynchronous JavaScript and XML
 
 AJAX allows web pages to be updated **asynchronously** by exchanging small amounts of data with the server behind the scenes.
