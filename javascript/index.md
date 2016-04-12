@@ -134,9 +134,9 @@ element.style.property=
 
 **Changing Context**
 
-value: only for form input types
-innerHTML: for all DOM elements, inclues markup
-innerText: only plain text
+- value: only for form input types
+- innerHTML: for all DOM elements, inclues markup
+- innerText: only plain text
 
 **Add Event Handler**
 
