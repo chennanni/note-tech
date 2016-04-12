@@ -1,3 +1,10 @@
+---
+layout: default
+title: Javascript
+folder: javascript
+permalink: /archive/javascript/
+---
+
 # Javascript
 
 ## Intro
