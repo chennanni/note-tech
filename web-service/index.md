@@ -97,7 +97,7 @@ A SOAP message is an ordinary XML document containing the following elements:
 - A Body element that contains call and response information
 - A Fault element containing errors and status information
 
-~~~ xml
+~~~
 <?xml version="1.0"?>
 <soap:Envelope
 xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
@@ -124,7 +124,7 @@ The description includes the **name** of the service, the **location** of the se
 
 **Document Structure**
 
-~~~ xml
+~~~
 <definitions>
 
 <types>
