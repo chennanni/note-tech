@@ -91,9 +91,8 @@ EXtensible Stylesheet Language Transformation
 used to manipulate and transform XML documents to HTML with CSS
 
 Example
-<http://www.w3schools.com/xsl/default.asp>
-
-<http://www.tizag.com/xmlTutorial/xslttutorial.php>
+- <http://www.w3schools.com/xsl/default.asp>
+- <http://www.tizag.com/xmlTutorial/xslttutorial.php>
 
 ## XQuery
 
