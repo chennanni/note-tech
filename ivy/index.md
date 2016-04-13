@@ -48,7 +48,7 @@ Have different configurations for different situations.
 
 In ivy.xml, specify what kind of build you want to use: only api jar, or only company jar or company jar + third party jars.
 
-~~~
+~~~ xml
 <ivy-module version="1.0">
     <info organisation="org.apache" module="myapp"/>
 
@@ -59,7 +59,8 @@ In ivy.xml, specify what kind of build you want to use: only api jar, or only co
     </configurations>
 
     <dependencies>
-        <dependency org="org.apache" name="filter-framework" rev="latest.integration" conf="build->api; noexternaljar->homemade-impl; withexternaljar->cc-impl"/>
+        <dependency org="org.apache" name="filter-framework" rev="latest.integration" 
+            conf="build->api; noexternaljar->homemade-impl; withexternaljar->cc-impl"/>
     </dependencies>
 </ivy-module>
 ~~~
