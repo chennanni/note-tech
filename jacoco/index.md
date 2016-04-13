@@ -31,7 +31,7 @@ See [official](http://eclemma.org/jacoco/) source example in `jacoco-<version-nu
 
 Step 1: Import JaCoCo Ant tasks
 
-~~~
+~~~ xml
 <project name="ProjectName" default="default-task" xmlns:jacoco="antlib:org.jacoco.ant">
   <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
   	<classpath path="../../../lib/jacocoant.jar" />
@@ -42,7 +42,7 @@ Step 1: Import JaCoCo Ant tasks
 
 Step 2: Wrap test execution with the JaCoCo coverage task
 
-~~~
+~~~ xml
 <target name="test" depends="compile">
   <jacoco:coverage destfile="${result.exec.file}">
     <java classname="org.jacoco.examples.parser.Main" fork="true">
@@ -56,7 +56,7 @@ Step 2: Wrap test execution with the JaCoCo coverage task
 
 Step 3: Create coverage report
 
-~~~
+~~~ xml
 <target name="report" depends="test">
   <jacoco:report>
 
