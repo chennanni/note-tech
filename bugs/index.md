@@ -10,7 +10,7 @@ permalink: /archive/bugs/
 ## Cannot change version of project facet Dynamic Web Module to 3.0
 Solution 1: edit the web.xml file
 
-~~~
+~~~ xml
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
@@ -47,7 +47,7 @@ request -> controller -> return type is not json
 
 have
 
-~~~
+~~~ xml
 <dependency>
 	<groupId>org.codehaus.jackson</groupId>
 	<artifactId>jackson-core-asl</artifactId>
@@ -57,7 +57,7 @@ have
 
 miss
 
-~~~
+~~~ xml
 <dependency>
 	<groupId>com.fasterxml.jackson.core</groupId>
 	<artifactId>jackson-core</artifactId>
