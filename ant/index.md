@@ -17,7 +17,7 @@ The main known usage of Ant is the build of Java applications.
 
 <http://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html>
 
-~~~
+~~~ xml
 <target name="compile">
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
