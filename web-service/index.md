@@ -23,7 +23,6 @@ permalink: /archive/web-service/
 		- [UDDI](#uddi)
 	- [Code Example - Create a Web Service with Server & Client](#code-example-create-a-web-service-with-server-client)
 	- [Links](#links)
-<!-- /TOC -->
 
 ## What
 
