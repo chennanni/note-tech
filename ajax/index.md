@@ -19,7 +19,7 @@ Steps:
 3. Send a Request to a Server
 
 ## XMLHttpRequest Object
-~~~ JavaScript
+~~~
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -32,7 +32,7 @@ else
 ~~~
 
 ## Send a Request to a Server
-~~~ Javascript
+~~~
 xmlhttp.open("GET","ajax_info.txt",true);
 xmlhttp.send();
 ~~~
@@ -46,7 +46,7 @@ document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
 ~~~
 
 ## AJAX with Javascript (Example)
-~~~ html
+~~~
 <!DOCTYPE html>
 <html>
 <head>
