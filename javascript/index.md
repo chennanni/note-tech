@@ -53,7 +53,6 @@ var x = 5+6; // this is an example
 
 JS statements are composed of
 
-```
 - Values
   - Literals: 10.5, "ABC"
   - Variables: x, y
@@ -61,7 +60,6 @@ JS statements are composed of
 - Expressions: 5+6
 - Keywords: var
 - Comments: // or /* */
-```
 
 ## Data Type
 * Numbers
@@ -202,13 +200,11 @@ An object’s **prototype attribute** points to the object’s “parent”—th
 
 **Create an Object**
 
-```
 - use prototype pattern
- - Define and create a single object, using an object literal.
- - Define and create a single object, with the keyword new.
+  - Define and create a single object, using an object literal.
+  - Define and create a single object, with the keyword new.
 - use constructor pattern
- - Define an object constructor, and then create objects of the constructed type.
-```
+  - Define an object constructor, and then create objects of the constructed type.
 
 use an object literal
 
