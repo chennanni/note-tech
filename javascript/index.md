@@ -25,7 +25,7 @@ permalink: /archive/javascript/
 ## Add JavaScript to the Webpage
 insert Javascript code between `<script></script>`
 
-```
+```javascript
 <script>
 function example(){
     //MORE
@@ -35,7 +35,7 @@ function example(){
 
 or
 
-```
+```javascript
 <script src = "example.js"></script>
 ```
 
@@ -46,7 +46,7 @@ or
 * Writing into the browser console, using `console.log()`
 
 ## Statement
-```
+```javascript
 var x = 5+6; // this is an example
 ```
 
@@ -67,7 +67,7 @@ JS statements are composed of
 * Objects
 
 ## Array & Object
-```
+```javascript
 var anArray = [a,b,c];
 var anObject = {name:"Jams", id:007, weight:70};
 ```
@@ -103,7 +103,7 @@ for (var oneperson of person) { }
 ```
 
 Break & Continuie & Labels
-```
+```html
 <script type="text/javascript">
     document.write("Entering the loop!<br /> ");
     outerloop: // This is the label name
@@ -202,7 +202,7 @@ An object’s **prototype attribute** points to the object’s “parent”—th
  - Define an object constructor, and then create objects of the constructed type.
 
 use an object literal
-```
+```javascript
 var person = {
     firstName:"John",
     lastName:"Doe",
@@ -211,14 +211,14 @@ var person = {
 ```
 
 use new keyword
-```
+```javascript
 var person = new Object();
 person.firstName = "John";
 person.lastName = "Doe";
 ```
 
 use an object constructor
-```
+```javascript
 function person(first, last) {
     this.firstName = first;
     this.lastName = last;
@@ -238,7 +238,7 @@ var x = y;
 
 Whenever you want to create objects with similar functionalities (to use the same methods and properties), you encapsulate the main functionalities in a Function and you use that Function’s constructor to create the objects.
 
-```
+```javascript
 function User (theName, theEmail) {
     this.name = theName;
     this.email = theEmail;
@@ -270,7 +270,7 @@ firstUser = new User("Richard", "Richard@examnple.com");
 
 use `Object.create()`
 
-```
+```javascript
 var cars = {
     type:"sedan",
     wheels:4
@@ -281,7 +281,7 @@ var toyota = Object.create (cars); // now toyota inherits the properties from ca
 
 use `inheritPrototype()`
 
-```
+```javascript
 function Question(theQuestion, theChoices, theCorrectAnswer) {...}
 
 function MultipleChoiceQuestion(theQuestion, theChoices, theCorrectAnswer){
@@ -293,5 +293,5 @@ function MultipleChoiceQuestion(theQuestion, theChoices, theCorrectAnswer){
 [OOP in JS](http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/)
 
 ## Link
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
-- http://web.jobbole.com/85521/
+- <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide>
+- <http://web.jobbole.com/85521/>
