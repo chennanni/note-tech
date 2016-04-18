@@ -25,7 +25,7 @@ permalink: /archive/javascript/
 ## Add JavaScript to the Webpage
 insert Javascript code between `<script></script>`
 
-```javascript
+``` javascript
 <script>
 function example(){
     //MORE
@@ -35,7 +35,7 @@ function example(){
 
 or
 
-```javascript
+``` javascript
 <script src = "example.js"></script>
 ```
 
@@ -46,7 +46,7 @@ or
 * Writing into the browser console, using `console.log()`
 
 ## Statement
-```javascript
+``` javascript
 var x = 5+6; // this is an example
 ```
 
@@ -67,7 +67,7 @@ JS statements are composed of
 * Objects
 
 ## Array & Object
-```javascript
+``` javascript
 var anArray = [a,b,c];
 var anObject = {name:"Jams", id:007, weight:70};
 ```
@@ -94,7 +94,7 @@ A closure is a function having access to the parent scope, even after the parent
 
 ## Loop Control
 For-in & For-of
-```
+``` javascript
 // iterates over the values of object's properties
 for (var name in person) { }
 
@@ -103,7 +103,7 @@ for (var oneperson of person) { }
 ```
 
 Break & Continuie & Labels
-```html
+``` html
 <script type="text/javascript">
     document.write("Entering the loop!<br /> ");
     outerloop: // This is the label name
@@ -154,7 +154,7 @@ document.getElementById("demo").innerHTML = "Hello World!";
 
 **Find HTML Elements**
 
-```
+``` html
 document.getElementById()
 getElementsByTagName
 document.getElementsByClassName()
@@ -162,7 +162,7 @@ document.getElementsByClassName()
 
 **Changing HTML Elements**
 
-```
+``` html
 element.innerHTML=
 element.attribute=
 element.setAttribute(attribute,value)
@@ -177,7 +177,7 @@ element.style.property=
 
 **Add Event Handler**
 
-```
+``` html
 document.getElementById(id).onclick=function(){code}
 ```
 
@@ -202,7 +202,7 @@ An object’s **prototype attribute** points to the object’s “parent”—th
  - Define an object constructor, and then create objects of the constructed type.
 
 use an object literal
-```javascript
+``` javascript
 var person = {
     firstName:"John",
     lastName:"Doe",
@@ -211,14 +211,14 @@ var person = {
 ```
 
 use new keyword
-```javascript
+``` javascript
 var person = new Object();
 person.firstName = "John";
 person.lastName = "Doe";
 ```
 
 use an object constructor
-```javascript
+``` javascript
 function person(first, last) {
     this.firstName = first;
     this.lastName = last;
@@ -230,7 +230,7 @@ var myFather = new person("John", "Doe");
 Notice: Objects are mutable. They are addressed by reference, not by value.
 
 x is y, not a copy of y
-```
+``` javascript
 var x = y;
 ```
 
@@ -238,7 +238,7 @@ var x = y;
 
 Whenever you want to create objects with similar functionalities (to use the same methods and properties), you encapsulate the main functionalities in a Function and you use that Function’s constructor to create the objects.
 
-```javascript
+``` javascript
 function User (theName, theEmail) {
     this.name = theName;
     this.email = theEmail;
@@ -270,7 +270,7 @@ firstUser = new User("Richard", "Richard@examnple.com");
 
 use `Object.create()`
 
-```javascript
+``` javascript
 var cars = {
     type:"sedan",
     wheels:4
@@ -281,7 +281,7 @@ var toyota = Object.create (cars); // now toyota inherits the properties from ca
 
 use `inheritPrototype()`
 
-```javascript
+``` javascript
 function Question(theQuestion, theChoices, theCorrectAnswer) {...}
 
 function MultipleChoiceQuestion(theQuestion, theChoices, theCorrectAnswer){
