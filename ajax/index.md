@@ -85,7 +85,11 @@ function loadXMLDoc() {
 ~~~
 
 ## AJAX with JQuery
-TODO
-
-## AJAX with AngularJS
-TODO
+``` javascript
+$.ajax({
+  url: "test.html",
+  context: document.body
+}).done(function() {
+  $( this ).addClass( "done" );
+});
+```
