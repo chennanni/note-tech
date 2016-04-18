@@ -52,13 +52,16 @@ var x = 5+6; // this is an example
 ```
 
 JS statements are composed of
+
+```
 - Values
-  - Literals: `10.5`, `"ABC"`
-  - Variables: `x, y`
-- Operators: `=, +, -, *, /`
-- Expressions: `5+6`
-- Keywords: `var`
-- Comments: `//` or `/* */`
+  - Literals: 10.5, "ABC"
+  - Variables: x, y
+- Operators: =, +, -, *, /
+- Expressions: 5+6
+- Keywords: var
+- Comments: // or /* */
+```
 
 ## Data Type
 * Numbers
@@ -84,6 +87,7 @@ var anObject = {name:"Jams", id:007, weight:70};
 * function name + () return the execution of the function, e.g. `myFunction()`
 
 **Closure**
+
 A closure is a function having access to the parent scope, even after the parent function has closed.
 
 ## Event
@@ -95,6 +99,7 @@ A closure is a function having access to the parent scope, even after the parent
 * onload()
 
 ## Loop Control
+
 For-in & For-of
 
 ``` javascript
@@ -197,11 +202,13 @@ An object’s **prototype attribute** points to the object’s “parent”—th
 
 **Create an Object**
 
+```
 - use prototype pattern
  - Define and create a single object, using an object literal.
  - Define and create a single object, with the keyword new.
 - use constructor pattern
  - Define an object constructor, and then create objects of the constructed type.
+```
 
 use an object literal
 
