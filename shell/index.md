@@ -135,6 +135,7 @@ kill [26152], kill process number 26152
 ```
 
 **wc**
+
 ```
 wc [file], count number of lines/words/characters in file
 wc -w [file], count words of a txt file
@@ -142,6 +143,7 @@ wc -l [file], count lines of a txt file
 ```
 
 **pico**
+
 ```
 pico [file], launches the pico editor, and opens the file for editing
 ```
