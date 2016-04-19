@@ -1,4 +1,11 @@
-# Linux Shell Scripting
+---
+layout: default
+title: Shell Scripting
+folder: shell
+permalink: /archive/shell/
+---
+
+# Shell Scripting (Linux)
 
 ## What is Linux?
 - Free
