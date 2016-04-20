@@ -1,3 +1,11 @@
+---
+layout: default
+title: Build
+folder: build
+permalink: /archive/build/
+---
+
+
 # Build
 
 ## What is "Build"
