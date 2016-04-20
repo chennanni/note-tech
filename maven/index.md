@@ -14,7 +14,7 @@ Maven is a **build** automation tool used primarily for Java projects.
 - Allowing transparent migration to new features
 
 ## Add Dependencies
-**located in pox.xml**
+**located in pom.xml**
 
 In GUI, there's a 'ADD' Button.
 
