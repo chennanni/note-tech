@@ -1,3 +1,10 @@
+---
+layout: default
+title: Maven
+folder: maven
+permalink: /archive/maven/
+---
+
 # Maven
 
 ## What is Maven
