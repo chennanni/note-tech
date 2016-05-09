@@ -6,7 +6,7 @@ echo restart apache httpd
 @echo off
 echo off
 
-SET @mypath=D:\Program Files\Apache Group\Apache2\bin
+SET @mypath=[path to apache]\Apache Group\Apache2\bin
 
 SET PATH=%PATH%;%@mypath%
 
