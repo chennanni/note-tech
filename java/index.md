@@ -9,3 +9,6 @@ permalink: /archive/java/
 
 - [Collection](collection)
 - [Concurrency](concurrency)
+- [IO/NIO](io)
+- [VM](vm)
+- [GC](gc)
