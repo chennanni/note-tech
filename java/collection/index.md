@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Java
-folder: java
-permalink: /archive/java/
+title: Java Collection
+folder: collection
+permalink: /archive/java/collection/
 ---
 
 # Java
@@ -36,8 +36,6 @@ Map
 - Set, a collection that can't contain duplicate elements
 - Queue, order elements in a FIFO manner; Deque, elements can be added and deleted from both sides
 - Map, map keys to values
-
-![Java Collection Framework Hierarchy](img/Java-collection-framework-hierarchy.png)
 
 ### Collection
 
@@ -102,15 +100,18 @@ remove(Object key)
 ### Differences
 
 **ArrayList v.s. LinkedList**
+
 - add(), linkedlist faster
 - get(), arraylist faster
 
 **ArrayList v.s. Vector**
+
 - Vector is thread-safe, ArrayList is not (Performance)
 - Automatic increase its capacity, Vector doubles its size while ArrayList increase by 50%
 - Vector has Enumerator while ArrayList does not
 
 **HashMap v.s. Hashtable**
+
 - HashMap allows null for both key and value, Hashtable does not
 - HashMap is unsynchronized. So come up with better performance. Hashtable is not.
 
@@ -118,11 +119,13 @@ remove(Object key)
 parameter: initialCapacity, loadFactor)
 
 **HashMap v.s. ConcurrentHashMap**
+
 - Thread-safe(ConcurentHashMap is thread-safe)
 - Performance(HashMap is better)
 - Null Key(ConcurrentHashMap does not allow NULL values while HashMap allows one)
 
 ### Links
+
 - http://tutorials.jenkov.com/java-collections/index.html
 - http://beginnersbook.com/java-collections-tutorials/
 - http://tutorials.jenkov.com/java-collections/overview.html
@@ -130,6 +133,7 @@ parameter: initialCapacity, loadFactor)
 ## Concurrency
 
 ### Benefits and Costs
+
 - benefit: better resource utilization
 - benefit: more responsive design
 - cost: more complex design
@@ -158,7 +162,7 @@ Parallelism means that an application splits its tasks up into smaller subtasks 
 
 ### Java Thread
 
-**create and start thread**: extends Thread / implement Runnable
+**Create and start thread**: extends Thread / implement Runnable
 
 Steps:
 - create a thread object
@@ -198,11 +202,11 @@ Thread t=new Thread(){
 };
 ```
 
-**race condition**: race condition only occur when multiple threads update shared resources
+**Race condition**: race condition only occur when multiple threads update shared resources
 
-**thread safety**: if a resource is created, used and disposed within the control of the same thread, and never escapes the control of this thread, the use of that resource is thread safe
+**Thread safety**: if a resource is created, used and disposed within the control of the same thread, and never escapes the control of this thread, the use of that resource is thread safe
 
-**immutability**: immutable object is thread-safe, but the use/reference of it may not be
+**Immutability**: immutable object is thread-safe, but the use/reference of it may not be
 
 ### Daemon Thread
 
@@ -210,7 +214,7 @@ Daemon thread in java is a service provider thread that provides services to the
 
 There are many java daemon threads running automatically, e.g. gc, finalizer etc.
 
-### GC
+### Gargage Collection
 
 finalize: The finalize method is called when an object is about to get garbage collected. That can be at any time after it has become eligible for garbage collection.
 
@@ -221,10 +225,12 @@ Problem: thread interference and memory consistency errors
 Lock: Every object has an lock associated with it. By convention, a thread that needs consistent access to an object's fields has to acquire the object's lock before accessing them, and then release the lock when it's done with them.
 
 Synchronization
+
  - Process Synchronization
  - Thread Synchronization
 
 Multual Exclusive
+
  - by synchronized method
  - by synchronized block
  - by static synchronization
