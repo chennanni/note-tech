@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Java Collection
+title: Java - Collection
 folder: collection
 permalink: /archive/java/collection/
 ---
@@ -35,7 +35,7 @@ Map
 - Queue, order elements in a FIFO manner; Deque, elements can be added and deleted from both sides
 - Map, map keys to values
 
-### Collection Class
+## Collection Class
 
 **Adding and Removing Elements**
 
