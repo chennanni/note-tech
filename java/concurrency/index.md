@@ -17,21 +17,21 @@ permalink: /archive/java/concurrency/
 
 ## Models
 
-Parallel Workers
+**Parallel Workers**
 
 ![concurrency-models-1](img/concurrency-models-1.png)
 
-Assembly Line
+**Assembly Line**
 
 ![concurrency-models-3](img/concurrency-models-3.png)
 
-**Concurrency v.s. Parallelism**
+### Concurrency v.s. Parallelism
 
-Concurrency means that an application is making progress on more than one task at the same time.
+**Concurrency** means that an application is making progress on more than one task at the same time.
 
 ![concurrency-vs-parallelism-1](img/concurrency-vs-parallelism-1.png)
 
-Parallelism means that an application splits its tasks up into smaller subtasks which can be processed in parallel, for instance on multiple CPUs at the exact same time.
+**Parallelism** means that an application splits its tasks up into smaller subtasks which can be processed in parallel, for instance on multiple CPUs at the exact same time.
 
 ![concurrency-vs-parallelism-2](img/concurrency-vs-parallelism-2.png)
 
@@ -39,7 +39,8 @@ Parallelism means that an application splits its tasks up into smaller subtasks 
 
 **Create and start thread**: extends Thread / implement Runnable
 
-Steps:
+Steps
+
 - create a thread object
   - create some object with thread features (implement Runnable / extends Thread )
   - create a thread object
