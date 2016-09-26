@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Java Concurrency
+title: Java - Concurrency
 folder: concurrency
 permalink: /archive/java/concurrency/
 ---
