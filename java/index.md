@@ -7,5 +7,5 @@ permalink: /archive/java/
 
 # Java
 
-- [Collection](tech-note/archive/java/collection)
-- [Concurrency](tech-note/archive/java/concurrency)
+- [Collection](collection)
+- [Concurrency](concurrency)
