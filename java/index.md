@@ -5,6 +5,7 @@ folder: java
 permalink: /archive/java/
 ---
 
-Java
+# Java
 
-[Collection](tech-note/archive/java/collection)
+- [Collection](tech-note/archive/java/collection)
+- [Concurrency](tech-note/archive/java/concurrency)
