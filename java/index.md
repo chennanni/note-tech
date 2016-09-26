@@ -7,4 +7,4 @@ permalink: /archive/java/
 
 Java
 
-[Collection](archive/java/collection)
+[Collection](tech-note/archive/java/collection)
