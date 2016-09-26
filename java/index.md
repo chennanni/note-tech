@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Java Collection
+title: Java
 folder: java
 permalink: /archive/java/
 ---
 
 Java
 
-[Collection](/archive/java/collection)
+[Collection](archive/java/collection)
