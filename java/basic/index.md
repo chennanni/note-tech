@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Java - Collection
-folder: collection
-permalink: /archive/java/collection/
+title: Java - Basic
+folder: basic
+permalink: /archive/java/basic/
 ---
 
 # Java Basic
