@@ -7,6 +7,7 @@ permalink: /archive/java/
 
 # Java
 
+- [Basic](basic)
 - [Collection](collection)
 - [Concurrency](concurrency)
 - [IO/NIO](io)
