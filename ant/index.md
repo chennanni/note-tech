@@ -9,9 +9,9 @@ permalink: /archive/ant/
 
 ## What is Apache ANT
 
-Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.
+> Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.
 
-The main known usage of Ant is the build of Java applications.
+The main known usage of Ant is the **build of Java applications**.
 
 ## Usage example
 
