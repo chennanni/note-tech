@@ -153,11 +153,11 @@ Static Method
 
 the block will be called when the class is initiated
 
-```
+~~~ java
 class Test{
 {...}
 }
-```
+~~~
 ### break
 
 - labeled
@@ -165,7 +165,7 @@ class Test{
 
 example of labeled break statement:
 
-```
+~~~ java
 search:
 	for (i = 0; i < arrayOfInts.length; i++) {
 		for (j = 0; j < arrayOfInts[i].length;
@@ -176,7 +176,7 @@ search:
 			}
 		}
 	}
-```
+~~~
 
 ## Serialization
 
@@ -241,9 +241,11 @@ Exceptions that are not checked at compiled time such as err & runtime exception
 - throws
 - printStackTrace()
 
-after try catch, the program will continue to execute
+After try catch, the program will continue to execute.
 
-```
+Throwed exception must be caught somewhere. A mehtod that throws exception must be surrounded by try-catch block.
+
+~~~ java
 public void sample() throws ArithmeticException{
   
   ...
@@ -252,7 +254,7 @@ public void sample() throws ArithmeticException{
   
   ...
 }
-```
+~~~
 
 ## Generic
 
@@ -261,11 +263,11 @@ public void sample() throws ArithmeticException{
 - set the type of the collection to **limit what kind of objects can be inserted into the collection**. 
 - don't have to cast the values you obtain from the collection.
 
-```
+~~~ java
 List < String > strings = new ArrayList < String >();
 strings.add("a String");
 String aString = strings.get(0);
-```
+~~~
 
 Generics also provide compile-time type safety that allows programmers to catch invalid types at compile time.
 
@@ -273,48 +275,48 @@ Generics also provide compile-time type safety that allows programmers to catch 
 
 specify, with a single method declaration, a set of related methods
 
-```
+~~~ java
 public static < E > void printArray( E[] inputArray ){...}
 ...
 printArray( intArray  ); // pass an Integer array
 printArray( doubleArray ); // pass a Double array
-```
+~~~
 
 ### Generic Class
 
 specify, with a single class declaration, a set of related types.
 
-```
+~~~ java
 // The < T > is a type token that signals that this class can have a type set when instantiated.
 public class Box < T > {...}
 ...
 Box < Integer > integerBox = new Box < Integer >();
 Box < String > stringBox = new Box < String >();
-```
+~~~
 
 ### Generic WildCard
 
 a collection whose element type matches anything
 
-```
+~~~ java
 // here you can pass a Collection< String > or Collection< Integer >
 void printCollection(Collection<?> c) {
     for (Object e : c) {
         System.out.println(e);
     }
 }
-```
+~~~
 
 ### Bounded WildCard
 
 restrict the kinds of unknown type
 
-```
+~~~ java
 public void addRectangle(List<? extends Shape> shapes) {
     // Compile-time error!
     shapes.add(0, new Rectangle());
 }
-```
+~~~
 
 ### Bounded Type Parameters
 
@@ -322,10 +324,10 @@ restrict the kinds of types that are allowed to be passed to a type parameter
 
 For example, a method that operates on numbers might only want to accept instances of Number or its subclasses.
 
-```
+~~~ java
 // the maximun() can only accept types that extends Comparable
 public static < T extends Comparable < T > > T maximum(T x, T y, T z){...}
-```
+~~~
 
 ## Interfaces
 
@@ -334,20 +336,20 @@ can have only method signatures and fields & static final constants
 - a class can implement more than one interfaces but must overrides all methods of these interfaces, otherwise, this subclass must be declared as abstract
 - methods declared in interfaces are "public" by default
 
-```
+~~~ java
 interface Bicycle {
      static final int startSpped = 0;
      void speedUp(int increment);
      void changeGear(int newValue);
 }
-```
+~~~
 
 ### interface v.s. abstract class
 
 - Interfaces are used to decouple the interface of some component from the implementation.
 - Abstract classes are typically used as base classes for extension by subclasses.
 
-```
+~~~ java
 // example of interface
 interface DaoService {
 	void add(...);
@@ -368,7 +370,7 @@ public class UserAlfaRequestService() {
 public class UserBetaRequestService() {
 	...
 }
-```
+~~~
 
 ### mark interface
 
@@ -382,7 +384,7 @@ Read more: http://javarevisited.blogspot.com/2012/01/what-is-marker-interfaces-i
 
 create a class without naming the class
 
-```
+~~~ java
 // example of anonymous class
 class Test{
      void show(){
@@ -392,7 +394,7 @@ class Test{
           new Test().show();
      }
 }
-```
+~~~
 
 ### Inner classes
 
@@ -416,7 +418,7 @@ implemented in subclasses
 - Abstract classes cannot be instantiated, but they can be subclassed.
 - When an abstract class is subclassed, the subclass usually provides implementations for all of the abstract methods in its parent class.
 
-```
+~~~ java
 public abstract class GraphicObject {
      ...
      // declare fields
@@ -428,7 +430,7 @@ public abstract class GraphicObject {
           ...
      }
 }
-```
+~~~
 
 ### Concrete class
 
