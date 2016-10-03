@@ -11,6 +11,7 @@ permalink: /archive/java/
 - [Collection](collection)
 - [Concurrency](concurrency)
 - [Networking](networking)
+- [GUI](gui)
 - [IO/NIO](io)
 - [VM](vm)
 - [GC](gc)
