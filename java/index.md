@@ -13,5 +13,3 @@ permalink: /archive/java/
 - [Networking](networking)
 - [GUI](gui)
 - [IO/NIO](io)
-- [VM](vm)
-- [GC](gc)
