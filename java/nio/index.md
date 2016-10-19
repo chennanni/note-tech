@@ -8,6 +8,7 @@ permalink: /archive/java/nio/
 # Java NIO
 
 Core components
+
 - Channels
   - Channels read data into Buffers
 - Buffers
@@ -22,6 +23,7 @@ Multiple sources read/write from multiple channels into buffer(s), thus non-bloc
 Channel is similar to Stream, it is the gate for read/write.
 
 Channels implementation
+
 - FileChannel (File NIO)
 - DatagramChannel (UDP NIO)
 - SocketChannel (TCP NIO)
@@ -53,12 +55,14 @@ aFile.close();
 A buffer is essentially a block of memory into which you can write data, which you can then later read again.
 
 Usage
+
 - Write data into the Buffer
 - Call buffer.flip()
 - Read data out of the Buffer
 - Call buffer.clear() or buffer.compact()
 
 Buffer implementation
+
 - ByteBuffer
 - CharBuffer
 - DoubleBuffer
@@ -73,6 +77,7 @@ Buffer implementation
 - This way a single thread can manage multiple channels, and thus multiple network connections.
 
 Usage
+
 - open a Selector
 - register Channels for this Selector
 - select ready Channels from Selector by calling select()
@@ -113,7 +118,7 @@ while(true) {
 
 ## IO v.s. NIO
 
-- IO is Blocking while NIO is Non blocking
+- IO is blocking while NIO is non-blocking
   - When dealing with multiple connections, IO have to open multiple threads while NIO can use one thread
 - IO is Stream oriented	while NIO is Buffer oriented
 - When processing the data, Stream(IO) is easier then Buffer(NIO)
