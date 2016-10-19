@@ -30,7 +30,7 @@ Java IO streams are typically either byte based or character based.
 - mostly [XXX]InputStream/OutputStream is **byte based**
 - mostly [XXX]Reader/Writer is **character based**
 
-![java-io-class](img/java-io-class.png)
+![java-io-class](img/java-io-class.PNG)
 
 ## Release resource
 
