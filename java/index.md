@@ -12,4 +12,5 @@ permalink: /archive/java/
 - [Concurrency](concurrency)
 - [Networking](networking)
 - [GUI](gui)
-- [IO/NIO](io)
+- [IO](io)
+- [NIO](nio)
