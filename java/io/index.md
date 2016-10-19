@@ -5,7 +5,7 @@ folder: io
 permalink: /archive/java/io/
 ---
 
-# Java I/O
+# Java IO
 
 ## Source and Destination
 
