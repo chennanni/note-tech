@@ -41,7 +41,7 @@ To summary
 
 ## A Little Explor of Mockito
 
-``` java
+~~~ java
  import static org.mockito.Mockito.*;
  
  LinkedList mockedList = mock(LinkedList.class);
@@ -58,7 +58,7 @@ To summary
 
  //verification
  verify(mockedList).get(0);
- ```
+~~~
  
 ## Links
 
