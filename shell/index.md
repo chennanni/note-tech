@@ -26,7 +26,7 @@ permalink: /archive/shell/
 
 ## Linux/Unix commands
 
-**cd**, **ls**, **pwd**, **clear**
+navigation => **cd**, **ls**, **pwd**, **clear**
 
 ```
 cd [doc], change direcotry to doc
@@ -43,7 +43,7 @@ pwd, display the path of the current directory
 clear, clear the screen
 ```
 
-**mkdir**, **cp**, **mv**
+file manipulation => **mkdir**, **cp**, **mv**, **rm**, **rmdir**
 
 ```
 mkdir [directory], create a directory/folder
@@ -51,18 +51,14 @@ mkdir [directory], create a directory/folder
 cp [file1] [file2], copy file1 and call it file2
 
 mv [file1] [file2], move or rename file1 to file2
-```
 
-**rm**, **rmdir**
-
-```
 rm [file], remove a file
 rm -rf [foldername], recursively force remove the folder and everything in it
 
 rmdir [foldername], remove a folder
 ```
 
-**cat**, **less**, **head**
+file read => **cat**, **less**, **head**
 
 ```
 cat [file], display a file
@@ -71,17 +67,38 @@ less [file], display a file a page at a time
 
 head [file], display the first few lines of a file
 
-tile [file], display the last few lines of a file
+tail [file], display the last few lines of a file
+tail -100f [file], constantly display the last 100 lines of a file
 ```
 
-**grep**
+file write => **redirect**, **cat**, **emacs/vim**
+
+```
+command > file, redirect standard output to a file
+command >> file, append standard output to a file
+command < file, redirect standard input from a file
+
+cat [file1] [file2] > [file0], concatenate file1 and file2 to file0
+
+emacs/vim [file], launches the emacs/vim editor, and opens the file for editing
+```
+
+file search => **grep**, **wc**, **wildcards**
 
 ```
 grep [keyword] [file], search keyword in a file, default case sensitive
 grep -i [keyword] [file], ignore upper/lower case
+
+wc [file], count number of lines/words/characters in file
+wc -w [file], count words of a txt file
+wc -l [file], count lines of a txt file
+
+ls *list, list all files in the current dir starting with list...
+ls list*, list all files in the current dir ending with ...list
+ls ?list, match exactly one character
 ```
 
-**chmod**, **sudo**
+permission => **chmod**, **sudo**
 
 ```
 chmod XXX [file], change the permissions of files or directories.
@@ -90,35 +107,7 @@ chmod u=rw [file], the owner may read and write the file
 sudo, allows a permitted user to execute a command as the superuser or another user
 ```
 
-**redirect**, **cat**
-
-```
-command > file, redirect standard output to a file
-command >> file, append standard output to a file
-command < file, redirect standard input from a file
-
-cat [file1] [file2] > [file0], concatenate file1 and file2 to file0
-```
-
-**wildcards**
-
-```
-ls *list, list all files in the current dir starting with list...
-ls list*, list all files in the current dir ending with ...list
-ls ?list, match exactly one character
-```
-
-**man/apropos**, **who**
-
-```
-man [command], read the manual of a command
-whatis [command], show one-line description of a command
-apropos [keyword], not sure of the exact name of a command
-
-who | sort, list logged-in user and sort the result
-```
-
-**ps**, **top**, **kill**, 
+check process => **ps**, **top**, **kill**, 
 
 ```
 ps, report process status
@@ -134,18 +123,14 @@ kill [%1], kill job number 1
 kill [26152], kill process number 26152
 ```
 
-**wc**
+help => **man/apropos**, **who**
 
 ```
-wc [file], count number of lines/words/characters in file
-wc -w [file], count words of a txt file
-wc -l [file], count lines of a txt file
-```
+man [command], read the manual of a command
+whatis [command], show one-line description of a command
+apropos [keyword], not sure of the exact name of a command
 
-**pico**
-
-```
-pico [file], launches the pico editor, and opens the file for editing
+who | sort, list logged-in user and sort the result
 ```
 
 ## Links
