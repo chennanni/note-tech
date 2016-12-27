@@ -21,7 +21,7 @@ If you use ant 1.6.0 or superior, you can then simply:
 go to the `src/example/hello-ivy` dir and run `ant`
 (if the build is successful, you have successfully installed Ivy!)
 
-## Repository Management
+## Repository
 
 - Local
 - Shared
