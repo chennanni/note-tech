@@ -21,6 +21,40 @@ If you use ant 1.6.0 or superior, you can then simply:
 go to the `src/example/hello-ivy` dir and run `ant`
 (if the build is successful, you have successfully installed Ivy!)
 
+## Repository Management
+
+- Local
+- Shared
+- Public
+
+## Resolver
+
+Function
+
+- decide network or file-system protocol to access the repository
+- locate and fetch the Ivy file/artifacts which may follow different layout/naming in different repositories
+
+There are two types of resolvers:
+
+- standard – these resolvers are used by Ivy for actual resolve task
+- composite – these resolvers delegate the work to standard resolvers
+
+Default Resolvers:
+
+```
+local	standard	Filesystem resolver points to $HOME/.ivy2/local
+shared	standard	Filesystem resolver points to $HOME/.ivy2/shared
+public	standard	Ibiblio resolver points http://repo1.maven.org/maven2
+main	composite	Chain and Dual resolver to shared and public
+default	composite	Chain resolver to local and main
+```
+
+Searching Priority:
+
+- first tries the local
+- on failure looks for shared
+- finally public
+
 ## Ant-Ivy Tasks
 
 - Resolve: Resolves the dependencies described in ivy.xml and places the resolved dependencies in ivy cache.
@@ -28,15 +62,8 @@ go to the `src/example/hello-ivy` dir and run `ant`
 - Install: Installs a module to a specified repository.
 - Publish: Publish a module to a repository.
 
-<http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/>
-
-## Repository Management
-
-- Local
-- Shared
-- Public
-
-<http://ant.apache.org/ivy/history/latest-milestone/tutorial/defaultconf.html>
+- <http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/>
+- <http://ant.apache.org/ivy/history/latest-milestone/tutorial/defaultconf.html>
 
 ## Dependency Management
 
