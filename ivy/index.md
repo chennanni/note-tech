@@ -42,45 +42,73 @@ go to the `src/example/hello-ivy` dir and run `ant`
 
 Ivy uses the maven 2 repository by default.
 
-## Using Ivy Module Configuration
-
-Have different configurations for different situations.
-
-In ivy.xml, specify what kind of build you want to use: only api jar, or only company jar or company jar + third party jars.
-
-~~~ xml
-<ivy-module version="1.0">
-    <info organisation="org.apache" module="myapp"/>
-
-    <configurations>
-      <conf name="build" visibility="private" description="compilation only need api jar" />
-    	<conf name="noexternaljar" description="use only company jar" />
-    	<conf name="withexternaljar" description="use company jar and third party jars" />    
-    </configurations>
-
-    <dependencies>
-        <dependency org="org.apache" name="filter-framework" rev="latest.integration" 
-            conf="build->api; noexternaljar->homemade-impl; withexternaljar->cc-impl"/>
-    </dependencies>
-</ivy-module>
-~~~
-
-In ant resolve task, give what `conf` you want to use.
-
-~~~
-<target name="resolve" description="--> retreive dependencies with ivy">
-    <ivy:retrieve pattern="${ivy.lib.dir}/[conf]/[artifact].[ext]"/>
-</target>
-~~~
-
-<http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html>
-
-## Situations
-
 - One Project, default local repository (download from m2)
 - One Project, local repository (external jars)
 - One Project, local (jars) + public repository (cloud repo)
 - Multiple Project dependency
+
+## Using Ivy Module Configuration
+
+It allows you to group artifacts and give the group a meaning.
+
+For example, you have a project with 2 parts: A and B. Alice have another project with 3 parts: Alice-X, Alice-Y, Alice-Z.
+
+- Alice-X just needs A.
+- Alice-Y just needs B.
+- Alice-Z needs A and B.
+
+So you create a module configuration: 
+
+- only-a
+- only-b
+- both-a-and-b. 
+
+e.g. your project `ivy.xml`
+
+``` xml
+<ivy-module version="1.0">
+    <info organisation="org.apache" module="my-project"/>
+    <configurations>
+    	<conf name="only-a" description="only provide part a"/>
+    	<conf name="only-b" description="only provide part b"/>
+    	<conf name="both-a-and-b" extends="only-a; only-b" description="provide both part a and b"/>
+    </configurations>
+    <publications>
+    	<artifact name="my-project-part-a" type="jar"  conf="only-a" ext="jar"/>
+    	<artifact name="my-project-part-b" type="jar"  conf="only-b" ext="jar"/> 	
+    </publications>
+    <dependencies>
+        <dependency org="junit" name="junit" rev="3.8"/>
+    </dependencies>
+</ivy-module>
+```
+
+When Alice pull dependencies from your project, she can specify which part they want.
+
+- Alice-X want only-a
+- Alice-Y want only-b
+- Alice-Z want both-a-and-b
+
+e.g. Alice's project `ivy.xml`
+
+``` xml
+<ivy-module version="1.0">
+    <info organisation="org.apache" module="alice-app"/>
+    
+    <configurations>
+       	<conf name="alice-x" visibility="private" description="only need A" />
+    	<conf name="alice-y" description="only need B" />
+    	<conf name="alice-z" description="need A and B" />    
+    </configurations>
+    
+    <dependencies>
+        <dependency org="org.apache" name="filter-framework" rev="latest.integration" 
+            conf="alice-x -> only-a; alice-y -> only-b; alice-z -> both-a-and-b"/>
+    </dependencies>
+</ivy-module>
+```
+
+<http://ant.apache.org/ivy/history/latest-milestone/tutorial/conf.html>
 
 ## Links
 
