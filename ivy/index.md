@@ -62,6 +62,10 @@ Searching Priority:
 - Install: Installs a module to a specified repository.
 - Publish: Publish a module to a repository.
 
+Workflow
+
+![ivy-work-flow](img/ivy-work-flow.PNG)
+
 - <http://www.codetab.org/apache-ivy-tutorial/apache-ivy-ant-tasks/>
 - <http://ant.apache.org/ivy/history/latest-milestone/tutorial/defaultconf.html>
 
