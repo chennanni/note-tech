@@ -94,9 +94,11 @@ Cookie
 ## Steps to compile and run servlet in cmd
 
 Set the classpath for servlet.jar from tomcat folder
+
 - set classpath=%classpath%; ...\tomcatXXX\lib\servlet.jar;
 
 Copy the servlet .class file to the tomcat server folder
+
 - tomcat-XXX\webapps\ROOT\WEB-INF\classes
 
 Register the servlet in web.xml
@@ -114,10 +116,12 @@ Register the servlet in web.xml
 ```
 
 Start the tomcat in cmd
+
 - tomcat\bin > `catalina.bat run`
 
 
 Open the browser and visit the URL
+
 - http://localhost:8080/HelloServlet
 
 ## Session
@@ -140,4 +144,4 @@ Open the browser and visit the URL
 - Sessions are server-side files that contain user information, while Cookies are client-side files that contain user information. 
 - Sessions have a unique identifier that maps them to specific users. This identifier can be passed in the URL or saved into a session cookie.
 
-http://stackoverflow.com/questions/359434/differences-between-cookies-and-sessions
+<http://stackoverflow.com/questions/359434/differences-between-cookies-and-sessions>
