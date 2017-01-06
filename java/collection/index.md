@@ -5,7 +5,7 @@ folder: collection
 permalink: /archive/java/collection/
 ---
 
-# Collection
+# Java Collection
 
 ## API
 
