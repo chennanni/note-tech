@@ -1,3 +1,10 @@
+---
+layout: default
+title: Spring - JPA
+folder: jpa
+permalink: /archive/spring/jpa/
+---
+
 # Spring Data JPA
 
 Spring Data JPA focuses on using JPA to store data in a relational database. 
