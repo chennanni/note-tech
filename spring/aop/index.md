@@ -67,6 +67,8 @@ Advice represents an action taken by an aspect at a particular join point. There
 
 ## How to Use AOP in action
 
+[spring-aop-flow](img/spring-aop-flow.PNG)
+
 step 1: choose a class that needs advice
 
 ``` java
