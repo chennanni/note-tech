@@ -5,7 +5,7 @@ folder: basic
 permalink: /archive/spring/basic/
 ---
 
-# Spring Framework #
+# Spring Basic
 
 ## What is Sping Framework?
 
