@@ -5,7 +5,7 @@ folder: concurrency
 permalink: /archive/java/concurrency/
 ---
 
-# Concurrency
+# Java Concurrency
 
 ## Benefits and Costs
 
