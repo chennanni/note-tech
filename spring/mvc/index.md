@@ -5,6 +5,8 @@ folder: mvc
 permalink: /archive/spring/mvc/
 ---
 
+# Spring MVC
+
 ## Flow
 
 ![mvc_dispatcherServlet](img/mvc_dispatcherServlet.png)
