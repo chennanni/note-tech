@@ -5,7 +5,7 @@ folder: Spring
 permalink: /archive/spring/
 ---
 
-# Java
+# Spring
 
 - [Basic](basic)
 - [MVC](mvc)
