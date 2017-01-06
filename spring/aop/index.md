@@ -56,8 +56,8 @@ Advice represents an action taken by an aspect at a particular join point. There
 - After (finally) Advice: it executes after a join point regardless of join point exit whether normally or exceptional return.
 - Around Advice: It executes before and after a join point.
 
-```
-	@Before("myPointcut()") //applying 'before advice' on this pointcut
+``` java
+    @Before("myPointcut()") //applying 'before advice' on this pointcut
     public void myadvice(JoinPoint jp) //it is the advice
     {
         System.out.println("additional concern");
@@ -69,7 +69,7 @@ Advice represents an action taken by an aspect at a particular join point. There
 
 step 1: choose a class that needs advice
 
-```
+``` java
 public  class Operation{
     public int m(){System.out.println("m method invoked");return 1;}
     public int k(){System.out.println("k method invoked");return 2;}
@@ -78,7 +78,7 @@ public  class Operation{
 
 step 2: write the Aspect class
 
-```
+``` java
 // import ...
 
 @Aspect
@@ -96,7 +96,7 @@ public class TrackOperation{
 
 step 3: add beans in applicationContext.xml
 
-```
+``` java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
