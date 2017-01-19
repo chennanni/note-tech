@@ -15,6 +15,8 @@ Spring Data JPA is a library / framework that adds an extra layer of abstraction
 
 ![springjpa_arch](img/springjpa_arch.png)
 
+![spring-jpa-flow](imv/spring-jpa-flow.PNG)
+
 ## Dependencies
 
 - JDBC Driver
