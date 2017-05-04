@@ -69,6 +69,19 @@ git pull <origin> <master>
 git push <origin> <master>
 ```
 
+### add and use ssh key
+
+```
+https://help.github.com/articles/about-ssh/
+
+add
+step1 : generate an SSH key and add it to the ssh-agent
+step2 : add the key to your GitHub account
+
+use
+specify the ssh key to use for a given repo: git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
+```
+
 ### git fetch vs pull
 
 `git pull` = `git fetch` + `git merge`
