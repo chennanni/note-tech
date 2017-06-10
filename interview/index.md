@@ -80,6 +80,20 @@ permalink: /archive/interview/
 
   ### Oracle DB
 
+## Test
+
+  ### JUnit Test
+  
+  - Given a specific senario, write all test cases and test code
+  - What is mock and Why using it?
+  
+  ### Testing Tools
+  
+  - Mokito
+  - Power Mock
+  - Jacoco
+  - Sonar Cube
+
 ## Dependency
 
   ### Ant
