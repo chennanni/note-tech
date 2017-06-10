@@ -42,7 +42,7 @@ permalink: /archive/interview/
     - Life Cycle of a thread
     - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
     - How to ensure Thread Safety
-  - JVM
+  - JVM
     - Class Loading
   - GC
   - Java 8 New Feature
