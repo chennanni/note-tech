@@ -22,7 +22,7 @@ permalink: /archive/interview/
   
   - Collection
     - Collection Hierarchy -- see [here](http://chennanni.com/tech-note/archive/java/collection/)
-    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593)
+    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593)
     - HashMap vs Hashtable
     - ArrayList vs LinkedList
   - Exception
@@ -39,8 +39,8 @@ permalink: /archive/interview/
   ### Advanced
   
   - Concurrency
-    - Life Cycle of a thread
-    - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
+    - Life Cycle of a thread
+    - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
     - How to ensure Thread Safety
   - JVM
     - Class Loading
