@@ -2,9 +2,9 @@
 title: Chennan's Note
 email: chennancd@gmail.com
 description: This is Chennan's Note.
-baseurl: "/tech-note" # the subpath of your site, e.g. /blog/
+baseurl: "/note-tech" # the subpath of your site, e.g. /blog/
 url: "https://chennanni.github.io" # the base hostname & protocol for your site
-repo_url: "https://github.com/chennanni/tech-note"
+repo_url: "https://github.com/chennanni/note-tech"
 # twitter_username: jekyllrb
 github_username:  chennanni
 
