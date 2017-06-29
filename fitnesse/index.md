@@ -8,7 +8,7 @@ permalink: /archive/fitnesse/
 # FitNesse
 
 ## What is FitNesse
-FitNesse put together a combined visual testing results application.
+FitNesse is an application that puts together testing results and shows in an eazy to understand manner.
 
 FitNesse is a testing tool(bridge) between developers and customers(testers). For customers(testers),
 they create acceptance test cases(tables). The tables call "fixtures"(which is built by developers) to test against the real code.
