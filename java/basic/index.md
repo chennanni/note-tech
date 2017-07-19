@@ -63,7 +63,7 @@ Compilation is done by JVM which uses JDK libraries to check the syntax and comp
 
 Execution is taken care by JRE Java Runtime Environment which loads the class on to memory for execution only when there is a main method in the class.
 
-## Datatypes
+## Primitive Datatypes
 
 ```
 byte, 8 bit
@@ -74,7 +74,18 @@ float, 32 bit
 double, 64 bit
 boolean
 char, 16 bit
-Special case of String
+Special case of String (technically not, but behaves like one)
+```
+
+## Literals
+
+```
+11001100
+true
+1234
+1.01
+'a'
+"hello"
 ```
 
 ## Operators
