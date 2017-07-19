@@ -26,3 +26,11 @@ Example
 0 == ''   // true
 0 === ''  // false
 ```
+
+## Quotes
+
+double quotes "" vs single quotes ''
+
+- There is no special difference between single and double quotes.
+
+(You don't need to escape single quotes in double quotes, or double quotes in single quotes)
