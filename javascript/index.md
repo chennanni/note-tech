@@ -10,7 +10,7 @@ permalink: /archive/javascript/
 ## Intro
  * HTML to define the content of web pages
  * CSS to specify the layout of web pages
- * JavaScript to program the behavior of web pages
+ * **JavaScript to program the behavior of web pages**
  * (Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.)
 
 ## What does (Client Side) JS do?
