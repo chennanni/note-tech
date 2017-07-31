@@ -36,6 +36,8 @@ permalink: /archive/plsql/query/
 金融公司的一个Table：Customers，用来记录客户的基本信息，如下，
 从逻辑层面来说，每条客户信息都是唯一的，代表了一个独立的客户。
 
+![sql-query-1](img/sql-query-1.png)
+
 ~~~ sql
 create table customers(
    id   int              not null,
@@ -100,6 +102,7 @@ and c1.salary = c2.salary;
 
 Table TXN_DETAILS，这个用来记录所有交易记录
 
+![sql-query-2](img/sql-query-2.png)
 
 ~~~ sql
 create table txn_details(
