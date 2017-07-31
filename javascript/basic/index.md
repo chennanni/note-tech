@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Javascript Basic
-folder: javascript/basic
+folder: basic
 permalink: /archive/javascript/basic
 ---
 
