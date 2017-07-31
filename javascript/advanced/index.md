@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Javascript Advanced
+title: Javascript - Advanced
 folder: advanced
 permalink: /archive/javascript/advanced/
 ---
