@@ -107,7 +107,7 @@ Employee (Table)
 ```
 id     |     name     |     department_tag 
 ----------------------------------------------
-01     |     Alice     |          a
+01     |     Alice    |          a
 02     |     Bobb     |          b
 03     |     Cathy    |          c
 04     |     David    |          
@@ -116,7 +116,7 @@ id     |     name     |     department_tag
 Department (Table)
 
 ```
-tag     |     desc     
+tag      |     desc     
 ------------------------
 a        |     SpaceX    
 b        |     Tesla     
@@ -134,10 +134,10 @@ Result:
 ```
 id     |     name     |     department_tag     |     desc      
 ------------------------------------------------------------------
-01     |     Alice    |          a                     |      SpaceX 
-02     |     Bobb     |          b                     |      Tesla
-03     |     Cathy    |          c                     |
-04     |     David    |                                |
+01     |     Alice    |          a             |      SpaceX 
+02     |     Bobb     |          b             |      Tesla
+03     |     Cathy    |          c             |
+04     |     David    |                        |
 ```
 
 **Inner Join**:
@@ -150,7 +150,7 @@ ON employee.department_tag = department.tag
 Result:
 
 ```
-id     |     name     |     department_tag     |     desc      
+id     |     name     |     department_tag     |      desc      
 ------------------------------------------------------------------
 01     |     Alice    |          a             |      SpaceX 
 02     |     Bobb     |          b             |      Tesla
