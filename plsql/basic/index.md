@@ -1,4 +1,12 @@
-# PL/SQL
+---
+layout: default
+title: SQL - Basic
+folder: basic
+permalink: /archive/plsql/basic/
+---
+
+
+PL/SQL
 
 ## Basic (Section) Structure
 
