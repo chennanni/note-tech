@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Javascript Advanced
-folder: javascript/advanced
+folder: advanced
 permalink: /archive/javascript/advanced/
 ---
 
