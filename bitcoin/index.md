@@ -1,3 +1,10 @@
+---
+layout: default
+title: Bitcoin
+folder: bitcoin
+permalink: /archive/bitcoin/
+---
+
 # Bitcoin
 
 ## 比特币支付系统
@@ -80,8 +87,8 @@ Output A用Y的私钥对一串字符M做了加密得到了M'，这个M只有Y知
 
 ## Links
 
-- https://www.zhihu.com/question/20876219
-- https://bitcoin.org/en/developer-guide#block-chain-overview
-- https://en.bitcoin.it/wiki/Protocol_documentation
-- https://www.weusecoins.com/en/mining-guide
-- http://perlalchemy.blogspot.com/2011/05/bitcoin-protocol-highlevel-explanation.html
+- <https://www.zhihu.com/question/20876219>
+- <https://bitcoin.org/en/developer-guide#block-chain-overview>
+- <https://en.bitcoin.it/wiki/Protocol_documentation>
+- <https://www.weusecoins.com/en/mining-guide>
+- <http://perlalchemy.blogspot.com/2011/05/bitcoin-protocol-highlevel-explanation.html>
