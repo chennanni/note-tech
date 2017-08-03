@@ -34,7 +34,4 @@ permalink: /archive/java/basic/
 
 ## Markdown Note
 
-There's some small differences between kramdown and github-flavor markdown. Thus, the page rendered on github and github-pages may be different. To make sure consistancy, follow some special rules:
-
-- hyperlink uses `<url>` instead of `url`
-- code snippet should start and end with new line
+There's some small differences between kramdown and github-flavor markdown. Thus, the page rendered on github and github-pages may be different. To make sure consistancy, follow some special rules: https://github.com/chennanni/note-cheat-sheet/blob/master/jekyll.md
