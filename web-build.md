@@ -1,3 +1,7 @@
+---
+published: false
+---
+
 # Tech Details (Website Build)
 
 ## Git Remote & Submodule
