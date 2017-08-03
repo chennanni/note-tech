@@ -48,6 +48,8 @@
 - Output
 - Locktime
 
+![bitcoin](img/bitcoin.png)
+
 其中最关键的是Input和Output，如果把一个Block理解成一张纸币
 - Input表示这个Block是从哪里来的，它的上一任主人是谁，代表了多少钱
 - Output表示这个Block到了哪里去，它的现任主任是谁，代表了多少钱
