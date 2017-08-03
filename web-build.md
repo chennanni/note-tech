@@ -1,10 +1,7 @@
 ---
-layout: post
-title: Blogging Like a Hacker
+title: Tech Details (Website Build)
 published: false
 ---
-
-# Tech Details (Website Build)
 
 ## Git Remote & Submodule
 
