@@ -26,13 +26,13 @@ Testing, Unit Testing, Junit Testing
 
 STEP 1: Create a Class to test
 
-```
+~~~ java
 public class MessageUtil {...}
-```
+~~~
 
 STEP 2: Create Test Case Class
 
-```
+~~~ java
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 public class TestJunit {
@@ -44,11 +44,11 @@ public class TestJunit {
       assertEquals(message,messageUtil.printMessage());
    }
 }
-```
+~~~
 
 STEP 3: Create Test Runner Class (Optional with Eclipse)
 
-```
+~~~ java
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -62,7 +62,7 @@ public class TestRunner {
       System.out.println(result.wasSuccessful());
    }
 }
-```
+~~~
 
 Note: Most IDE integrates with Junit so that you don't need to write the Test Runner by yourself. 
 It's already handled by the platform.
@@ -74,16 +74,16 @@ Just a click of button triggers the process in the backend.
 
 This class provides a set of assertion methods useful for writing tests.
 
-```
+~~~
 void assertEquals(boolean expected, boolean actual)
 void assertFalse(boolean condition)
 void assertTrue(boolean condition)
 void assertNull(Object object)
 void assertNotNull(Object object)
 void fail()
-```
+~~~
 
-```
+~~~ java
 import org.junit.Test;
 import static org.junit.Assert.*;
 public class TestJunit1 {
@@ -104,19 +104,19 @@ public class TestJunit1 {
       assertNotNull(str);
    }
 }
-```
+~~~
 
 **Time Test**
 
-```
+~~~ java
 @Test(timeout=1000)
-```
+~~~
 
 **Exception Test**
 
-```
+~~~ java
 @Test(expected = XXXException.class)
-```
+~~~
 
 ## Annotation
 
@@ -131,7 +131,7 @@ public class TestJunit1 {
 
 Mock objects help you design and test the relations between the objects entangling the whole system.
 
-```
+~~~ java
 import org.jmock.Mockery;
 import org.jmock.Expectations;
 
@@ -159,7 +159,7 @@ public class PublisherTest extends TestCase {
         context.assertIsSatisfied();
     }
 }
-```
+~~~
 
 More info about Mock Test can be found here: 
 [用JUnit写Unit Test和Integration Test](https://github.com/chennanni/chennanni.github.io/blob/master/_posts/tech-cn/2017-03-01-unit-test-and-integration-test.md)
