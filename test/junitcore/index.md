@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Junit - Core
+title: Testing - Junit Core
 folder: junitcore
 permalink: /archive/test/junitcore/
 ---
 
-# Junit - Core
+# Testing - Junit Core
 
 ## Write Test with Static Method
 
