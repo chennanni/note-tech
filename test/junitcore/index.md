@@ -147,7 +147,7 @@ use ant junit task
 </target>
 ~~~
 
-## Test Suite
+## Test Suite: run many tests together
 
 > Test suite means bundle a few unit test cases and run it together.
 
@@ -189,7 +189,7 @@ TestResult result = new TestResult();
 suite.run(result);
 ~~~
 
-## Fixture
+## Test Fixture: format the test process
 
 > A test fixture is a fixed state of a set of objects used as a baseline for running tests. 
 The purpose of a test fixture is to ensure that there is a well known and fixed environment 
