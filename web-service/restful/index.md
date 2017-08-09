@@ -122,7 +122,7 @@ Six Constrains
 
 ### JAX-RS with Jersey
 
-e.g. RESTfulDemo, RESTfulClient
+e.g. [RESTfulDemo.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src), [RESTfulClient.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src)
 
 Steps to Create RESTful Services:
 - import jersey api using maven
@@ -137,7 +137,7 @@ Steps to Consume RESTful Services:
 
 ### REST with Spring
 
-e.g. ConsumeRestSpring-demo, BuildRestSpring-demo
+e.g. [ConsumeRestSpring-demo.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src), [BuildRestSpring-demo.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src)
 
 Steps to Consume Spring RESTful Services
 - create an POJO class and use jackson annotation to contain the data
@@ -154,7 +154,7 @@ Steps to Build Spring RESTful Services
 ### Other Spring-REST Peojects
 
 - TaskManagerAPP.zip [reference here](https://dzone.com/articles/crud-using-spring-mvc-40)
-- AccountManagementSystem.zip
+- [AccountManagementSystem.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src)
 
 ## Testing Tools
 - POSTMAN(Chrome)
