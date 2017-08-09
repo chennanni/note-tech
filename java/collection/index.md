@@ -5,9 +5,18 @@ folder: collection
 permalink: /archive/java/collection/
 ---
 
-# Java Collection
+# Java Collection Framework
 
-## API
+## Structure
+- Collection interfaces
+- General-purpose implementations
+- Concurrent implementations
+- Algorithms
+- Array Utilities
+
+<https://docs.oracle.com/javase/7/docs/technotes/guides/collections/reference.html>
+
+## Collection Interfaces and Implementations
 
 ```
 Collection
@@ -35,7 +44,7 @@ Map
 - Queue, order elements in a FIFO manner; Deque, elements can be added and deleted from both sides
 - Map, map keys to values
 
-## Collection Class
+## Access Collection Class
 
 **Adding and Removing Elements**
 
@@ -71,7 +80,7 @@ for(Object object : collection) {
 }
 ```
 
-## Map Class
+## Access Map Class
 
 **Accessing Elements**
 
