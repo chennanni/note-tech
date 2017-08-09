@@ -21,7 +21,7 @@ permalink: /archive/interview/
   ### Basic
   
   - Collection
-    - Collection Hierarchy -- see [here](http://chennanni.com/tech-note/archive/java/collection/)
+    - Collection Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
     - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593)
     - HashMap vs Hashtable
     - ArrayList vs LinkedList
