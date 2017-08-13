@@ -130,6 +130,20 @@ e.g. applicationContext.xml
 
 to autowire an inner bean
 
+比如说有一个class `Person`，里面有一个inner class `Test`，
+在做DI的时候，会把`Person`和`Test`都配置好，实例为`person_1`和`test_1`，但是怎么保证`test_1`就是`person_1`里面的那个对象呢？
+这里就需要再配置一下，wire `test_1`到`person_1`上。但是怎么去mapping呢？有两种方式：byName和byType。具体的实现也有两种方式：Annotation和Configuration。
+
+~~~ java
+class Person {
+	int id;
+	String name;
+	
+	@Autowired
+	Test test;
+}
+~~~
+
 #### Two approach
 
 - Annotation
