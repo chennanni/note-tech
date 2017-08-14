@@ -78,7 +78,10 @@ Thread t=new Thread(){
 
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
-- **Thread safety**: if a resource is created, used and disposed within the control of the same thread, and never escapes the control of this thread, the use of that resource is thread safe
+- **Thread safety**: A piece of code is thread-safe if it only manipulates shared data structures in a manner that guarantees safe execution by multiple threads at the same time.
+
+那么如何实现Thread Safe呢？
+- ？？？
 
 ## Synchronization
 
