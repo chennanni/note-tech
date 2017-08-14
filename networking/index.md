@@ -66,7 +66,7 @@ DNS是域名Domain和IP地址相互映射的一个分布式数据库
 
 注：本地DNS服务器一般指电脑IPv4或者IPv6设置中填的那个DNS地址对应的服务器
 
-- [域名解析流程图](https://baike.baidu.com/item/域名解析)
+[域名解析流程图](https://baike.baidu.com/item/域名解析)
 
 ## HTTP协议
 
