@@ -48,24 +48,6 @@ The Spring Framework is **an open source application framework** and **IoC** for
 - Setter injection
 - Interface injection
 
-### D.I. Examples
-
-without dependency injection, we have to use `new()` to initiate the object
-
-~~~ java
-public class Helper {
-    private ServiceExample service;
-    Helper() {
-        service = new ServiceExample();
-    }
-    public String doSomething() {
-    	...
-        service.doSomething();
-	...
-    }
-}
-~~~
-
 with Constructor Injection
 
 ~~~ java
@@ -99,15 +81,38 @@ public class Helper implements ServiceSetter {
 }
 ~~~
 
+### D.I. Advantages
+
+降低了依赖和被依赖类型间的耦合
+
+如下例子中，在Helper类里调用了Service类来做一些事情，如果Service类的实现变了，改了constructor的signature，
+那么Helper类也需要做改动，写的UT也要改动，等等。但是如果用了DI的话就没有这个问题。
+
+~~~ java
+// without dependency injection, we have to use `new()` to initiate the object
+public class Helper {
+    private ServiceExample service;
+    Helper() {
+        service = new ServiceExample(...);
+    }
+    public String doSomething() {
+    	...
+        service.doSomething();
+	...
+    }
+}
+~~~
+
 ### What is Spring D.I.
 
-you do not create your objects but describe how they should be created
+you do not create your objects but describe how they should be created (by configuration)
 
-### IoC Container
+DI这个概念我们或多或少在平时写代码的时候早就运用了，只不过还是需要在程序某处用`new()`生成实例，然后传递到需要的地方。
+Spring把这个单拿出来，在原有的基础上扩展了其功能。框架帮我们`new()`实例，我们只需要配置一下就好了。
 
 ![spring_ioc](img/spring_ioc.png)
 
-The container will create the objects, wire them together, configure them, and manage their complete lifecycle from creation till destruction.
+The Spring IoC container will create the objects, wire them together, configure them, and manage their complete lifecycle from creation till destruction.
 
 Types
 
@@ -115,7 +120,6 @@ Types
   - create the bean before calling getBean()
 - Spring BeanFactory Container
   - create the bean when calling getBean()
-
 
 ##  Spring Bean
 
