@@ -89,7 +89,7 @@ In the example, `PointA` is an inner bean of `square` referencing to `zeroPoint`
 
 e.g. applicationContext.xml
 
-```
+~~~ xml
 <bean id="square" class="com.chennanni.learnspring.Square">
 	<property name="pointA" ref="zeroPoint" />
 	<property name="pointB">
@@ -104,7 +104,7 @@ e.g. applicationContext.xml
 	<property name="x" value="0" />
 	<property name="y" value="0" />
 </bean>
-```
+~~~
 
 ### Bean Scope
 
@@ -123,11 +123,11 @@ e.g. applicationContext.xml
 
 #### Syntax
 
-```
+~~~ xml
 <bean ... scope="singleton">
      ...
 </bean>
-```
+~~~
 
 ### Bean Autowiring
 
@@ -136,8 +136,11 @@ e.g. applicationContext.xml
 to autowire an inner bean
 
 比如说有一个class `Person`，里面有一个inner class `Test`，
-在做DI的时候，会把`Person`和`Test`都配置好，实例为`person_1`和`test_1`，但是怎么保证`test_1`就是`person_1`里面的那个对象呢？
-这里就需要再配置一下，wire `test_1`到`person_1`上。但是怎么去mapping呢？有两种方式：byName和byType。具体的实现也有两种方式：Annotation和Configuration。
+在做DI的时候，会把`Person`和`Test`都配置好，但是怎么把这两者关联起来呢？
+这里就需要把`Test`wire到`Person`上。
+
+- 具体的实现也有两种方式：Annotation和Configuration，
+- 如何进行匹配也有两种方式：byName和byType。
 
 ~~~ java
 class Person {
@@ -223,6 +226,10 @@ public class Foo {
 
 ### Bean Life Cycle
 
+- Initialization
+- Use
+- Destruction
+ 
 we can define what should be done after the bean is initialized/destroied
 
 (Take initialization for example, destruction is just the same.)
