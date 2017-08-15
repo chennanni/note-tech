@@ -57,8 +57,11 @@ The container will create the objects, wire them together, configure them, and m
 
 Types
 
-- Spring BeanFactory Container
 - Spring ApplicationContext Container
+  - create the bean before calling getBean()
+- Spring BeanFactory Container
+  - create the bean when calling getBean()
+
 
 ##  Spring Bean
 
@@ -79,6 +82,8 @@ These beans are created with the configuration metadata that you supply to the c
 
 ### Inner Bean
 
+Bean inside bean, object inside object
+
 In the example, `PointA` is an inner bean of `square` referencing to `zeroPoint`. 
 `PointB` is an inner bean defined inside `square`.
 
@@ -86,18 +91,18 @@ e.g. applicationContext.xml
 
 ```
 <bean id="square" class="com.chennanni.learnspring.Square">
-		<property name="pointA" ref="zeroPoint" />
-		<property name="pointB">
-			<bean class="com.chennanni.learnspring.Point">
-				<property name="x" value="1" />
-				<property name="y" value="1" />
-			</bean>
-		</property>
+	<property name="pointA" ref="zeroPoint" />
+	<property name="pointB">
+		<bean class="com.chennanni.learnspring.Point">
+			<property name="x" value="1" />
+			<property name="y" value="1" />
+		</bean>
+	</property>
 </bean>
 
 <bean id="zeroPoint" class="com.chennanni.learnspring.Point">
-		<property name="x" value="0" />
-		<property name="y" value="0" />
+	<property name="x" value="0" />
+	<property name="y" value="0" />
 </bean>
 ```
 
@@ -144,14 +149,16 @@ class Person {
 }
 ~~~
 
-#### Two approach
-
-- Annotation
-- Configuration in `.xml`
-
 #### Annotation
 
-**Autowired on Setter Methods**
+Autowired on Properties
+
+```
+@Autowired
+private Person person;
+```
+
+Autowired on Setter Methods
 
 ```
 @Autowired
@@ -160,14 +167,7 @@ public void setPerson(Person person){
 }
 ```
 
-**Autowired on Properties**
-
-```
-@Autowired
-private Person person;
-```
-
-**Autowired on Constructors**
+Autowired on Constructors
 
 ```
 @Autowired
@@ -176,7 +176,7 @@ public Trip(Person person){
 }
 ```
 
-**Autowired with (required=false) option**
+Autowired with (required=false) option
 
 ```
 @Autowired(required=false)
@@ -184,25 +184,42 @@ public Trip(Person person){
 
 if can not perform autowire for a property, set it to default value(null)
 
-#### Configuration in xml
+#### Configuration
 
-```
+autowire = "byName": class variable' name is the same as the name of bean
+
+~~~ xml
 <bean ... autowire = "byName">
      ...
 </bean>
-```
+~~~
 
-**autowire = "byName"**
+autowiring = "byType": class variables' type is the same as the type of bean
 
-class variable' name is the same as the name of bean
+~~~ xml
+<bean ... autowire = "byType">
+     ...
+</bean>
+~~~
 
-**autowiring = "byType"**
+autowire = "constructor": similar to byType, but type applies to constructor arguments
 
-class variables' type is the same as the type of bean
+Note: in the constructor the bean needs to be initiated
 
-**autowire = "constructor"**
+~~~ xml
+<bean ... autowire = "constructor">
+     ...
+</bean>
+~~~
 
-similar to byType, but type applies to constructor arguments
+~~~ java
+public class Foo {
+	private Moo moo;
+	public Foo(Moo moo) {
+		this.moo = moo;
+	}
+}
+~~~
 
 ### Bean Life Cycle
 
