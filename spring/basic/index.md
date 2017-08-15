@@ -13,14 +13,14 @@ The Spring Framework is **an open source application framework** and **IoC** for
 
 > Spring is modular, allowing you to pick and choose which modules are applicable to you, without having to bring in the rest.
 
-### Features
+### Sping Features
 
 - D.I.
 - Modular
 - Spring MVC
 - Spring AOP
 
-### Topics
+### Sping Topics
 
 - Spring Annotation
 - Spring JPA
@@ -28,7 +28,7 @@ The Spring Framework is **an open source application framework** and **IoC** for
 - Spring / RESTful Integration
 - Spring / SOAP Integration
 
-## Architecture
+## Sping Architecture
 
 ![spring_architecture](img/spring_architecture.png)
 
@@ -36,18 +36,72 @@ The Spring Framework is **an open source application framework** and **IoC** for
 
 ### What is D.I.
 
-you do not create your objects but describe how they should be created
+> "One or more dependencies (or services) are injected, or passed by reference, into a dependent object (or client) and are made part of the client's state. The pattern separates the creation of a client's dependencies from its own behavior."
 
-> "One or more dependencies (or services) are injected, or passed by reference, into a dependent object (or client) and are made part of the client's state.
-The pattern separates the creation of a client's dependencies from its own behavior."
+依赖注入模式，不是自己手动创建对象的实例，而是（统一）控制对象实例化的过程，然后传到需要用的地方。
 
-### Three types
+### Three types of D.I.
 
 [Wikipedia Link](http://en.wikipedia.org/wiki/Dependency_injection#Without_dependency_injection)
 
 - Constructor injection
 - Setter injection
 - Interface injection
+
+### D.I. Examples
+
+without dependency injection, we have to use `new()` to initiate the object
+
+~~~ java
+public class Helper {
+    private ServiceExample service;
+    Helper() {
+        service = new ServiceExample();
+    }
+    public String doSomething() {
+    	...
+        service.doSomething();
+	...
+    }
+}
+~~~
+
+with Constructor Injection
+
+~~~ java
+Helper(Service service) {
+    this.service = service;
+}
+~~~
+
+with Setter Injection
+
+~~~ java
+public void setService(Service service) {
+    this.service = service;
+}
+~~~
+
+with Interface Injection
+
+~~~ java
+public interface ServiceSetter {
+    public void setService(Service service);
+}
+
+public class Helper implements ServiceSetter {
+    private Service service;
+
+    @Override
+    public void setService(Service service) {
+        this.service = service;
+    }
+}
+~~~
+
+### What is Spring D.I.
+
+you do not create your objects but describe how they should be created
 
 ### IoC Container
 
@@ -250,17 +304,17 @@ context.registerShutdownHook();
 
 The first way: implement `InitializingBean` and overwrite its `afterPropertiesSet()`
 
-```
+~~~ java
 public class ExampleBean implements InitializingBean {
    public void afterPropertiesSet() {
       // do some initialization work
    }
 }
-```
+~~~
 
 The second way(recommeded): specify the `init-method` attribute in the XML configuratoin file to map it to your own init method
 
-```
+~~~ java
 <bean id="exampleBean"
          class="examples.ExampleBean" init-method="init"/>
 
@@ -269,7 +323,7 @@ public class ExampleBean {
       // do some initialization work
    }
 }
-```
+~~~
 
 ## Bean Factory/Application Context
 
@@ -353,7 +407,7 @@ e.g. spring.xml
 	<property name="points">
 		<list>
 			<ref bean="Point1" />
-			<ref bean="Porint2" />
+			<ref bean="Point2" />
 		</list>
 	</property>
 </bean>
@@ -387,14 +441,10 @@ e.g. spring.xml:
 ## Steps to Create and Use a Spring Bean
 
 - create a bean class (pojo class)
-- register and configue it in `application.xml`
-- get the bean use `applicationContext.getBean(...)`
+- register and configue it in `application.xml` or using annotation
+- get the bean using `applicationContext.getBean(...)` or `beanFactory.getBean(...)`
 
 ## Misc
-
-### Configuration
-
-Two ways: one is to config the `.xml` file, another is using Annotation.
 
 ### ContextLoaderListener
 
