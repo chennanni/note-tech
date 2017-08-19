@@ -6,7 +6,7 @@ permalink: /archive/plsql/basic/
 ---
 
 
-# SQL - Basic
+# SQL Basic
 
 ## Basic (Section) Structure
 
