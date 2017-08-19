@@ -2,7 +2,7 @@
 layout: default
 title: SQL - Join
 folder: join
-permalink: /archive/plsql/join/
+permalink: /archive/sql/join/
 ---
 
 

@@ -2,7 +2,7 @@
 layout: default
 title: SQL - Basic
 folder: basic
-permalink: /archive/plsql/basic/
+permalink: /archive/sql/basic/
 ---
 
 

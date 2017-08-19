@@ -2,10 +2,10 @@
 layout: default
 title: SQL - Syntax
 folder: syntax
-permalink: /archive/plsql/syntax/
+permalink: /archive/sql/syntax/
 ---
 
-# SQL - Syntax
+# SQL Syntax
 
 ## Intro
 

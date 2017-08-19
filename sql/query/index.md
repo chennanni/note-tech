@@ -2,7 +2,7 @@
 layout: default
 title: SQL - Query
 folder: query
-permalink: /archive/plsql/query/
+permalink: /archive/sql/query/
 ---
 
 # SQL Query
