@@ -199,6 +199,5 @@ Immutability: immutable object is thread-safe, but the use/reference of it may n
 fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 
 ## Links
-- http://tutorials.jenkov.com/java-concurrency/index.html
--[40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html) 
-
+- [Java Concurrency / Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)
+- [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html) 
