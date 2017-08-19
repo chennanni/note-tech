@@ -45,7 +45,36 @@ Cost
 - increase resource assumption 资源必须是多线程安全的
 - issues with multi-threading 未保证多线程安全的情况下可能会带来问题
 
+## Thread State
+
+线程的五个状态：
+- New
+- Runnable
+- Running
+- Blocked
+- Dead
+
+![concurrency-thread-state.png](img/concurrency-thread-state.png)
+
+经常问到的几个问题：
+
+- sleep()和wait()有什么区别：
+  - 都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器moniter，sleep()不会放弃这个对象的监视器，wait()会放弃这个对象的监视器，所以sleep完了之后就进入Runnable状态，而wait完之后还在Blocked状态
+- 线程中断了怎么做可以让它继续运行：
+- start()和run()有什么区别：
+  - start()里面call了run()，完了程序就继续执行下去了，不会等待线程运行返回结果
+  - run()开始执行线程内容，会等线程运行完毕才继续执行下面的内容
+- Runnable接口和Callable接口的区别：
+  - Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已
+  - Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果，或者当等待时间太长时取消任务
+- 如何在两个线程之间共享数据：
+  - 通过在线程之间共享对象就可以了，比方说阻塞队列BlockingQueue就是为线程之间共享数据而设计的。
+
 ## Java Thread Example
+
+创建线程的方式
+- 继承`Thread`类
+- 实现`Runnable`接口
 
 Steps:
 
@@ -85,8 +114,6 @@ Thread t=new Thread(){
   }  
 };
 ```
-
-**Immutability**: immutable object is thread-safe, but the use/reference of it may not be
 
 ## Problems with Multi-threading
 
@@ -167,6 +194,11 @@ Daemon Thread
 Gargage Collection
 - `finalize()`: The finalize method is called when an object is about to get garbage collected. That can be at any time after it has become eligible for garbage collection.
 
+Immutability: immutable object is thread-safe, but the use/reference of it may not be.
+
+fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
+
 ## Links
 - http://tutorials.jenkov.com/java-concurrency/index.html
+-[40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html) 
 
