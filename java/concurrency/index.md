@@ -7,12 +7,31 @@ permalink: /archive/java/concurrency/
 
 # Java Concurrency
 
-让计算机在同一时间进行多项任务，一般有两种手段：多线程（Thread）和多进程(Process)。一般谈到并发(Concurrency)的时候，是在讨论多线程的情况，因为它更容易编程实现，效率更高。
+## Parallelism v.s. Concurrency
+
+让计算机在同一时间进行多项任务，一般有两种方式：并行(Parallelism)和并发(Concurrency)。
+
+并行(Parallelism)：把一项任务拆分成可以同时执行的多个子任务，交给不同的运算单元去执行。
+举例：大数据分析，TB级别的数据量，交给一个单核CPU来算，肯定很慢，那就换电脑，改成8核CPU，8个同时算就快了很多。如果还嫌慢，那就加电脑，10台8核CPU电脑，也就是80个CPU，速度又提高了不少。（当然算完了肯定要合并结果，这是Map Reduce的内容以后另说）
+
+![concurrency-vs-parallelism-2.png](img/concurrency-vs-parallelism-2.png)
+
+并发(Concurrency)：通过CPU调度算法，同一时间内运行多个进程/线程，在各个程序之间来回切换执行。
+为什么会有并发？为什么要来回倒腾？一个活干完了再干下一个活不行吗？真不行，比如我们一边写博客，一边听歌，一边下载电影，同时运行了三个程序。
+如果没有并发，只能开一个程序，用户体验就差很多。而且关键是，这三个任务其实占用的CPU，内存都不高，只有最后一个下电影，对网速和硬盘读写有较大的要求，计算机完全可忙得过来。
+
+![concurrency-vs-parallelism-1.png](img/concurrency-vs-parallelism-1.png)
+
+## Process v.s. Thread
+
+说说Concurrency，一般实现有两种手段：多线程（Thread）和多进程(Process)。
 
 Thread v.s. Process
 
 - A Process usually contains multiple threads at the same time.
 - Threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
+
+这里主要谈多线程（Thread），因为它更容易编程实现，效率更高。
 
 ## Benefits and Costs of Multi-Threading
 
@@ -73,8 +92,8 @@ Thread t=new Thread(){
 
 多线程共享内存空间，即Thread之间资源共享，一个Thread可以access到另一个Thread的资源，这里就可能会出问题。
 
-- **Race Condition**竞争: race condition occurs when multiple threads update shared resources
-- **Deadlock**死锁: two or more threads are blocked forever, waiting for each other
+- **Race Condition**竞争: Race condition occurs when multiple threads update shared resources. 两个线程同时要更新一个资源，你先来还是我先来？谁都不相让，自然要打起来。
+- **Deadlock**死锁: Two or more threads are blocked forever, waiting for each other. 
 
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
