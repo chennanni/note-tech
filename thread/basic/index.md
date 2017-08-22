@@ -59,14 +59,15 @@ Cost
 经常问到的几个问题：
 
 - sleep()和wait()有什么区别：
-  - 都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器moniter，sleep()不会放弃这个对象的监视器，wait()会放弃这个对象的监视器，所以sleep完了之后就进入Runnable状态，而wait完之后还在Blocked状态
+  - 都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器moniter，sleep()不会放弃这个对象的监视器，wait()会放弃这个对象的监视器，所以sleep完了之后就进入Runnable状态，而wait完之后还在Blocked状态
 - 线程中断了怎么做可以让它继续运行：
+  - ？？？
 - start()和run()有什么区别：
   - start()里面call了run()，完了程序就继续执行下去了，不会等待线程运行返回结果
-  - run()开始执行线程内容，会等线程运行完毕才继续执行下面的内容
+  - run()开始执行线程内容，会等线程运行完毕才继续执行下面的内容
 - Runnable接口和Callable接口的区别：
   - Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已
-  - Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果，或者当等待时间太长时取消任务
+  - Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果，或者当等待时间太长时取消任务
 - 如何在两个线程之间共享数据：
   - 通过在线程之间共享对象就可以了，比方说阻塞队列BlockingQueue就是为线程之间共享数据而设计的。
 
@@ -124,10 +125,22 @@ Thread t=new Thread(){
 
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
-- **Thread safety**: A piece of code is thread-safe if it only manipulates shared data structures in a manner that guarantees safe execution by multiple threads at the same time.
+## Ensure Thread Safe
+
+Thread safety: The program state (fields/objects/variables) behaves correctly when multiple simultaneous threads are using a resource. 保证一个资源同时被多个进程读写时表现正常。
 
 那么如何实现Thread Safe呢？
-- ？？？
+
+- 不变，make it immutable
+  - for example, declaring the field as `final`
+  - for example, `String` or `Integer` class
+- 隔离，use a pattern whereby each thread context is isolated from others
+  - for example, `ThreadLocal` class
+- （加锁）限制瞬时单线程读写，restrict access to a resource to a single thread at a time
+  - for example, `synchronized` keyword
+  - for example, the local variables
+- 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
+  - for example, `java.util.concurrent` package
 
 ## Synchronization
 
@@ -201,3 +214,5 @@ fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 ## Links
 - [Java Concurrency / Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)
 - [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html) 
+- [Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)
+- [What-does-the-term-thread-safe-mean-in-Java](https://www.quora.com/What-does-the-term-thread-safe-mean-in-Java)
