@@ -252,6 +252,8 @@ Gargage Collection
 
 fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 
+线程中断interrupt处理: http://www.infoq.com/cn/articles/java-interrupt-mechanism
+
 ## Links
 - [Java Concurrency / Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)
 - [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html)
