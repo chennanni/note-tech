@@ -47,14 +47,39 @@ Cost
 
 ## Thread State
 
-线程的五个状态：
-- New
-- Runnable
-- Running
-- Blocked
-- Dead
+线程的状态：
+- new
+- runnable
+  - ready
+  - running
+- timed waiting
+- waiting
+- blocked
+- terminated
 
-![concurrency-thread-state.png](img/concurrency-thread-state.png)
+![concurrency-thread-state.png](img/concurrency-thread-state-2.png)
+
+总结：
+
+- 正常运行的线程：
+  - 创建 -> `new` state
+  - start() -> `runnable - ready` state
+  - 被scheduler排到了，获取CPU资源 -> `running` state
+  - 运行完 -> `terminated` state
+- sleep：
+  - `sleep(timeout)` -> `timed waiting` state
+  - timeout完了之后 -> `runnable` state
+- join：（作用于Thread，等这个Thread终结）
+  - `t.join(timeout)` -> `timed waiting` state
+  - timeout完了之后 -> 相当于进入了`waiting` state
+  - `t.join()` -> `waiting` state，等待那个thread终结
+  - 等待的那个thread终结了之后 -> `runnable` state
+- wait：（作用于Object，等这个Object通知）
+  - `obj.wait(timeout)` -> `timed waiting` state
+  - timeout完了之后 -> 相当于进入了`waiting` state，等待`obj.notify()`
+  - `wait()` -> `waiting` state，等待`obj.notify()`
+  - `obj.notify()` -> `block` state，waiting for the monitor lock to enter/re-enter a synchronized block/method
+  - 获取monitor lock -> `runnable` state
 
 经常问到的几个问题：
 
@@ -63,7 +88,7 @@ Cost
 - 线程中断了怎么做可以让它继续运行：
   - ？？？
 - start()和run()有什么区别：
-  - start()里面call了run()，完了程序就继续执行下去了，不会等待线程运行返回结果
+  - start()里面call了run()，完了程序就继续执行下去了，不会等待线程运行返回结果
   - run()开始执行线程内容，会等线程运行完毕才继续执行下面的内容
 - Runnable接口和Callable接口的区别：
   - Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已
@@ -109,10 +134,10 @@ Class SomeClass implements Runnable { // or extends Thread
 }
 
 // Part 2: using anonymous class
-Thread t=new Thread(){  
-  public void run(){  
-       obj.method();  
-  }  
+Thread t=new Thread(){ 
+  public void run(){ 
+       obj.method(); 
+  } 
 };
 ```
 
@@ -121,7 +146,7 @@ Thread t=new Thread(){
 多线程共享内存空间，即Thread之间资源共享，一个Thread可以access到另一个Thread的资源，这里就可能会出问题。
 
 - **Race Condition**竞争: Race condition occurs when multiple threads update shared resources. 两个线程同时要更新一个资源，你先来还是我先来？谁都不相让，自然要打起来。
-- **Deadlock**死锁: Two or more threads are blocked forever, waiting for each other. 
+- **Deadlock**死锁: Two or more threads are blocked forever, waiting for each other.
 
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
@@ -144,28 +169,46 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
 
 ## Synchronization
 
-Problem: thread interference and memory consistency errors
+同步，实现的手法是加Multual Exclusive锁。
 
 Lock: Every object has an lock associated with it. By convention, a thread that needs consistent access to an object's fields has to acquire the object's lock before accessing them, and then release the lock when it's done with them.
 
-Synchronization
+synchronized关键字加在不同地方，效果也不同，[这里](https://github.com/pzxwhc/MineKnowContainer/issues/7) 总结得很好：
 
- - Process Synchronization
- - Thread Synchronization
+- 类
+  - 修饰一个类，作用的对象是这个类的所有对象
+  - 修改一个静态的方法（相当于修饰了一个类），作用的对象是这个方法所属于的类的所有对象
+- 方法
+  - 修饰一个方法，作用的对象是**调用**这个方法的对象
+  - 修饰一个代码块（相当于修饰了一个匿名方法），作用的对象是**调用**这个代码块的对象
 
-Multual Exclusive
+e.g. synchronized class
 
- - by synchronized method
- - by synchronized block
- - by static synchronization
+~~~ java
+class ClassName {
+  public void method() {
+    synchronized(ClassName.class) {
+      // todo
+    }
+  }
+}
+~~~
 
-e.g. usage
+e.g. synchronized method
 
-```
-synchronized method() {...}
-synchronized (object reference expression) {...} ; 
-//Notice: in this case, the object's all fields are not available
-```
+~~~ java
+public synchronized void method() {
+  // todo
+}
+~~~
+
+那么到底同步方法有什么用呢？
+
+https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
+
+## Concurrency Design
+
+TODO
 
 ## Deadlock Prevention
 
@@ -173,19 +216,19 @@ synchronized (object reference expression) {...} ;
 
 ```
 Situation:
-	Thread 1:
-	  lock A
-	  lock B
-	Thread 2:
-	   wait for A
-	   lock C (when A locked)
-	Thread 3:
-	   wait for A
-	   wait for B
-	   wait for C
+    Thread 1:
+      lock A
+      lock B
+    Thread 2:
+       wait for A
+       lock C (when A locked)
+    Thread 3:
+       wait for A
+       wait for B
+       wait for C
 
 Solve:
-	Neither Thread 2 or Thread 3 can lock C until they have locked A first.
+    Neither Thread 2 or Thread 3 can lock C until they have locked A first.
 ```
 
 **Lock Timeout**: if a thread does not succeed in taking all necessary locks within the given timeout, it will backup, free all locks taken, wait for a random amount of time and then retry.
@@ -207,12 +250,10 @@ Daemon Thread
 Gargage Collection
 - `finalize()`: The finalize method is called when an object is about to get garbage collected. That can be at any time after it has become eligible for garbage collection.
 
-Immutability: immutable object is thread-safe, but the use/reference of it may not be.
-
 fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 
 ## Links
 - [Java Concurrency / Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)
-- [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html) 
+- [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html)
 - [Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)
 - [What-does-the-term-thread-safe-mean-in-Java](https://www.quora.com/What-does-the-term-thread-safe-mean-in-Java)
