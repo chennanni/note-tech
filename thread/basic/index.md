@@ -166,6 +166,9 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
   - for example, the local variables
 - 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
   - for example, `java.util.concurrent` package
+  - java.util.concurrent.atomic
+  - java.util.concurrent.BlockingQueue
+  - java.util.concurrent.ConcurrentHashMap
 
 ## Synchronization
 
@@ -253,6 +256,8 @@ Gargage Collection
 fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 
 线程中断interrupt处理: http://www.infoq.com/cn/articles/java-interrupt-mechanism
+
+线程池的使用ThreadPoolExecutor
 
 ## Links
 - [Java Concurrency / Multithreading Tutorial](http://tutorials.jenkov.com/java-concurrency/index.html)
