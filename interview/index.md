@@ -33,7 +33,6 @@ permalink: /archive/interview/
     - volatile -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
     - transient -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
     - static -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
-    - reflection 
     - Overriding vs Overloading -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
   
   ### Advanced
