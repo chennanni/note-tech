@@ -26,7 +26,7 @@ permalink: /archive/interview/
     - HashMap vs Hashtable vs ConcurrentHashMap -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
     - ArrayList vs LinkedList -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
   - Exception
-    - Exception Hierarchy -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
+    - Exception Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
   - Misc
