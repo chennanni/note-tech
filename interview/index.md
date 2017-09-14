@@ -22,7 +22,7 @@ permalink: /archive/interview/
   
   - Collection
     - Collection Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
-    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593)
+    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593) and [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
     - HashMap vs Hashtable vs ConcurrentHashMap -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
     - ArrayList vs LinkedList
   - Exception
