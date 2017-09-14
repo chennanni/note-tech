@@ -30,17 +30,17 @@ permalink: /archive/interview/
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
   - Misc
-    - volatile -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
-    - transient -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
+    - volatile -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
+    - transient -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
     - static -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
     - Overriding vs Overloading -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
   
   ### Advanced
   
   - Concurrency
-    - Life Cycle of a thread
+    - Life Cycle of a thread -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
     - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
-    - How to ensure Thread Safety
+    - How to ensure Thread Safety -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
   - JVM
     - Class Loading
   - GC
