@@ -23,6 +23,8 @@ permalink: /archive/java/questions/
   - 然后遍历链表，根据key比较找到唯一符合的那个
 - Set<Map.Entry<K,V>>	entrySet()
 
+http://blog.csdn.net/vking_wang/article/details/14166593
+
 ## Hashtable vs HashMap vs ConcurrentHashMap
 - Hashtable is synchronized, whereas HashMap is not.
 - Hashtable does not allow null keys or values. HashMap allows one null key and any number of null values.
