@@ -33,13 +33,6 @@ permalink: /archive/java/questions/
 ## Transient
 - marks a member variable not to be serialized when it is persisted to streams of bytes
 
-## Reflection
-- Java Reflection makes it possible to inspect classes, interfaces, fields and methods at runtime, without knowing the names of the classes, methods etc. at compile time.
-
-```
-Method[] methods = MyObject.class.getMethods();
-```
-
 ## Overriding & Overloading
 
 - Overloading: define two methods with the same name, in the same class, distinguished by their parameter types
