@@ -22,16 +22,8 @@ permalink: /archive/java/questions/
 
 ## Static
 - declare a static variable with same name in super & sub class? Yes. Either variable belongs to its own class.
-- override static mehtod ? No compile error. It acts like override, but it's not exactly like that.
-- use super keyword in static methods? No, you can't. super keyword is a non-static variable
+- use super keyword in static methods? No, you can't. super keyword is a non-static variable.
 - declare a method with both abstract and static? No, you can't.
-
-## Volatile
-- volatile is used to indicate that a variable's value will be modified by different threads
-- The value of this variable will never be cached thread-locally: all reads and writes will go to "main memory"
-
-## Transient
-- marks a member variable not to be serialized when it is persisted to streams of bytes
 
 ## Overriding & Overloading
 
