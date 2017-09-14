@@ -131,6 +131,13 @@ parameter: initialCapacity, loadFactor)
 - Performance(HashMap is better)
 - Null Key(ConcurrentHashMap does not allow NULL values while HashMap allows one)
 
+**Hashtable v.s. ConcurrentHashMap**
+
+- 不论是读写操作，Hashtable都会锁住整个表
+- 写操作时，ConcruuentHashMap锁住一个部分，读操作时不锁定
+
+http://blog.csdn.net/wisgood/article/details/19338693
+
 ## Links
 
 - http://tutorials.jenkov.com/java-collections/index.html
