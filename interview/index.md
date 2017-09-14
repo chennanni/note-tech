@@ -24,17 +24,17 @@ permalink: /archive/interview/
     - Collection Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
     - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593) and [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
     - HashMap vs Hashtable vs ConcurrentHashMap -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
-    - ArrayList vs LinkedList
+    - ArrayList vs LinkedList -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
   - Exception
     - Exception Hierarchy -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
   - Misc
     - volatile -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
-    - transient
-    - static
-    - reflection
-    - Overriding vs Overloading
+    - transient -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
+    - static -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
+    - reflection 
+    - Overriding vs Overloading -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
   
   ### Advanced
   
