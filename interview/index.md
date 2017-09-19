@@ -45,11 +45,13 @@ permalink: /archive/interview/
     - Class Loading
   - GC
   - Java 8 New Feature
-    - Lambda Expressions -- see [here](http://www.cnblogs.com/maxstack/p/7550153.html)
-    - Method Reference
+    - Lambda Expressions -- see [here](http://www.cnblogs.com/maxstack/p/7550153.html)
+    - Method Reference
     - Date and Time API
   
 ## SQL
+
+- Query题型 -- see [here](https://github.com/chennanni/note-tech/blob/master/sql/query/index.md)
 
 ## SSH
 
