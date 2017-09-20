@@ -27,20 +27,25 @@ permalink: /archive/java/questions/
 
 ## Overriding & Overloading
 
-- Overloading: define two methods with the same name, in the same class, distinguished by their parameter types
-- Overriding: redefine a method that has already been defined in a parent class(using the exact same signature and return type)
+- Overloading（重载）
+  - Define two methods with the same name, in the same class, distinguished by their parameter types.
+  - Overloading is resolved at compile time.
+- Overriding（重写）
+  - Redefine a method that has already been defined in a parent class(using the exact same signature and return type).
+  - Overriding is resolved at runtime.
+  - When overriding, you can only give more privilege, can not add more access restriction.
 
-- Overloading: resolved at compile time; Overriding: resolved at runtime
-- When overriding, you can only give more privilege, can not add more access restriction, e.g. public -> default
+- 重载：在同一个类中，允许有多个方法具有相同名字，但是不同参数（输入值+返回值）。在实际调用时，再根据参数进行匹配，调用对应方法。
+- 重写：在继承了一个父类之后，可以重写父类的同名同参数的方法。在实际调用时，优先调用子类方法。（注意：子类函数的访问修饰权限不能少于父类的。）
 
-e.g. Override toString() to get class's info
+e.g. Override `toString()` to get class's info
 
 ~~~ java
 class Test {
-     ...
-     public String toString(){ // override toString() in Object
-          return "This is Test class";
-     }
+	...
+	public String toString(){
+		return "This is Test class";
+	}
 }
 ...
 {
@@ -70,7 +75,7 @@ class Test {
   - 然后遍历链表，根据key比较找到唯一符合的那个
 - Set<Map.Entry<K,V>>	entrySet()
 
-http://blog.csdn.net/vking_wang/article/details/14166593
+<http://blog.csdn.net/vking_wang/article/details/14166593>
 
 ## Java代码编译执行流程
 - Java代码 ->
