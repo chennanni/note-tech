@@ -71,3 +71,10 @@ class Test {
 - Set<Map.Entry<K,V>>	entrySet()
 
 http://blog.csdn.net/vking_wang/article/details/14166593
+
+## Java代码编译执行流程
+- Java代码 ->
+- 字节码 ->
+- 根据字节码执行对应的C/C++代码 ->
+- C/C++代码被编译成汇编语言 ->
+- 和硬件电路交互
