@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Build
-folder: build
-permalink: /archive/build/
+title: Build - Basic
+folder: basic
+permalink: /archive/build/basic
 ---
 
 
-# Build
+# Build - Basic
 
 ## What is "Build"
 - Assemble the correct sources depending on (Operating System/Hardware/Application Requirements)

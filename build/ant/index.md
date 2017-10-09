@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Ant
+title: Build - ANT
 folder: ant
-permalink: /archive/ant/
+permalink: /archive/build/ant/
 ---
 
-# ANT
+# Build - ANT
 
 ## What is Apache ANT
 

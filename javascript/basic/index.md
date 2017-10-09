@@ -5,7 +5,7 @@ folder: basic
 permalink: /archive/javascript/basic
 ---
 
-# Javascript
+# Javascript - Basic
 
 ## Intro
  * HTML to define the content of web pages

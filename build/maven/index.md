@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Maven
+title: Build - Maven
 folder: maven
-permalink: /archive/maven/
+permalink: /archive/build/maven/
 ---
 
-# Maven
+# Build - Maven
 
 ## What is Maven
 

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Java - JPA
+title: J2EE - JPA
 folder: jpa
-permalink: /archive/java/jpa/
+permalink: /archive/j2ee/jpa/
 ---
 
-# Java - JPA
+# J2EE - JPA
 
 ## Problems
 

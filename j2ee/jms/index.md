@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Message Queue - JMS
+title: J2EE - JMS
 folder: jms
-permalink: /archive/message-queue/jms/
+permalink: /archive/j2ee/jms/
 ---
 
-# Message Queue - JMS
+# J2EE - JMS
 
 MS (Java Message Service) is an API that provides the facility to create, 
 send and read messages from one application to another.

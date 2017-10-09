@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Testing - Junit Core
-folder: junitcore
-permalink: /archive/test/junitcore/
+folder: junit-core
+permalink: /archive/test/junit-core/
 ---
 
 # Testing - Junit Core

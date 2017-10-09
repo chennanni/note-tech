@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Ivy
+title: Build - Ivy
 folder: ivy
-permalink: /archive/ivy/
+permalink: /archive/build/ivy/
 ---
 
-# Ivy
+# Build - Ivy
 
 Ivy is a tool for managing (recording, tracking, resolving and reporting) project dependencies.
 

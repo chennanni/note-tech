@@ -1,4 +1,11 @@
-# Servlet
+---
+layout: default
+title: J2EE - Servlet
+folder: servlet
+permalink: /archive/j2ee/servlet/
+---
+
+# J2EE - Servlet
 
 ## Web app war folder structure
 

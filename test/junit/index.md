@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Testing - Junit
-folder: junit
-permalink: /archive/test/junit/
+title: Testing - Junit Basic
+folder: junit-basic
+permalink: /archive/test/junit-basic/
 ---
 
-# Testing - Junit
+# Testing - Junit Basic
 
 ## Definition
 
