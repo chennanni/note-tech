@@ -1,3 +1,7 @@
+---
+published: false
+---
+
 # My Tech Note
 
 This is the place where I keep my tech note. 
