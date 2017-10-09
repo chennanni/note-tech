@@ -100,6 +100,121 @@ Step 3
 
 <http://www.tutorialspoint.com/jdbc/jdbc-sample-code.htm>
 
+## Examples
+
+~~~ java
+import java.sql.*;
+
+public class JDBCDemo {
+	
+	Connection conn;
+	
+	public Connection connectDB() {
+		// register jdbc driver
+		try {
+			   Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch(ClassNotFoundException ex) {
+			   System.out.println("Error: unable to load driver class!");
+			   System.exit(1);
+		}
+		
+		// connect to db
+		String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+		String USER = "hr";
+		String PASS = "123";
+		try {
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			System.out.println("connect successfully :)");
+			return conn;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void closeDB() {
+		try {
+			conn.close();
+			System.out.println("connection closed, bye...");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void createTable() {
+		if(conn != null) {
+			Statement st;
+			try {
+				st = conn.createStatement();
+				st.execute("CREATE TABLE books (bid number, title varchar(15), price number(8,2))");
+				System.out.println("Table is created!");
+				int num = st.executeUpdate("INSERT INTO books VALUES (1, 'Java', 123.45)");
+				num = num + st.executeUpdate("INSERT INTO books VALUES (2, 'C++', 22.12)");
+				num = num + st.executeUpdate("INSERT INTO books VALUES (3, 'JSP', 34.56)");
+				System.out.println(num + " rows inserted!");
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void deleteTable() {
+		
+	}
+	
+	public void updateData() {
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("UPDATE books SET price=?");
+			ps.setDouble(1, 120.00);
+			//ps.setString(2, "Java");
+			int count = ps.executeUpdate();
+			System.out.println(count + " rows updated!");
+			ps.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void selectData() {
+		if(conn != null) {
+			try {
+				Statement st;
+				ResultSet rs;
+				st = conn.createStatement();
+				rs = st.executeQuery("select * from books");
+				ResultSetMetaData rsmd = rs.getMetaData();
+				int count = rsmd.getColumnCount();
+				for(int i=1;i<=count;i++) {
+					System.out.print(rsmd.getColumnName(i) + "\t");
+				}
+				System.out.println();
+				while(rs.next()) {
+					for(int i=1;i<=count;i++)
+						System.out.print(rs.getString(i) + "\t");
+					System.out.println("\n");
+				}
+				rs.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void main(String args[]) {
+		JDBCDemo db = new JDBCDemo();
+		db.conn = db.connectDB();
+		//db.createTable();
+		db.updateData();
+		db.selectData();
+		db.closeDB();
+	}
+}
+
+~~~
+
 ## Links
 
 - [JDBC Tutorial](http://www.tutorialspoint.com/jdbc/jdbc-introduction.htm)
