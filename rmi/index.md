@@ -66,6 +66,7 @@ java.rmi.registry
 Files ->
 - remote interface
 - remote implementation
+- remote application
 - client application
 
 ## Examples
@@ -80,7 +81,7 @@ public interface MyRemote extends Remote {
 }
 ~~~
 
-remote implementation
+remote implementation + remote application
 
 ~~~ java
 import java.rmi.*;
