@@ -10,6 +10,17 @@ permalink: /archive/spring/bean/
 > "A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container. 
 These beans are created with the configuration metadata that you supply to the container, for example, in the form of XML definitions."
 
+## Different types of Spring Beans
+
+- Bean
+- Configuration
+- Service
+- Component
+- Controller
+- Repository
+
+![spring-bean-types](img/spring-bean-types.png)
+
 ## Properties
 
 - class
@@ -98,34 +109,34 @@ class Person {
 
 Autowired on Properties
 
-```
+~~~ java
 @Autowired
 private Person person;
-```
+~~~
 
 Autowired on Setter Methods
 
-```
+~~~ java
 @Autowired
 public void setPerson(Person person){
    this.person = person;
 }
-```
+~~~
 
 Autowired on Constructors
 
-```
+~~~ java
 @Autowired
 public Trip(Person person){
 	this.person = person;
 }
-```
+~~~
 
 Autowired with (required=false) option
 
-```
+~~~ java
 @Autowired(required=false)
-```
+~~~
 
 if can not perform autowire for a property, set it to default value(null)
 
