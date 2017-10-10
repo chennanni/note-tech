@@ -83,3 +83,27 @@ class Test {
 - 根据字节码执行对应的C/C++代码 ->
 - C/C++代码被编译成汇编语言 ->
 - 和硬件电路交互
+
+## Java pass-by-value (pass-by-copy)
+
+- For primitives, you pass a **copy** of the actual value.
+- For references to objects, you pass a **copy** of the reference (the remote control).
+
+```
+Senario 1: primitives
+
+int x = 100; // x's value
+addOne(x); // copy of x's value 100 is passed to the method
+print(x); // result: 100
+
+Senario 2:
+
+Account a = new Account("1001"); // a is a reference to the Account Object 1001
+Account b = a; // b is a copy of a, which also points to Account Object 1001
+a == b; // true
+a = new Account("1002"); // point a to a new Account Object 1002
+b.getAccountNumber(); // result: 1001, b still points to Account Object 1001
+```
+
+- <http://www.javaranch.com/campfire/StoryPassBy.jsp>
+- <http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value>
