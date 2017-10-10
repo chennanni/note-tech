@@ -131,24 +131,24 @@ Two ways of create a bean factory and get bean
 
 e.g. using BeanFactory
 
-```
+~~~ java
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 
 BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 Square square = (Square) factory.getBean("square");
-```
+~~~
 
 e.g. using ApplicationContext
 
-```
+~~~ java
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 Square square = (Square) context.getBean("square");
-```
+~~~
 
 Difference between BeanFactory and ApplicaitonContext
 
@@ -163,29 +163,29 @@ Spring  using setter() to set class variables' values
 
 e.g. Square.java
 
-```
+~~~ java
 private int height;
-```
+~~~
 
 e.g. spring.xml
 
-```
+~~~ xml
 <bean id="square" class="com.chennanni.learnspring.Square">
      <property name="height" value="10"/>
 </bean>
-```
+~~~
 
 **Objects**
 
 e.g. Square.java
 
-```
+~~~ java
 private Point pointA;
-```
+~~~
 
 e.g. spring.xml
 
-```
+~~~ xml
 <bean id="square" class="com.chennanni.learnspring.Square">
 	<property name="pointA">
 		<bean class="com.chennanni.learnspring.Point">
@@ -194,11 +194,11 @@ e.g. spring.xml
 		</bean>
 	</property>
 </bean>
-```
+~~~
 
 **Collection**
 
-```
+~~~ xml
 <bean id="triangle" class="com.chennanni.learnspring.Triangle">
 	<property name="points">
 		<list>
@@ -207,7 +207,7 @@ e.g. spring.xml
 		</list>
 	</property>
 </bean>
-```
+~~~
 
 ### Using Constructor Injection ### 
 
@@ -215,24 +215,24 @@ Spring passes values to the constructor method
 
 e.g. Square.java
 
-```
+~~~ java
 private String type;
 private int height;
 private Square (String type, int height) {
 	this.type = type;
 	this.setHeight(height);
 }
-```
+~~~
 
 e.g. spring.xml:
 
-```
+~~~ xml
 <bean id="square" class="com.chennanni.learnspring.Square">
 	<constructor-arg type="java.lang.String" index="0" value="type1" />
 	<constructor-arg type="int" index="1" value="10" />
 	<property name="type" value="type2" />
 </bean>
-```
+~~~
 
 ## Misc
 
@@ -240,7 +240,7 @@ e.g. spring.xml:
 
 When to use it: if you want to put your Servlet file in your custom location or with custom name, rather than the default name `"[servlet-name]-servlet.xml"` and path under `"Web-INF/"`
 
-```
+~~~ xml
 <context-param>
      <param-name>contextConfigLocation</param-name>
      <param-value>/MyLocation/myservlet-servlet.xml</param-value>
@@ -249,7 +249,7 @@ When to use it: if you want to put your Servlet file in your custom location or 
 <listener>
      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
-```
+~~~
 
 Purpose of `ContextLoaderListener`
 
