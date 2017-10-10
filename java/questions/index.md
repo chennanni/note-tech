@@ -136,3 +136,7 @@ Because a and b point to the same String literal "hello". But where are they act
 
 When a new Sting is declared and being assigned a literal, like `String c = "hello"`,
 it first goes the the Runtime Constant Pool - String Constants to check if there's any existing value.
+
+## Links
+
+- <http://www.programcreek.com/>
