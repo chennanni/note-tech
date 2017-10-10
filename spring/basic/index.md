@@ -125,7 +125,7 @@ Types
 
 ![spring bean factory](img/spring_bean_factory.png)
 
-**Creation of a bean**
+### Creation of a bean ###
 
 Two ways of create a bean factory and get bean
 
@@ -155,11 +155,11 @@ Difference between BeanFactory and ApplicaitonContext
 - `BeanFactory` only instantiates bean when you call `getBean()` method
 - `ApplicationContext` instantiates Singleton bean when container is started,  It doesn't wait for `getBean()` to be called
 
-**Injecting Fields/Objects/Colleciton**
+### Injecting Fields/Objects/Colleciton ###
 
 Spring  using setter() to set class variables' values
 
-### Fields
+**Fields**
 
 e.g. Square.java
 
@@ -175,7 +175,7 @@ e.g. spring.xml
 </bean>
 ```
 
-### Objects
+**Objects**
 
 e.g. Square.java
 
@@ -196,7 +196,7 @@ e.g. spring.xml
 </bean>
 ```
 
-### Collection
+**Collection**
 
 ```
 <bean id="triangle" class="com.chennanni.learnspring.Triangle">
@@ -209,7 +209,7 @@ e.g. spring.xml
 </bean>
 ```
 
-**Using Constructor Injection**
+### Using Constructor Injection ### 
 
 Spring passes values to the constructor method
 
