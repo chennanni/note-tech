@@ -84,7 +84,7 @@ class Test {
 - C/C++代码被编译成汇编语言 ->
 - 和硬件电路交互
 
-## Java pass-by-value (pass-by-copy)
+## Java Pass-By-Value (Pass-By-Copy)
 
 - For primitives, you pass a **copy** of the actual value.
 - For references to objects, you pass a **copy** of the reference (the remote control).
@@ -107,3 +107,32 @@ b.getAccountNumber(); // result: 1001, b still points to Account Object 1001
 
 - <http://www.javaranch.com/campfire/StoryPassBy.jsp>
 - <http://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value>
+
+## Main Method in Java Web Project
+
+Why don't I see any main method in the Java web project?
+
+- Web applications don't have a main method.
+- The program that is running is actually the web container (Tomcat, Weblogic, whatever) and that program will service the web application(s) you deploy into it.
+- Put a breakpoint in some initialization method, such as the init method of some servlet, when the breapoint hits, scroll down the call trace and the main method should be at the bottom.
+
+## Java Constant Pooling
+
+We know that:
+
+```
+String a = "hello";
+String b = "hello";
+a == b // true
+```
+
+Because a and b point to the same String literal "hello". But where are they actually stored?
+
+- If a,b are defined inside object:
+  - a, b are stored in Heap together with object
+- If a,b are defined inside method:
+  - a, b are stored in Java Stack as local variables
+- "hello" are stored in Non Heap as Runtime Constant Pool
+
+When a new Sting is declared and being assigned a literal, like `String c = "hello"`,
+it first goes the the Runtime Constant Pool - String Constants to check if there's any existing value.
