@@ -22,7 +22,7 @@ Simply put, an index is a pointer to data in a table. An index in a database is 
 - 每个结点最多含有m个子树（m>=2）；
 - 若根结点不是叶子结点，则至少有2个子树；
 - 除根结点和叶子结点外，其它每个结点至少有[ceil(m / 2)]个子树；
-- 所有叶子结点都出现在同一层，叶子结点不包含任何关键字；
+- 所有叶子结点都出现在同一层；
 - 有j个子树的非叶子节点有j-1个关键字，按增序排列。
 
 ![db-index-b-tree](img/db-index-b-tree.png)
