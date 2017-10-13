@@ -293,4 +293,131 @@ public class Consumer {
 
 ## 例子4：多生产者，多消费者的模型
 
+设计的关键在于使用notifyAll()去通知所有线程
+
+生产者
+~~~ java
+public class Producer {
+	private int MAX_SIZE = 10;
+	private String name;
+	private Object lock;
+	private List<Integer> container;
+
+	public Producer(String name, Object lock, List<Integer> container) {
+		this.name = name;
+		this.lock = lock;
+		this.container = container;
+	}
+
+	public void produce() {
+		try {
+			// 等待过程
+			if (container.size() == MAX_SIZE) {
+				synchronized (lock) {
+					lock.wait();
+				}
+			}
+			// 生产过程
+			System.out.println("+++P" + name + ": Produce start ...");
+			int value = new Random().nextInt(10);
+			container.add(value);
+			Thread.sleep(500);
+			System.out.println("+++P" + name + ": Produce end. Value: " + value);
+			// 通知过程
+			synchronized (lock) {
+				lock.notifyAll();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}
+~~~
+
+消费者
+~~~ java
+public class Consumer {
+	private String name;
+	private Object lock;
+	private List<Integer> container;
+
+	public Consumer(String name, Object lock, List<Integer> container) {
+		this.name = name;
+		this.lock = lock;
+		this.container = container;
+	}
+
+	public void consume() {
+		try {
+			// 等待过程
+			if (container.isEmpty()) {
+				synchronized (lock) {
+					lock.wait();
+				}
+			}
+			// 消费过程
+			System.out.println("---C"+ name + ": Consume start ...");
+			int value = container.get(0);
+			container.remove(0);
+			Thread.sleep(1000);
+			System.out.println("---C"+ name + ": Consume end. Value " + value);
+			// 通知过程
+			synchronized (lock) {
+				lock.notifyAll();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}
+~~~
+
+主函数
+~~~ java
+	public static void main(String[] args) {
+		Object lock = new Object();
+		List<Integer> container = Collections.synchronizedList(new ArrayList<Integer>());
+		final Producer p1 = new Producer("1", lock, container);
+		final Producer p2 = new Producer("2", lock, container);
+		final Consumer c1 = new Consumer("1", lock, container);
+		final Consumer c2 = new Consumer("2", lock, container);
+		Runnable p1Runnable = new Runnable() {
+			public void run() {
+				while (true) {
+					p1.produce();
+				}
+			}
+		};
+		Runnable p2Runnable = new Runnable() {
+			public void run() {
+				while (true) {
+					p2.produce();
+				}
+			}
+		};
+		Runnable c1Runnable = new Runnable() {
+			public void run() {
+				while (true) {
+					c1.consume();
+				}
+			}
+		};
+		Runnable c2Runnable = new Runnable() {
+			public void run() {
+				while (true) {
+					c2.consume();
+				}
+			}
+		};
+		Thread p1Thread = new Thread(p1Runnable);
+		Thread p2Thread = new Thread(p2Runnable);
+		Thread c1Thread = new Thread(c1Runnable);
+		Thread c2Thread = new Thread(c2Runnable);
+		p1Thread.start();
+		p2Thread.start();
+		c1Thread.start();
+		c2Thread.start();
+	}
+~~~
+
 <http://www.infoq.com/cn/articles/producers-and-consumers-mode/#>
