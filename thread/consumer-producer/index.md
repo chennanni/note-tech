@@ -78,7 +78,7 @@ public class Consumer {
 
 主函数
 ~~~ java
-  public static void main(String[] args) {
+  	public static void main(String[] args) {
 	    Object lock = new Object();
 	    List<Integer> container = new ArrayList<Integer>();
 	    final Producer producer = new Producer(lock, container);
