@@ -2,7 +2,7 @@
 layout: default
 title: Design Pattern - Proxy
 folder: proxy
-permalink: /archive/design-pattern/basic/
+permalink: /archive/design-pattern/proxy/
 ---
 
 # Design Pattern - Proxy
