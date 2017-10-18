@@ -60,4 +60,5 @@ CAP理论的核心是：一个分布式系统不可能同时很好的满足一�
 
 ![nosql-cap.png](img/nosql-cap.png)
 
-（以上摘录自 http://www.runoob.com/mongodb/nosql.html）
+## Links
+- <http://www.runoob.com/mongodb/nosql.html>
