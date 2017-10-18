@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Design Pattern
-folder: design-pattern
-permalink: /archive/design-pattern/
+title: Design Pattern - Basic
+folder: basic
+permalink: /archive/design-pattern/basic/
 ---
 
-# Design Pattern
+# Design Pattern - Basic
 
 ## Singleton Pattern
 
