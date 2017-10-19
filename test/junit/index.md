@@ -148,9 +148,9 @@ public class PublisherTest extends TestCase {
         final String message = "message";
 
         // expectations
-        context.checking(new Expectations() {{
+        context.checking(new Expectations() {
             oneOf (subscriber).receive(message);
-        }});
+        });
 
         // execute
         publisher.publish(message);
