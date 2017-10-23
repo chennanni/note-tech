@@ -137,6 +137,16 @@ Because a and b point to the same String literal "hello". But where are they act
 When a new Sting is declared and being assigned a literal, like `String c = "hello"`,
 it first goes the the Runtime Constant Pool - String Constants to check if there's any existing value.
 
+## 服务器集群session数据同步问题
+
+- session集中存储，可以存在数据库中或者分布式存储如memcached
+- 把服务器信息存在session中
+- session存在cookies中，可以从cookies中还原
+- session在不同服务器之间同步
+
+- <http://www.cnblogs.com/kevin1215/p/4566668.html>
+- <http://blog.csdn.net/kk936321732/article/details/45484121>
+
 ## Links
 
 - <http://www.programcreek.com/>
