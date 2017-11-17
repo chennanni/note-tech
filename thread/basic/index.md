@@ -115,7 +115,7 @@ Steps:
 
 e.g.
 
-```
+~~~ java
  // Part 1
  class PrimeThread extends Thread {
      long minPrime;
@@ -145,7 +145,7 @@ e.g.
 
  PrimeRun p = new PrimeRun(143);
  new Thread(p).start();
-```
+~~~
 
 ## Problems with Multi-threading
 
