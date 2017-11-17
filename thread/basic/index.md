@@ -131,7 +131,7 @@ e.g.
  PrimeThread p = new PrimeThread(143);
  p.start();
 
- // Part 2: using anonymous class
+ // Part 2
  class PrimeRun implements Runnable {
      long minPrime;
      PrimeRun(long minPrime) {
