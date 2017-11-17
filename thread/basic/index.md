@@ -116,29 +116,35 @@ Steps:
 e.g.
 
 ```
-// Part 1
-Class SomeClass implements Runnable { // or extends Thread
-     private Thread t;
-     public void run() {...}
-     public void start() {
-          if (t == null) {
-               t = new Thread(this, "threadName");
-               t.start();
-          }
+ // Part 1
+ class PrimeThread extends Thread {
+     long minPrime;
+     PrimeThread(long minPrime) {
+         this.minPrime = minPrime;
      }
-}
-...
-{
-     SomeClass example = new SomeClass(...);
-     example.start();
-}
+     public void run() {
+         // compute primes larger than minPrime
+          . . .
+     }
+ }
 
-// Part 2: using anonymous class
-Thread t=new Thread(){ 
-  public void run(){ 
-       obj.method(); 
-  } 
-};
+ PrimeThread p = new PrimeThread(143);
+ p.start();
+
+ // Part 2: using anonymous class
+ class PrimeRun implements Runnable {
+     long minPrime;
+     PrimeRun(long minPrime) {
+         this.minPrime = minPrime;
+     }
+     public void run() {
+         // compute primes larger than minPrime
+          . . .
+     }
+ }
+
+ PrimeRun p = new PrimeRun(143);
+ new Thread(p).start();
 ```
 
 ## Problems with Multi-threading
