@@ -407,15 +407,16 @@ Read more: http://javarevisited.blogspot.com/2012/01/what-is-marker-interfaces-i
 create a class without naming the class
 
 ~~~ java
-// example of anonymous class
-class Test{
-     void show(){
-          System.out.println("hello");
-     }
-     public static void main(String a[]){
-          new Test().show();
-     }
-}
+// class
+new ServiceImpl().doSomething();  // ServiceImpl is a Class
+
+// interface
+Arrays.sort(input[], new Comparator<Integer>() {  // Comparator is an Interface, here it creates an anonymous class implementing the Interface
+    @Override
+    public int compare(int a, int b) {
+        return (a-b);
+    }
+});
 ~~~
 
 ### Inner classes
