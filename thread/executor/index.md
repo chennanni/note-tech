@@ -37,31 +37,40 @@ Executor框架主要包含三个部分:
 Executor接口
 
 ~~~ java
+// execute method: to handle normal task
 public interface Executor {
     void execute(Runnable command);
 }
 ~~~
 
-ThreadPoolExecutor类：线程池的核心实现类
+ExecutorService接口：有三个线程池的核心实现类
 
 - SingleThreadExecutor:使用单线程执行任务
 - FixedThreadPool:可以限制当前线程数量。适用于负载较重的服务器环境
 - CachedThreadPool:适用于执行很多短期异步任务的小程序，适用于负载较轻的服务器
 
 ~~~ java
+// submit method: to execute task with return values
+<T> Future<T>   submit(Callable<T> task)
+Future<?>       submit(Runnable task)
+<T> Future<T>   submit(Runnable task, T result)
+
+// constructor
 public static ExecutorService newSingleThreadExecutor();
 public static ExecutorService newFixedThreadPool(int nThreads);
 public static ExecutorService newCachedThreadPool();
 ~~~
 
-ScheduledThreadPoolExecutor类：可以在给定的延迟时间后执行命令，或者定期执行命令
+ScheduledExecutorService接口：可以在给定的延迟时间后执行命令，或者定期执行命令
 
 - ScheduledThreadPoolExecutor
-- SingleThreadScheduledExecutor
 
 ~~~ java
+// schedule method
+<V> ScheduledFuture<V>	schedule(Callable<V> callable, long delay, TimeUnit unit)
+
+// constructor
 public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize);
-public static ScheduledExecutorService newSingleThreadScheduledExecutor();
 ~~~
 
 Future接口：用来表示异步计算的结果，可以对其进行取消，查询是否取消，查询是否完成，查询结果等操作
