@@ -133,6 +133,6 @@ For more information on the various credential caching options available, see Cr
 - :green_heart: `:green_heart:` commit for improvement
 - :blue_heart: `:blue_heart:` commit for fix
 
-## links
+## Links
 - https://www.atlassian.com/git/tutorials/what-is-version-control
 - https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
