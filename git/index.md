@@ -14,7 +14,7 @@
 - Check-in (push)
 - Diff (merge)
 
-## Git V.S. Others
+## Git v.s. Others
 
 Git store snapshots, not differences
 
@@ -103,7 +103,23 @@ specify the ssh key to use for a given repo: git config core.sshCommand "ssh -i 
 - `git revert <commit hash>` create a new commit to revert the unwanted commit
 - `git revert --no-commit <commit hash>` revert the unwanted commit and leave the changes in the staging area
 
-## Save credential
+### git reset
+
+- `git reset <commit-id>` reset to the target commit
+
+different mode:
+- `--soft`: just reset HEAD (HEAD means where is the current commit)
+- `--mixed`: reset HEAD and index (index means the tracking changed file)
+- `--hard`: reset HEAD, index and working tree (working tree means the local changes)
+
+## Git branching model
+
+- <http://nvie.com/posts/a-successful-git-branching-model/>
+- <http://nvie.com/files/Git-branching-model.pdf>
+
+## Misc
+
+### Save credential
 
 If you’re using an HTTPS URL to push over, the Git server will ask you for your username and password for authentication. 
 By default it will prompt you on the terminal for this information so the server can tell if you’re allowed to push.
@@ -111,16 +127,11 @@ By default it will prompt you on the terminal for this information so the server
 If you don’t want to type it every single time you push, you can set up a “credential cache”. The simplest is just to keep it in memory for a few minutes, which you can easily set up by running `git config --global credential.helper cache`.
 For more information on the various credential caching options available, see Credential Storage.
 
-## Commit emoji for my system
+### Commit emoji for my system
 
 - :heart: `:heart:` commit with proud
 - :green_heart: `:green_heart:` commit for improvement
 - :blue_heart: `:blue_heart:` commit for fix
-
-## Git branching model
-
-- <http://nvie.com/posts/a-successful-git-branching-model/>
-- <http://nvie.com/files/Git-branching-model.pdf>
 
 ## links
 - https://www.atlassian.com/git/tutorials/what-is-version-control
