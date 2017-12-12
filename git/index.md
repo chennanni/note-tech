@@ -121,10 +121,10 @@ git push origin main-branch
 
 options: 
 - fast-forward: combine other branch's commit info into one tree
-  -- by default
+  - by default
 - no fast-forward: keep other branch's commit info
-  -- `--no-ff`
-  -- if there's merge conflict
+  - `--no-ff`
+  - if there's merge conflict
 
 ![git-merge-ff](img/git-merge-ff.PNG)
 
