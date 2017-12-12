@@ -109,7 +109,7 @@ read more
 - <http://nvie.com/posts/a-successful-git-branching-model/>
 - <http://nvie.com/files/Git-branching-model.pdf>
 
-## Git Merge Issue
+## Git Merge Details
 
 ~~~
 // merge feature-branch to main-branch
@@ -144,7 +144,7 @@ everything goes into the release branch goes through the admin first.
 
 ## Git Rebase Details
 
-Reapply commits on top of another base tip
+Rebase: reapply commits on top of another base tip
 
 ```
 git rebase master topic
