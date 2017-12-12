@@ -95,14 +95,17 @@ git push <origin> <master>
 ## Git Branching Model
 
 long-term
+
 - master
 - develop
 
 short-term
+
 - feature
 - release
 - fix
 
+read more
 - <http://nvie.com/posts/a-successful-git-branching-model/>
 - <http://nvie.com/files/Git-branching-model.pdf>
 
@@ -123,18 +126,18 @@ options:
   -- `--no-ff`
   -- if there's merge conflict
 
-[git-merge-ff](img/git-merge-ff.PNG)
+![git-merge-ff](img/git-merge-ff.PNG)
 
 When using no fast-forward, git automatically identifies the best common-ancestor 
 and creates a new commit object that contains the merged work.
 
-[git-merge-branch](img/git-merge-branch.png)
+![git-merge-branch](img/git-merge-branch.png)
 
 When merging, some problems are not easy to detect. For example, someone made a commit "10-master" in master branch then reverted it. 
 But the revert didn't go into dev branch. When the dev branch merges back into master branch, everything seems ok. 
 The problem is: the dev teams might have dependency on the "10-master" commit but they never knew about the revert.
 
-[git-merge-conflict](img/git-merge-conflict.PNG)
+![git-merge-conflict](img/git-merge-conflict.PNG)
 
 Best practice: add an "admin" role for the major branches. For example, release branch should have a release admin, 
 everything goes into the release branch goes through the admin first.
