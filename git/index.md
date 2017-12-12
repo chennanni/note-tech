@@ -109,7 +109,7 @@ read more
 - <http://nvie.com/posts/a-successful-git-branching-model/>
 - <http://nvie.com/files/Git-branching-model.pdf>
 
-### Git Merge Issue
+## Git Merge Issue
 
 ~~~
 // merge feature-branch to main-branch
