@@ -1,3 +1,12 @@
+---
+layout: default
+title: Java - Stream
+folder: stream
+permalink: /archive/java/stream/
+---
+
+# Java - Stream
+
 ## 什么是Stream
 
 Stream是对Collection功能的增强，它专注于对集合进行各种便利高效的聚合操作aggregate operation，或者大批量数据操作bulk data operation。
