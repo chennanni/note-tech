@@ -129,9 +129,8 @@ For more information on the various credential caching options available, see Cr
 
 ### Commit emoji for my system
 
-- :heart: `:heart:` commit with proud
-- :green_heart: `:green_heart:` commit for improvement
-- :blue_heart: `:blue_heart:` commit for fix
+- :heart: `:heart:` major commit
+- :green_heart: `:green_heart:` minor commit
 
 ## Links
 - <https://www.atlassian.com/git/tutorials/what-is-version-control>
