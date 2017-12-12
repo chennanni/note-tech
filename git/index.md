@@ -142,9 +142,35 @@ The problem is: the dev teams might have dependency on the "10-master" commit bu
 Best practice: add an "admin" role for the major branches. For example, release branch should have a release admin, 
 everything goes into the release branch goes through the admin first.
 
-**git rebase v.s. merge**
+## Git Rebase Details
 
-When do pulling `git pull [option] origin master`, there are several options:
+Reapply commits on top of another base tip
+
+```
+git rebase master topic
+=
+git checkout topic
++
+git rebase master
+```
+
+before
+
+```
+          A---B---C topic
+         /
+    D---E---F---G master
+```
+
+after
+
+```
+                  A'--B'--C' topic
+                 /
+    D---E---F---G master
+```
+
+rebase v.s. merge
 - `git merge` is "non-destructive", "the existing branches are not changed in any way".
 - `git rebase` "re-writes the project history by creating brand new commits for each commit in the original branch".
 
