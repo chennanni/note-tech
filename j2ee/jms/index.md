@@ -272,6 +272,14 @@ public class Consumer2 implements Runnable {
 }
 ~~~
 
+Note: the example uses ActiveMQ, you need to start it first.
+
+```
+cd [activemq_install_dir]
+bin\activemq start
+check the result in web console: http://127.0.0.1:8161/admin/
+```
+
 ## Links
 
 - <http://www.javatpoint.com/jms-tutorial>
