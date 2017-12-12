@@ -69,19 +69,6 @@ git pull <origin> <master>
 git push <origin> <master>
 ```
 
-### add and use ssh key
-
-```
-https://help.github.com/articles/about-ssh/
-
-add
-step1 : generate an SSH key and add it to the ssh-agent
-step2 : add the key to your GitHub account
-
-use
-specify the ssh key to use for a given repo: git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
-```
-
 ### git fetch vs pull
 
 `git pull` = `git fetch` + `git merge`
@@ -119,6 +106,19 @@ different mode:
 
 ## Misc
 
+### add and use ssh key
+
+```
+https://help.github.com/articles/about-ssh/
+
+add
+step1 : generate an SSH key and add it to the ssh-agent
+step2 : add the key to your GitHub account
+
+use
+specify the ssh key to use for a given repo: git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
+```
+
 ### Save credential
 
 If you’re using an HTTPS URL to push over, the Git server will ask you for your username and password for authentication. 
@@ -134,5 +134,5 @@ For more information on the various credential caching options available, see Cr
 - :blue_heart: `:blue_heart:` commit for fix
 
 ## Links
-- https://www.atlassian.com/git/tutorials/what-is-version-control
-- https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
+- <https://www.atlassian.com/git/tutorials/what-is-version-control>
+- <https://git-scm.com/book/en/v2/Getting-Started-Git-Basics>
