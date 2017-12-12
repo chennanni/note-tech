@@ -73,11 +73,6 @@ git push <origin> <master>
 
 `git pull` = `git fetch` + `git merge`
 
-### git rebase vs merge
-
-- `git merge` is "non-destructive", "the existing branches are not changed in any way".
-- `git rebase` "re-writes the project history by creating brand new commits for each commit in the original branch".
-
 ### git stash
 
 "Stashing takes the dirty state of your working directory — that is, your modified tracked files and staged changes — and saves it on a stack of unfinished changes that you can reapply at any time."
@@ -93,16 +88,61 @@ git push <origin> <master>
 ### git reset
 
 - `git reset <commit-id>` reset to the target commit
+  - `--soft`: just reset HEAD (HEAD means where is the current commit)
+  - `--mixed`: reset HEAD and index (index means the tracking changed file)
+  - `--hard`: reset HEAD, index and working tree (working tree means the local changes)
 
-different mode:
-- `--soft`: just reset HEAD (HEAD means where is the current commit)
-- `--mixed`: reset HEAD and index (index means the tracking changed file)
-- `--hard`: reset HEAD, index and working tree (working tree means the local changes)
+## Git Branching Model
 
-## Git branching model
+long-term
+- master
+- develop
+
+short-term
+- feature
+- release
+- fix
 
 - <http://nvie.com/posts/a-successful-git-branching-model/>
 - <http://nvie.com/files/Git-branching-model.pdf>
+
+### Git Merge Issue
+
+~~~
+// merge feature-branch to main-branch
+git checkout main-branch
+git merge [--no-ff] feature-branch
+git branch -d feature-branch
+git push origin main-branch
+~~~
+
+options: 
+- fast-forward: combine other branch's commit info into one tree
+  -- by default
+- no fast-forward: keep other branch's commit info
+  -- `--no-ff`
+  -- if there's merge conflict
+
+[git-merge-ff](img/git-merge-ff.PNG)
+
+When using no fast-forward, git automatically identifies the best common-ancestor 
+and creates a new commit object that contains the merged work.
+
+[git-merge-branch](img/git-merge-branch.png)
+
+When merging, some problems are not easy to detect. For example, someone made a commit "10-master" in master branch then reverted it. 
+But the revert didn't go into dev branch. When the dev branch merges back into master branch, everything seems ok. 
+The problem is: the dev teams might have dependency on the "10-master" commit but they never knew about the revert.
+
+[git-merge-conflict](img/git-merge-conflict.PNG)
+
+Best practice: add an "admin" role for the major branches. For example, release branch should have a release admin, 
+everything goes into the release branch goes through the admin first.
+
+**git rebase v.s. merge**
+
+- `git merge` is "non-destructive", "the existing branches are not changed in any way".
+- `git rebase` "re-writes the project history by creating brand new commits for each commit in the original branch".
 
 ## Misc
 
@@ -119,7 +159,7 @@ use
 specify the ssh key to use for a given repo: git config core.sshCommand "ssh -i ~/.ssh/id_rsa"
 ```
 
-### Save credential
+### save credential
 
 If you’re using an HTTPS URL to push over, the Git server will ask you for your username and password for authentication. 
 By default it will prompt you on the terminal for this information so the server can tell if you’re allowed to push.
@@ -127,7 +167,7 @@ By default it will prompt you on the terminal for this information so the server
 If you don’t want to type it every single time you push, you can set up a “credential cache”. The simplest is just to keep it in memory for a few minutes, which you can easily set up by running `git config --global credential.helper cache`.
 For more information on the various credential caching options available, see Credential Storage.
 
-### Commit emoji for my system
+### commit emoji for my system
 
 - :heart: `:heart:` major commit
 - :green_heart: `:green_heart:` minor commit
