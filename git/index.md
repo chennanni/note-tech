@@ -144,6 +144,7 @@ everything goes into the release branch goes through the admin first.
 
 **git rebase v.s. merge**
 
+When do pulling `git pull [option] origin master`, there are several options:
 - `git merge` is "non-destructive", "the existing branches are not changed in any way".
 - `git rebase` "re-writes the project history by creating brand new commits for each commit in the original branch".
 
