@@ -11,8 +11,10 @@ permalink: /archive/python/basic/
 
 ## 标识符
 
-以双下划线开头的 `__foo` 代表类的私有成员；
-以双下划线开头和结尾的 `__foo__` 代表 Python 里特殊方法专用的标识，如 `__init__()` 代表类的构造函数。
+- 以双下划线开头的 `__foo` 代表类的私有成员（private）；
+- 以双下划线开头和结尾的 `__foo__` 代表 Python 里特殊方法专用的标识，如 `__init__()` 代表类的构造函数。
+
+注：python并没有强制限定对private成员变量的应用，更多的是一种编码规范。
 
 ## 行和缩进
 
@@ -38,10 +40,21 @@ else:
   - complex（复数）
 - String（字符串）
 - List（列表）
+  - can have all kinds of data types in the list
+  - `list = [ 'runoob', 786 , 2.23, 'john', 70.2 ]`
+  - `print list[0]`
+  - `print list[1:3]`
 - Tuple（元组）
-  - 相当于read only list
+  - similar to read only list
+  - `tuple = ( 'runoob', 786 , 2.23, 'john', 70.2 )`
+  - `print tuple[0]`
+  - `print tuple[1:3]`
 - Dictionary（字典）
   - key value pair
+  - `dict = { 'name':'john', 'code':6734, 'dept':'sales' }`
+  - `print dict[`name`]`
+  - `print dict.keys()`
+  - `print dict.values()`
 
 类型属于对象，变量是没有类型的。
 
@@ -82,6 +95,44 @@ changeme( mylist );
 print mylist
 ~~~
 
+## for循环
+
+通用语法
+~~~ python
+for iterating_var in sequence:
+   statements(s)
+~~~
+
+通过object遍历
+~~~ python
+for letter in 'Python':
+   print letter
+
+fruits = ['banana', 'apple',  'mango']
+for fruit in fruits:
+   print fruit
+~~~
+
+通过index遍历
+~~~ python 
+fruits = ['banana', 'apple',  'mango']
+for index in range(len(fruits)):
+   print fruits[index]
+~~~
+
+通过内置enumerate函数遍历
+~~~ python
+sequence = [12, 34, 34, 23, 45, 76, 89]
+for index, item in enumerate(sequence):
+	print index, item
+
+=>
+0 12
+1 34
+2 34
+...
+~~~
+
 ## 函数参数
 
 - 必备参数
@@ -89,11 +140,24 @@ print mylist
 - 默认参数（缺省参数）
 - 不定长参数
 
+必备参数
+
+必备参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样。
+
+~~~ python
+def printme( str ):
+   print str;
+   return;
+
+printme("hello world");
+~~~
+
 关键字参数
+
+调用函数时指明某个关键字的值如：`f(x=1, y=2)`。
 
 ~~~ python
 def printinfo( name, age ):
-   "打印任何传入的字符串"
    print "Name: ", name;
    print "Age ", age;
    return;
@@ -102,6 +166,8 @@ printinfo( age=50, name="miki" );
 ~~~
 
 默认参数（缺省参数）
+
+调用函数时省略了某些参数，则在执行时使用该参数的默认值
 
 ~~~ python
 def printinfo( name, age = 35 ):
@@ -113,6 +179,8 @@ printinfo( name="miki" );
 ~~~
 
 不定长参数
+
+在定义函数时加入不定长参数，在调用时可传入不定长的参数
 
 ~~~ python
 def printinfo( arg1, *vartuple ):
