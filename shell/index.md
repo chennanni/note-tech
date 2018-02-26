@@ -19,7 +19,8 @@ permalink: /archive/shell/
 
 ## What is Kernal?
 - Kernel is heart of Linux Os.
-- It acts as an intermediary between the computer hardware and various programs/application/shell.
+- It acts as an intermediary between the computer hardware and various programs/appli
+ion/shell.
 
 ## What is Shell?
 - Shell is a user program or it's environment provided for user interaction.
@@ -35,8 +36,9 @@ cd ..: change into the parent directory
 cd ~: change into the home directory
 
 ls: list files and directories
-ls -a: list all files and directories
-ls -l: list the total files in the directory and subdirectories, one file per line
+ls -a: list hidden files
+ls -l: list in long (detailed) format
+ls *<string>*: list files matching string
 
 pwd: display the path of the current directory
 
@@ -59,16 +61,21 @@ rm -rf <foldername>: 'recursively' 'force' remove the folder and everything in i
 rmdir <foldername>: remove a folder
 ```
 
-file read => **cat**, **more**, **less**, **head**
+file read => **cat**, **sed**, **more**, **less**, **head**
 
 ```
-cat <file>: display a file
+cat <file-name>: display file content
+cat > <file-name>: create a new file, accept inputs from terminal, Ctrl+d to exit
+
+sed 's/<string-1>/<string-2>/' file-1 > file-2: stream editor, for file-1, replace string-1 with string-2, save to file-2
+sed -i 's/<string-1>/<string-2>/' file-1.txt: use -i to edit files in-place instead of printing to standard output
 
 less <file>: display a file one page at a time, with scroll, search functions
 
 head <file>: display the first few lines of a file
 tail <file>: display the last few lines of a file
-tail -100f <file>: constantly display the last 100 lines of a file
+tail -n <num> <file>: see the last 'num' lines of a file
+tail -f <file>: see the changes constantly
 ```
 
 file write => **redirect**, **cat**, **emacs/vim**
@@ -83,19 +90,16 @@ cat <file1> <file2> > <file0>: concatenate file1 and file2 to file0
 emacs/vim <file>: launches the emacs/vim editor, and opens the file for editing
 ```
 
-file search => **grep**, **wc**, **wildcards**
+file search => **grep**, **wc**
 
 ```
-grep <keyword> <file>: search keyword in a file, default case sensitive
-grep -i <keyword> <file>: ignore upper/lower case
+grep <'string'> <file-name>: search file for the given string
+grep <'string1'> <file-name> | grep <'string2'>: search for both string 1 and string 2
+grep -E <'string1|string2'> <file-name>: search for string 1 or string 2
 
 wc <file>: count number of lines/words/characters in file
 wc -w <file>: count words of a txt file
 wc -l <file>: count lines of a txt file
-
-ls *list: list all files in the current dir starting with list...
-ls list*: list all files in the current dir ending with ...list
-ls ?list: match exactly one character
 ```
 
 permission => **chmod**, **sudo**
@@ -110,7 +114,7 @@ sudo: allows a permitted user to execute a command as the superuser or another u
 check process => **ps**, **top**, **kill**, 
 
 ```
-ps: report process status
+ps: show process status for the current user
 ps grep <'pwd'>: show process matching pattern 'pwd'
 ps <aux>
 // a = show processes for all users
@@ -119,8 +123,8 @@ ps <aux>
 
 top: display top CPU processes
 
-kill <%1>, kill job number 1
-kill <26152>, kill process number 26152
+kill <%1>: kill job number 1
+kill <26152>: kill process number 26152
 ```
 
 help => **man/apropos**, **who**
@@ -129,6 +133,7 @@ help => **man/apropos**, **who**
 man <command>: read the manual of a command
 whatis <command>: show one-line description of a command
 apropos <keyword>: not sure of the exact name of a command
+type <cmd>: show cmd's alias
 
 who | sort: list logged-in user and sort the result
 ```
