@@ -29,108 +29,108 @@ permalink: /archive/shell/
 navigation => **cd**, **ls**, **pwd**, **clear**
 
 ```
-cd [doc], change direcotry to doc
-cd /, change into the root directory
-cd .., change into the parent directory
-cd ~, change into the home directory
+cd [doc]: change direcotry to doc
+cd /: change into the root directory
+cd ..: change into the parent directory
+cd ~: change into the home directory
 
-ls, list files and directories
-ls -a, list all files and directories
-ls -l, list the total files in the directory and subdirectories, one file per line
+ls: list files and directories
+ls -a: list all files and directories
+ls -l: list the total files in the directory and subdirectories, one file per line
 
-pwd, display the path of the current directory
+pwd: display the path of the current directory
 
-clear, clear the screen
+clear: clear the screen
 ```
 
-file manipulation => **mkdir**, **cp**, **mv**, **rm**, **rmdir**
+file manipulation => **mkdir**, **touch**, **cp**, **mv**, **rm**, **rmdir**
 
 ```
-mkdir [directory], create a directory/folder
+mkdir <directory>: create a directory/folder
 
-cp [file1] [file2], copy file1 and call it file2
+touch <file-name>: create a new file
 
-mv [file1] [file2], move or rename file1 to file2
+cp <source> <destination>: copy file to another location
 
-rm [file], remove a file
-rm -rf [foldername], recursively force remove the folder and everything in it
+mv <source> <destination>: move source to destination or rename
 
-rmdir [foldername], remove a folder
+rm <file>: remove a file
+rm -rf <foldername>: 'recursively' 'force' remove the folder and everything in it
+rmdir <foldername>: remove a folder
 ```
 
-file read => **cat**, **less**, **head**
+file read => **cat**, **more**, **less**, **head**
 
 ```
-cat [file], display a file
+cat <file>: display a file
 
-less [file], display a file a page at a time
+less <file>: display a file one page at a time, with scroll, search functions
 
-head [file], display the first few lines of a file
-
-tail [file], display the last few lines of a file
-tail -100f [file], constantly display the last 100 lines of a file
+head <file>: display the first few lines of a file
+tail <file>: display the last few lines of a file
+tail -100f <file>: constantly display the last 100 lines of a file
 ```
 
 file write => **redirect**, **cat**, **emacs/vim**
 
 ```
-command > file, redirect standard output to a file
-command >> file, append standard output to a file
-command < file, redirect standard input from a file
+command > file: redirect standard output to a file
+command >> file: append standard output to a file
+command < file: redirect standard input from a file
 
-cat [file1] [file2] > [file0], concatenate file1 and file2 to file0
+cat <file1> <file2> > <file0>: concatenate file1 and file2 to file0
 
-emacs/vim [file], launches the emacs/vim editor, and opens the file for editing
+emacs/vim <file>: launches the emacs/vim editor, and opens the file for editing
 ```
 
 file search => **grep**, **wc**, **wildcards**
 
 ```
-grep [keyword] [file], search keyword in a file, default case sensitive
-grep -i [keyword] [file], ignore upper/lower case
+grep <keyword> <file>: search keyword in a file, default case sensitive
+grep -i <keyword> <file>: ignore upper/lower case
 
-wc [file], count number of lines/words/characters in file
-wc -w [file], count words of a txt file
-wc -l [file], count lines of a txt file
+wc <file>: count number of lines/words/characters in file
+wc -w <file>: count words of a txt file
+wc -l <file>: count lines of a txt file
 
-ls *list, list all files in the current dir starting with list...
-ls list*, list all files in the current dir ending with ...list
-ls ?list, match exactly one character
+ls *list: list all files in the current dir starting with list...
+ls list*: list all files in the current dir ending with ...list
+ls ?list: match exactly one character
 ```
 
 permission => **chmod**, **sudo**
 
 ```
-chmod XXX [file], change the permissions of files or directories.
-chmod u=rw [file], the owner may read and write the file
+chmod <XXX> <file>: change the permissions of files or directories.
+chmod <u=rwx> <file>: the owner may read, write and execute the file
 
-sudo, allows a permitted user to execute a command as the superuser or another user
+sudo: allows a permitted user to execute a command as the superuser or another user
 ```
 
 check process => **ps**, **top**, **kill**, 
 
 ```
-ps, report process status
-ps grep ['pwd'], show process matching pattern 'pwd'
-ps [aux]
+ps: report process status
+ps grep <'pwd'>: show process matching pattern 'pwd'
+ps <aux>
 // a = show processes for all users
 // u = display the process's user/owner
 // x = also show processes not attached to a terminal
 
-top, display top CPU processes
+top: display top CPU processes
 
-kill [%1], kill job number 1
-kill [26152], kill process number 26152
+kill <%1>, kill job number 1
+kill <26152>, kill process number 26152
 ```
 
 help => **man/apropos**, **who**
 
 ```
-man [command], read the manual of a command
-whatis [command], show one-line description of a command
-apropos [keyword], not sure of the exact name of a command
+man <command>: read the manual of a command
+whatis <command>: show one-line description of a command
+apropos <keyword>: not sure of the exact name of a command
 
-who | sort, list logged-in user and sort the result
+who | sort: list logged-in user and sort the result
 ```
 
 ## Links
