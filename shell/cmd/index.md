@@ -7,7 +7,9 @@ permalink: /archive/shell/cmd
 
 # Shell - Command (Linux)
 
-navigation => **cd**, **ls**, **pwd**, **clear**
+## navigation ## 
+
+=> **cd**, **ls**, **pwd**, **clear**
 
 ```
 cd [doc]: change direcotry to doc
@@ -25,7 +27,9 @@ pwd: display the path of the current directory
 clear: clear the screen
 ```
 
-file manipulation => **mkdir**, **touch**, **cp**, **mv**, **rm**, **rmdir**
+## file manipulation ## 
+
+=> **mkdir**, **touch**, **cp**, **mv**, **rm**, **rmdir**
 
 ```
 mkdir <directory>: create a directory/folder
@@ -41,7 +45,9 @@ rm -rf <foldername>: 'recursively' 'force' remove the folder and everything in i
 rmdir <foldername>: remove a folder
 ```
 
-file read => **cat**, **sed**, **more**, **less**, **head**
+## file read ##
+
+=> **cat**, **sed**, **more**, **less**, **head**
 
 ```
 cat <file-name>: display file content
@@ -58,7 +64,9 @@ tail -n <num> <file>: see the last 'num' lines of a file
 tail -f <file>: see the changes constantly
 ```
 
-file write => **redirect**, **cat**, **emacs/vim**
+## file write ## 
+
+=> **redirect**, **cat**, **emacs/vim**
 
 ```
 command > file: redirect standard output to a file
@@ -70,7 +78,9 @@ cat <file1> <file2> > <file0>: concatenate file1 and file2 to file0
 emacs/vim <file>: launches the emacs/vim editor, and opens the file for editing
 ```
 
-file search => **grep**, **wc**
+## file search ## 
+
+=> **grep**, **wc**
 
 ```
 grep <'string'> <file-name>: search file for the given string
@@ -82,7 +92,9 @@ wc -w <file>: count words of a txt file
 wc -l <file>: count lines of a txt file
 ```
 
-permission => **chmod**, **sudo**
+## permission ## 
+
+=> **chmod**, **sudo**
 
 ```
 chmod <XXX> <file>: change the permissions of files or directories.
@@ -91,7 +103,9 @@ chmod <u=rwx> <file>: the owner may read, write and execute the file
 sudo: allows a permitted user to execute a command as the superuser or another user
 ```
 
-check process => **ps**, **top**, **kill**, 
+## check process ##
+
+=> **ps**, **top**, **kill**, 
 
 ```
 ps: show process status for the current user
@@ -107,7 +121,9 @@ kill <%1>: kill job number 1
 kill <26152>: kill process number 26152
 ```
 
-help => **man/apropos**, **who**
+## help ## 
+
+=> **man/apropos**, **who**
 
 ```
 man <command>: read the manual of a command
