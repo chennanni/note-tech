@@ -142,7 +142,7 @@ echo "传递的参数作为一个字符串显示：$*";
 $ ./test.sh 1 2 3
 ~~~
 
-# Shell 基本运算符
+## Shell 基本运算符
 
 算术运算符
 
@@ -211,6 +211,69 @@ if [ -d $file ]
 if [ -s $file ]
 # 文件存在
 if [ -e $file ]
+~~~
+
+## Shell 流程控制
+
+if-else
+
+注：方括号和判断条件之间要加空格。不允许空的else分支。
+
+~~~ shell
+a=10
+b=20
+if [ $a == $b ]
+then
+   echo "a 等于 b"
+elif [ $a -gt $b ]
+then
+   echo "a 大于 b"
+elif [ $a -lt $b ]
+then
+   echo "a 小于 b"
+else
+   echo "没有符合的条件"
+fi
+~~~
+
+for 循环
+
+~~~ shell
+for str in 'This is a string'
+do
+    echo $str
+done
+~~~
+
+while 循环
+
+~~~ shell
+int=1
+while(( $int<=5 ))
+do
+    echo $int
+    let "int++"
+done
+~~~
+
+case 语句
+
+~~~ shell
+echo '输入 1 到 4 之间的数字:'
+echo '你输入的数字为:'
+read aNum
+case $aNum in
+    echo '你选择了 1'
+    ;;
+    echo '你选择了 2'
+    ;;
+    echo '你选择了 3'
+    ;;
+    echo '你选择了 4'
+    ;;
+    echo '你没有输入 1 到 4 之间的数字'
+    ;;
+esac
 ~~~
 
 ## Links
