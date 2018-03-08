@@ -63,7 +63,9 @@ chmod +x ./test.sh
 
 ## Shell 注释
 
-以"#"开头的行就是注释，没有多行注释
+以"#"开头的行就是注释，没有多行注释。
+
+如果需要临时注释大段代码，可以将其用花括号括起来，当作未被调用的函数。
 
 ## Shell 变量
 
@@ -71,7 +73,7 @@ chmod +x ./test.sh
 
 注：变量名和等号之间不能有空格。
 
-~~~ sql
+~~~ shell
 your_name="alice"
 ~~~
 
@@ -79,7 +81,7 @@ your_name="alice"
 
 在变量名前面加美元符号即可，变量名外面的花括号是可选的，加花括号是为了帮助解释器识别变量的边界。
 
-~~~ sql
+~~~ shell
 your_name="alice"
 echo $your_name
 echo ${your_name}
@@ -93,7 +95,7 @@ echo ${your_name}
 
 常见字符串操作
 
-~~~ sql
+~~~ shell
 your_name="alice"
 
 # 拼接字符串，直接拼接，不需要用+
@@ -111,7 +113,7 @@ echo ${alice:1:4} # 输出 lice
 
 用括号来表示数组，数组元素用"空格"符号分割开
 
-~~~ sql
+~~~ shell
 # 定义数组
 array_name=(value0 value1 value2 value3)
 
@@ -120,6 +122,95 @@ valuen=${array_name[1]} # 输出 value1
 
 # 获取数组中的所有元素
 echo ${array_name[@]}
+~~~
+
+## Shell 命令行传参
+
+- `$n`：引用某个传入的参数，n从1开始计数。
+- `$#`：传递到脚本的参数个数。
+- `$*`：以一个单字符串显示所有向脚本传递的参数。
+
+~~~ shell
+# 定义脚本
+echo "执行的文件名：$0";
+echo "第一个参数为：$1";
+echo "第二个参数为：$2";
+echo "参数个数为：$#";
+echo "传递的参数作为一个字符串显示：$*";
+
+# 调用
+$ ./test.sh 1 2 3
+~~~
+
+# Shell 基本运算符
+
+算术运算符
+
+原生bash不支持数学运算，但是可以通过其他命令来实现，如 awk 和 expr，expr。
+
+~~~ shell
+# 注意1：使用的是反引号 ` 而不是单引号 '
+# 注意2：表达式和运算符之间要有空格
+# 加
+val=`expr $a + $b`
+# 减
+val=`expr $a - $b`
+# 乘
+val=`expr $a \* $b`
+# 除
+val=`expr $b / $a`
+# 取余
+val=`expr $b % $a`
+~~~
+
+关系运算符
+
+关系运算符只支持数字，不支持字符串，除非字符串的值是数字。
+
+~~~ shell
+if [ $a -eq $b ] # 等于
+if [ $a -ne $b ] # 不等于
+if [ $a -gt $b ] # 大于
+if [ $a -lt $b ] # 小于
+if [ $a -ge $b ] # 大于等于
+if [ $a -le $b ] # 小于等于
+~~~
+
+布尔/逻辑运算符
+
+~~~ shell
+# 非运算
+if [ $a != $b ]
+# 逻辑的 AND
+if [[ $a -lt 100 && $b -gt 100 ]]
+# 逻辑的 OR
+if [[ $a -lt 100 || $b -gt 100 ]]
+~~~
+
+字符串运算符
+
+~~~ shell
+# 两个字符串相等
+if [ $a = $b ]
+# 两个字符串不相等
+if [ $a != $b ]
+# 字符串长度为0
+if [ -z $a ]
+# 字符串长度不为0
+if [ -n $a ]
+# 字符串不为空
+if [ $a ]
+~~~
+
+文件测试运算符
+
+~~~ shell
+# 文件是个目录
+if [ -d $file ]
+# 文件不为空
+if [ -s $file ]
+# 文件存在
+if [ -e $file ]
 ~~~
 
 ## Links
