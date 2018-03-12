@@ -343,7 +343,7 @@ command >> file 2>&1
 command > /dev/null
 ~~~
 
-## Shell 文件包含
+## Shell 文件引用
 
 - `. filename`，注意点号(.)和文件名中间有一空格
 - `source filename`
