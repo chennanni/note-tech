@@ -276,6 +276,78 @@ case $aNum in
 esac
 ~~~
 
+## Shell 函数
+
+- 定义：两种方式，`fun()`或者`function fun()`。
+- 传参：定义函数时不用带任何参数，使用时用`$n`来获取传入参数。
+- 返回值：可以用`return`返回一个值，如果没有`return`，将以最后一条命令运行结果作为返回值。使用时用`$?`来获取返回值。
+- 使用：直接调用函数名+参数来使用函数，不需要括号。
+
+~~~ shell
+firstFun(){
+    echo "Hello World!"
+}
+
+function secondFunAdd(){
+   echo "p1: $1"
+   echo "p2: $2"
+   return $1+$2
+}
+
+secondFunAdd 11 22
+echo "p1 + p2 = $?"
+~~~
+
+## Shell 输入/输出重定向
+
+输出重新定向
+
+~~~ shell
+# 执行command然后将输出的内容存入file
+command > file
+
+# 将用户信息存入users
+who > users
+
+# 以追加形式将echo的内容写入file
+echo "123" >> file
+
+# 注：这里who/echo在cmd不会有显示，因为值已经被重新定向到文件了
+~~~
+
+输入重新定向
+
+~~~ shell
+# 从file获取值，作为command的输入
+command < file
+~~~
+
+标准文件
+
+- 标准输入文件(stdin)：文件描述符为0，读取数据。
+- 标准输出文件(stdout)：文件描述符为1，输出数据。
+- 标准错误文件(stderr)：文件描述符为2，写入错误信息。
+
+~~~ shell
+# 将stderr写入file
+$ command 2 > file
+
+# 将stdout和stderr合并后追加写入file
+command >> file 2>&1
+~~~
+
+`/dev/null`文件
+
+~~~ shell
+# 如果想要执行某个命令，但又不希望在屏幕上显示输出结果，那么可以将输出重定向到/dev/null
+command > /dev/null
+~~~
+
+## Shell 文件包含
+
+- `. filename`，注意点号(.)和文件名中间有一空格
+- `source filename`
+
 ## Links
 
 - [Unix Tutorial](http://www.ee.surrey.ac.uk/Teaching/Unix)
