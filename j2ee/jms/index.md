@@ -7,13 +7,10 @@ permalink: /archive/j2ee/jms/
 
 # J2EE - JMS
 
-MS (Java Message Service) is an API that provides the facility to create, 
+## Intro
+
+JMS (Java Message Service) is an API that provides the facility to create, 
 send and read messages from one application to another.
-
-## Advantage
-
-- **Asynchronous**: To receive the message, client is not required to send request. Message will arrive automatically to the client.
-- **Reliable**: It provides assurance that message is delivered.
 
 ## Usage
 
@@ -56,14 +53,35 @@ It is like broadcasting. Here, Topic is used as a message oriented middleware th
 
 ![jms_model](img/jms_model.png)
 
-## Example
+Note: The destination can be either Queue or Topic.
+
+## JMS Receiving Model
 
 消费者有两种接受消息的模式：
-- `consumer.receive()`/`consumer.receive(int timeout)`
+- Synchronous
+  - `consumer.receive()`/`consumer.receive(int timeout)`
   - 消费者会一直等待直到消息到达或超时
-- MessageListener
-  - 注册一个监听器
-  
+- Asynchronous
+  - using `MessageListener`
+  - 消费者注册一个监听器，当接到消息时进行callback操作
+
+## Implementation Steps
+
+- register elements: ConnectionFactory, destination(Queue or Topic)
+- register Connection and Session
+- start the connection
+- create MessageProducer and send message
+- create MessageConsumer and receive message
+
+## In Practice
+
+Elements
+- producer: create producer and send message
+- synch-consumer1: create synch-consumer1 and receive message
+- asynch-consumer2: create asynch-consumer2 and receive message
+- application context: manage connection and session
+- main(): start the app
+
 App：主程序
 ~~~ java
 public class App {
@@ -199,7 +217,7 @@ public class Producer implements Runnable {
 }
 ~~~
 
-Consumer
+Consumer1: using Synchronous Receive
 ~~~ java
 import javax.jms.*;
 
@@ -235,7 +253,7 @@ public class Consumer implements Runnable {
 }
 ~~~
 
-Consumer2
+Consumer2: using Asynchronous Receive
 ~~~ java
 import javax.jms.*;
 
@@ -282,7 +300,8 @@ check the result in web console: http://127.0.0.1:8161/admin/
 
 ## Links
 
-- <http://www.javatpoint.com/jms-tutorial>
-- <http://activemq.apache.org/hello-world.html>
-- <http://blog.csdn.net/wl_ldy/article/details/7884534>
-- <http://blog.csdn.net/jiuqiyuliang/article/details/48608237>
+- [Javapoint - JMS Tutorial](http://www.javatpoint.com/jms-tutorial)
+- [ActiveMQ - Hello World Example](http://activemq.apache.org/hello-world.html)
+- [Oracle - Writing Simple JMS Applications](https://docs.oracle.com/javaee/6/tutorial/doc/bncfa.html)
+- [CSDN - JMS简单例子](http://blog.csdn.net/wl_ldy/article/details/7884534)
+- [CSDN - ActiveMQ简单的HelloWorld实例](http://blog.csdn.net/jiuqiyuliang/article/details/48608237)
