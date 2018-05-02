@@ -35,14 +35,14 @@ To do this your application code would publish a message onto a JMS queue which 
 
 ## Messaging Domains
 
-1. Point-to-Point (PTP) Messaging Domain
+1.Point-to-Point (PTP) Messaging Domain
 
 In PTP model, one message is delivered to one receiver only. 
 Here, Queue is used as a message oriented middleware (MOM).
 
 ![jms_ptp](img/jms_ptp.png)
 
-2. Publisher/Subscriber (Pub/Sub) Messaging Domain
+2.Publisher/Subscriber (Pub/Sub) Messaging Domain
 
 In Pub/Sub model, one message is delivered to all the subscribers. 
 It is like broadcasting. Here, Topic is used as a message oriented middleware that is responsible to hold and deliver messages.
