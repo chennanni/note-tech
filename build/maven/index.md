@@ -37,6 +37,18 @@ Hardcode add
 </dependency>
 ```
 
+## Goal and Phase
+
+TODO
+
+https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+
+## Plugin
+
+TODO
+
+http://maven.apache.org/plugins/maven-assembly-plugin/
+
 ## Cheat Cheet
 
 ```
