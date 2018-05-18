@@ -47,14 +47,19 @@ rmdir <foldername>: remove a folder
 
 ## file read ##
 
-=> **cat**, **sed**, **more**, **less**, **head**
+=> **cat**, **sed**, **awk**, **more**, **less**, **head**
 
 ```
 cat <file-name>: display file content
 cat > <file-name>: create a new file, accept inputs from terminal, Ctrl+d to exit
 
-sed 's/<string-1>/<string-2>/' file-1 > file-2: stream editor, for file-1, replace string-1 with string-2, save to file-2
+sed 's/<string-1>/<string-2>/g' file-1 > file-2: stream editor, for file-1, replace string-1 with string-2, save to file-2
+sed 's/<string-1>|<string-1'>/<string-2>/g' file-1 > file-2: stream editor, for file-1, replace string-1 or string-1' with string-2, save to file-2
 sed -i 's/<string-1>/<string-2>/' file-1.txt: use -i to edit files in-place instead of printing to standard output
+sed -n 10,15p file.txt: show only lines 10-15 of file.txt
+
+awk ' {print $1,$3} ': print only columns one and three using stdin
+awk ' /'pattern'/ {print $2} ': print only elements from column 2 that match pattern using stdin
 
 less <file>: display a file one page at a time, with scroll, search functions
 
