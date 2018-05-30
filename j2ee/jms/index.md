@@ -300,6 +300,7 @@ check the result in web console: http://127.0.0.1:8161/admin/
 
 ## Links
 
+- [Note-Spring-JMS](http://chennanni.github.io/note-tech/archive/spring/jms/)
 - [Javapoint - JMS Tutorial](http://www.javatpoint.com/jms-tutorial)
 - [ActiveMQ - Hello World Example](http://activemq.apache.org/hello-world.html)
 - [Oracle - Writing Simple JMS Applications](https://docs.oracle.com/javaee/6/tutorial/doc/bncfa.html)
