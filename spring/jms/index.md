@@ -1,4 +1,11 @@
-# Spring JMS
+---
+layout: default
+title: Spring - JMS
+folder: jms
+permalink: /archive/spring/jms/
+---
+
+# Spring - JMS
 
 ## How JMS works
 
