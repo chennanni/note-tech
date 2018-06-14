@@ -1,3 +1,10 @@
+---
+layout: default
+title: Git
+folder: git
+permalink: /archive/git/
+---
+
 # Git
 
 ## Types of Verson Control System
