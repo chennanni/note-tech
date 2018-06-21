@@ -52,7 +52,7 @@ Have cost function: J(s0,s1), want to get min(J) -> keep change s0,s1 to achive 
 
 Intuition
 
-![ml-gradient-descent-1](img/ml-gradient-descent-1.png)
+![ml-gradient-descent-3](img/ml-gradient-descent-3.png)
 
 Algorithm
 
