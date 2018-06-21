@@ -44,11 +44,19 @@ Example: y(x)=ax+b
 
 a way to evaluate the distance between estimate and real values
 
-![ml-cost-function](img/ml-cost-function.png)
+![ml-cost-function-1](img/ml-cost-function-1.png)
 
 ## Gradient Descent
 
-TODO
+Have cost function: J(s0,s1), want to get min(J) -> keep change s0,s1 to achive the local minimum.
+
+Intuition
+
+![ml-gradient-descent-1](img/ml-gradient-descent-1.png)
+
+Algorithm
+
+![ml-gradient-descent-2](img/ml-gradient-descent-2.png)
 
 # W2 - Linear Regression with Multiple Variables
 
