@@ -5,7 +5,7 @@ folder: basic
 permalink: /archive/ml/basic/
 ---
 
-# Introduction
+# W1 - Introduction
 
 ## What is Machine Learning
 
@@ -32,7 +32,7 @@ Two types
 
 Approach problems with little or no idea what our results should look like.
 
-# Linear Regression with One Variable
+# W1 - Linear Regression with One Variable
 
 ## Model Representation
 
@@ -44,11 +44,13 @@ Example: y(x)=ax+b
 
 a way to evaluate the distance between estimate and real values
 
+![ml-cost-function](img/ml-cost-function.png)
+
 ## Gradient Descent
 
 TODO
 
-# Linear Regression with Multiple Variables
+# W2 - Linear Regression with Multiple Variables
 
 TODO
 
