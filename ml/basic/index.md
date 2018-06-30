@@ -65,5 +65,31 @@ Algorithm
 
 ![ml-gradient-descent-4](img/ml-gradient-descent-4.png)
 
+## Gradient Descent - Feature Scaling
+
+Feature scaling involves dividing the input values by the range (i.e. the maximum value minus the minimum value) of the input variable, resulting in a new range of just 1. 
+
+Mean normalization involves subtracting the average value for an input variable from the values for that input variable resulting in a new average value for the input variable of just zero.
+
+![ml-gradient-descent-5](img/ml-gradient-descent-5.png)
+
+## Gradient Descent - Learning Rate
+
+If \alphaα is too small: slow convergence.
+
+If \alphaα is too large: ￼may not decrease on every iteration and thus may not converge.
+
+## Gradient Descent - Polynomial Regression
+
+Our hypothesis function need not be linear (a straight line) if that does not fit the data well.
+
+We can change the behavior or curve of our hypothesis function by making it a quadratic, cubic or square root function (or any other form).
+
+## Normal Equation
+
+In the "Normal Equation" method, we will minimize J by explicitly taking its derivatives with respect to the θj ’s, and setting them to zero. This allows us to find the optimum theta without iteration. The normal equation formula is given below:
+
+![ml-normal-equation-1](img/ml-normal-equation-1.png)
+
 # Source
 - All materials come from [Machine Learning](https://www.coursera.org/learn/machine-learning) offered by Andrew Ng, Stanford University
