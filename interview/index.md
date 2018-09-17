@@ -55,31 +55,31 @@ permalink: /archive/interview/
 
 ## SSH
 
-  ### Spring
+  Spring
 
-  ### Struts
+  Struts
 
-  ### Hibernate
+  Hibernate
 
 ## Server Side Tech
 
-  ### Servlet
+  Servlet
 
-  ### EJB
+  EJB
 
-  ### Weblogic
+  Weblogic
 
 ## Web Service
 
-  ### RESTful
+  RESTful
 
-  ### SOAP
+  SOAP
 
 ## Database Tech
 
-  ### JDBC
+  JDBC
 
-  ### Oracle DB
+  Oracle DB
 
 ## Test
 
@@ -97,10 +97,10 @@ permalink: /archive/interview/
 
 ## Dependency
 
-  ### Ant
+  Ant
 
-  ### Maven
+  Maven
 
-  ### Ivy
+  Ivy
 
 ## Git
