@@ -9,12 +9,12 @@ permalink: /archive/interview/
 
 ## Overview
 
-- Tech Questions
 - Project
   - What is the task?
   - What you did?
   - (How you implemented it?)
-- [Algorithm](https://github.com/chennanni/crack-leetcode)
+- Tech Questions
+- [Algorithm/Code](https://github.com/chennanni/crack-leetcode)
 
 ## Java
 
