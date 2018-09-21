@@ -22,6 +22,14 @@ permalink: /archive/thread/basic/
 
 ![concurrency-vs-parallelism-1.png](img/concurrency-vs-parallelism-1.png)
 
+## Why Concurrency
+
+并发是为了程序运行得更快。启用多个线程，并互相切换，可以减少因某个线程阻塞而等待的时间。
+
+但是，由于上下文切换也有开销，所以并不是一定并发比串行要快。
+
+用Lmbench3测量上下文切换时长，用vmstat测量上下文切换次数。
+
 ## Process v.s. Thread
 
 说说Concurrency，一般实现有两种手段：多线程（Thread）和多进程(Process)。
@@ -31,6 +39,7 @@ Thread v.s. Process
 - A Process usually contains multiple threads at the same time.
 - Threads (of the same process) run in a shared memory space, while processes run in separate memory spaces.
 
+多进程(Process)很好理解，Windows打开任务管理器可以看到多个正在执行的进程。
 这里主要谈多线程（Thread），因为它更容易编程实现，效率更高。
 
 ## Benefits and Costs of Multi-Threading
