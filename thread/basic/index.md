@@ -7,7 +7,7 @@ permalink: /archive/thread/basic/
 
 # Thread Basic
 
-## Parallelism v.s. Concurrency
+## Multi-Task: Parallelism v.s. Concurrency
 
 让计算机在同一时间进行多项任务，一般有两种方式：并行(Parallelism)和并发(Concurrency)。
 
@@ -22,15 +22,14 @@ permalink: /archive/thread/basic/
 
 ![concurrency-vs-parallelism-1.png](img/concurrency-vs-parallelism-1.png)
 
-## Why Concurrency
+## Concurrency - Benefits and Costs
 
 并发是为了程序运行得更快。启用多个线程，并互相切换，可以减少因某个线程阻塞而等待的时间。
-
 但是，由于上下文切换也有开销，所以并不是一定并发比串行要快。
 
 用Lmbench3测量上下文切换时长，用vmstat测量上下文切换次数。
 
-## Process v.s. Thread
+## Concurrency Implementation: Process v.s. Thread
 
 说说Concurrency，一般实现有两种手段：多线程（Thread）和多进程(Process)。
 
@@ -42,7 +41,7 @@ Thread v.s. Process
 多进程(Process)很好理解，Windows打开任务管理器可以看到多个正在执行的进程。
 这里主要谈多线程（Thread），因为它更容易编程实现，效率更高。
 
-## Benefits and Costs of Multi-Threading
+## Thread: Benefits and Costs
 
 Benefit
 - better resource utilization 资源利用率高
@@ -51,10 +50,9 @@ Benefit
 Cost
 - more complex design 设计复杂度增加
 - context switching overhead 线程切换负担
-- increase resource assumption 资源必须是多线程安全的
-- issues with multi-threading 未保证多线程安全的情况下可能会带来问题
+- issues when not thread safe 未保证多线程安全的情况下可能会带来问题
 
-## Thread State
+## Java Thread State
 
 线程的状态：
 - new
@@ -156,7 +154,7 @@ e.g.
  new Thread(p).start();
 ~~~
 
-## Problems with Multi-threading
+## Thread Issues
 
 多线程共享内存空间，即Thread之间资源共享，一个Thread可以access到另一个Thread的资源，这里就可能会出问题。
 
@@ -165,19 +163,21 @@ e.g.
 
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
-## Ensure Thread Safe
+## Thread Safe
 
 Thread safety: The program state (fields/objects/variables) behaves correctly when multiple simultaneous threads are using a resource. 保证一个资源同时被多个进程读写时表现正常。
 
-那么如何实现Thread Safe呢？
+那么如何实现（资源的）Thread Safe呢？
 
 - 不变，make it immutable
   - for example, declaring the field as `final`
   - for example, `String` or `Integer` class
 - 隔离，use a pattern whereby each thread context is isolated from others
   - for example, `ThreadLocal` class
-- （加锁）限制瞬时单线程读写，restrict access to a resource to a single thread at a time
+- 加锁（限制瞬时单线程读写），restrict access to a resource to a single thread at a time
   - for example, `synchronized` keyword
+  - for example, `ReentrantLock`
+  - for example, `Semaphores` with permit as 1
   - for example, the local variables
 - 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
   - for example, `java.util.concurrent` package
