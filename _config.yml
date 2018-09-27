@@ -8,6 +8,8 @@ repo_url: "https://github.com/chennanni/note-tech"
 # twitter_username: jekyllrb
 github_username:  chennanni
 
+theme: jekyll-theme-cayman
+
 # Build settings
 markdown: kramdown
 
@@ -15,5 +17,3 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-
-theme: jekyll-theme-cayman
