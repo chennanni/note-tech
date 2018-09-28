@@ -1,3 +1,10 @@
+---
+layout: default
+title: Hibernate
+folder: hibernate
+permalink: /archive/hibernate/
+---
+
 # Hibernate
 
 ## ORM
