@@ -41,3 +41,7 @@ permalink: /archive/java/basic/
 There's some small differences between kramdown and github-flavor markdown. Thus, the page rendered on github and github-pages may be different. To make sure consistancy, follow some special rules: 
 
 https://github.com/chennanni/note-cheat-sheet/blob/master/jekyll.md
+
+## Updates
+
+- 2018/09/28 | v1.1: Add table of content function. - refer [jekyll-toc](https://github.com/allejo/jekyll-toc)
