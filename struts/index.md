@@ -1,3 +1,10 @@
+---
+layout: default
+title: Struts 2
+folder: struts
+permalink: /archive/struts/
+---
+
 # Struts 2
 
 ## MVC Architecture
