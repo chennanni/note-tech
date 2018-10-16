@@ -105,25 +105,27 @@ Cost
 
 ## Java Thread Example
 
-创建线程的方式
+创建线程对象的方式
 - 继承`Thread`类
 - 实现`Runnable`接口
+- 实现`Callable`接口
 
-Steps:
+创建线程的方式
+- 单个线程 `Thread`
+- 线程池 `Executors`
 
-- create a thread object
-  - create some object with thread features (**implement Runnable / extends Thread**)
-  - create a thread object
-- define the function of the thread
+Thread Programming Steps:
+
+- create (thread) objects with thread features (**implement Runnable / implement Callable / extends Thread**)
   - override `run()`
   - (optional) override `start()` ; usually the thread instantiation happens here
-- start the thread
-  - call `start()`
+- create a thread with (thread objects)
+  - call `Thread.start()` or `Executors.submit()`
 
 e.g.
 
 ~~~ java
- // Part 1
+ // Part 1: extends Thread
  class PrimeThread extends Thread {
      long minPrime;
      PrimeThread(long minPrime) {
@@ -131,14 +133,14 @@ e.g.
      }
      public void run() {
          // compute primes larger than minPrime
-          . . .
+         ...
      }
  }
-
+ ...
  PrimeThread p = new PrimeThread(143);
  p.start();
 
- // Part 2
+ // Part 2: implements Runnable
  class PrimeRun implements Runnable {
      long minPrime;
      PrimeRun(long minPrime) {
@@ -146,12 +148,19 @@ e.g.
      }
      public void run() {
          // compute primes larger than minPrime
-          . . .
+         ...
      }
  }
-
+ ...
  PrimeRun p = new PrimeRun(143);
  new Thread(p).start();
+ 
+ // Part 3: using Executors
+ ExecutorService executor = Executors.newSingleThreadExecutor();
+ executor.submit(() -> {
+     String threadName = Thread.currentThread().getName();
+     System.out.println("Hello " + threadName);
+ });
 ~~~
 
 ## Thread Issues
@@ -161,6 +170,39 @@ e.g.
 - **Race Condition**竞争: Race condition occurs when multiple threads update shared resources. 两个线程同时要更新一个资源，你先来还是我先来？谁都不相让，自然要打起来。
 - **Deadlock**死锁: Two or more threads are blocked forever, waiting for each other.
 
+e.g. 两个线程同时对String和int进行大量（1000次）操作，预期的结果是：count=1000，string存放了0-999。
+但是由于非线程安全，线程1，2同时操作变量，有一个的结果就被“丢掉”了。
+
+~~~ java
+public class ConcurrencyIssueTest {
+    String string = "";
+    int count = 0;
+
+    void inc() {
+        string += (","+count++);
+    }
+
+    public static void main(String args[]) throws Exception {
+        ConcurrencyIssueTest test = new ConcurrencyIssueTest();
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        IntStream.range(0, 1000).forEach(i -> executor.submit(test::inc));
+
+        executor.shutdown();
+        executor.awaitTermination(60, TimeUnit.SECONDS);
+
+        System.out.println(test.count);
+        System.out.println(test.string);
+    }
+}
+~~~
+
+输出如下：
+
+~~~
+999
+...277,279,281,283,285,287...
+~~~
+
 为了防止出现这些问题，需要在设计开发的时候特别注意，保证Thread Safe。
 
 ## Thread Safe
@@ -169,21 +211,19 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
 
 那么如何实现（资源的）Thread Safe呢？
 
-- 不变，make it immutable
-  - for example, declaring the field as `final`
-  - for example, `String` or `Integer` class
 - 隔离，use a pattern whereby each thread context is isolated from others
   - for example, `ThreadLocal` class
 - 加锁（限制瞬时单线程读写），restrict access to a resource to a single thread at a time
   - for example, `synchronized` keyword
   - for example, `ReentrantLock`
-  - for example, `Semaphores` with permit as 1
-  - for example, the local variables
 - 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
   - for example, `java.util.concurrent` package
-  - java.util.concurrent.atomic
+  - java.util.concurrent.atomic (CAS compare-and-swap)
   - java.util.concurrent.BlockingQueue
-  - java.util.concurrent.ConcurrentHashMap
+  - java.util.concurrent.ConcurrentHashMap (lock on segment)
+  - `Semaphores` (CAS -> AQS AbstractQueuedSynchronizer)
+- 其它
+  - for example, the local variables
 
 ## Synchronization
 
