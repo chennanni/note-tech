@@ -214,13 +214,12 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
 - 隔离，use a pattern whereby each thread context is isolated from others
   - for example, `ThreadLocal` class
 - 加锁（限制瞬时单线程读写），restrict access to a resource to a single thread at a time
-  - for example, `synchronized` keyword
+  - for example, `synchronized` keyword (monitor/intrinsic lock)
   - for example, `ReentrantLock`
+  - java.util.concurrent.`ConcurrentHashMap` (lock on segment)
 - 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
-  - for example, `java.util.concurrent` package
   - java.util.concurrent.atomic (CAS compare-and-swap)
   - java.util.concurrent.BlockingQueue
-  - java.util.concurrent.ConcurrentHashMap (lock on segment)
   - `Semaphores` (CAS -> AQS AbstractQueuedSynchronizer)
 - 其它
   - for example, the local variables
@@ -263,10 +262,6 @@ public synchronized void method() {
 那么到底同步方法有什么用呢？
 
 https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
-
-## Concurrency Design
-
-TODO
 
 ## Deadlock Prevention
 
@@ -319,3 +314,4 @@ fail-fast v.s. fail-safe: http://blog.csdn.net/chenssy/article/details/38151189
 - [40个Java多线程问题总结](http://www.cnblogs.com/xrq730/p/5060921.html)
 - [Java中的多线程你只要看这一篇就够了](http://www.importnew.com/21089.html)
 - [What-does-the-term-thread-safe-mean-in-Java](https://www.quora.com/What-does-the-term-thread-safe-mean-in-Java)
+- [Synchronization and Locks](https://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/)
