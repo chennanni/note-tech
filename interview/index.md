@@ -107,3 +107,7 @@ permalink: /archive/interview/
   Ivy
 
 ## Git
+
+- Branching Strategy.
+- Commit, push, and found error msg saying remote is ahead of local, what to do in this case?
+- Rebase v.s. Merge
