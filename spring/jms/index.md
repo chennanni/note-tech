@@ -57,6 +57,9 @@ public class JmsQueueSender {
 
 // receive
 // use JmsTemplate.doReceive(Session session, Destination destination, java.lang.String messageSelector)
+
+// browse
+// use JmsTemplate.browse(...)
 ~~~
 
 ## Example of Receive Convention
