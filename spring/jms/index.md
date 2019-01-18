@@ -104,6 +104,37 @@ So in real usage, we create a MessageListenerContainer, create a MessageListener
 </bean>
 ~~~
 
+## Persistence and Durability
+
+Persistence means that when failure occurs during message processing, the message will still be there (where you found it the first time) to process again once the failure is resolved.
+
+
+
+Durable Subscriber(持久订阅者/非持久订阅者)
+Be able to receive a message even if the listener is not active at a period of time.
+
+Message Persistence(消息的持久化/非持久化)
+
+采用持久传输时，传输的消息会保存到磁盘中
+
+传输模式
+
+setDeliveryMode
+
+~~~ xml
+  <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+      <property name="connectionFactory" ref="jmsConnectionFactory"/>
+      <property name="messageListener" ref="messageListener" />
+      <property name="destination" ref="datasetQueueDUMMY"/>
+      <property name="sessionTransacted" value="true" /><!-- whether JMS Sessions are transacted-->
+      <property name="pubSubDomain" value="true"/><!--use Publish/Subscribe domain (Topics)-->
+      <property name="subscriptionDurable" value="true" /><!--make the subscription durable-->
+  </bean>
+~~~
+
+- [JMS开发步骤和持久化/非持久化Topic消息](https://www.cnblogs.com/xinhuaxuan/p/6105985.html)
+- [消息的持久化和非持久化 以及 持久订阅者 和 非持久订阅者 之间的区别与联系](https://www.cnblogs.com/hapjin/p/5644402.html)
+
 ## Links
 
 - [Note-J2EE-JMS](http://chennanni.github.io/note-tech/archive/j2ee/jms/)
