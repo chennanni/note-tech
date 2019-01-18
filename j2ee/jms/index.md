@@ -25,14 +25,14 @@ permalink: /archive/j2ee/jms/
 
 ## Pre - Usage
 
-使用场景1：用户注册
+**使用场景1：用户注册**
 
 - 校验用户名等信息，如果没问题会在数据库中添加一个用户记录（同步）
 - 如果是用邮箱注册会给你发送一封注册成功的邮件，手机注册则会发送一条短信（异步）
 - 分析用户的个人信息，以便将来向他推荐一些志同道合的人，或向那些人推荐他（异步）
 - 发送给用户一个包含操作指南的系统通知（异步）
 
-使用场景2：秒杀活动
+**使用场景2：秒杀活动**
 
 比如服务器一秒能处理100个订单，但秒杀活动1秒进来1000个订单，持续10秒，在后端能力无法增加的情况下， 可以用消息队列将总共10000个请求压在队列里，后台consumer按原有能力处理，100秒后处理完所有请求（而不是直接宕机丢失订单数据）。
 
@@ -49,7 +49,7 @@ send and read messages from one application to another.
 - Apache ActiveMQ
 - RabbitMQ
 
-## Messaging Domains
+## JMS - Messaging Domains
 
 1.Point-to-Point (PTP) Messaging Domain
 
@@ -65,13 +65,13 @@ It is like broadcasting. Here, Topic is used as a message oriented middleware th
 
 ![jms_pubsub](img/jms_pubsub.png)
 
-## Programming Model
+## JMS - Programming Model
 
 ![jms_model](img/jms_model.png)
 
 Note: The destination can be either Queue or Topic.
 
-## General Implementation Steps
+## JMS - General Implementation Steps
 
 - register elements: ConnectionFactory, destination(Queue or Topic)
 - register Connection and Session
@@ -79,7 +79,7 @@ Note: The destination can be either Queue or Topic.
 - create MessageProducer and send message
 - create MessageConsumer and receive message
 
-## JMS Receiving Model
+## JMS - Receiving Model
 
 消费者有两种接受消息的模式：
 - Synchronous
