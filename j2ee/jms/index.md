@@ -7,31 +7,47 @@ permalink: /archive/j2ee/jms/
 
 # J2EE - JMS
 
-## Intro
+## Pre - Message Queue
 
-JMS (Java Message Service) is an API that provides the facility to create, 
+**什么是消息队列**
+
+消息队列(Message Queue)是一种进程间通信或同一进程的不同线程间的通信方式。
+
+**实现**
+
+消息队列常常保存在链表结构中，拥有权限的进程可以向消息队列中写入或读取消息。
+
+**特点**
+
+- 主要特点是异步处理
+- 主要目的是减少请求响应时间和解耦
+- 主要的使用场景就是将比较耗时而且不需要即时（同步）返回结果的操作作为消息放入消息队列
+
+## Pre - Usage
+
+使用场景1：用户注册
+
+- 校验用户名等信息，如果没问题会在数据库中添加一个用户记录（同步）
+- 如果是用邮箱注册会给你发送一封注册成功的邮件，手机注册则会发送一条短信（异步）
+- 分析用户的个人信息，以便将来向他推荐一些志同道合的人，或向那些人推荐他（异步）
+- 发送给用户一个包含操作指南的系统通知（异步）
+
+使用场景2：秒杀活动
+
+比如服务器一秒能处理100个订单，但秒杀活动1秒进来1000个订单，持续10秒，在后端能力无法增加的情况下， 可以用消息队列将总共10000个请求压在队列里，后台consumer按原有能力处理，100秒后处理完所有请求（而不是直接宕机丢失订单数据）。
+
+（再次强调，主要就是将可分割的流程/操作**解耦**，使其可以**异步**处理。）
+
+## Intro - JMS
+
+JMS (Java Message Service) is an **API** that provides the facility to create, 
 send and read messages from one application to another.
 
-## Usage
+解读：JMS和JDBC一样，都是一套标准，具体的实现还是要看各大厂商。比如常见的实现有以下这些：
 
-Example 1:
-
-To process long-running operations asynchronously. 
-A web user won't want to wait for more than 5 seconds for a request to process. 
-If you have one that runs longer than that, one design is to submit the request to a queue and 
-immediately send back a URL that the user can check to see when the job is finished.
-
-Example 2:
-
-To place an order for a particular customer. 
-As part of placing that order (and storing it in a database) you may wish to carry a number of additional tasks:
-
-- Store the order in some sort of third party back-end system (such as SAP).
-- Send an email to the customer to inform them their order has been placed.
-
-To do this your application code would publish a message onto a JMS queue which includes an order id. One part of your application listening to the queue may respond to the event by taking the orderId, looking the order up in the database and then place that order with another third party system. Another part of your application may be responsible for taking the orderId and sending a confirmation email to the customer.
-
-<http://stackoverflow.com/questions/1035949/real-world-use-of-jms-message-queues>
+- Spring JMS
+- Apache ActiveMQ
+- RabbitMQ
 
 ## Messaging Domains
 
@@ -49,11 +65,19 @@ It is like broadcasting. Here, Topic is used as a message oriented middleware th
 
 ![jms_pubsub](img/jms_pubsub.png)
 
-## JMS Programming Model
+## Programming Model
 
 ![jms_model](img/jms_model.png)
 
 Note: The destination can be either Queue or Topic.
+
+## General Implementation Steps
+
+- register elements: ConnectionFactory, destination(Queue or Topic)
+- register Connection and Session
+- start the connection
+- create MessageProducer and send message
+- create MessageConsumer and receive message
 
 ## JMS Receiving Model
 
@@ -65,15 +89,7 @@ Note: The destination can be either Queue or Topic.
   - using `MessageListener`
   - 消费者注册一个监听器，当接到消息时进行callback操作
 
-## Implementation Steps
-
-- register elements: ConnectionFactory, destination(Queue or Topic)
-- register Connection and Session
-- start the connection
-- create MessageProducer and send message
-- create MessageConsumer and receive message
-
-## In Practice
+## In Practice - ActiveMQ
 
 Elements
 - producer: create producer and send message
