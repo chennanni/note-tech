@@ -106,20 +106,17 @@ So in real usage, we create a MessageListenerContainer, create a MessageListener
 
 ## Persistence and Durability
 
-Persistence means that when failure occurs during message processing, the message will still be there (where you found it the first time) to process again once the failure is resolved.
+首先需要声明一点，Destination（Queue/Topic）收到消息后，（笔者猜测）应该是有实现`Serilization`的功能保证消息的持久性，但是这个和下面要讨论的Persistence又是不同的。
 
+在JMS的整个流程中，我们可以分为两个阶段来考虑，如果在某个阶段挂了会发生什么：
+- 发送：消息发送过程中挂了，消息就丢了，但是可以配置Message Persistence这个属性来保证重启时重发。
+  - 一般是用`setDeliveryMode(DeliveryMode.PERSISTENT)`来实现。
+- 接收（Queue）：因为Queue不需要监听，只要发送成功，任何时候起Queue都能收到消息。
+- 接受（Topic）：这里分Subscriber起没起两种情况。
+  - 如果Subscriber起了，那就能收到。
+  - 如果Subscriber没起，那就收不到。但是可以配置Durable Subscriber来保证会为其保留消息，一般需要配置`subscriptionDurable`类似的属性。
 
-
-Durable Subscriber(持久订阅者/非持久订阅者)
-Be able to receive a message even if the listener is not active at a period of time.
-
-Message Persistence(消息的持久化/非持久化)
-
-采用持久传输时，传输的消息会保存到磁盘中
-
-传输模式
-
-setDeliveryMode
+example of Durable Subscriber
 
 ~~~ xml
   <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
