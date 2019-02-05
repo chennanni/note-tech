@@ -35,9 +35,6 @@ permalink: /archive/interview/
     - Exception Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
-  - Concurrency
-    - Explain ReentrantLock?
-    - Explain Semaphore?
   - Misc
     - volatile -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
     - transient -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
@@ -50,6 +47,8 @@ permalink: /archive/interview/
     - Life Cycle of a thread -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
     - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
     - How to ensure Thread Safety -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
+    - Explain ReentrantLock?
+    - Explain Semaphore?
   - JVM
     - Class Loading
   - GC
