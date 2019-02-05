@@ -49,6 +49,13 @@ TODO
 
 http://maven.apache.org/plugins/maven-assembly-plugin/
 
+## Dependency
+
+TODO
+
+- [Maven依赖传递、依赖传递排除、依赖冲突](https://www.cnblogs.com/ygj0930/p/6628429.html)
+- [Maven依赖版本冲突的分析及解决小结](https://www.cnblogs.com/godtrue/p/6220512.html)
+
 ## Cheat Cheet
 
 ```
