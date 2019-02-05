@@ -17,6 +17,9 @@ permalink: /archive/interview/
     - Can you describe one of the things that brings you the most sense of achievement in your career?
     - Can you describe a memorable bug fix experience?
 - Tech Questions
+  - What is the tech?
+  - How you use it?
+  - How it's implemented? 
 - [Algorithm/Code](https://github.com/chennanni/crack-leetcode)
 
 ## Java
@@ -25,13 +28,16 @@ permalink: /archive/interview/
   
   - Collection
     - Collection Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
-    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593) and [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
-    - HashMap vs Hashtable vs ConcurrentHashMap -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
     - ArrayList vs LinkedList -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
+    - HashMap vs Hashtable vs ConcurrentHashMap -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
+    - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593) and [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
   - Exception
     - Exception Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
+  - Concurrency
+    - Explain ReentrantLock?
+    - Explain Semaphore?
   - Misc
     - volatile -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
     - transient -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
@@ -58,6 +64,9 @@ permalink: /archive/interview/
 
 ## SSH
 
+  TCP/IP
+  - 三次握手
+
   Spring
 
   Struts
@@ -79,6 +88,8 @@ permalink: /archive/interview/
   SOAP
 
 ## Database Tech
+
+- How to ensure Transaction atomicity? -> log
 
   JDBC
 
@@ -111,7 +122,7 @@ permalink: /archive/interview/
 - Branching Strategy?
 - Commit, push, and found error msg saying remote is ahead of local, what to do in this case?
 - Rebase v.s. Merge?
-- Git squash fix?
+- Git squash fix? (fix bad commits)
 
 [Link](http://chennanni.github.io/note-tech/archive/git/)
 
