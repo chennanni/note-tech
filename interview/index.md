@@ -108,6 +108,10 @@ permalink: /archive/interview/
 
 ## Git
 
-- Branching Strategy.
+- Branching Strategy?
 - Commit, push, and found error msg saying remote is ahead of local, what to do in this case?
-- Rebase v.s. Merge
+- Rebase v.s. Merge?
+- Git squash fix?
+
+[Link](http://chennanni.github.io/note-tech/archive/git/)
+
