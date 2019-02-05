@@ -64,10 +64,12 @@ permalink: /archive/interview/
 ## SSH
 
   TCP/IP
-  - 三次握手
+  - 三次握手?
 
   Spring
-
+  - Explain DI? 
+  - Explain AOP?
+  
   Struts
 
   Hibernate
