@@ -96,6 +96,13 @@ permalink: /archive/interview/
 
   Oracle DB
 
+## Design Pattern
+- Singleton
+- Factory
+- Template
+- Decorator
+- Proxy
+
 ## Test
 
   ### JUnit Test
