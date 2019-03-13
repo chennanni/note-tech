@@ -125,7 +125,9 @@ ps <aux>
 top: display top CPU processes
 
 kill <%1>: kill job number 1
-kill <26152>: kill process number 26152
+kill <26152>: generates the SIGTERM signal requesting process to terminate
+kill -9 <26152>: generates the SIGKILL signal for process to terminate immediately or forcefully
+
 ```
 
 ## help ## 
