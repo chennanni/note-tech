@@ -112,7 +112,7 @@ sudo: allows a permitted user to execute a command as the superuser or another u
 
 ## check process ##
 
-=> **ps**, **top**, **kill**, 
+=> **ps**, **top**, **kill**, **du**
 
 ```
 ps: show process status for the current user
@@ -128,6 +128,15 @@ kill <%1>: kill job number 1
 kill <26152>: generates the SIGTERM signal requesting process to terminate
 kill -9 <26152>: generates the SIGKILL signal for process to terminate immediately or forcefully
 
+du -hs * | sort -rh | head -n 5: show the top 5 folder size in current folder
+  du command: Estimate file space usage.
+    -h : Print sizes in human readable format (e.g., 10MB).
+    -s : Display only a total for each argument.
+  sort command : sort lines of text files.
+    -r : Reverse the result of comparisons.
+    -h : Compare human readable numbers (e.g., 2K, 1G).
+    
+df -h <path>: show the disk usage on current folder
 ```
 
 ## help ## 
