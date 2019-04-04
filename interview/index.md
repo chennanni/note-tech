@@ -53,7 +53,14 @@ permalink: /archive/interview/
     - Class Loading
   - GC
   - Java 8 New Feature
-    - Lambda Expressions -- see [here](http://www.cnblogs.com/maxstack/p/7550153.html)
+    - Lambda Expressions -- see in [blog](http://www.cnblogs.com/maxstack/p/7550153.html)
+      - What's the feature of Lambda Expression?
+      - Write Code: sort an array in ascending order.
+      - What's the return type/Object type of Lambda Expression?
+    - Stream -- see in java note
+      - What's the feature of Stream?
+      - Does Stream processes element in serial?
+      - Write Code: given a List\<Integer\>, filter out the negative values.
     - Method Reference
     - Date and Time API
   
