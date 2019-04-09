@@ -26,6 +26,10 @@ permalink: /archive/interview/
 
   ### Basic
   
+  - Access Modifiers 
+    - Explain private, public, protected, default.
+    - Can subclass access superclass's private variable?
+    - Can subclass access superclass's public method which uses a private variable?
   - Collection
     - Collection Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/collection/index.md)
     - ArrayList vs LinkedList -- see [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
@@ -33,12 +37,13 @@ permalink: /archive/interview/
     - HashMap Implementation -- see [here](http://blog.csdn.net/vking_wang/article/details/14166593) and [here](https://github.com/chennanni/note-tech/blob/master/java/questions/index.md)
   - Exception
     - Exception Hierarchy -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
+    - When to catch v.s. throw exception?
   - Generic
     - What is Generic and why using it? -- see [here](http://chennanni.com/tech-note/archive/java/basic/)
   - Misc
+    - static -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
     - volatile -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
     - transient -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
-    - static -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
     - Overriding vs Overloading -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
   
   ### Advanced
