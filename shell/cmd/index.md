@@ -114,13 +114,14 @@ sudo: allows a permitted user to execute a command as the superuser or another u
 
 => **ps**, **top**, **kill**, **du**
 
-```
+~~~ shell
 ps: show process status for the current user
 ps grep <'pwd'>: show process matching pattern 'pwd'
 ps <aux>
 // a = show processes for all users
 // u = display the process's user/owner
 // x = also show processes not attached to a terminal
+ps -eo user,pid,stat,%cpu,%mem,rss,args --sort rss | less
 
 top: display top CPU processes
 
@@ -137,7 +138,7 @@ du -hs * | sort -rh | head -n 5: show the top 5 folder size in current folder
     -h : Compare human readable numbers (e.g., 2K, 1G).
     
 df -h <path>: show the disk usage on current folder
-```
+~~~
 
 ## help ## 
 
