@@ -73,6 +73,12 @@ permalink: /archive/interview/
 
 - Query题型 -- see [here](https://github.com/chennanni/note-tech/blob/master/sql/query/index.md)
 
+## Shell
+
+- Check log in real time?
+- Delete old date's data to free at least 50% of space?
+- xargs cmd?
+
 ## SSH
 
   TCP/IP
