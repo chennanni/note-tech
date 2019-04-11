@@ -112,7 +112,7 @@ sudo: allows a permitted user to execute a command as the superuser or another u
 
 ## check process ##
 
-=> **ps**, **top**, **kill**, **du**
+=> **ps**, **top**, **kill**, **du**, **free**
 
 ~~~ shell
 ps: show process status for the current user
@@ -138,6 +138,9 @@ du -hs * | sort -rh | head -n 5: show the top 5 folder size in current folder
     -h : Compare human readable numbers (e.g., 2K, 1G).
     
 df -h <path>: show the disk usage on current folder
+
+free -h: show free memory in human-readable format
+free -oh: do not show buffer memory
 ~~~
 
 ## help ## 
