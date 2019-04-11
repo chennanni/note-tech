@@ -152,6 +152,17 @@ type <cmd>: show cmd's alias
 who | sort: list logged-in user and sort the result
 ```
 
+## others ##
+
+=> **xargs**
+
+~~~ shell
+xargs: build and execute command lines from standard input
+echo --help | xargs cat: equals to cat --help
+echo '1@2@3' | xargs -d '@' -n1 echo: divide input by @ and parse as parameter to cmd 1 by 1
+cat input.txt | xargs -I {} echo {}: use {} to replace the input cmd
+~~~
+
 ## Links
 
 - [Linux and Unix top 10 commands](http://www.computerhope.com/unixtop1.htm)
