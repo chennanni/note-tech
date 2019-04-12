@@ -58,3 +58,7 @@ Vertical partitioning involves creating tables with fewer columns and using addi
 ## Advantage
 
 分库主要是提高高并发下，数据库的写入能力。
+
+## Reference
+
+- [数据库分库分表思路](https://www.cnblogs.com/butterfly100/p/9034281.html)
