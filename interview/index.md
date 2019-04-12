@@ -24,7 +24,7 @@ permalink: /archive/interview/
 
 ## Java
 
-  ### Basic
+### Basic ###
   
   - Access Modifiers 
     - Explain private, public, protected, default.
@@ -46,7 +46,7 @@ permalink: /archive/interview/
     - transient -- see [here](https://github.com/chennanni/note-tech/blob/master/java/basic/index.md)
     - Overriding vs Overloading -- see [here](https://github.com/chennanni/cheat-sheet/blob/master/java-interview-questions.md)
   
-  ### Advanced
+### Advanced ###
   
   - Concurrency
     - Life Cycle of a thread -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
@@ -123,12 +123,12 @@ permalink: /archive/interview/
 
 ## Test
 
-  ### JUnit Test
+### JUnit Test ###
   
   - Given a specific senario, write all test cases and test code
   - What is mock and Why using it?
   
-  ### Testing Tools
+### Testing Tools ###
   
   - Mokito
   - Power Mock
@@ -152,4 +152,3 @@ permalink: /archive/interview/
 - Git squash fix? (fix bad commits)
 
 [Link](http://chennanni.github.io/note-tech/archive/git/)
-
