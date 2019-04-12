@@ -1,12 +1,17 @@
+---
+layout: default
+title: DB - Partition
+folder: basic
+permalink: /archive/db/partition/
+---
+
 # Horizontal Partitioning
 
 Also known as "Sharding". (分库)
 
-Horizontal partitioning involves putting different rows into different tables.
+Horizontal partitioning involves putting different rows into different tables. Each partition forms part of a shard, which may in turn be located on a separate database server or physical location. 
 
-Each partition forms part of a shard, which may in turn be located on a separate database server or physical location. 
-
-The advantage is 
+The **advantage** is 
 - the number of rows in each table is reduced which improves search performance.
 - if shards are based on geo-locations, application may re-direct queries based on regions, which improves performance.
 - you can use more cheaper, "lower-end" machines to host your data on, instead of one big server, which might not suffice anymore.
