@@ -5,7 +5,7 @@ folder: visualvm
 permalink: /archive/java/visualvm/
 ---
 
-# JVisualVM
+# Java - VisualVM
 
 > JVisualVM，能够监控线程Thread，内存Memory，CPU时间和对象Class。
 
