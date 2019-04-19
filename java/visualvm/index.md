@@ -30,7 +30,7 @@ permalink: /archive/java/visualvm/
 
 ## 实例
 
-mock CPU usage
+**mock CPU usage**
 
 ~~~ java
 public static void main(String[] args) {
@@ -49,7 +49,7 @@ public static void main(String[] args) {
 
 ![cpu.1.PNG](img/cpu.1.PNG)
 
-mock GC
+**mock GC**
 
 ~~~ java
 public static void main(String[] args) {
