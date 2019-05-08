@@ -109,26 +109,7 @@ permalink: /archive/interview/
 
   Oracle DB
 
-## Design Pattern
-- Singleton
-- Factory
-- Template
-- Decorator
-- Proxy
 
-## Test
-
-### JUnit Test ###
-  
-  - Given a specific senario, write all test cases and test code
-  - What is mock and Why using it?
-  
-### Testing Tools ###
-  
-  - Mokito
-  - Power Mock
-  - Jacoco
-  - Sonar Cube
 
 ## Build
 
@@ -136,6 +117,20 @@ Maven
 - Where Maven download dependency? - local -> central -> remote
 - A->B(v1.1), C->D->E->B(v1.2), how many B in project? 一个，短路优先，先声明优先。
 - How to solve dependency conflict? - Exclusion.
+
+[https://github.com/chennanni/note-tech/blob/master/build/maven/index.md](https://github.com/chennanni/note-tech/blob/master/build/maven/index.md)
+
+## Test
+
+JUnit Test
+- Given a funciton `void removeHeadAndPersistToDb(List<Obj> list)`, write test cases/code.
+- What is mock and Why using it? - Mokito/Power Mock
+- How to check test coverage? - Jacoco
+
+## Log
+
+- How to avoid too many processing log? - set debug level
+- How to rename log file name? - change in property file
 
 ## Version Control
 
@@ -145,4 +140,12 @@ Git
 - Rebase v.s. Merge? - Rewrite commit history or not.
 - Release branch is applied several ad-hoc fix commits, how to apply that to current dev branch? - Cherry-pick.
 
-[Link](http://chennanni.github.io/note-tech/archive/git/)
+[http://chennanni.github.io/note-tech/archive/git](http://chennanni.github.io/note-tech/archive/git)
+
+## Design Pattern
+
+- Singleton
+- Factory
+- Template
+- Decorator
+- Proxy
