@@ -63,10 +63,23 @@ permalink: /archive/interview/
     - Write Code: given a List\<Integer\>, filter out the negative values.
   - Method Reference
   - Date and Time API
-  
-## SQL
 
-- Query题型 -- see [here](https://github.com/chennanni/note-tech/blob/master/sql/query/index.md)
+## Database
+
+SQL Query -- see [here](https://github.com/chennanni/note-tech/blob/master/sql/query/index.md)
+- find duplicate
+- reusable sql
+
+JDBC -- see [here](http://chennanni.github.io/note-tech/archive/jdbc)
+- Describe data flow/module from Java App to DB.
+- How to use JDBC?
+- sp1, sp2, sp3, fail in sp2, is sp1 saved to db? - depends on the program, autocommit & savepoint
+- Why `Class.forName("oracle.jdbc.driver.OracleDriver")`, not decide from url when creating Connection? - design approach, open for all driver impl
+
+Oracle DB
+- ACID? - Atomicity, Consistency, Isolation, Durability.
+- How to ensure Transaction atomicity? -> log
+- Transaction Isolation Level? What's the default setting for Oracle/JDBC?
 
 ## Shell
 
@@ -101,16 +114,6 @@ permalink: /archive/interview/
 
   SOAP
 
-## Database Tech
-
-- How to ensure Transaction atomicity? -> log
-
-  JDBC
-
-  Oracle DB
-
-
-
 ## Build
 
 Maven
@@ -129,8 +132,11 @@ JUnit Test
 
 ## Log
 
+Log4j
 - How to avoid too many processing log? - set debug level
 - How to rename log file name? - change in property file
+
+[http://chennanni.github.io/note-tech/archive/log/](http://chennanni.github.io/note-tech/archive/log/)
 
 ## Version Control
 
