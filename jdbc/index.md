@@ -11,22 +11,14 @@ Java Database Connectivity
 
 It is an API for the connection between Java programming language and Databases.
 
-## Main Tasks
-
-- Making a connection to a database.
-- Creating SQL or MySQL statements.
-- Executing SQL or MySQL queries in the database.
-- Viewing & Modifying the resulting records.
-
-## Architecture
+## JDBC Architecture
 
 ![jdbc_architecture](img/jdbc_architecture.png)
 
-JDBC API: This provides the application-to-JDBC Manager connection.
+- JDBC API: This provides the application-to-JDBC Manager connection.
+- JDBC Driver API: This supports the JDBC Manager-to-Driver Connection.
 
-JDBC Driver API: This supports the JDBC Manager-to-Driver Connection.
-
-### JDBC Drivers
+### What is JDBC Drivers
 
 A JDBC driver is a software component enabling a Java application to interact with a database.
 
@@ -34,9 +26,9 @@ Type 1 Deiver: JDBC-ODBC Bridge (JDK)
 
 ![jdbc_odbc_bridge](img/jdbc_odbc_bridge.png)
 
-.class(byte code)  ->  JDBC  ->  ODBC  -> DB
+Flow: `.class`(byte code)  ->  `JDBC`  ->  `ODBC`  -> `DB`
 
-## API
+## Java API
 
 Packages
 - java.sql
@@ -217,5 +209,6 @@ public class JDBCDemo {
 
 ## Links
 
+- [Java中JDBC的使用详解](https://blog.csdn.net/qq_22172133/article/details/81266048)
 - [JDBC Tutorial](http://www.tutorialspoint.com/jdbc/jdbc-introduction.htm)
 - [Oracle Database 11g Express Edition Getting Started Guide](http://docs.oracle.com/cd/E17781_01/admin.112/e18585/toc.htm)
