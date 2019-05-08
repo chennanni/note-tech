@@ -40,7 +40,7 @@ It describes the model of Common JDBC Components (Objects)
 Connection <- DriverManager -> Driver <-> DB
     |
   input -> Statement
-	  processing...
+      processing...
   output <- ResultSet
 ~~~
 
