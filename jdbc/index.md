@@ -18,7 +18,7 @@ It is an API for the connection between Java programming language and Databases.
 - JDBC API: This provides the application-to-JDBC Manager connection.
 - JDBC Driver API: This supports the JDBC Manager-to-Driver Connection.
 
-### What is JDBC Drivers
+## What is JDBC Drivers
 
 A JDBC driver is a software component enabling a Java application to interact with a database.
 
@@ -94,6 +94,8 @@ Step 3
 
 ## Examples
 
+connect db, update db
+
 ~~~ java
 import java.sql.*;
 
@@ -131,28 +133,6 @@ public class JDBCDemo {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void createTable() {
-		if(conn != null) {
-			Statement st;
-			try {
-				st = conn.createStatement();
-				st.execute("CREATE TABLE books (bid number, title varchar(15), price number(8,2))");
-				System.out.println("Table is created!");
-				int num = st.executeUpdate("INSERT INTO books VALUES (1, 'Java', 123.45)");
-				num = num + st.executeUpdate("INSERT INTO books VALUES (2, 'C++', 22.12)");
-				num = num + st.executeUpdate("INSERT INTO books VALUES (3, 'JSP', 34.56)");
-				System.out.println(num + " rows inserted!");
-				st.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void deleteTable() {
-		
 	}
 	
 	public void updateData() {
@@ -194,17 +174,42 @@ public class JDBCDemo {
 			}
 		}
 	}
-	
-	public static void main(String args[]) {
-		JDBCDemo db = new JDBCDemo();
-		db.conn = db.connectDB();
-		//db.createTable();
-		db.updateData();
-		db.selectData();
-		db.closeDB();
+}
+~~~
+
+createTable()
+
+~~~ java
+public void createTable() {
+	if(conn != null) {
+		Statement st;
+		try {
+			st = conn.createStatement();
+			st.execute("CREATE TABLE books (bid number, title varchar(15), price number(8,2))");
+			System.out.println("Table is created!");
+			int num = st.executeUpdate("INSERT INTO books VALUES (1, 'Java', 123.45)");
+			num = num + st.executeUpdate("INSERT INTO books VALUES (2, 'C++', 22.12)");
+			num = num + st.executeUpdate("INSERT INTO books VALUES (3, 'JSP', 34.56)");
+			System.out.println(num + " rows inserted!");
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
+~~~
 
+main()
+
+~~~ java
+public static void main(String args[]) {
+	JDBCDemo db = new JDBCDemo();
+	db.conn = db.connectDB();
+	//db.createTable();
+	db.updateData();
+	db.selectData();
+	db.closeDB();
+}
 ~~~
 
 ## Links
