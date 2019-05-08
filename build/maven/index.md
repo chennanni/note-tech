@@ -23,12 +23,6 @@ Maven is a **build** automation tool used primarily for Java projects.
 
 ## How to Add Dependency
 
-**1**
-
-In GUI, there's a 'ADD' Button.
-
-**2**
-
 in pom.xml, add:
 
 ``` xml
