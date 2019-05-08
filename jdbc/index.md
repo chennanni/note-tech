@@ -34,7 +34,15 @@ Packages
 - java.sql
 - javax.sql
 
-Common JDBC Components (Objects)
+It describes the model of Common JDBC Components (Objects)
+
+~~~
+Connection <- DriverManager -> Driver <-> DB
+    |
+  input -> Statement
+	  processing...
+  output <- ResultSet
+~~~
 
 Driver
 - This interface handles the communications with the database server. You will interact directly with Driver objects very rarely. Instead, you use DriverManager objects, which manages objects of this type.
