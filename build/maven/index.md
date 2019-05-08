@@ -110,6 +110,8 @@ Build LifeCycle
 
 Search sequence: local repository -> central repository -> remote repository
 
+- [https://www.tutorialspoint.com/maven/maven_repositories.htm](https://www.tutorialspoint.com/maven/maven_repositories.htm)
+
 ## Dependency Conflict
 
 依赖冲突解决：短路优先，先声明优先
