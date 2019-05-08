@@ -81,38 +81,40 @@ Oracle DB
 - How to ensure Transaction atomicity? -> log
 - Transaction Isolation Level? What's the default setting for Oracle/JDBC?
 
+## Web Framework
+
+TCP/IP
+- 三次握手?
+
+Servlet
+- Explain Servlet life cycle? init, service, destory
+- Is Servlet thread safe? - no
+- Is Spring MVC thread safe? - yes
+
+RESTful
+- What is RESTful?
+- What's response format? - json, xml, csv...
+
+Spring
+- Explain DI? 
+- Explain AOP?
+
+Struts
+- Explain Workflow.
+- Is Action class thread safe?
+
+Hibernate
+- Why use hibernate?
+- Explain lazy loading in hibernate?
+- Explain cache in hibernate?
+
+[https://www.cnblogs.com/Java3y/p/8535459.html](https://www.cnblogs.com/Java3y/p/8535459.html)
+
 ## Shell
 
-- Check log in real time?
+- Check log in real time? - `tail -fn 100`
 - Delete old date's data to free at least 50% of space?
 - xargs cmd?
-
-## Web
-
-  TCP/IP
-  - 三次握手?
-
-  Spring
-  - Explain DI? 
-  - Explain AOP?
-  
-  Struts
-
-  Hibernate
-
-## Server Side Tech
-
-  Servlet
-
-  EJB
-
-  Weblogic
-
-## Web Service
-
-  RESTful
-
-  SOAP
 
 ## Build
 
