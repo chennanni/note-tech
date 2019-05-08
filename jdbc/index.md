@@ -28,7 +28,7 @@ Type 1 Deiver: JDBC-ODBC Bridge (JDK)
 
 Flow: `.class`(byte code)  ->  `JDBC`  ->  `ODBC`  -> `DB`
 
-## Java API
+## JDBC API
 
 Packages
 - java.sql
@@ -46,31 +46,19 @@ Connection
 - This interface with all methods for contacting a database. The connection object represents communication context, i.e., all communication with database is through connection object only.
 - `Statement createStatement()`
 - `PreparedStatement prepareStatement()`
-- `CallableStatement prepareCall()`
 - `commit()`
 - `rollback()`
 
 Statement
 - You use objects created from this interface to submit the SQL statements to the database. Some derived interfaces accept parameters in addition to executing stored procedures.
-- `Statement`
- - boolean execute (String SQL)
- - int executeUpdate (String SQL)
- - ResultSet executeQuery (String SQL)
- - addBatch()
- - executeBatch()
- - clearBatch()
-- `PreparedStatement`
- - setXXX(int index, `<T>` value)
-- `CallableStatement`
- - setXXX(...)
- - registerOutParameter(...)
+ - `boolean execute()`
+ - `int executeUpdate()`
+ - `ResultSet executeQuery()`
 
 ResultSet
 - These objects hold data retrieved from a database after you execute an SQL query using Statement objects. It acts as an iterator to allow you to move through its data.
-- `public boolean next() throws SQLException`
-- `public int getInt(String columnName) throws SQLException`
-- `public void updateString(int columnIndex, String s) throws SQLException`
-- `public void updateRow()`
+- `boolean next()`
+- `int getInt()`
 
 SQLException
 - This class handles any errors that occur in a database application.
