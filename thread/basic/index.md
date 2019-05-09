@@ -211,18 +211,19 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
 
 那么如何实现（资源的）Thread Safe呢？
 
-- 隔离，use a pattern whereby each thread context is isolated from others
+- 隔离，use a pattern whereby each thread context is isolated from others\
+  - 局部变量
   - for example, `ThreadLocal` class
 - 加锁（限制瞬时单线程读写），restrict access to a resource to a single thread at a time
   - for example, `synchronized` keyword (monitor/intrinsic lock)
   - for example, `ReentrantLock`
   - java.util.concurrent.`ConcurrentHashMap` (lock on segment)
-- 多线程设计，concurrent design involves structuring the shared state in a manner that allows multiple threads to simultaneously (concurrently) modify the state without interfering with each other
+- CAS（如果修改，从头再来，避免加锁开销），适合并发量不高的情况
   - java.util.concurrent.atomic (CAS compare-and-swap)
   - java.util.concurrent.BlockingQueue
   - `Semaphores` (CAS -> AQS AbstractQueuedSynchronizer)
-- 其它
-  - for example, the local variables
+
+- [https://www.cnblogs.com/lixinjie/p/a-answer-about-thread-safety-in-a-interview.html](https://www.cnblogs.com/lixinjie/p/a-answer-about-thread-safety-in-a-interview.html)
 
 ## Synchronization
 
