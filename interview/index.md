@@ -46,7 +46,7 @@ permalink: /archive/interview/
 - Concurrency 并发
   - Life Cycle of a thread -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
   - Implement a multithread program like "Producer & Consumer" -- see [here](http://www.cnblogs.com/linjiqin/p/3217050.html)
-  - How to ensure Thread Safety -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md)
+  - How to ensure Thread Safety -- see [here](https://github.com/chennanni/note-tech/blob/master/thread/basic/index.md#thread-safe)
   - Explain ReentrantLock?
   - Explain Semaphore?
 - JVM
