@@ -81,7 +81,55 @@ Oracle DB
 - How to ensure Transaction atomicity? -> log
 - Transaction Isolation Level? What's the default setting for Oracle/JDBC?
 
-## Web Framework
+## Dev - Shell
+
+- Check log in real time? - `tail -fn 100`
+- Delete old date's data to free at least 50% of space?
+- xargs cmd?
+
+## Dev - Build
+
+Maven
+- Where Maven download dependency? - local -> central -> remote
+- A->B(v1.1), C->D->E->B(v1.2), how many B in project? 一个，短路优先，先声明优先。
+- How to solve dependency conflict? - Exclusion.
+
+[https://github.com/chennanni/note-tech/blob/master/build/maven/index.md](https://github.com/chennanni/note-tech/blob/master/build/maven/index.md)
+
+## Dev - Test
+
+JUnit Test
+- Given a funciton `void removeHeadAndPersistToDb(List<Obj> list)`, write test cases/code.
+- What is mock and Why using it? - Mokito/Power Mock
+- How to check test coverage? - Jacoco
+
+## Dev - Log
+
+Log4j
+- How to avoid too many processing log? - set debug level
+- How to rename log file name? - change in property file
+
+[http://chennanni.github.io/note-tech/archive/log/](http://chennanni.github.io/note-tech/archive/log/)
+
+## Dev - Version Control
+
+Git 
+- Branching Strategy?
+- Commit, push, and found error msg saying remote is ahead of local, what to do in this case? - Rebase.
+- Rebase v.s. Merge? - Rewrite commit history or not.
+- Release branch is applied several ad-hoc fix commits, how to apply that to current dev branch? - Cherry-pick.
+
+[http://chennanni.github.io/note-tech/archive/git](http://chennanni.github.io/note-tech/archive/git)
+
+## Framework - Design Pattern
+
+- Singleton
+- Factory
+- Template
+- Decorator
+- Proxy
+
+## Framework - Web
 
 TCP/IP
 - 三次握手?
@@ -109,51 +157,3 @@ Hibernate
 - Explain cache in hibernate?
 
 [https://www.cnblogs.com/Java3y/p/8535459.html](https://www.cnblogs.com/Java3y/p/8535459.html)
-
-## Shell
-
-- Check log in real time? - `tail -fn 100`
-- Delete old date's data to free at least 50% of space?
-- xargs cmd?
-
-## Build
-
-Maven
-- Where Maven download dependency? - local -> central -> remote
-- A->B(v1.1), C->D->E->B(v1.2), how many B in project? 一个，短路优先，先声明优先。
-- How to solve dependency conflict? - Exclusion.
-
-[https://github.com/chennanni/note-tech/blob/master/build/maven/index.md](https://github.com/chennanni/note-tech/blob/master/build/maven/index.md)
-
-## Test
-
-JUnit Test
-- Given a funciton `void removeHeadAndPersistToDb(List<Obj> list)`, write test cases/code.
-- What is mock and Why using it? - Mokito/Power Mock
-- How to check test coverage? - Jacoco
-
-## Log
-
-Log4j
-- How to avoid too many processing log? - set debug level
-- How to rename log file name? - change in property file
-
-[http://chennanni.github.io/note-tech/archive/log/](http://chennanni.github.io/note-tech/archive/log/)
-
-## Version Control
-
-Git 
-- Branching Strategy?
-- Commit, push, and found error msg saying remote is ahead of local, what to do in this case? - Rebase.
-- Rebase v.s. Merge? - Rewrite commit history or not.
-- Release branch is applied several ad-hoc fix commits, how to apply that to current dev branch? - Cherry-pick.
-
-[http://chennanni.github.io/note-tech/archive/git](http://chennanni.github.io/note-tech/archive/git)
-
-## Design Pattern
-
-- Singleton
-- Factory
-- Template
-- Decorator
-- Proxy
