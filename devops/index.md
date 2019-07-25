@@ -1,3 +1,10 @@
+---
+layout: default
+title: Dev Ops
+folder: devops
+permalink: /archive/devops/
+---
+
 # Dev Ops
 
 ## What
