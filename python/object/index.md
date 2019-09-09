@@ -75,13 +75,42 @@ setattr(emp1, 'age', 8) # 添加属性 'age' 值为 8
 class C(A, B):   # 继承类 A 和 B
 ~~~
 
-##　类属性与方法
+## 类属性与方法
 
 私有属性／方法：`__private_something`，两个下划线开头，声明该属性为 private ，不能在类的外部被使用或直接访问。
 只可以在类内部的方法中使用时 `self.__private＿something` 。
 
 保护型变量：`_protected_something`，单下划线开头的表示的是 protected 类型的变量，即保护类型只能允许其本身与子类进行访问，
 不能用于 `from module import *` 。
+
+## 导入
+
+例子
+
+~~~ python
+import math 
+print(math.pi) 
+~~~
+
+`__init.py__`
+- 当一个文件夹下有`__init.py__`时，意为该文件夹是一个包（package），其下的多个模块（module）构成一个整体，
+而这些模块（module）都可通过同一个包（package）导入其他代码中。
+- 该文件可以什么内容都不写，相当于一个标记。也可以加上`__all__= [‘file_a’, ‘file_b’]`，表示再使用模糊导入时需要导入的文件，如`from pacakge_1 import *`。
+
+
+绝对导入：`import moduleA.moduleB`
+
+相对导入：`from .moduleX import functionX` （.表示当前目录）
+
+为了避免import的问题，记住两个原则：
+- 原则1：在使用相对路径时，保证`python app.py`的路径时在最外层/根目录。
+- 原则2：使用绝对路径不容易出错，对于小型项目建议使用。
+
+注：from package import item 方式导入包时，这个子项（item）既可以是包中的一个子模块（或一个子包），也可以是包中定义的其它命名，像函数、类或变量。
+相反，使用类似 import item.subitem.subsubitem 这样的语法时，这些子项必须是包，最后的子项可以是包或模块，但不能是前面子项中定义的类、函数或变量。
+
+- https://www.cnblogs.com/gaowengang/p/8543840.html
+- http://www.pythondoc.com/pythontutorial3/modules.html
 
 ## Link
 
