@@ -77,7 +77,7 @@ class C(A, B):   # 继承类 A 和 B
 
 ##　类属性与方法
 
-私有属性／方法：｀__private_something`，两个下划线开头，声明该属性为 private ，不能在类的外部被使用或直接访问。
+私有属性／方法：`__private_something`，两个下划线开头，声明该属性为 private ，不能在类的外部被使用或直接访问。
 只可以在类内部的方法中使用时 `self.__private＿something` 。
 
 保护型变量：`_protected_something`，单下划线开头的表示的是 protected 类型的变量，即保护类型只能允许其本身与子类进行访问，
