@@ -112,6 +112,34 @@ print(math.pi)
 - https://www.cnblogs.com/gaowengang/p/8543840.html
 - http://www.pythondoc.com/pythontutorial3/modules.html
 
+## 环境
+
+查看python和pip的版本
+~~~ python
+python --version
+pip --version
+~~~
+
+使用Pipenv, Pipenv will install the library and create a Pipfile for you in your project’s directory.
+~~~ python
+pip install --user pipenv
+$ cd project_folder
+$ pipenv install [module_name]
+$ pipenv run python main.py
+~~~
+
+使用virtualenv, virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that a Python project would need.
+
+~~~ python
+$ pip install virtualenv
+$ cd project_folder
+$ virtualenv venv
+source venv/bin/activate
+$ deactivate
+~~~
+
+https://docs.python-guide.org/dev/virtualenvs/
+
 ## Link
 
 - <http://www.runoob.com/python/python-object.html>
