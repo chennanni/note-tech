@@ -138,7 +138,7 @@ source venv/bin/activate
 $ deactivate
 ~~~
 
-https://docs.python-guide.org/dev/virtualenvs/
+- https://docs.python-guide.org/dev/virtualenvs/
 
 ## Link
 
