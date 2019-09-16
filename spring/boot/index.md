@@ -130,3 +130,8 @@ public class DemoApplication extends SpringBootServletInitializer {
     }
 }
 ~~~
+
+# Link
+- [Spring Boot Tutorial](https://www.tutorialspoint.com/spring_boot/spring_boot_introduction.htm)
+- [Spring Boot 启动原理](https://gitchat.csdn.net/columnTopic/5af10a600a989b69c38602f1)
+- [Spring Boot 使用详解](https://www.cnblogs.com/lenve/p/11400056.html)
