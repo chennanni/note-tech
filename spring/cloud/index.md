@@ -279,4 +279,4 @@ public class TestDB {
 }
 ~~~
 
-这里我们可以通过`apiService.index()`这个方法，来实现调用eurekaclient的/index访问。比较Feign和Gateway，粗略看来，两者非常像，只不过一个对内，一个对外。
+这里我们可以通过`apiService.index()`这个方法，来实现调用eurekaclient的/index访问，达到一样的效果。比较Feign和Gateway，粗略看来，两者非常像，只不过一个对内，一个对外。
