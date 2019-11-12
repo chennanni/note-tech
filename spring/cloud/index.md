@@ -1,3 +1,10 @@
+---
+layout: default
+title: Spring - Cloud
+folder: cloud
+permalink: /archive/spring/cloud/
+---
+
 # Spring Cloud
 
 把微服务相关的模块做了一个全家桶，统统放在Spring Cloud名下。它有很多组成模块，下面一一讲解。
@@ -120,7 +127,9 @@ Spring Cloud Gateway，可以比喻成包工头，外界有什么活进来，都
 - [Spring Cloud Gateway Doc](https://cloud.spring.io/spring-cloud-gateway/reference/html/#gateway-starter)
 - [第06课：服务网关](https://gitchat.csdn.net/columnTopic/5af10bd60a989b69c386103c)
 
-## 依赖 pom.xml
+## 实现
+
+依赖 pom.xml
 
 ~~~
 <dependency>
@@ -139,7 +148,7 @@ Spring Cloud Gateway，可以比喻成包工头，外界有什么活进来，都
 </dependency>
 ~~~
 
-## 配置 application.yml
+配置 application.yml
 
 ~~~
 server:
@@ -175,7 +184,7 @@ eureka:
 # 5. eureka注册中心地址
 ~~~
 
-## 注入 Application.java
+注入 Application.java
 
 ~~~
 @SpringCloudApplication
