@@ -23,7 +23,7 @@ Eureka，可以比喻成建筑工地现场。Server就是工地，Client就是�
 
 依赖 pom.xml
 
-~~~
+~~~ xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -32,7 +32,7 @@ Eureka，可以比喻成建筑工地现场。Server就是工地，Client就是�
 
 配置 application.yml
 
-~~~
+~~~ yml
 server:
   port: 8761
 eureka:
@@ -56,7 +56,7 @@ eureka:
 
 注入 Application.java
 
-~~~
+~~~ java
 @SpringBootApplication
 @EnableEurekaServer
 public class Application {
@@ -71,7 +71,7 @@ public class Application {
 
 依赖 pom.xml
 
-~~~
+~~~ xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -86,7 +86,7 @@ public class Application {
 
 配置 application.yml
 
-~~~
+~~~ yml
 eureka:
   client:
     serviceUrl:
@@ -104,7 +104,7 @@ spring:
 
 注入 Application.java
 
-~~~
+~~~ java
 @SpringBootApplication
 @EnableEurekaClient
 public class Application {
@@ -131,7 +131,7 @@ Spring Cloud Gateway，可以比喻成包工头，外界有什么活进来，都
 
 依赖 pom.xml
 
-~~~
+~~~ xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-gateway</artifactId>
@@ -150,7 +150,7 @@ Spring Cloud Gateway，可以比喻成包工头，外界有什么活进来，都
 
 配置 application.yml
 
-~~~
+~~~ yml
 server:
   port: 8081
 spring:
@@ -186,7 +186,7 @@ eureka:
 
 注入 Application.java
 
-~~~
+~~~ java
 @SpringCloudApplication
 public class Application {
     public static void main(String[] args) {
