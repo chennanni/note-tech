@@ -47,7 +47,7 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-	  
+ 
 # 1. server端口号
 # 2. instance配置信息
 # 3. server配置信息
@@ -96,7 +96,7 @@ server:
 spring:
   application:
     name: eurekaclient
-	
+
 # 1. eureka注册中心地址
 # 2. client端口号
 # 3. client名称
