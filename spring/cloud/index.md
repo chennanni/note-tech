@@ -280,3 +280,96 @@ public class TestDB {
 ~~~
 
 这里我们可以通过`apiService.index()`这个方法，来实现调用eurekaclient的/index访问，达到一样的效果。比较Feign和Gateway，粗略看来，两者非常像，只不过一个对内，一个对外。
+
+# 服务异常处理 Hystrix
+
+## 解读
+
+当满足一定条件，比如某服务不可用达到一个阈值（Hystrix 默认5秒20次），将打开熔断器，停止服务，并导流向熔断处理页面。
+
+- [第08课：服务异常处理](https://gitchat.csdn.net/columnTopic/5af10bfc0a989b69c3861064)
+
+## 实现
+
+依赖
+
+~~~ xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-hystrix</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+~~~
+
+配置
+
+~~~ yml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
+spring:
+  application:
+    name: feign
+feign:
+  hystrix:
+    enabled: true
+
+# 1. 应用名称
+# 2. 端口号
+# 3. feign hystrix 配置，开启熔断器
+# 4. 注册中心地址
+~~~
+
+实现
+
+~~~ java
+// 处理熔断的类
+@Component
+public class ApiServiceError implements ApiService {
+    @Override
+    public String index() {
+        return "服务发生故障！";
+    }
+}
+
+// 指定fallback逻辑，导向处理熔断的类
+@FeignClient(value = "eurekaclient",fallback = ApiServiceError.class)
+public interface ApiService {
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    String index();
+}
+
+// 指定正常的处理逻辑，即当接到/index的请求时，调用apiService.index()
+@RestController
+public class ApiController {
+    @Autowired
+    private ApiService apiService;
+    @RequestMapping("index")
+    public String index(){
+        return apiService.index();
+    }
+}
+
+// 注入HystrixDashboard 以及 CircuitBreaker
+@SpringBootApplication
+@EnableEurekaClient
+@EnableFeignClients
+@EnableHystrixDashboard
+@EnableCircuitBreaker
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+~~~
