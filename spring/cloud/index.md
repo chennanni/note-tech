@@ -198,3 +198,85 @@ public class Application {
 这里需要注意的是，annotation为什么不是类似`@SpringCloudGateway`的样子，而是`@SpringCloudApplication`？
 笔者认为，这里就体现了SpringCloud的一个特性，即只需要模糊地标明这是一个SpringCloudApplication，而具体是什么，它会根据配置文件中定义的内容去创建。
 再举一例，Eureka Server和Client，同样可以只用一个`@SpringCloudApplication`的annotation即可。
+
+# 服务消费者 Feign
+
+## 解读
+
+对外提供接口可以通过 Spring Cloud Gateway 服务网关实现，
+对内负责各个服务之间的通信可以采用内部调用的形式 Feign。笔者认为将其称为“内部网关”更加容易理解。
+
+- [第07课：服务消费者](https://gitchat.csdn.net/columnTopic/5af10bec0a989b69c386104f)
+
+## 实现
+
+依赖
+
+~~~ xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-feign</artifactId>
+</dependency>
+~~~
+
+配置
+
+~~~ yml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
+spring:
+  application:
+    name: feign
+
+# 1. 应用名称
+# 2. 端口号
+# 3. 注册中心地址
+~~~
+
+实例化
+
+~~~ java
+@SpringBootApplication
+@EnableEurekaClient
+@EnableFeignClients
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+~~~
+
+使用
+
+~~~ java
+@FeignClient(value = "eurekaclient")
+public interface ApiService {
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    String index();
+}
+
+@SpringBootTest(classes = Application.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+public class TestDB {
+    @Autowired
+    private ApiService apiService;
+    @Test
+    public void test(){
+        try {
+            System.out.println(apiService.index());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+~~~
+
+这里我们可以通过`apiService.index()`这个方法，来实现调用eurekaclient的/index访问。比较Feign和Gateway，粗略看来，两者非常像，只不过一个对内，一个对外。
