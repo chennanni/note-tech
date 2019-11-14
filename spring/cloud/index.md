@@ -487,3 +487,64 @@ public class MainController {
 }
 ~~~
 
+# 消息总线 Spring Coud Bus
+
+## 解读
+
+Spring cloud bus通过轻量消息代理连接各个分布的节点。本质是利用了MQ的广播机制在分布式的系统中传播消息，目前常用的有Kafka和RabbitMQ。
+
+一个常见的使用场景是：Config Server上的某个property变了，需要notify所有相关的Client，获取最新配置。
+
+- [springcloud(九)：配置中心和消息总线（配置中心终结版）](http://www.ityouknow.com/springcloud/2017/05/26/springcloud-config-eureka-bus.html)
+
+## 应用
+
+依赖
+
+~~~ xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
+~~~
+
+配置
+
+~~~ yml
+server:
+  port: 8001
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/someuser/gitrepo/
+          search-paths: config-repo
+          username: username
+          password: password
+  rabbitmq:
+    host: 192.168.0.6
+    port: 5672
+    username: admin
+    password: 123456
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+
+management:
+  security:
+     enabled: false
+
+# 需要额外配置的是
+# 1. spring.cloud.config
+# 2. spring.rabbitmq
+# 3. management.security 刷新时，关闭安全验证
+~~~
+
+起一个Server在8001上，再起三个Client在8002，8003，8004上。
+访问`localhost:8001/bus/refresh`来trigger Server刷新配置。
+Spring Cloud Bus会把这个消息传给所有Client完成刷新。
