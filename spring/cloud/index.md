@@ -373,3 +373,105 @@ public class Application {
 
 }
 ~~~
+
+# 配置中心 Spring Cloud Config
+
+## 解读
+
+Spring Cloud Config can manage configurations for other services. It runs independently on a server.
+
+具体应用的时候，分为两个部分。
+- Spring Cloud Config Server
+- Spring Cloud Config Client
+
+Config统一放在Server上，然后常见的一种场景是，Server再连到Git上，即最终Config文件是放在Git上的。
+Client去Server上拿Config。
+
+- [Understanding Spring Cloud Config Server with Example](https://o7planning.org/en/11723/understanding-spring-cloud-config-server-with-example)
+- [Understanding Spring Cloud Config Client with Example](https://o7planning.org/en/11727/understanding-spring-cloud-config-client-with-example)
+
+## Server
+
+依赖 pom.xml
+
+~~~ xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+~~~
+
+配置 application.properties
+
+~~~ properties
+server.port=8888
+
+spring.cloud.config.server.git.uri=https://github.com/someuser/spring-cloud-config-git-repo-example.git
+
+# 1. Server端口号
+# 2. Git的地址
+# 注： 配置文件用properties或者yml格式，都可以
+~~~
+
+注入 SpringCloudConfigServerApplication.java
+
+~~~ java
+@EnableConfigServer
+@SpringBootApplication
+public class SpringCloudConfigServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringCloudConfigServerApplication.class, args);
+    }
+}
+~~~
+
+## Client
+
+配置
+
+application.properties
+
+~~~ properties
+server.port=7777
+
+# Client的端口地址
+~~~
+
+bootstrap.properties
+
+~~~ properties
+spring.application.name=app-about-company
+spring.cloud.config.uri=http://localhost:8888
+management.security.enabled=false
+
+# 1. Client的名称
+# 2. Server Config的地址
+# 3. 其它信息
+# 注：两个文件合成一个也可以
+~~~
+
+使用
+
+~~~ java
+@RefreshScope
+@RestController
+public class MainController {
+    // https://github.com/someuser/spring-cloud-config-git-repo-example
+    // See: app-about-company.properties
+    @Value("${text.copyright: Default Copyright}")
+    private String copyright;
+    @Value("${spring.datasource.username}")
+    private String userName;
+    @Value("${spring.datasource.password}")
+    private String password;
+    @RequestMapping("/showConfig")
+    @ResponseBody
+    public String showConfig() {
+        String configInfo = "Copy Right: " + copyright //
+                + "<br/>spring.datasource.username=" + userName //
+                + "<br/>spring.datasource.password=" + password;
+        return configInfo;
+    }
+}
+~~~
+
