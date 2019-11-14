@@ -19,7 +19,7 @@ Eureka，可以比喻成建筑工地现场。Server就是工地，Client就是�
 
 [第05课：服务注册与发现](https://gitchat.csdn.net/columnTopic/5af10bc30a989b69c3861029)
 
-## Server
+## Server实现
 
 依赖 pom.xml
 
@@ -66,8 +66,9 @@ public class Application {
 }
 ~~~
 
+Server跑起来后，访问`localhost:8761`就可以看到Eureka服务器页面。
 
-## Client
+## Client实现
 
 依赖 pom.xml
 
@@ -114,12 +115,18 @@ public class Application {
 }
 ~~~
 
+Client跑起来后，同样地，访问Eukera服务器页面即可以看到Client在上面有注册信息了。
+至于Client功能的实现，即访问`localhost:8762`能做什么事，还需要更多的Coding。
+
 # 服务网关 Spring Cloud Gateway
 
 ## 解读
 
 Spring Cloud Gateway，可以比喻成包工头，外界有什么活进来，都是通过包工头，然后再由其分配到下面每一个工人手里。
 它的作用就是进行路由转发、异常处理和过滤拦截。
+
+举例，`localhost:8761`是Server，然后我们开了三个一模一样的Client，端口号分别为`8762`，`8763`，`8764`。
+那么，我们怎么访问呢？一种方式是直接使用`localhost:8762`，`localhost:8763`，`localhost:8764`，但是对于外界用户来说，搞三个地址比较confusing。这个问题可以由路由解决。我们部署一个路由在`localhost:8080`上，外界总是访问这个地址。请求先到路由，然后再由路由转发给后端的三个Client之一。
 
 以前这个模块是用的Zuul，但是现在一般都改用Spring Cloud Gateway了。
 
@@ -197,6 +204,7 @@ public class Application {
 
 这里需要注意的是，annotation为什么不是类似`@SpringCloudGateway`的样子，而是`@SpringCloudApplication`？
 笔者认为，这里就体现了SpringCloud的一个特性，即只需要模糊地标明这是一个SpringCloudApplication，而具体是什么，它会根据配置文件中定义的内容去创建。
+
 再举一例，Eureka Server和Client，同样可以只用一个`@SpringCloudApplication`的annotation即可。
 
 # 服务消费者 Feign
@@ -215,11 +223,12 @@ public class Application {
 ~~~ xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
-	<artifactId>spring-cloud-starter-eureka</artifactId>
+	<artifactId>spring-cloud-starter-feign</artifactId>
 </dependency>
+<!-- some other components-->
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
-	<artifactId>spring-cloud-starter-feign</artifactId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
 </dependency>
 ~~~
 
@@ -252,17 +261,17 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
-~~~
 
-使用
-
-~~~ java
 @FeignClient(value = "eurekaclient")
 public interface ApiService {
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     String index();
 }
+~~~
 
+使用
+
+~~~ java
 @SpringBootTest(classes = Application.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestDB {
@@ -302,6 +311,7 @@ public class TestDB {
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
 </dependency>
+<!-- some other components-->
 <dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-actuator</artifactId>
@@ -374,6 +384,8 @@ public class Application {
 }
 ~~~
 
+访问`localhost:8081/hystrix`可以看到Hystrix监控页面。
+
 # 配置中心 Spring Cloud Config
 
 ## 解读
@@ -390,7 +402,7 @@ Client去Server上拿Config。
 - [Understanding Spring Cloud Config Server with Example](https://o7planning.org/en/11723/understanding-spring-cloud-config-server-with-example)
 - [Understanding Spring Cloud Config Client with Example](https://o7planning.org/en/11727/understanding-spring-cloud-config-client-with-example)
 
-## Server
+## Server实现
 
 依赖 pom.xml
 
@@ -425,7 +437,7 @@ public class SpringCloudConfigServerApplication {
 }
 ~~~
 
-## Client
+## Client实现
 
 配置
 
