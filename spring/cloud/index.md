@@ -548,3 +548,89 @@ management:
 起一个Server在8001上，再起三个Client在8002，8003，8004上。
 访问`localhost:8001/bus/refresh`来trigger Server刷新配置。
 Spring Cloud Bus会把这个消息传给所有Client完成刷新。
+
+# 服务链路追踪 Sleuth
+
+Spring Cloud Sleuth为服务之间调用提供链路追踪。通过Sleuth可以很清楚的了解到一个服务请求经过了哪些服务，每个服务处理花费了多长。从而让我们可以很方便的理清各微服务间的调用关系。
+
+## 解读
+
+应用实战分为两块：
+1. Server端，添加Zipkin组件，并启动Zipkin Server，这时可以到Zipkin Dashboard去查看trace信息。
+2. Client端，配置Zipkin信息，启动Client之后，访问信息会自动被Zipkin追踪到。
+
+- [springcloud(十二)：使用Spring Cloud Sleuth和Zipkin进行分布式链路跟踪](http://www.ityouknow.com/springcloud/2018/02/02/spring-cloud-sleuth-zipkin.html)
+- [第11课：服务链路追踪](https://gitchat.csdn.net/columnTopic/5af10c430a989b69c38610a7)
+
+## 应用 - Server
+
+依赖
+
+~~~ xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-eureka</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.zipkin.java</groupId>
+        <artifactId>zipkin-server</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.zipkin.java</groupId>
+        <artifactId>zipkin-autoconfigure-ui</artifactId>
+    </dependency>
+</dependencies>
+~~~
+
+配置文件
+
+~~~ yml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 9000
+spring:
+  application:
+    name: zipkin-server
+~~~
+
+启动类
+
+~~~ java
+@SpringBootApplication
+@EnableEurekaClient
+@EnableZipkinServer
+public class ZipkinApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ZipkinApplication.class, args);
+    }
+}
+~~~
+
+## 应用 - Client
+
+依赖
+
+~~~ xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zipkin</artifactId>
+</dependency>
+~~~
+
+配置
+
+~~~ yml
+spring:
+  zipkin:
+    base-url: http://localhost:9000
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+# 指定了Zipkin服务器的地址
+# 采样比例设置为1.0
+~~~
