@@ -85,6 +85,15 @@ Server跑起来后，访问`localhost:8761`就可以看到Eureka服务器页面�
 </dependency>
 ~~~
 
+OR
+
+~~~ xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+~~~
+
 配置 application.yml
 
 ~~~ yml
