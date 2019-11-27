@@ -122,10 +122,12 @@ example of Durable Subscriber
   <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
       <property name="connectionFactory" ref="jmsConnectionFactory"/>
       <property name="messageListener" ref="messageListener" />
-      <property name="destination" ref="datasetQueueDUMMY"/>
+      <property name="destination" ref="datasetTopicUMMY"/>
       <property name="sessionTransacted" value="true" /><!-- whether JMS Sessions are transacted-->
       <property name="pubSubDomain" value="true"/><!--use Publish/Subscribe domain (Topics)-->
       <property name="subscriptionDurable" value="true" /><!--make the subscription durable-->
+      <property name="durableSubscriptionName" value="${static.durableSubscriptionName}" /><!--subscriber's name-->
+      <property name="autoStartup" value="false" />
   </bean>
 ~~~
 
