@@ -35,12 +35,12 @@ Docker是基于LXC(Linux Container)技术之上构建的**应用容器引擎**�
 
 ## Docker的应用场景
 
-- Web应用的自动化打包和发布
-- 自动化测试和持续集成、发布
-- 在服务型环境中部署和调整数据库或其他的后台应用
-- 从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境
+各种复杂的后台应用的开发，部署，测试
+- Web应用
+- 数据库
+- 其它后台应用
 
-# 组成部分
+## 组成部分
 
 - Image(镜像)
   - 一个只读模板，可以用来创建容器，一个镜像可以创建多个容器。
@@ -59,11 +59,101 @@ Docker是基于LXC(Linux Container)技术之上构建的**应用容器引擎**�
   - 可以在本地网络创建一个私有仓库。
   - 当创建好自己的镜像后，可以通过 push 命令把它上传到公开或私有仓库。
   - 仓库的概念类似 Git，仓库注册服务器可以理解为 GitHub 这种托管服务。
-  
+
+这一部分摘自
+- [零基础入门 Docker]<https://gitbook.cn/books/5b670bf396290075f582a9ab/index.html>
+
+## 命令
+
+### 安装和启动
+
+安装
+
+~~~
+yum install docker
+~~~
+
+启动，设为开机启动，停止
+
+~~~
+systemctl start docker
+systemctl enable docker
+systemtctl stop docker
+~~~
+
+### 镜像
+
+搜索，下载，删除
+
+~~~
+docker search tomcat
+docker pull tomcat
+docker rmi tomcat
+~~~
+
+### 容器
+
+启动
+
+- `-d`：detached，启动守护式容器（相当于后台运行），控制台将不会阻塞，可以继续输入命令操作。
+- `-it`:启动交互式容器，控制台会切换到容器的命令终端。退出时会关闭容器。
+- `-p`：映射指定要的IP和端口，但是一个指定端口只可以绑定一个容器。
+- `-P`：随机映射一个49000~49900的端口到内部容器开放的网络端口。
+
+~~~
+docker run --name container-name -d image-name
+docker run --name container-name -it image-name
+docker run --name container-name -d -p 8888:8080 image-name
+~~~
+
+查看进程，查看日志，进程，细节
+
+~~~
+docker ps -a
+docker logs container-name/container-id
+docker top container-name/container-id
+docker inspect container-name/container-id
+~~~
+
+停止，重启，删除
+
+~~~
+docker stop container-name/container-id
+docker restart container-name/container-id
+docker rm container-name/container-id
+~~~
+
+连接到运行中的容器
+
+- `--sig-proxy=false`：确保 CTRL-D 或 CTRL-C 不会关闭容器。
+- 感觉这个功能有点像查看日志，目前暂时还没有发现更多用途。
+
+~~~
+docker attach container-name/container-id
+docker attach --sig-proxy=false container-name/container-id
+~~~
+
+进入容器执行命令
+
+- 下例是：在容器中打开新的终端，并且启动新的bash进程。
+
+~~~
+docker exec -it container-name/container-id bash
+exit
+~~~
+
+拷贝文件
+
+~~~
+docker cp /dir1/file1 container-id:/dir2
+~~~
+
 ## Links
 
-- <https://docker-curriculum.com/>
-- <https://blog.csdn.net/deng624796905/article/details/86493330>
-- <https://github.com/shell909090/slides/blob/master/md/docker.md>
-- <http://www.infoq.com/cn/articles/docker-core-technology-preview>
-- <https://yq.aliyun.com/articles/6894?spm=5176.100239.blogcont40494.22.kLOqEG>
+- [Docker — 从入门到实践]<https://yeasy.gitbooks.io/docker_practice/content/>
+- [可能是最为详细的Docker入门吐血总结]https://blog.csdn.net/deng624796905/article/details/86493330>
+
+- [docker-curriculum]<https://docker-curriculum.com/>
+- [Docker不是虚拟机]<https://github.com/shell909090/slides/blob/master/md/docker.md>
+- [Docker 核心技术预览]<http://www.infoq.com/cn/articles/docker-core-technology-preview>
+- [使用Docker运行Java Web应用]<https://yq.aliyun.com/articles/6894?spm=5176.100239.blogcont40494.22.kLOqEG>
