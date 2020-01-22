@@ -40,7 +40,7 @@ Docker是基于LXC(Linux Container)技术之上构建的**应用容器引擎**�
 - 数据库
 - 其它后台应用
 
-## 组成部分
+## Docker的组成部分
 
 - Image(镜像)
   - 一个只读模板，可以用来创建容器，一个镜像可以创建多个容器。
@@ -63,7 +63,7 @@ Docker是基于LXC(Linux Container)技术之上构建的**应用容器引擎**�
 这一部分摘自
 - [零基础入门 Docker]<https://gitbook.cn/books/5b670bf396290075f582a9ab/index.html>
 
-## 命令
+## Docker的命令
 
 ### 安装和启动
 
