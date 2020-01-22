@@ -106,14 +106,22 @@ docker run --name container-name -it image-name
 docker run --name container-name -d -p 8888:8080 image-name
 ~~~
 
+![docker_run_1.PNG](img/docker_run_1.PNG)
+
 查看进程，查看日志，进程，细节
 
 ~~~
 docker ps -a
+
 docker logs container-name/container-id
 docker top container-name/container-id
 docker inspect container-name/container-id
+
+docker image ls
+docker container ls
 ~~~
+
+![docker_logs_1.PNG](img/docker_logs_1.PNG)
 
 停止，重启，删除
 
@@ -141,6 +149,8 @@ docker attach --sig-proxy=false container-name/container-id
 docker exec -it container-name/container-id bash
 exit
 ~~~
+
+![docker_exec_1.PNG](img/docker_exec_1.PNG)
 
 拷贝文件
 
