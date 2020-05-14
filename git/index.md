@@ -62,6 +62,7 @@ git remote -v
 git remote add [shortname] [url]
 git fetch [remote-name]
 git push [remote-name] [branch-name]
+git checkout --track origin/branch_name; checkout one remote branch
 ```
 
 ### upload new created project from local
