@@ -118,9 +118,9 @@ sudo: allows a permitted user to execute a command as the superuser or another u
 ps: show process status for the current user
 ps grep <'pwd'>: show process matching pattern 'pwd'
 ps <aux>
-// a = show processes for all users
-// u = display the process's user/owner
-// x = also show processes not attached to a terminal
+## a = show processes for all users
+## u = display the process's user/owner
+## x = also show processes not attached to a terminal
 ps -eo user,pid,stat,%cpu,%mem,rss,args --sort rss | less
 
 top: display top CPU processes
