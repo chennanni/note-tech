@@ -40,7 +40,7 @@ permalink: /archive/java/basic/
 
 There's some small differences between kramdown and github-flavor markdown. Thus, the page rendered on github and github-pages may be different. To make sure consistancy, follow some special rules: 
 
-https://github.com/chennanni/note-cheat-sheet/blob/master/jekyll.md
+https://github.com/chennanni/note-cheat-sheet/blob/master/cs-jekyll.md
 
 ## Updates
 
