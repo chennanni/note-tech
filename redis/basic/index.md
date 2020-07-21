@@ -53,6 +53,7 @@ permalink: /archive/redis/basic/
 - Sorted Set
 
 <img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_data_structure.png" width="50%" alt="redis_data_structure" align=center />
+![redis_data_structure.png](img/redis_data_structure.png)
 
 # 特性 - 功能丰富
 
