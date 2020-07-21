@@ -34,7 +34,6 @@ permalink: /archive/redis/basic/
 
 为什么快：因为数据读写是在内存中
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_fast.png" width="50%" alt="redis_fast" align=center >
 ![redis_fast.png](img/redis_fast.png)
 
 ## 特性 - 持久化
@@ -52,7 +51,6 @@ permalink: /archive/redis/basic/
 - Set
 - Sorted Set
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_data_structure.png" width="50%" alt="redis_data_structure" align=center />
 ![redis_data_structure.png](img/redis_data_structure.png)
 
 # 特性 - 功能丰富
@@ -64,11 +62,11 @@ permalink: /archive/redis/basic/
 
 # 特性 - 主从复制
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_copy.png" width="50%" alt="redis_copy" align=center />
+![redis_copy.png](img/redis_copy.png)
 
 # 特性 - 高可用
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_availble.png" width="50%" alt="redis_availble" align=center />
+![redis_availble.png](img/redis_availble.png)
 
 ## 典型适用场景
 
@@ -83,8 +81,8 @@ permalink: /archive/redis/basic/
 
 可执行文件（bin）介绍
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_bin_1.png" width="50%" alt="redis_bin_1" align=center />
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_bin_2.png" width="50%" alt="redis_bin_2" align=center />
+![redis_bin_1.png](img/redis_bin_1.png)
+![redis_bin_2.png](img/redis_bin_2.png)
 
 最简启动
 
@@ -123,9 +121,8 @@ redis> get foo
 
 ## Redis客户端返回值
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_feedback_1.png" width="50%" alt="redis_feedback_1" align=center />
-
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_feedback_2.png" width="50%" alt="redis_feedback_2" align=center />
+![redis_feedback_1.png](img/redis_feedback_1.png)
+![redis_feedback_2.png](img/redis_feedback_2.png)
 
 ## 常用配置
 
@@ -136,4 +133,4 @@ dir "/Users/Max/Applications/redis-6.0.5/data"
 logfile "6382.log"
 ~~~
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_config.png" width="50%" alt="redis_config" align=center />
+![redis_config.png](img/redis_config.png)
