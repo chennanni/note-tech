@@ -34,7 +34,8 @@ permalink: /archive/redis/basic/
 
 为什么快：因为数据读写是在内存中
 
-<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_fast.png" width="50%" alt="redis_fast" align=center />
+<img src="https://github.com/chennanni/note-tech/blob/master/redis/basic/img/redis_fast.png" width="50%" alt="redis_fast" align=center >
+![redis_fast.png](img/redis_fast.png)
 
 ## 特性 - 持久化
 
