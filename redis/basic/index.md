@@ -53,18 +53,18 @@ permalink: /archive/redis/basic/
 
 ![redis_data_structure.png](img/redis_data_structure.png)
 
-# 特性 - 功能丰富
+## 特性 - 功能丰富
 
 - 发布订阅
 - 事务
 - pipeline
 - Lua脚本
 
-# 特性 - 主从复制
+## 特性 - 主从复制
 
 ![redis_copy.png](img/redis_copy.png)
 
-# 特性 - 高可用
+## 特性 - 高可用
 
 ![redis_availble.png](img/redis_availble.png)
 
