@@ -1,3 +1,10 @@
+---
+layout: default
+title: Redis - API Part 1
+folder: api1
+permalink: /archive/redis/api1/
+---
+
 # Redis API 1
 
 ## 通用命令
