@@ -5,7 +5,7 @@ folder: api1
 permalink: /archive/redis/api1/
 ---
 
-# Redis API 1
+# Redis API Part 1
 
 ## 通用命令
 
@@ -184,11 +184,3 @@ mset [key1] [value1] [key2] [value2] [key3] [value3]
 分布式Id生成器
 
 ![redis_id_app](img/redis_id_app.png)
-
-## Hash
-
-## List
-
-## Set
-
-## Zset
