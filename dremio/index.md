@@ -11,7 +11,7 @@ permalink: /archive/dremio/
 
 Dremio is a next-generation data lake engine that liberates your data with live, interactive queries directly on cloud data lake storage.
 
-!(dremio_arch.PNG)[img/dremio_arch.PNG]
+![dremio_arch.PNG](img/dremio_arch.PNG)
 
 Dremio是一个非常灵活，功能强大的Query Engine。后端可以对接多种数据源（如Oracle，Hadoop，S3，或者直接从文件读取，如Parquet，JSON），前端可以对接多种展示平台（如Power BI，Tableau）。
 
@@ -32,7 +32,7 @@ https://docs.dremio.com/
 
 ## 竞争对手
 
-- Presto 
+- Presto
 - Denodo
 - Snowflake
 
@@ -72,11 +72,11 @@ https://docs.dremio.com/
 
 ## 数据源
 
-!(dremio_source.PNG)[img/dremio_source.PNG]
+![dremio_source.PNG](img/dremio_source.PNG)
 
 ## 数据类型
 
-!(dremio_datatype.PNG)[img/dremio_datatype.PNG]
+![dremio_datatype.PNG](img/dremio_datatype.PNG)
 
 ## 实战
 
@@ -95,27 +95,27 @@ https://docs.dremio.com/
 
 启动界面
 
-![(dremio_action_0)](img/dremio_action_0)
+![(dremio_action_0)](img/dremio_action_0.PNG)
 
 第一次使用需要注册一个新用户，之后再使用就是登陆界面。
 
-![(dremio_action_1)](img/dremio_action_1)
+![(dremio_action_1)](img/dremio_action_1.PNG)
 
 然后，我们需要添加一些source，这里使用的是自带的sample文件。
 
-![(dremio_action_3)](img/dremio_action_3)
+![(dremio_action_3)](img/dremio_action_3.PNG)
 
 可以点开来看里面的具体内容。
 
-![(dremio_action_4)](img/dremio_action_4)
+![(dremio_action_4)](img/dremio_action_4.PNG)
 
 添加好后，我们就可以在Dremio里面query。这个表是存储的是SF一年里面每天温度的情况。
 
-![(dremio_action_5)](img/dremio_action_5)
+![(dremio_action_5)](img/dremio_action_5.PNG)
 
 比如，我们想知道一年中的最低气温，可以这样写：
 
-![(dremio_action_6)](img/dremio_action_6)
+![(dremio_action_6)](img/dremio_action_6.PNG)
 
 - https://www.dremio.com/tutorials/working-with-your-first-dataset/
 - https://blog.csdn.net/vkingnew/article/details/89009086
