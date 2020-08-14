@@ -11,7 +11,7 @@ permalink: /archive/dremio/
 
 Dremio is a next-generation data lake engine that liberates your data with live, interactive queries directly on cloud data lake storage.
 
-![dremio_arch.PNG](img/dremio_arch.PNG)
+![dremio_arch](img/dremio_arch.JPG)
 
 Dremio是一个非常灵活，功能强大的Query Engine。后端可以对接多种数据源（如Oracle，Hadoop，S3，或者直接从文件读取，如Parquet，JSON），前端可以对接多种展示平台（如Power BI，Tableau）。
 
@@ -64,7 +64,7 @@ https://docs.dremio.com/
 - 空间换时间的策略
   - 不论是Cache，还是Data Reflection，都是把结果存起来（内存或者磁盘），从而加速查询。
 
-![dremio_columnar.PNG](img/dremio_columnar.PNG)
+![dremio_columnar](img/dremio_columnar.JPG)
 
 - https://www.zhihu.com/question/29380943
 - https://developer.aliyun.com/article/715004
@@ -72,11 +72,11 @@ https://docs.dremio.com/
 
 ## 数据源
 
-![dremio_source.PNG](img/dremio_source.PNG)
+![dremio_source](img/dremio_source.JPG)
 
 ## 数据类型
 
-![dremio_datatype.PNG](img/dremio_datatype.PNG)
+![dremio_datatype](img/dremio_datatype.JPG)
 
 ## 实战
 
@@ -95,27 +95,27 @@ https://docs.dremio.com/
 
 启动界面
 
-![(dremio_action_0)](img/dremio_action_0.PNG)
+![(dremio_action_0)](img/dremio_action_0.png)
 
 第一次使用需要注册一个新用户，之后再使用就是登陆界面。
 
-![(dremio_action_1)](img/dremio_action_1.PNG)
+![(dremio_action_1)](img/dremio_action_1.png)
 
 然后，我们需要添加一些source，这里使用的是自带的sample文件。
 
-![(dremio_action_3)](img/dremio_action_3.PNG)
+![(dremio_action_3)](img/dremio_action_3.png)
 
 可以点开来看里面的具体内容。
 
-![(dremio_action_4)](img/dremio_action_4.PNG)
+![(dremio_action_4)](img/dremio_action_4.png)
 
 添加好后，我们就可以在Dremio里面query。这个表是存储的是SF一年里面每天温度的情况。
 
-![(dremio_action_5)](img/dremio_action_5.PNG)
+![(dremio_action_5)](img/dremio_action_5.png)
 
 比如，我们想知道一年中的最低气温，可以这样写：
 
-![(dremio_action_6)](img/dremio_action_6.PNG)
+![(dremio_action_6)](img/dremio_action_6.png)
 
 - https://www.dremio.com/tutorials/working-with-your-first-dataset/
 - https://blog.csdn.net/vkingnew/article/details/89009086
