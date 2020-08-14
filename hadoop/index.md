@@ -64,7 +64,7 @@ Hadoop：提供分布式的**存储**（一个文件被拆分成很多个块，�
 - 2011年 7月，Yahoo!和硅谷风险投资公司 Benchmark Capital创建了 Hortonworks 公司，旨在让 Hadoop更加可靠，并让企业用户更容易安装、管理和使用 Hadoop。
 - 2014年 2月，Spark逐渐代替 MapReduce成为 Hadoop的缺省执行引擎，并成为 Apache基金会顶级项目。
 
-https://www.infoq.cn/article/hadoop-ten-years-interpretation-and-development-forecast
+<https://www.infoq.cn/article/hadoop-ten-years-interpretation-and-development-forecast>
 
 生态圈
 
@@ -100,7 +100,7 @@ node3：blk1  blk2
 
 基本架构如下：
 
-![hadoop_arch](img/hadoop_arch.png)
+![hadoop_arch](img/hadoop_arch.PNG)
 
 ## Map Reduce
 
@@ -112,7 +112,7 @@ Map Reduce是Google Map Reduce的克隆版，源自Google Map Reduce论文，发
 
 经典案例word count：
 
-![hadoop_mapreduce](img/hadoop_mapreduce.png)
+![hadoop_mapreduce](img/hadoop_mapreduce.PNG)
 
 ## Yarn
 
@@ -120,4 +120,4 @@ Yet Another Resource Negotiator，负责整个集群资源的管理和调度。
 
 特点：扩展性，容错性，多框架资源统一调度。
 
-![hadoop_yarn](img/hadoop_yarn.png)
+![hadoop_yarn](img/hadoop_yarn.PNG)
