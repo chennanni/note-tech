@@ -194,6 +194,8 @@ pfmerge
 - 计算两地距离
 - 范围计算，如A地点范围内1km内的所有餐馆
 
+注：geoKey的类型是zset
+
 ### 实战
 
 ~~~
@@ -212,6 +214,3 @@ geodist
 // radius
 georadius
 ~~~
-
-geoKey的类型是zset
-
