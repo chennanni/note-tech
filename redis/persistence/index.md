@@ -147,3 +147,59 @@ AOF最佳策略
 - 根据使用需求（缓存或存储）决定使用哪种策略
 - 监控（硬盘，内存，负载，网络）
 - 保证足够的内存
+
+## 其它
+
+### fork 操作
+
+- 是同步操作
+- 与内存量相关（内存越大，耗时越长）
+- 和机器类型也有关（虚拟机耗时相对更长）
+- 查看信息：`info:latest_fork_usec`
+
+改善
+- 优先使用物理机或者高效支持fork操作的虚拟化技术
+- 控制Redis实例最大可用内存：`maxmemory`
+- 合理配置Linux内存分配策略：`vm.overcommit_memory=1`（当内存不够时仍是否尝试分配内存）
+- 降低fork频率：例如放宽AOF重写自动触发机制，不必要的全量复制
+
+### 子进程开销和优化
+
+CPU
+- 开销：RDB和AOF文件生成，属于CPU密集型
+- 优化：起多个CPU分担压力；且尽量不和CPU密集型的应用一起部署
+
+内存
+- 开销：fork内存，`copy-on-write`
+- 优化：不允许大量重写；在空闲时做重写；针对Linux的优化(`echo never > /sys/kernel/mm/transparent_hugepage/enabled`)
+
+硬盘
+- 开销：AOF和RDB文件写入，结合`iostat`,`iotop`分析
+- 优化：不和高硬盘负载服务也一起部署；配置`no-appendfsync-on-rewrite=yes`；使用ssd磁盘；磁盘分盘
+
+### AOF阻塞
+
+AOF操作如果耗时过长，可能会发生阻塞。
+
+![redis_per_11](img/redis_per_11.PNG)
+
+可以通过以下几种方法定位问题：
+
+1. 日志
+
+~~~
+Asynchronous AOF sync is taking too long...
+~~~
+
+2. Redis命令
+~~~
+> info persistence`
+-> aof_delayed_fsync:100
+~~~
+
+3. Linus命令
+
+`top`观察机器的使用情况
+
+![redis_per_12](img/redis_per_12.PNG)
+
