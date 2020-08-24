@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Hadoop
-folder: hadoop
-permalink: /archive/hadoop/
+title: Hadoop - Basic
+folder: basic
+permalink: /archive/hadoop/basic/
 ---
 
-# Hadoop
+# Hadoop - Basic
 
 ## Big Data概述
 

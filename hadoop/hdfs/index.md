@@ -1,3 +1,10 @@
+---
+layout: default
+title: Hadoop - HDFS
+folder: hdfs
+permalink: /archive/hadoop/hdfs/
+---
+
 # HDFS
 
 ## 概述
@@ -21,15 +28,15 @@ HDFS是一个分布式的文件系统。
 ## 设计目标
 
 HDFS的设计，是为了解决以下问题
-	
+
 - Hardware Failure
 - Streaming Data Access  流式数据访问
-  - The emphasis is on high throughput of data access 
+  - The emphasis is on high throughput of data access
   - rather than low latency of data access
 - Large Data Sets
 - Moving Computation is Cheaper than Moving Data
   - 移动计算比移动数据更划算。前者就是做一个路由，后者有拷贝数据的消耗（网络IO+硬盘IO）。
-  
+
 ## 架构
 
 https://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
@@ -50,7 +57,7 @@ HDFS采用master/slave的架构
 X -> A1, B1, C1
   -> A2, B2, C2
   -> A3, B3, C3
-  
+
 然后放到4个不同的机器上
 
 M1: A1, B2, C3
