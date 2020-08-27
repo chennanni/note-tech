@@ -39,8 +39,6 @@ HDFS的设计，是为了解决以下问题
 
 ## 架构
 
-https://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
-
 HDFS采用master/slave的架构
 
 - master - NameNode
@@ -69,3 +67,5 @@ M4: B1, C2
 ~~~
 
 通常情况下，1个单机部署一个组件（NameNode或者DataNode）。
+
+- <https://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html>
