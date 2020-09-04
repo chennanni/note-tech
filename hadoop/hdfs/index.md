@@ -70,9 +70,7 @@ M4: B1, C2
 
 - <https://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html>
 
-## In Practice
-
-### 前置要求
+## 安装 - 前置要求
 
 - Java 1.8+
 - ssh（配置无密码登陆）
@@ -107,7 +105,7 @@ server上存一个public key
 	chmod 600 authorized_keys
 ~~~
 
-### 环境搭建
+## 安装 - 环境搭建
 
 下载：`wget http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.15.1.tar.gz`
 	
@@ -155,7 +153,7 @@ hdfs-site.xml
 		hadoop000
 ~~~
 
-### 实战
+## 实战
 
 启动HDFS：
 
