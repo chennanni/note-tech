@@ -69,3 +69,134 @@ M4: B1, C2
 通常情况下，1个单机部署一个组件（NameNode或者DataNode）。
 
 - <https://hadoop.apache.org/docs/r2.9.2/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html>
+
+## In Practice
+
+### 前置要求
+
+- Java 1.8+
+- ssh（配置无密码登陆）
+
+Java
+
+~~~
+1. 上传jdk并解压
+  拷贝本地软件包到服务器：scp jdk-8u91-linux-x64.tar.gz hadoop@192.168.199.233:~/software/
+  解压jdk到~/app/：tar -zvxf jdk-8u91-linux-x64.tar.gz -C ~/app/
+
+2. 配置环境变量
+  把jdk配置系统环境变量中： ~/.bash_profile
+    export JAVA_HOME=/home/hadoop/app/jdk1.8.0_91
+    export PATH=$JAVA_HOME/bin:$PATH
+  使得配置修改生效：source .bash_profile
+
+3. 验证
+  java -version
+~~~
+
+ssh
+
+~~~
+在这个位置 ~/.ssh
+
+local上存一个private key
+	ssh-keygen -t rsa
+	-> id_rsa
+server上存一个public key
+	cat id_rsa.pub >> authorized_keys
+	chmod 600 authorized_keys
+~~~
+
+### 环境搭建
+
+下载：`wget http://archive.cloudera.com/cdh5/cdh/5/hadoop-2.6.0-cdh5.15.1.tar.gz`
+	
+- Hadoop源：CDH（http://archive.cloudera.com/cdh5/cdh/5/）
+- Hadoop使用版本：`hadoop-2.6.0-cdh5.15.1`
+- Hive使用版本：`hive-1.1.0-cdh5.15.1`（后缀要与Hadoop一致）
+
+软件包常见目录说明
+
+~~~
+bin：hadoop客户端名单
+etc/hadoop：hadoop相关的配置文件存放目录
+sbin：启动hadoop相关进程的脚本
+share：常用例子
+~~~
+
+Hadoop(HDFS)安装
+
+- 解压：~/app
+- 添加HADOOP_HOME/bin到系统环境变量
+- 修改Hadoop配置文件
+
+~~~
+hadoop-env.sh
+	export JAVA_HOME=/home/hadoop/app/jdk1.8.0_91
+
+core-site.xml
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://hadoop000:8020</value>
+	</property>
+
+hdfs-site.xml
+	<property>
+		<name>dfs.replication</name>
+		<value>1</value>
+	</property>
+
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/home/hadoop/app/tmp</value>
+	</property>
+
+	slaves
+		hadoop000
+~~~
+
+### 实战
+
+启动HDFS：
+
+- 第一次执行的时候一定要格式化文件系统，不要重复执行: `hdfs namenode -format` 
+  - result -> `20/08/31 14:13:24 INFO common.Storage: Storage directory /home/hadoop/app/tmp/dfs/name has been successfully formatted.`
+- 启动：`$HADOOP_HOME/sbin/start-dfs.sh`
+- 停止：`$HADOOP_HOME/sbin/stop-dfs.sh`
+
+![hadoop_p_1](img/hadoop_p_1.PNG)
+
+注：`start/stop-dfs.sh`内部是调用了多个`hadoop-daemons.sh`
+
+~~~
+hadoop-daemons.sh start namenode
+hadoop-daemons.sh start datanode
+hadoop-daemons.sh start secondarynamenode
+~~~
+
+验证1：`jps`查看进程
+
+~~~
+[hadoop@hadoop000 sbin]$ jps
+60002 DataNode
+60171 SecondaryNameNode
+59870 NameNode
+~~~
+
+![hadoop_p_2](img/hadoop_p_2.PNG)
+
+验证2：浏览器打开Hadoop页面
+
+~~~
+http://192.168.199.233:50070
+~~~
+
+如果发现jps ok，但是浏览器不OK，十有八九是防火墙问题
+
+- 查看防火墙状态：sudo firewall-cmd --state
+- 关闭防火墙: sudo systemctl stop firewalld.service
+
+## 参考
+
+- <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html>
+
