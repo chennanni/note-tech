@@ -194,6 +194,28 @@ http://192.168.199.233:50070
 - 查看防火墙状态：sudo firewall-cmd --state
 - 关闭防火墙: sudo systemctl stop firewalld.service
 
+## 命令行操作
+
+It is shell-like.
+
+常用命令：
+
+~~~
+hadoop fs -ls /
+hadoop fs -put
+hadoop fs -copyFromLocal
+hadoop fs -moveFromLocal
+hadoop fs -cat
+hadoop fs -text
+hadoop fs -get
+hadoop fs -mkdir 
+hadoop fs -mv
+hadoop fs -getmerge
+hadoop fs -rm
+hadoop fs -rmdir
+hadoop fs -rm -r
+~~~
+
 ## 参考
 
 - <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html>
