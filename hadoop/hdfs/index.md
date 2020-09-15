@@ -128,7 +128,7 @@ Hadoop(HDFS)安装
 
 - 解压：~/app
 - 添加HADOOP_HOME/bin到系统环境变量(edit `.bash_profile` or `.bashrc` or `.profile`)
-- 修改Hadoop配置文件
+- 修改Hadoop配置文件(locate here: $HADOOP_HOME/etc/hadoop)
 
 ~~~
 hadoop-env.sh
@@ -155,6 +155,9 @@ hdfs-site.xml
 		<name>hadoop.tmp.dir</name>
 		<value>/home/hadoop/app/tmp</value>
 	</property>
+
+slaves
+	hostname
 ~~~
 
 ## 实战
