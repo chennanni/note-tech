@@ -160,6 +160,39 @@ slaves
 	hostname
 ~~~
 
+## 安装 - 服务器与客户端
+
+这里，我们把集群通信过程梳理一下。
+
+首先，我们有一台机器`Server0`作为Client。这台机器是用来query`NameNode`和`DataNode`的。
+
+然后，我们设置了NameNode和DataNode要部署在什么Server上，如下：
+
+~~~
+NameNode -> Server1
+SecondaryNameNode -> Server2
+DataNode -> Server3
+~~~
+
+然后，我们配置了ssh登录，从Client到Server，还有各个Server之间。
+
+~~~
+Server0 -> Server1
+Server0 -> Server2
+Server0 -> Server3
+
+Server1 -> Server2
+Server1 -> Server3
+
+Server2 -> Server1
+Server2 -> Server3
+
+Server3 -> Server1
+Server3 -> Server2
+~~~
+
+注：在单机部署中，可能Server0-4都是一台机器。
+
 ## 实战
 
 启动HDFS：
@@ -222,6 +255,8 @@ hadoop fs -rm
 hadoop fs -rmdir
 hadoop fs -rm -r
 ~~~
+
+https://www.tutorialspoint.com/hadoop/hadoop_hdfs_operations.htm
 
 ## 参考
 
