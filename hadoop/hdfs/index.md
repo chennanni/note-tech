@@ -73,7 +73,9 @@ M4: B1, C2
 ## 安装 - 前置要求
 
 - Java 1.8+
+  - 为什么要配置Java：因为Hadoop中用到了Java
 - ssh（配置无密码登陆）
+  - 为什么要配置ssh：因为Hadoop起namenode或者datanode，会登录到指定服务器上
 
 Java
 
@@ -135,7 +137,7 @@ hadoop-env.sh
 core-site.xml
 	<property>
 		<name>fs.defaultFS</name>
-		<value>hdfs://hadoop000:8020</value>
+		<value>hdfs://hostname:8020</value>
 	</property>
 
 hdfs-site.xml
@@ -144,13 +146,15 @@ hdfs-site.xml
 		<value>1</value>
 	</property>
 
+	<property> 
+    		<name>dfs.secondary.http.address</name>
+    		<value>hostname:50090</value>
+	</property>
+
 	<property>
 		<name>hadoop.tmp.dir</name>
 		<value>/home/hadoop/app/tmp</value>
 	</property>
-
-	slaves
-		hadoop000
 ~~~
 
 ## 实战
