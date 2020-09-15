@@ -258,8 +258,6 @@ hadoop fs -rm -r
 
 https://www.tutorialspoint.com/hadoop/hadoop_hdfs_operations.htm
 
-
-
 ## 参考
 
 - <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html>
