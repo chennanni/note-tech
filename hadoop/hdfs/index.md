@@ -125,7 +125,7 @@ share：常用例子
 Hadoop(HDFS)安装
 
 - 解压：~/app
-- 添加HADOOP_HOME/bin到系统环境变量
+- 添加HADOOP_HOME/bin到系统环境变量(edit `.bash_profile` or `.bashrc` or `.profile`)
 - 修改Hadoop配置文件
 
 ~~~
