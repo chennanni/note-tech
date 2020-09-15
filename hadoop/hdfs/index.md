@@ -236,7 +236,7 @@ http://192.168.199.233:50070
 
 ## 命令行操作
 
-It is shell-like.
+It is shell-like. 在Client端输入以下命令可以`CRUD`Server端的文件。（当然，直接在Server操作也是可以的，命令相同）
 
 常用命令：
 
@@ -257,6 +257,8 @@ hadoop fs -rm -r
 ~~~
 
 https://www.tutorialspoint.com/hadoop/hadoop_hdfs_operations.htm
+
+
 
 ## 参考
 
