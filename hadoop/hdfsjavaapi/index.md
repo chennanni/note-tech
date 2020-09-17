@@ -14,7 +14,9 @@ permalink: /archive/hadoop/hdfsjavaapi/
 - 首先，要有一台Server(local跑一个也行)，运行HDFS模块。
 - 然后，本地使用Java API，作为Client，连上Server，进行操作。
 
-## Maven依赖
+## 依赖
+
+Maven配置
 
 ~~~
 <properties>
@@ -223,4 +225,190 @@ Found 1 items
         boolean result = fileSystem.delete(new Path("/app/test/hello.txt"), true);
         System.out.println(result);
     }
+~~~
+
+## 实战小应用 - WordCount
+
+使用HDFS API完成wordcount统计
+
+需求：统计HDFS上的文件的wc，然后将统计结果输出到HDFS
+
+功能拆解：
+1. 读取HDFS上的文件 ==> HDFS API
+2. 业务处理(词频统计)：对文件中的每一行数据都要进行业务处理（按照分隔符分割） ==> Mapper
+3. 将处理结果缓存起来   ==> Context
+4. 将结果输出到HDFS ==> HDFS API
+
+说明
+- 创建了一个Properties类读取配置文件。
+- Mapper使用了一个接口，方便扩展。
+- Context中直接使用了一个Map做缓存，也可以使用其它的实现方式。
+- （方便起见，所有类都放到了一个文件中，实际应该拆开。）
+
+下面是代码：
+
+wc.properties
+
+~~~
+INPUT_PATH=/app/wc.txt
+~~~
+
+WordCountApp01.java
+
+~~~
+package max.learn;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.*;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+import java.net.URI;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Properties;
+
+/**
+ *
+ */
+public class WordCount01 {
+
+    public static void main(String[] args) throws Exception {
+
+        ImoocMapper mapper = new WordCountMapper();
+        ImoocContext context = new ImoocContext();
+
+        // 1）读取HDFS上的文件 ==> HDFS API
+        Properties properties = ParamsUtils.getProperties();
+        Path input = new Path(properties.getProperty("INPUT_PATH"));
+        //Path input = new Path("/app/wc.txt");
+
+        // 获取要操作的HDFS文件系统
+        FileSystem fs = FileSystem.get(new URI("hdfs://woklxd00361:8020"), new Configuration(),"eufiudwq");
+
+        RemoteIterator<LocatedFileStatus> iterator = fs.listFiles(input, false);
+        while(iterator.hasNext()) {
+            LocatedFileStatus file = iterator.next();
+            FSDataInputStream in = fs.open(file.getPath());
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+
+                // 2）业务处理(词频统计) (hello,3)
+                // 3）将结果缓存起来，存到context的cacheMap中
+                mapper.map(line, context);
+            }
+
+            reader.close();
+            in.close();
+        }
+
+        // 4）将结果输出到HDFS ==> HDFS API
+        Path output = new Path("/app");
+        FSDataOutputStream out = fs.create(new Path(output, new Path("wc.out")));
+
+        Map<Object, Object> contextMap = context.getCacheMap();
+        Set<Map.Entry<Object, Object>> entries = contextMap.entrySet();
+        for(Map.Entry<Object, Object> entry : entries) {
+            out.write((entry.getKey().toString() + " \t " + entry.getValue() + "\n").getBytes());
+        }
+
+        out.close();
+        fs.close();
+
+        System.out.println("HDFS API统计词频运行成功....");
+
+    }
+}
+
+/**
+ * 自定义上下文，其实就是缓存
+ */
+class ImoocContext {
+
+    private Map<Object, Object> cacheMap = new HashMap<Object, Object>();
+
+    public Map<Object, Object> getCacheMap() {
+        return cacheMap;
+    }
+
+    /**
+     * 写数据到缓存中去
+     * @param key 单词
+     * @param value 次数
+     */
+    public void write(Object key, Object value) {
+        cacheMap.put(key, value);
+    }
+
+    /**
+     * 从缓存中获取值
+     * @param key 单词
+     * @return  单词对应的词频
+     */
+    public Object get(Object key) {
+        return cacheMap.get(key);
+    }
+
+}
+
+/**
+ * 自定义Mapper
+ */
+interface ImoocMapper {
+
+    /**
+     *
+     * @param line  读取到到每一行数据
+     * @param context  上下文/缓存
+     */
+    public void map(String line, ImoocContext context);
+}
+
+/**
+ * 自定义wc实现类
+ */
+class WordCountMapper implements ImoocMapper {
+
+    public void map(String line, ImoocContext context) {
+        String[] words = line.split(" ");
+
+        for (String word : words) {
+            Object value = context.get(word);
+            if (value == null) { // 表示没有出现过该单词
+                context.write(word, 1);
+            } else {
+                int v = Integer.parseInt(value.toString());
+                context.write(word, v + 1);  // 取出单词对应的次数+1
+            }
+        }
+    }
+
+}
+
+/**
+ * 读取属性配置文件
+ */
+class ParamsUtils {
+
+    private static Properties properties = new Properties();
+
+    static {
+        try {
+            properties.load(ParamsUtils.class.getClassLoader().getResourceAsStream("wc.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Properties getProperties() throws Exception {
+        return properties;
+    }
+
+}
 ~~~
