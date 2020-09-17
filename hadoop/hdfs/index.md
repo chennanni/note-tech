@@ -193,7 +193,7 @@ Server3 -> Server2
 
 注：在单机部署中，可能Server0-4都是一台机器。
 
-## 实战
+## 实战 - 启动
 
 启动HDFS：
 
@@ -234,7 +234,7 @@ http://192.168.199.233:50070
 - 查看防火墙状态：sudo firewall-cmd --state
 - 关闭防火墙: sudo systemctl stop firewalld.service
 
-## 命令行操作
+## 实战 - 命令行操作
 
 It is shell-like. 在Client端输入以下命令可以`CRUD`Server端的文件。（当然，直接在Server操作也是可以的，命令相同）
 
@@ -257,6 +257,18 @@ hadoop fs -rm -r
 ~~~
 
 https://www.tutorialspoint.com/hadoop/hadoop_hdfs_operations.htm
+
+## HDFS读写流程
+
+Write
+
+![write.PNG](img/write.PNG)
+
+Read
+
+![read.PNG](img/read.PNG)
+
+<https://blog.csdn.net/whdxjbw/article/details/81072207>
 
 ## Replica Placement
 
