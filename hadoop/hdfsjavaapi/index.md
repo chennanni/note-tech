@@ -242,6 +242,7 @@ Found 1 items
 说明
 - 创建了一个Properties类读取配置文件。
 - Mapper使用了一个接口，方便扩展。
+- 使用反射，根据配置文件动态创建Mapper的实例，实现Plugin式的编程
 - Context中直接使用了一个Map做缓存，也可以使用其它的实现方式。
 - （方便起见，所有类都放到了一个文件中，实际应该拆开。）
 
@@ -251,6 +252,7 @@ wc.properties
 
 ~~~
 INPUT_PATH=/app/wc.txt
+MAPPER_CLASS=max.learn.WordCountMapper
 ~~~
 
 WordCountApp01.java
@@ -279,13 +281,17 @@ public class WordCount01 {
 
     public static void main(String[] args) throws Exception {
 
-        ImoocMapper mapper = new WordCountMapper();
         ImoocContext context = new ImoocContext();
 
         // 1）读取HDFS上的文件 ==> HDFS API
         Properties properties = ParamsUtils.getProperties();
         Path input = new Path(properties.getProperty("INPUT_PATH"));
         //Path input = new Path("/app/wc.txt");
+
+        //通过反射创建对象
+        //ImoocMapper mapper = new WordCountMapper();
+        Class<?> clazz = Class.forName(properties.getProperty("MAPPER_CLASS"));
+        ImoocMapper mapper = (ImoocMapper)clazz.newInstance();
 
         // 获取要操作的HDFS文件系统
         FileSystem fs = FileSystem.get(new URI("hdfs://woklxd00361:8020"), new Configuration(),"eufiudwq");
