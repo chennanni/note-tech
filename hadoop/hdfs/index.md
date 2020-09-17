@@ -258,7 +258,47 @@ hadoop fs -rm -r
 
 https://www.tutorialspoint.com/hadoop/hadoop_hdfs_operations.htm
 
+## Replica Placement
+
+副本摆放策略
+
+~~~
+1 - 本rack的一个节点上
+2 - 另外一个rack的节点上
+3 - 与2相同的rack的另外一个节点上
+
+1 - 本rack的一个节点上
+2 - 本rack的另外一个节点上
+3 - 不同rack的一个节点上
+~~~
+
+## Metadata
+
+什么是元数据（Metadata）：HDFS的目录结构以及每个文件的BLOCK信息(id，副本系数、block存放在哪个DN上)
+	
+存在什么地方：这个目录下，`${hadoop.tmp.dir}/name/...`
+
+## Checkpoint
+
+HDFS Metadata 的写流程是这样的：
+
+- 先写入`EditLog`
+- 然后，SecondaryNameNode会把`EditLog`和`FsImage`的数据合并，生成一个新的`FsImage`，替换掉原有的
+
+这个过程，就叫checkpoint。
+
+为什么这样操作呢？如果每次文件修改（比如改名，加一些新的字段等待），都要去修改`FsImage`，这个过程消耗很大。
+
+## Safemode
+
+HDFS刚起的时候，会进入安全模式，NameNode等待DataNode注册信息。直到NameNode确信，（几乎）所有Block都可以正常运作，才会退出安全模式。
+
+当然，这段等待时间的长短可以通过多个参数配置修改的。
+
+> A block is considered safely replicated when the minimum number of replicas of that data block has checked in with the NameNode.
+
+<https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Safemode>
+
 ## 参考
 
 - <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html>
-
