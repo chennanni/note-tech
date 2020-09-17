@@ -18,7 +18,7 @@ permalink: /archive/hadoop/hdfsjavaapi/
 
 Maven配置
 
-~~~
+~~~ xml
 <properties>
   <hadoop.version>2.6.0-cdh5.15.1</hadoop.version>
 </properties>
@@ -45,7 +45,7 @@ Maven配置
 
 ### hadoop fs -ls
 
-~~~
+~~~ java
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.IOUtils;
@@ -111,7 +111,7 @@ hello hello
 
 ### hadoop fs -mkdir
 
-~~~
+~~~ java
     /**
      * 创建HDFS文件夹
      */
@@ -131,7 +131,7 @@ drwxr-xr-x   - hadoop supergroup          0 2020-09-15 10:21 /app/test
 
 ### hadoop fs -mv
 
-~~~
+~~~ java
     /**
      * 测试文件名更改
      * @throws Exception
@@ -155,7 +155,7 @@ drwxr-xr-x   - hadoop supergroup          0 2020-09-15 10:21 /app/test
 
 ### hadoop fs -copyFromLocal
 
-~~~
+~~~ java
     /**
      * 拷贝本地文件到HDFS文件系统
      */
@@ -176,7 +176,7 @@ Found 1 items
 
 ### hadoop fs -get
 
-~~~
+~~~ java
     /**
      * 拷贝HDFS文件到本地：下载
      */
@@ -190,7 +190,7 @@ Found 1 items
 
 ### hadoop fs -ls
 
-~~~
+~~~ java
     /**
      * 查看目标文件夹下的所有文件
      */
@@ -216,7 +216,7 @@ Found 1 items
 
 ### hadoop fs -rm
 
-~~~
+~~~ java
     /**
      * 删除文件
      */
@@ -255,7 +255,7 @@ INPUT_PATH=/app/wc.txt
 
 WordCountApp01.java
 
-~~~
+~~~ java
 package max.learn;
 
 import org.apache.hadoop.conf.Configuration;
