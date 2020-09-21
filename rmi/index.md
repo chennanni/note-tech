@@ -127,5 +127,25 @@ class MyRemoteClient {
 }
 ~~~
 
+## RMI v.s. RPC
+
+RMI = RPC + Object-orientation
+
+- RPC is C based; It invokes a remote function / procedure.
+- RMI is Java based; It invokes a remote method OR object.
+
+<https://stackoverflow.com/questions/2728495/what-is-the-difference-between-java-rmi-and-rpc>
+
+## Downside of RMI
+
+RMI is not a good code practice because it introduces a lot of dependencies for the client. 
+For a client, it does not care about the Java Object defined in another application. 
+He should be able to simply say: this is what I want, and get that (or nothing) from server.
+
+So in some cases (diving into legacy or "enterprise" applications) you just have no choice. You must use RMI. 
+Or else REST + JSON over HTTP is a better choice.
+
+<https://stackoverflow.com/questions/14326901/the-significance-of-java-rmi-please>
+
 ## Links
 - <http://www.javatpoint.com/RMI>
