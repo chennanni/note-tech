@@ -7,21 +7,36 @@ permalink: /archive/spring/boot/
 
 # Spring Boot
 
-## What
+## What is Spring Boot
 
 - It is easy to create a stand-alone and production ready spring applications using Spring Boot. 
 - Spring Boot contains a comprehensive infrastructure support for developing a micro service and enables you to develop enterprise-ready applications that you can “just run”.
 
 两点，一是适用于**快速**搭建项目，二是适用于搭建**微服务**。
 
-## Spring Boot & Spring
+## Spring Family
 
 Pivotal公司一向擅长做框架。之前的Spring版图中，除了核心的IOC之外，还包括了许多其他模块，举例：
-- Web: Spring MVC
-- Messaing: Spring JMS
-- Persistence: Spring JPA
 
-而这次的Spring Boot，侧重点是Boot，顾名思义，就是让系统更方便，快捷地跑起来。为了达到这个目的，Spring Boot在框架背后做了许多工作，预先把很多接口和实现写好了。下面就挑重点讲一下。
+- IoC：Spring框架中最常用的功能，依赖注入。
+- Web：Spring MVC，适用于Web应用搭建。
+- Messaing：Spring JMS，消息中间件。
+- Persistence：Spring JPA，数据写入模块。
+
+技术是不断发展的，框架也在不断改进，它的目标很简单：用了这个框架，你只需要写业务逻辑即可，其它的代码越少越好。
+于是就有了Spring Boot。它整合了大量其它的第三方类库，且更加遵循"约定大于配置"。
+
+- Spring Boot：侧重点是Boot，顾名思义，就是让系统更方便，快捷地跑起来。为了达到这个目的，Spring Boot在框架背后做了许多工作，预先把很多接口和实现写好了。
+- Spring Cloud：是基于Spring Boot的微服务框架。其致力于将一整个"大的"应用切分为一个个"小的"服务，各个服务之间解耦且独立，可以分布式运行。
+
+## Spring Boot Features
+
+1. 为所有 Spring 开发提供一个更快更广泛的入门体验。
+2. 零配置。无冗余代码生成和XML 强制配置，遵循“约定大于配置” 。
+3. 集成了大量常用的第三方库的配置， Spring Boot 应用为这些第三方库提供了几乎可以零配置的开箱即用的能力。
+4. 提供一系列大型项目常用的非功能性特征，如嵌入式服务器、安全性、度量、运行状况检查、外部化配置等。
+
+<https://blog.csdn.net/qq_40147863/article/details/84194493>
 
 ## SpringBootApplication
 
@@ -67,8 +82,6 @@ Pivotal公司一向擅长做框架。之前的Spring版图中，除了核心的I
 ~~~
 
 ## How to Run
-
-为了让Java代码跑起来，一般需要一个main函数，然后在里面定义启动的步骤。而在Spring Boot中一般不自己写main函数，而是实现一个接口，这个接口用了类似template pattern的方法，在main函数里预先实现了部分功能，且留了一些发挥空间给开发者。
 
 例1：hello world 1
 
