@@ -167,6 +167,24 @@ echo '1@2@3' | xargs -d '@' -n1 echo: divide input by @ and parse as parameter t
 cat input.txt | xargs -I {} echo {}: use {} to replace the input cmd
 ~~~
 
+## 实战组合技
+
+### 查看某一组应用并快速kill
+
+`jps | grep Node`
+
+->
+
+~~~
+39171 SecondaryNameNode
+28581 DataNode
+38919 NameNode
+~~~
+
+`jps | grep Node | xargs -n1 | grep -v Node | xargs -I {} kill {}`
+
+-> DONE
+
 ## Links
 
 - [Linux and Unix top 10 commands](http://www.computerhope.com/unixtop1.htm)
