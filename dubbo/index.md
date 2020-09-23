@@ -90,3 +90,5 @@ A机器的function_A调用B机器的function_B怎么办？这就需要Dubbo。
 TODO
 
 https://github.com/apache/dubbo
+
+https://my.oschina.net/wangmengjun/blog/903967
