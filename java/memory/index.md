@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Java - Memory
+title: Java - JVM Memory
 folder: memory
 permalink: /archive/java/memory/
 ---
 
-# Java - Memory
+# Java - JVM Memory
 
 Java Runtime JVM memory allocaiton
 
@@ -21,12 +21,6 @@ Java Runtime JVM memory allocaiton
 - Non Heap，非堆
   - Method Area，存放class files
   - Code Cache
-
-- Java stack: Storage are for local variables(primitive variables and object references), results of intermediate operations. (One per thread)
-- Native method stacks : Helps in executing native methods(methods written in languages other than java). (One per thread)
-- PC Register : Stores the address of the next instruction to be executed if the next instruction is native method then the value in pc register will be undefined. (One per thread)
-- Heap : Storage area for Objects. (One per JVM instance)
-- Method Area : Storage area for compiled class files. (One per JVM instance)
 
 ## Links
 - <https://stackoverflow.com/questions/10209952/what-is-the-purpose-of-the-java-constant-pool>

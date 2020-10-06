@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Java - GC
+title: Java - JVM GC
 folder: gc
 permalink: /archive/java/gc/
 ---
@@ -16,7 +16,7 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - 进行回收
 - 碎片整理（可选）
 
-在C语言中，GC是需要程序员手动进行的，十分繁琐。而在Java，Python等语言中，GC是由程序自动执行的，减轻了程序员的负担。
+在C语言中，GC是需要程序员手动进行的（malloc free），十分繁琐。而在Java，Python等语言中，GC是由程序自动执行的，减轻了程序员的负担。
 
 ## 为什么要做GC
 
@@ -35,7 +35,7 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - Root Searching: 根可达算法
   - 以根对象为起点，逐一标记其引用到的对象，如果某些对象没有被标记到，就是Garbage。
 
-## 根可达算法进阶
+### 根可达算法进阶
 
 程序运行后，它在内存中的状态可以看成是有向图，分为三种：
 - 可达状态：在一个对象创建后，有一个以上的引用变量引用它。在有向图中可以从起始顶点导航到该对象，那它就处于可达状态。
@@ -48,36 +48,61 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 
 - `mark-sweep` 标记-清除
   - 非常简单，把Gargabe标记出来，然后回收
-  - 缺点：内存碎片化
-- `mark-sweep-compact` 标记-清除-压缩
+  - 缺点：位置不连续，产生碎片
+- `mark-compact` 标记-压缩
   - 在标记清除的基础上，加了一步压缩，把内存碎片连续化
+  - 优点：没有碎片
   - 缺点：处理效率比较低
 - `copy` 复制
   - 把内存一分二，只用一半。需要GC时，把用到的对象拷贝到另一半，不用的直接丢弃
+  - 优点：没有碎片
   - 缺点：内存使用率低
 
-## GC的两种策略
+## JVM内存分代模型
 
-- 串行
-- 并行
+- 部分JVM（Hotspot）使用的模型
+- 新生代 + 老年代 + 永久代（1.7）/ 元数据区(1.8) Metaspace
+   1. 永久代/元数据 - Class
+   2. 永久代必须指定大小限制，元数据可以设置，也可以不设置，无上限（受限于物理内存）
+   3. 字符串常量 1.7 - 永久代，1.8 - 堆
+- 新生代 = Eden + 2个suvivor区
+  - YGC回收之后，大多数的对象会被回收，活着的进入s0
+  - 再次YGC，活着的对象eden + s0 -> s1
+  - 再次YGC，eden + s1 -> s0
+  - 年龄足够 -> 老年代
+  - s区装不下 -> 老年代
+- 老年代
+  - 顽固分子
+  - 老年代满了FGC Full GC
 
-## 具体怎么做GC（算法+策略的组合应用）
+![java-gc-memory](img/java-gc-memory.png)
+
+注：MinorGC = YGC, MajorGC = FGC
+
+## GC流程
 
 首先，关于一个概念：应用程序停止，stop-the-world：除了GC所需的线程以外，所有线程都处于等待状态，直到GC完成。它会发生在任何一个GC算法中，不同的算法，不同的优化策略，一定程度上就是减少系统等待时间。
 
-按代回收的机制，不同的代的回收算法不同
-- 新生代 Young Generation，对应minor GC
-  - Elden*1
-  - Survivor*2
-- 老年代 Old Generation，对应major GC
-- 持久代 Permanent Generation，对应major GC
+![java-gc-process](img/java-gc-process.png)
 
-不同的GC类型（策略+算法）
-- 串行回收 Serial GC
-- 并行回收 Parallel GC
-- Parallel Old GC
-- CMS, Concurrent Mark & Sweep GC
-- G1, Garbage First
+## JVM垃圾回收器的类型
+
+垃圾回收器的发展是随着内存不断扩大而不断演进的。
+一开始，使用的是串行策略，慢慢地，变成了并行策略。
+
+根据JVM内存分代模型，新生代和老年代采用了不同的垃圾回收器。具体如下：
+
+~~~
+Serial + SerialOld
+
+ParallelScavenge + ParallelOld
+
+ParNew + CMS(Concurrent Mark & Sweep) / G1 (Garbage First)
+~~~
+
+1.8默认的垃圾回收：PS + ParallelOld
+
+![java-gc-collector](img/java-gc-collector.png)
 
 ## 可能发生内存泄露的情况
 
@@ -85,6 +110,45 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - 静态集合类像HashMap，Vector等的使用，即使其元素被赋值为null，还是不会被GC。
 - 数据库连接，网络连接，IO连接等没有显示调用close关闭。
 - 监听器的使用，在释放对象的同时没有相应删除监听器。
+
+## JVM GC 调优
+
+JVM参数分类
+
+- 标准：`-` 开头，所有的HotSpot都支持
+- 非标准：`-X` 开头，特定版本HotSpot支持特定命令
+- 不稳定：`-XX` 开头，下个版本可能取消
+
+查看参数命令
+
+~~~
+-XX:+PrintCommandLineFlags
+-XX:+PrintFlagsFinal 最终参数值
+-XX:+PrintFlagsInitial 默认参数值
+~~~
+
+GC常用参数
+
+- `-Xmn -Xms -Xmx -Xss`: 年轻代 最小堆 最大堆 栈空间
+- `-XX:+UseTLAB`
+- `-XX:+PrintTLAB`
+- `-XX:TLABSize`
+- `-XX:+PrintGC`
+- `-XX: PrintGCDetails`
+- `-XX: PrintHeapAtGC`
+- `-XX: PrintGCTimeStamps`
+
+了解生产环境下的垃圾回收器组合: `java -XX:+PrintFlagsInitial | grep GC | grep true`
+
+开源工具：Arthas
+
+产生了CPU爆增加的问题，如何定位？
+- 首先，查看是系统哪个进程
+- 然后，查看是进程下的哪个线程
+  - 业务线程：排查业务逻辑
+  - JVM线程：可能是GC问题
+
+注：JVM的命令行参数参考：https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html
 
 ## Links
 - <http://www.importnew.com/15330.html>
