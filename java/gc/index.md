@@ -75,7 +75,7 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
   - 顽固分子
   - 老年代满了FGC Full GC
 
-![java-gc-memory](img/java-gc-memory.png)
+![java-gc-memory](img/java-gc-memory.PNG)
 
 注：MinorGC = YGC, MajorGC = FGC
 
@@ -83,7 +83,7 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 
 首先，关于一个概念：应用程序停止，stop-the-world：除了GC所需的线程以外，所有线程都处于等待状态，直到GC完成。它会发生在任何一个GC算法中，不同的算法，不同的优化策略，一定程度上就是减少系统等待时间。
 
-![java-gc-process](img/java-gc-process.png)
+![java-gc-process](img/java-gc-process.PNG)
 
 ## JVM垃圾回收器的类型
 
@@ -102,7 +102,7 @@ ParNew + CMS(Concurrent Mark & Sweep) / G1 (Garbage First)
 
 1.8默认的垃圾回收：PS + ParallelOld
 
-![java-gc-collector](img/java-gc-collector.png)
+![java-gc-collector](img/java-gc-collector.PNG)
 
 ## 可能发生内存泄露的情况
 
