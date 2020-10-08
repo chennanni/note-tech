@@ -80,7 +80,9 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 
 注：MinorGC = YGC, MajorGC = FGC
 
-### 新生代 = Eden + 2个suvivor区
+### 新生代 
+
+组成：Eden + 2个suvivor区
 - （大多数）采用**复制**算法
 - YGC回收之后，大多数的对象会被回收，活着的进入s0
 - 再次YGC，活着的对象eden + s0 -> s1
@@ -89,6 +91,7 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - （大对象）s区装不下 -> 老年代
 
 ### 老年代
+
 - 一般采用**标记-清除**或者**标记-压缩**算法
 - 老年代满了FGC Full GC
 
