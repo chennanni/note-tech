@@ -35,6 +35,8 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - Root Searching: 根可达算法
   - 以根对象为起点，逐一标记其引用到的对象，如果某些对象没有被标记到，就是Garbage。
 
+注：HotSpot采用的是Root Searching。
+
 ### 根可达算法进阶
 
 程序运行后，它在内存中的状态可以看成是有向图，分为三种：
@@ -43,6 +45,13 @@ Garbage Collection，垃圾回收，就是通过某些算法，将不再使用�
 - 不可达状态：当对象的所有关联都被切断，且系统调用`finalize()`方法进行资源清理后依旧没有使该对象变为可达状态，则这个对象将永久性失去引用并且变成不可达状态，系统才会真正的去回收该对象所占用的资源。
 
 ![java-gc-state.png](img/java-gc-state.png)
+
+可以作为 GC ROOTS 的对象包括下面几种：
+
+- Java Method 里引用的对象。
+- Native Method 里引用的对象。
+- Method Area 的类静态属性(static)引用的对象。
+- Method Area 的常量(final)引用的对象。
 
 ## GC的三种算法
 
