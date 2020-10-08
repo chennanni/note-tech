@@ -14,15 +14,20 @@ Java Runtime JVM memory allocaiton
 ![java-memory](img/java-memory.png)
 
 - Stack，栈
-  - Program Counter，程序计数器
-  - Java Stack，Java栈，存放local variables
-  - Native Method Stack，本地方法栈
+  - `Program Counter`，程序计数器
+  - `Java Stack`，Java栈，存放`local variables`, `return values`, `operand stack`等
+  - `Native Method Stack`，本地方法栈
 - Heap，堆，存放Objects
   - Young Generation
   - Old Generation
 - Method Area 方法区 / （约等于）PermGen space 永久代
-  - 存放 class files
-  - 运行时常量池 runtime constant pool
+  - （总体来说，是用来存放 class data）
+  - 常量池 （静态常量+动态常量）
+    - 静态常量：字面量(Literal) + 符号引用量(Symbolic References，编译概念，如类名，接口名，方法名)
+    - 动态常量：jvm在完成类装载操作后，class文件中的常量，一个典型的就是`String.intern()`
+  - 静态变量 static variable
+
+参考 -> Java中静态常量和静态变量的区别 <https://blog.csdn.net/luzhensmart/article/details/86855029>
 
 ## JDK 1.8 模型
 
