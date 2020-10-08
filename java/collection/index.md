@@ -110,30 +110,28 @@ remove(Object key)
 
 **ArrayList v.s. Vector**
 
-- Vector is thread-safe, ArrayList is not (Performance)
+- Vector is **thread-safe**, ArrayList is not (Performance)
+- Vector has **Enumerator** while ArrayList does not
 - Automatic increase its capacity, Vector doubles its size while ArrayList increase by 50%
-- Vector has Enumerator while ArrayList does not
 
 **HashMap v.s. Hashtable**
 
-- HashMap allows null for both key and value, Hashtable does not
-- HashMap is unsynchronized. So come up with better performance. Hashtable is not.
+- HashMap allows **null** for both key and value, Hashtable does not
+- HashMap is **unsynchronized**. So come up with better performance. Hashtable is not
 
 (To successfully store and retrieve objects from a hashtable, the objects used as keys must implement the `hashCode` method and the `equals` method.
 parameter: initialCapacity, loadFactor)
 
 **HashMap v.s. ConcurrentHashMap**
 
-- Thread-safe(ConcurentHashMap is thread-safe)
-- Performance(HashMap is better)
-- Null Key(ConcurrentHashMap does not allow NULL values while HashMap allows one)
+- 和上面几乎一样，把Hashtable换成ConcurrentHashMap就行
 
 **Hashtable v.s. ConcurrentHashMap**
 
 - 不论是读写操作，Hashtable都会锁住整个表
 - 写操作时，ConcruuentHashMap锁住一个部分，读操作时不锁定
 
-<http://blog.csdn.net/wisgood/article/details/19338693>
+参考 -> <http://blog.csdn.net/wisgood/article/details/19338693>
 
 ## Fail-fast and Fail-safe Collection
 
