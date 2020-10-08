@@ -20,15 +20,15 @@ Java Runtime JVM memory allocaiton
 - Heap，堆，存放Objects
   - Young Generation
   - Old Generation
-- Method Area 方法区 / PermGen space 永久代
-  - 存放class files
+- Method Area 方法区 / （约等于）PermGen space 永久代
+  - 存放 class files
   - 运行时常量池 runtime constant pool
 
 ## JDK 1.8 模型
 
 Method Area 方法区；存在JVM中
 
--> 
+改动 -> 
 
 Metaspace 元数据区；存在内存中
 
