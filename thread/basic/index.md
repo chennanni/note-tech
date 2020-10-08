@@ -59,10 +59,13 @@ Cost
 - runnable
   - ready
   - running
-- timed waiting
 - waiting
+  - timed waiting
+  - waiting
 - blocked
 - terminated
+
+注：有的地方把 waiting 和 blocked 都看作是阻塞，需要注意。
 
 ![concurrency-thread-state.png](img/concurrency-thread-state-2.png)
 
@@ -73,35 +76,98 @@ Cost
   - start() -> `runnable - ready` state
   - 被scheduler排到了，获取CPU资源 -> `running` state
   - 运行完 -> `terminated` state
-- sleep：
+- sleep（作用于本线程，自己"睡"若干时间）：
   - `sleep(timeout)` -> `timed waiting` state
   - timeout完了之后 -> `runnable` state
-- join：（作用于Thread，等这个Thread终结）
-  - `t.join(timeout)` -> `timed waiting` state
-  - timeout完了之后 -> 相当于进入了`waiting` state
-  - `t.join()` -> `waiting` state，等待那个thread终结
-  - 等待的那个thread终结了之后 -> `runnable` state
-- wait：（作用于Object，等这个Object通知）
+- wait：（作用于某个Object，我等这个Obj，直到它通知我好了，我才会继续往下走）
   - `obj.wait(timeout)` -> `timed waiting` state
   - timeout完了之后 -> 相当于进入了`waiting` state，等待`obj.notify()`
-  - `wait()` -> `waiting` state，等待`obj.notify()`
   - `obj.notify()` -> `block` state，waiting for the monitor lock to enter/re-enter a synchronized block/method
   - 获取monitor lock -> `runnable` state
+- join：（作用于某个Thread，我等这个Thread终结，才会继续往下走）
+  - `t.join(timeout)` -> `timed waiting` state
+  - timeout完了之后 -> 相当于进入了`waiting` state
+  - 等待的那个thread终结了之后 -> `runnable` state
 
 经常问到的几个问题：
 
-- sleep()和wait()有什么区别：
-  - 都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器moniter，sleep()不会放弃这个对象的监视器，wait()会放弃这个对象的监视器，所以sleep完了之后就进入Runnable状态，而wait完之后还在Blocked状态
-- 线程中断了怎么做可以让它继续运行：
-  - ？？？
-- start()和run()有什么区别：
-  - start()里面call了run()，完了程序就继续执行下去了，不会等待线程运行返回结果
-  - run()开始执行线程内容，会等线程运行完毕才继续执行下面的内容
-- Runnable接口和Callable接口的区别：
-  - Runnable接口中的run()方法的返回值是void，它做的事情只是纯粹地去执行run()方法中的代码而已
-  - Callable接口中的call()方法是有返回值的，是一个泛型，和Future、FutureTask配合可以用来获取异步执行的结果，或者当等待时间太长时取消任务
+- `sleep()`和`wait()`有什么区别：
+  - 都可以用来放弃CPU一定的时间，不同点在于如果线程持有某个对象的监视器moniter，`sleep()`不会放弃这个对象的监视器，`wait()`会放弃这个对象的监视器
+  - `sleep()`完了之后就进入`Runnable`状态
+  - `wait()`完之后还在`Blocked`状态，要等待获取monitor lock
+- 线程中断`interrupt`了怎么做可以让它继续运行：
+  - catch住`InterruptedException`，然后决定是否要中止程序，或者让它继续运行下去
+- `start()`和`run()`有什么区别：
+  - `start()`不堵塞；它call了`run()`，完了程序就继续执行下去了，不会等待线程运行返回结果
+  - `run()`会堵塞等待；它开始执行线程内容，会等线程运行完毕才继续执行下面的内容
+- `Runnable`接口和`Callable`接口的区别：
+  - `Runnable`接口中的`run()`方法的**返回值**是`void`，它做的事情只是纯粹地去执行`run()`方法中的代码而已
+  - `Callable`接口中的`call()`方法是有返回值的，是一个泛型，和`Future`, `FutureTask`配合可以用来获取异步执行的结果，或者当等待时间太长时取消任务
 - 如何在两个线程之间共享数据：
-  - 通过在线程之间共享对象就可以了，比方说阻塞队列BlockingQueue就是为线程之间共享数据而设计的。
+  - 通过在线程之间共享**对象**就可以了，比方说阻塞队列`BlockingQueue`就是为线程之间共享数据而设计的。
+
+## Java Thread Interrupt
+
+线程中断
+
+当一个线程调用`interrupt()`后，表示告诉当前线程：你把手中的活停一下，可能要干些别的事了。如下：
+
+~~~ java
+public static void main(String[] args) throws InterruptedException {  
+    ThreadA t = new ThreadA();  
+    t.start();  
+    Thread.sleep(3000);  
+    t.interrupt();  
+}
+~~~
+
+这个时候，当前线程干了一件事：把`Thread.currentThread().isInterrupted()`的值置为true。然后，就看当前线程怎么处理这个flag了。
+
+1. 一种可能，编程者检查了这个flag，然后使用一段其它的处理逻辑。
+2. 另一种可能，编程者检查了这个flag，然后抛出一个`InterruptedException`。（比如`Thread.sleep()`, `Object.wait()`, `Thread.join()`都会这么干，并且将flag复位）
+3. 还有一种，编程者直接忽略掉这个flag，那一切无事发生。
+
+下例，是第1种情况：
+
+~~~ java
+public class ThreadA extends Thread{
+    public void run(){
+        while(true){
+            if(Thread.currentThread().isInterrupted()){  
+                System.out.println("Someone interrupted me.");
+                return;
+            }
+            else{
+                System.out.println("Thread is Going...");  
+            }
+        }
+    }
+}
+~~~
+
+下例，是第2种情况：需要注意的是，`InterruptedException`是由`sleep(100)`抛出的。
+
+~~~ java
+    public void run() {
+        while (true) {
+            try {
+                sleep(100);
+                System.out.println("Thread is Going...");
+            } catch (InterruptedException e) {
+                //e.printStackTrace();
+                System.out.println("Someone interrupted me. I can't sleep.");
+                return;
+            }
+        }
+    }
+~~~
+
+中断使用场景：
+
+1. 在某线程中，调用了`Thread.sleep(10000)`等10s，实际发现不需要10s，于是使用中断提前唤醒。
+2. 线程A调用`join()`方法等待线程B执行结束，但是线程B发现自己短时间无法结束，于是使用中断，告诉线程A别等我了。
+
+参考 -> 理解java线程的中断 <https://blog.csdn.net/canot/article/details/51087772> 和 <https://docs.oracle.com/javase/tutorial/essential/concurrency/interrupt.html>
 
 ## Java Thread Example
 
