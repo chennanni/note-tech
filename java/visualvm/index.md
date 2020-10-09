@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Java - VisualVM
+title: Java - Monitor - VisualVM
 folder: visualvm
 permalink: /archive/java/visualvm/
 ---
 
-# Java - VisualVM
+# Java - Monitor - VisualVM
 
 > JVisualVM，能够监控线程Thread，内存Memory，CPU时间和对象Class。
 
