@@ -43,63 +43,66 @@ Map
 
 ### Access Collection Class
 
-**Adding and Removing Elements**
+Add / Remove
 
-```
+~~~
 boolean didCollectionChange = collection.add(anElement);
 boolean wasElementRemoved   = collection.remove(anElement); 
-```
+~~~
 
-**Checking if a Collection Contains a Certain Element**
+Check
 
-```
+~~~
 boolean containsElement = collection.contains("an element");
 boolean containsAll     = collection.containsAll(elements);
-```
+~~~
 
-**Size**
+Iteration
 
-```
-int numberOfElements = collection.size();
-```
-
-**Iteration**
-
-```
+~~~
+// method 1
 Iterator iterator = collection.iterator();
 while(iterator.hasNext()){
     Object object = iterator.next();
     //do something to object;    
 }
 
+// method 2
 for(Object object : collection) {
   //do something to object;
 }
-```
+~~~
 
 ### Access Map Class
 
-**Accessing Elements**
+Add
 
-```
+~~~
 Map mapA = new HashMap();
-
 mapA.put("key1", "element 1");
+~~~
 
+Remove
+
+~~~
+remove(Object key)
+~~~
+
+Get
+
+~~~
 String element1 = (String) mapA.get("key1");
+~~~
 
+Iteration
+
+~~~
 // key iterator
 Iterator iterator = mapA.keySet().iterator();
 
 // value iterator
 Iterator iterator = mapA.values();
-```
-
-**Removing Elements**
-
-```
-remove(Object key)
-```
+~~~
 
 ## Differences
 
