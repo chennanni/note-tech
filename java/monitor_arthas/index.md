@@ -27,27 +27,7 @@ java -jar arthas-boot.jar <java_process_id>
 
 欢迎界面 ->
 
-~~~
-[INFO] arthas-boot version: 3.4.3
-[INFO] Start download arthas from remote server: https://arthas.aliyun.com/download/3.4.3?mirror=aliyun
-[INFO] File size: 11.82 MB, downloaded size: 10.73 MB, downloading ...
-[INFO] Download arthas success.
-[INFO] arthas home: /root/.arthas/lib/3.4.3/arthas
-[INFO] Try to attach process 575
-[INFO] Attach process 575 success.
-[INFO] arthas-client connect 127.0.0.1 3658
-  ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.                           
- /  O  \ |  .--. ''--.  .--'|  '--'  | /  O  \ '   .-'                          
-|  .-.  ||  '--'.'   |  |   |  .--.  ||  .-.  |`.  `-.                          
-|  | |  ||  |\  \    |  |   |  |  |  ||  | |  |.-'    |                         
-`--' `--'`--' '--'   `--'   `--'  `--'`--' `--'`-----'                          
-                                                                                
-wiki      https://arthas.aliyun.com/doc                                         
-tutorials https://arthas.aliyun.com/doc/arthas-tutorials.html                   
-version   3.4.3                                                                 
-pid       575                                                                   
-time      2020-10-09 14:54:40          
-~~~
+![welcome](img/welcome.PNG)
 
 ## 使用
 

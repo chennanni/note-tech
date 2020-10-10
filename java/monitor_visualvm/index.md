@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Java - Monitor - VisualVM
-folder: visualvm
-permalink: /archive/java/visualvm/
+folder: monitor_visualvm
+permalink: /archive/java/monitor_visualvm/
 ---
 
 # Java - Monitor - VisualVM
