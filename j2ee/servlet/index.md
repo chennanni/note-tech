@@ -25,19 +25,21 @@ myWebApp/
 
 ## Server
 
-### Web Server
-
 ![servlet_server](img/servlet_server.png)
 
+### Web Server
+
 A Web server exclusively handles HTTP requests. 主要负责收发Web请求，做一些简单的处理逻辑，复杂的逻辑转发给Application Server。
-- Java Web Server
+
+Java Web Server
   * Tomcat
   * httpd
   
 ### Application server
 
 An application server serves business logic to application programs through any number of protocols. 主要负责复杂的business逻辑处理。
-- Java App Server
+
+Java App Server
   * JBoss
   * Glassfish
   * WebSphere
