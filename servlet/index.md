@@ -1,11 +1,11 @@
 ---
 layout: default
-title: J2EE - Servlet
+title: Web - Servlet
 folder: servlet
-permalink: /archive/j2ee/servlet/
+permalink: /archive/servlet/
 ---
 
-# J2EE - Servlet
+# Web - Servlet
 
 ## Project Folder Structure
 
@@ -64,6 +64,17 @@ Servlet is a small Java program that runs within a web server.
   - Unload from container
 
 ![servlet_life_cycle](img/servlet_life_cycle.png)
+
+### Servlet Thread Safe Issue
+
+Servlet的生命周期是由Web容器控制的，而Web容器一般会创造一个线程池，new多个Servlet。有request就从池子里拿Servlet出来处理。
+
+- 同一时间，一个Servlet只能处理一个request。
+- 处理完了之后，Servlet不会销毁/重新初始化，而是接着处理后续的request。
+
+所以，如果代码写的不好，是有可能发生线程安全问题的。
+
+-> 参考 servlet线程安全问题的详解 <https://blog.csdn.net/after_you/article/details/54173012>
 
 ### Java Class Structure
 
