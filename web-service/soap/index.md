@@ -15,6 +15,8 @@ Common Type: `SOAP` web service, `RESTful` web service
 
 Web Service is used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to **communicate data** without intimate knowledge of each other's IT systems behind the firewall.
 
+总结来说，就是公司内的部门A和部门B，或者公司X和公司Y，为了某一些数据互通，开发的一个数据通信模块。
+
 ## Web Services Example
 
 **Register/Ordering**
@@ -49,7 +51,7 @@ Simple Object Access Protocol
 - a format for sending messages
 - platform independent, language independent
 
-## SOAP Structure
+### SOAP Structure
 
 In the example of SOAP web service
 
@@ -64,12 +66,14 @@ SOAP是比较早期的Web Service解决方案，后来慢慢就淘汰了，主�
 
 这个“重”主要体现在几个方面：
 - SOAP有自己的一套XML格式的SOAP message，需要额外parse；而RESTful就是直接`JSON/XML/CSV`，使用起来方便很多。
-- SOAP需要定义一套接口WSDL暴露给外部；而RESTful用规范代替配置的思想，结合HTTP verbs(`GET, PUT, POST, DELETE`)，进而提出 `Resource-based` 这个概念，更容易编程实现。
+- SOAP需要定义一套接口WSDL暴露给外部；而RESTful直接使用HTTP verbs(`GET, PUT, POST, DELETE`)，进而提出 `Resource-based` 这个概念，更容易开发。
 - SOAP需要定义一套资源中心UDDI暴露给外部，用来查询WSDL；而RESTful没有这些，它的请求可以通过文档直接暴露给外部。
 
-总结来看，SOAP参考了很多Java API的编程思想，比如RMI/RPC，以及JNDI等等，但是开发起来比较麻烦，是一个技术发展的中间产物。现在，RESTful基本已经替代它了。
+总结来看，SOAP参考了很多Java API的编程思想，比如RMI/RPC，以及JNDI等等。它想成为一个非常规范的web service框架，但是有点over design了，开发起来比较麻烦，是一个技术发展的中间产物。现在，RESTful基本已经替代它了。
 
-## SOAP Message
+个人认为，REST能战胜SOAP的很大一个原因是，它没有重复造轮子，而是使用了现有的轮子，以一种新的方式组合起来，且足够简洁，直接描述出了web service的本质。
+
+### SOAP Message
 
 A SOAP message is an ordinary XML document containing the following elements:
 
@@ -98,7 +102,7 @@ soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
 </soap:Envelope>
 ~~~
 
-## WSDL
+### WSDL
 
 Web Services Description Language
 It is just a simple XML document.
@@ -128,7 +132,7 @@ The description includes the **name** of the service, the **location** of the se
 </definitions>
 ~~~
 
-## UDDI
+### UDDI
 
 Universal Description, Discovery and Integration
 

@@ -7,7 +7,7 @@ permalink: /archive/web-service/restful/
 
 # Web Service - RESTful
 
-## What
+## What is RESTful
 
 Representational State Transfer （表现层状态转化）
 
