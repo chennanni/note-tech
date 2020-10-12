@@ -69,7 +69,7 @@ SOAP是比较早期的Web Service解决方案，后来慢慢就淘汰了，主�
 
 总结来看，SOAP参考了很多Java API的编程思想，比如RMI/RPC，以及JNDI等等，但是开发起来比较麻烦，是一个技术发展的中间产物。现在，RESTful基本已经替代它了。
 
-### SOAP Message (XML)
+### SOAP Message
 
 A SOAP message is an ordinary XML document containing the following elements:
 
