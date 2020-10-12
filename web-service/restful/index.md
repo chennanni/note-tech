@@ -14,9 +14,11 @@ Representational State Transfer （表现层状态转化）
 an **architecture design** that define a stateless client where web services are treated like **resources** and can be accessed and identified by URL
 
 RESTful架构，是目前流行的一种互联网软件架构
-- 每一个URI代表一种资源
-- 客户端和服务器之间，传递这种资源的某种表现层
-- 客户端通过四个HTTP动词，对服务器端资源进行操作，实现"表现层状态转化"
+- 每一个URI代表一种**资源**
+- 客户端和服务器之间(**Client-Server架构**)，传递这种资源的某种表现层
+- 客户端通过四个**HTTP动词**，对服务器端资源进行操作，实现"表现层状态转化"
+
+组合起来就是，基于**Client-Server架构**，使用**HTTP动词**，对**资源**进行操作/传递。
 
 <http://www.ruanyifeng.com/blog/2011/09/restful.html>
 
@@ -47,24 +49,32 @@ soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
 ~~~
 
 ### Differences between SOAP WS and RESTful WS
-- in SOAP, service provider registers their services to UDDI, then client looks into UDDI for certain services, and client use WSDL to access web services
-	in RESTful, it simply use HTTP to make calls between client and server
-- SOAP is stateful; RESTful is stateless
-- SOAP use XML; RESTful use JSON, XML, CSV...
+
+- 首先，两个的 工作/使用 流程完全不一样
+  - in SOAP, service provider registers their services to UDDI, then client looks into UDDI for certain services, and client use WSDL to access web services
+  - in RESTful, it simply use HTTP to make calls between client and server
+- SOAP is stateful; RESTful is **stateless**
+- SOAP use XML; RESTful use **JSON, XML, CSV**...
 - SOAP support HTTP/s, TCP, UDP; RESTful support HTTP/s
 - REST is much more lightweight and fast
 
 ### When to use REST?
+
 - Limited bandwidth and resources
 - Totally stateless operations
 - Caching situations
 
 ### When to use SOAP?
+
 - Asynchronous processing and invocation
 - Formal contracts
-- Stateful operations
+- **Stateful operations**
+
+其实，说了这么多，总结起来就一句话，除非万不得已一定要用SOAP，其它情况都用RESTful。而什么情况是非用SOAP不可呢？那就是**Stateful operations**。
+至于这种带状态的网络请求，设计上是否合理，那就是另一个话题了。（有一种叫做legecy application的东西）
 
 ## Server Response Format
+
 - XML
 - JSON
 - CSV
@@ -82,41 +92,6 @@ soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
  ...
 </parts-list>
 ~~~
-
-## Key components of a REST architecture
-
-Resource-based
-- Things vs. actions
-- Nouns vs. verbs
-- Identified by URIs
-
-Representations
-- how resources get manipulated
-- part of the resource state (transfered between client and server)
-- JSON or XML
-
-Six Constrains
-- Uniform Interface
-  - HTTP verbs(GET, PUT, POST, DELETE)
-  - URIs (resource name)
-  - HTTP response (status, body)
-- Stateless
-  - server contains no client state
-  - each request contains enough context to process the message
-  - any session state is held on the client
-- Client & Server
-  - separation of concerns
-- Cacheable
-  - server response are cacheable (implicitly/explicitly/negotiated)
-- Layered System
-- Code on Demand
-
-<http://www.restapitutorial.com/>
-
-## POST v.s. PUT
-- use POST to create, use PUT to update
-- PUT is idempotent(same request repeating is OK), POST is not
-- both unsafe
 
 ## Example
 
@@ -157,9 +132,9 @@ Steps to Build Spring RESTful Services
 - [AccountManagementSystem.zip](https://github.com/chennanni/note-tech/tree/master/web-service/restful/src)
 
 ## Testing Tools
+
 - POSTMAN(Chrome)
 - SOAPUI
 
 ## Links
 - [REST Tutorial](http://rest.elkstein.org/2008/02/what-is-rest.html)
-

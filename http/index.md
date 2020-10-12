@@ -171,6 +171,11 @@ GET 和 POST 的区别是什么？
 - GET 传输数据量比较小，效率也不高；而 POST 可以传输比较大的数据量。
 - GET 不安全，可以被外部看见，造成信息泄露的风险，POST 相对来说安全一些。
 
+POST v.s. PUT
+- use POST to create, use PUT to update
+- PUT is idempotent(same request repeating is OK), POST is not
+- both unsafe
+
 ### HTTP状态码
 
 1XX Informational（信息性状态码）： 服务器正在处理当前的请求。
