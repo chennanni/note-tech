@@ -7,7 +7,7 @@ permalink: /archive/j2ee/servlet/
 
 # J2EE - Servlet
 
-## Web app war folder structure
+## Folder Structure
 
 ```
 myWebApp/
@@ -23,45 +23,47 @@ myWebApp/
   scripts/
 ```
 
-## Web server
+## Server
 
-- A Web server exclusively handles HTTP requests
-- Java Web Server
-  - Tomcat
-  - httpd
-  
-## Application server
-
-- An application server serves business logic to application programs through any number of protocols.
-- Java App Server
- * JBoss
- * Glassfish
- * WebSphere
- * WebLogic
+### Web Server
 
 ![servlet_server](img/servlet_server.png)
 
+A Web server exclusively handles HTTP requests. 主要负责收发Web请求，做一些简单的处理逻辑，复杂的逻辑转发给Application Server。
+- Java Web Server
+  * Tomcat
+  * httpd
+  
+### Application server
+
+An application server serves business logic to application programs through any number of protocols. 主要负责复杂的business逻辑处理。
+- Java App Server
+  * JBoss
+  * Glassfish
+  * WebSphere
+  * WebLogic
+
 ## Servlets
 
-- a small Java program that runs within a web server
+Servlet is a small Java program that runs within a web server.
 - Servlets receive and respond to requests from Web clients, usually across HTTP
 
 ![servlet_servlet](img/servlet_servlet.png)
 
 ## Servlet life cycle
 
-- initialization -init()
+- initialization -> `init()`
   - The container initializes the servlet and executes all the statements from this method(Connecting to DB, initializing some objects, etc)
-- servicing -service()
+- servicing -> `service()`
   - Accepting http request, precessing and sending the http response to the browser
-- destroying -destroy()
+- destroying -> `destroy()`
   - Unload from container
 
 ![servlet_life_cycle](img/servlet_life_cycle.png)
 
 ## Class Structure
 
-```
+~~~
 javax.servlet
      |
 Servlet - Super interface for Java Servlet API
@@ -96,31 +98,31 @@ HttpSession
      - getId()
      - getLastAccessedTime()
 Cookie
-```
+~~~
 
 ## Steps to compile and run servlet in cmd
 
 Set the classpath for servlet.jar from tomcat folder
 
-- set classpath=%classpath%; ...\tomcatXXX\lib\servlet.jar;
+- `set classpath=%classpath%; ...\tomcatXXX\lib\servlet.jar`;
 
 Copy the servlet .class file to the tomcat server folder
 
-- tomcat-XXX\webapps\ROOT\WEB-INF\classes
+- `tomcat-XXX\webapps\ROOT\WEB-INF\classes`
 
 Register the servlet in web.xml
 
-```
-	 <servlet>
-			 <servlet-name>HelloServlet</servlet-name>
-			 <servlet-class>HelloServlet</servlet-class>
-	 </servlet>
+~~~ xml
+<servlet>
+	<servlet-name>HelloServlet</servlet-name>
+	<servlet-class>HelloServlet</servlet-class>
+</servlet>
 
-	 <servlet-mapping>
-			 <servlet-name>HelloServlet</servlet-name>
-			 <url-pattern>/HelloServlet</url-pattern>
-	 </servlet-mapping>
-```
+<servlet-mapping>
+	<servlet-name>HelloServlet</servlet-name>
+	<url-pattern>/HelloServlet</url-pattern>
+</servlet-mapping>
+~~~
 
 Start the tomcat in cmd
 
@@ -129,22 +131,22 @@ Start the tomcat in cmd
 
 Open the browser and visit the URL
 
-- http://localhost:8080/HelloServlet
+- `http://localhost:8080/HelloServlet`
 
 ## Session
 
 ### Transport data between 2 or more request
 
 - HttpSession
- - javax.servlet.http.HttpSession session = request.getSession(true);
- - Product product = (Product) session.getAttribute("myproduct");
+  - `javax.servlet.http.HttpSession session = request.getSession(true);`
+  - `Product product = (Product) session.getAttribute("myproduct");`
 - URL parameters
 - Cookies
 
 ### Transfer request/response to another sourse
 
-- requestDispatcher - forward()
-- SendRediret
+- `requestDispatcher` - `forward()`
+- `SendRediret`
 
 ### Cookies vs Session
 
