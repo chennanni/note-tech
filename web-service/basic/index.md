@@ -7,49 +7,25 @@ permalink: /archive/web-service/basic
 
 # Web Service - Basic
 
-- [Web Service](#web-service)
-	- [What](#what)
-	- [Where to use WS](#where-to-use-ws)
-	- [Real World Web Services Example](#real-world-web-services-example)
-		- [Register/Ordering](#registerordering)
-		- [Collaboration and Information Sharing](#collaboration-and-information-sharing)
-		- [B2B Electronic Procurement](#b2b-electronic-procurement)
-	- [Important Terms](#important-terms)
-		- [SOA](#soa)
-		- [SOAP](#soap)
-		- [WSDL](#wsdl)
-		- [UDDI](#uddi)
-	- [Code Example - Create a Web Service with Server & Client](#code-example-create-a-web-service-with-server-client)
-	- [Links](#links)
-
-## What
+## What is Web Service
 
 "A Web service is a method of communication between two electronic devices over a network."
 
-Common Type: SOAP web service, RESTful web service
+Common Type: `SOAP` web service, `RESTful` web service
 
-In the example of SOAP web service
-
-- Data type: SOAP in XML
-- Transmit protocol: HTTP
-- Interface packages: WSDL
-- Lookup Directory: UDDI
-
-![web service](./img/web-service.png){:height="240px"}
-
-## Where to use WS
-Used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to **communicate data** without intimate knowledge of each other's IT systems behind the firewall.
+Web Service is used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to **communicate data** without intimate knowledge of each other's IT systems behind the firewall.
 
 ## Real World Web Services Example
 
-### Register/Ordering
+**Register/Ordering**
+
 Consider a simple account-management and order processing system. The accounting personnel use a client application built with Visual Basic or JSP to create new accounts and enter new customer orders.
 
 The processing logic for this system is written in Java and resides on a Solaris machine, which also interacts with a database to store information.
 
 ~~~
-Client(VB) -> account registration ->
-	SOAP -> WS -> SOAP ->
+Client(VB) -> account registration
+	-> SOAP ->
 DB Command -> Server & DB(Java)
 ~~~
 
@@ -64,28 +40,27 @@ The steps to perform this operation are as follows:
 
 <http://www.tutorialspoint.com/webservices/what_are_web_services.htm>
 
-### Collaboration and Information Sharing
-To treat a patient with doctors from different departments of different system environments, use w.s. to share information
+## SOAP
 
-### B2B Electronic Procurement
-A use 'SAP' while B use 'Commerce One', A and B can trade with each other through a Web Services Integration Platform
-
-<http://www.computerworld.com/article/2566429/app-development/book-excerpt--when-to-use-web-services>
-
-## Important Terms
-
-### SOA
-Service-oriented Architecture
-
-SOA is an architectural pattern in computer software design in which **application components provide services to other components via a communications protocol**, typically over a network.
-
-### SOAP
 Simple Object Access Protocol
 
 - based on XML
 - a communication protocol between applications
 - a format for sending messages
 - platform independent, language independent
+
+### Structure
+
+In the example of SOAP web service
+
+- Data type: SOAP in XML
+- Transmit protocol: HTTP
+- Interface packages: WSDL
+- Lookup Directory: UDDI
+
+![web service](./img/web-service.png){:height="240px"}
+
+### SOAP Message (XML)
 
 A SOAP message is an ordinary XML document containing the following elements:
 
@@ -94,18 +69,18 @@ A SOAP message is an ordinary XML document containing the following elements:
 - A Body element that contains call and response information
 - A Fault element containing errors and status information
 
-~~~
+~~~ xml
 <?xml version="1.0"?>
 <soap:Envelope
 xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
 soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
 
 <soap:Header>
-...
+  ...
 </soap:Header>
 
 <soap:Body>
-...
+  ...
   <soap:Fault>
   ...
   </soap:Fault>
@@ -115,6 +90,7 @@ soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
 ~~~
 
 ### WSDL
+
 Web Services Description Language
 It is just a simple XML document.
 The description includes the **name** of the service, the **location** of the service, and **ways to communicate with the service**.
@@ -144,11 +120,13 @@ The description includes the **name** of the service, the **location** of the se
 ~~~
 
 ### UDDI
+
 Universal Description, Discovery and Integration
 
 a directory service where businesses can register and search for Web services
 
 ## Code Example - Create a Web Service with Server & Client
+
 **JAX-WS**
 
 - [JAX-WS Five Minute Tutorial](http://java.dzone.com/articles/jax-ws-hello-world)
