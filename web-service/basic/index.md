@@ -58,7 +58,16 @@ In the example of SOAP web service
 - Interface packages: WSDL
 - Lookup Directory: UDDI
 
-![web service](./img/web-service.png){:height="240px"}
+![web service](./img/web-service.png)
+
+SOAP是比较早期的Web Service解决方案，后来慢慢就淘汰了，主要原因是“重”，开发起来复杂，学习成本高。
+
+这个“重”主要体现在几个方面：
+- SOAP有自己的一套XML格式的SOAP message，需要额外parse；而RESTful就是直接`JSON/XML/CSV`，使用起来方便很多。
+- SOAP需要定义一套接口WSDL暴露给外部；而RESTful用规范代替配置的思想，结合HTTP verbs(`GET, PUT, POST, DELETE`)，进而提出 `Resource-based` 这个概念，更容易编程实现。
+- SOAP需要定义一套资源中心UDDI暴露给外部，用来查询WSDL；而RESTful没有这些，它的请求可以通过文档直接暴露给外部。
+
+总结来看，SOAP参考了很多Java API的编程思想，比如RMI/RPC，以及JNDI等等，但是开发起来比较麻烦，是一个技术发展的中间产物。现在，RESTful基本已经替代它了。
 
 ### SOAP Message (XML)
 
@@ -97,7 +106,7 @@ The description includes the **name** of the service, the **location** of the se
 
 **Document Structure**
 
-~~~
+~~~ xml
 <definitions>
 
 <types>
