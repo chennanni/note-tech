@@ -1,11 +1,11 @@
 ---
 layout: default
-title: HTTP
+title: Web - Http
 folder: http
 permalink: /archive/http/
 ---
 
-# HTTP
+# Web - Http
 
 ## HTTP协议
 
@@ -87,7 +87,6 @@ A -> B 发送一个ACK的数据包：好的，收到。
 其实，这个分层模型主要做了这件事：数据从一个层移动到另一层时，给它加一个`tag`，方便接收方识别和解析。
 
 ![tcp_ip_arc_application](img/tcp_ip_arc.PNG)
-https://images.gitbook.cn/881c2200-1fdd-11ea-bf95-03a6caedb034
 
 总结：
 
@@ -101,7 +100,6 @@ https://images.gitbook.cn/881c2200-1fdd-11ea-bf95-03a6caedb034
 TCP/IP协议族常见的协议包括：TCP、IP、HTTP、FDDI、FTP、DNS、UDP、SNMP等。
 
 ![tcp_ip_family](img/tcp_ip_family.PNG)
-https://images.gitbook.cn/7e786940-20a3-11ea-ac8f-1341eb8cd629
 
 分层模型的优点是：改动方便。如上图，我可以不用HTTP+TCP，而是使用DNS+UDP或者其它组合，以应对不同的使用场景。
 
