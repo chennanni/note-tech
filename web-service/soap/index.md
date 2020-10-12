@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Web Service - Basic
-folder: basic
-permalink: /archive/web-service/basic
+title: Web Service - SOAP
+folder: soap
+permalink: /archive/web-service/soap
 ---
 
-# Web Service - Basic
+# Web Service - SOAP
 
 ## What is Web Service
 
@@ -15,7 +15,7 @@ Common Type: `SOAP` web service, `RESTful` web service
 
 Web Service is used primarily as a means for businesses to communicate with each other and with clients, Web services allow organizations to **communicate data** without intimate knowledge of each other's IT systems behind the firewall.
 
-## Real World Web Services Example
+## Web Services Example
 
 **Register/Ordering**
 
@@ -40,7 +40,7 @@ The steps to perform this operation are as follows:
 
 <http://www.tutorialspoint.com/webservices/what_are_web_services.htm>
 
-## SOAP
+## What is SOAP
 
 Simple Object Access Protocol
 
@@ -49,7 +49,7 @@ Simple Object Access Protocol
 - a format for sending messages
 - platform independent, language independent
 
-### Structure
+## SOAP Structure
 
 In the example of SOAP web service
 
@@ -69,7 +69,7 @@ SOAP是比较早期的Web Service解决方案，后来慢慢就淘汰了，主�
 
 总结来看，SOAP参考了很多Java API的编程思想，比如RMI/RPC，以及JNDI等等，但是开发起来比较麻烦，是一个技术发展的中间产物。现在，RESTful基本已经替代它了。
 
-### SOAP Message
+## SOAP Message
 
 A SOAP message is an ordinary XML document containing the following elements:
 
@@ -98,7 +98,7 @@ soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
 </soap:Envelope>
 ~~~
 
-### WSDL
+## WSDL
 
 Web Services Description Language
 It is just a simple XML document.
@@ -128,13 +128,15 @@ The description includes the **name** of the service, the **location** of the se
 </definitions>
 ~~~
 
-### UDDI
+## UDDI
 
 Universal Description, Discovery and Integration
 
 a directory service where businesses can register and search for Web services
 
-## Code Example - Create a Web Service with Server & Client
+## Code Example
+
+Create a Web Service with Server & Client
 
 **JAX-WS**
 
