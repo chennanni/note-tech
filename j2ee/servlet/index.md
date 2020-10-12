@@ -7,7 +7,7 @@ permalink: /archive/j2ee/servlet/
 
 # J2EE - Servlet
 
-## Folder Structure
+## Project Folder Structure
 
 ```
 myWebApp/
@@ -35,7 +35,7 @@ Java Web Server
   * Tomcat
   * httpd
   
-### Application server
+### Application Server
 
 An application server serves business logic to application programs through any number of protocols. 主要负责复杂的business逻辑处理。
 
@@ -52,7 +52,9 @@ Servlet is a small Java program that runs within a web server.
 
 ![servlet_servlet](img/servlet_servlet.png)
 
-## Servlet life cycle
+### Servlet Life Cycle
+
+很简单：初始化->工作中->销毁
 
 - initialization -> `init()`
   - The container initializes the servlet and executes all the statements from this method(Connecting to DB, initializing some objects, etc)
@@ -63,7 +65,7 @@ Servlet is a small Java program that runs within a web server.
 
 ![servlet_life_cycle](img/servlet_life_cycle.png)
 
-## Class Structure
+### Java Class Structure
 
 ~~~
 javax.servlet
@@ -102,7 +104,9 @@ HttpSession
 Cookie
 ~~~
 
-## Steps to compile and run servlet in cmd
+### Quick Run Servlets in Tomcat
+
+简单版本的，就是把classpath设好，把class文件放好，把xml改好，然后就可以run了。
 
 Set the classpath for servlet.jar from tomcat folder
 
@@ -137,20 +141,17 @@ Open the browser and visit the URL
 
 ## Session
 
-### Transport data between 2 or more request
+### How to Share Data Between Multiple Requests
+
+用户的发来多个请求，服务器应该有一个上下文Context的概念。这其实就是 “会话” Session 的功能。
 
 - HttpSession
   - `javax.servlet.http.HttpSession session = request.getSession(true);`
   - `Product product = (Product) session.getAttribute("myproduct");`
-- URL parameters
-- Cookies
+- URL parameters（不常用）
+- Cookies（不常用）
 
-### Transfer request/response to another sourse
-
-- `requestDispatcher` - `forward()`
-- `SendRediret`
-
-### Cookies vs Session
+### Cookies v.s. Session
 
 - Sessions are server-side files that contain user information, while Cookies are client-side files that contain user information. 
 - Sessions have a unique identifier that maps them to specific users. This identifier can be passed in the URL or saved into a session cookie.
