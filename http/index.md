@@ -49,6 +49,35 @@ Connection: close
 把这句话"I want to see Taobao's main page."直接发给服务器可以吗？应该是不行的吧。
 正确的做法是：遵循HTTP协议的格式，按照上面的例子来写，这样服务器端收到了才能读懂。
 
+### HTTP的方法
+
+- `GET`（获取资源）：请求访问已被 URI 标识的资源。响应返回经服务器解析后的内容
+- `POST`（传输实体主题）：GET 和 POST 都可以传输实体的主题，但一般使用 POST 方法来传输。区别在意 POST 的主要目的并不是获取响应的主体内容。
+- `PUT`（传输文件）：用来传输文件。将文件内容放到请求报文的主题之中，然后放到请求的 URI 中
+- `HEAD`（获得报文首部）：HEAD 方法和 GET 方法一样，但不返回报文主体的部分。用于确认 URI 是否有效及更新资源的时间等。
+- `DELETED`（删除文件）：用来删除文件，与 PUT 方法相反。DELETED 根据请求删除 URI 内指定的资源
+- `OPTIONS`（询问支持的方法）：查询根据请求 URI 指定的资源支持方法
+- `TRACE`（路径追踪）：让 Web 服务器端将之前的请求返回个客户端的方法
+- `CONNECT`（用隧道协议连接代理）：与代理服务器通信时建立隧道，使用 SSL 和 TLS 协议把加密后的通信内容经网络隧道进行传输。
+
+GET 和 POST 的区别是什么？
+- 从服务器获取信息一般使用 GET，想服务器发送信息一般用 POST。
+- GET 和 POST 数据提交方式不同，GET 通过在 URL 请求后面增加 filed=value 的封装形式来进行；POST 则利用协议 BODY 来进行数据的封装。
+- GET 传输数据量比较小，效率也不高；而 POST 可以传输比较大的数据量。
+- GET 不安全，可以被外部看见，造成信息泄露的风险，POST 相对来说安全一些。
+
+### HTTP状态码
+
+1XX Informational（信息性状态码）： 服务器正在处理当前的请求。
+
+2XX Success（成功状态码）：请求被服务器正确接收，并正确执行。
+
+3XX Redirection（重定向状态码）：需要再次操作，才能完成整个访问操作。
+
+4XX Client Error（客户端错误状态码）：客户端的请求出现问题，服务端无法响应（例如，访问不存在的资源）。
+
+5XX Server Error（服务器错误状态码）：服务器内部处理访问请求的时候出现异常。
+
 ## TCP协议
 
 `Transmission Control Protocol` 一个可靠的数据传输协议。处于传输层。
@@ -86,7 +115,7 @@ A -> B 发送一个ACK的数据包：好的，收到。
 
 其实，这个分层模型主要做了这件事：数据从一个层移动到另一层时，给它加一个`tag`，方便接收方识别和解析。
 
-![tcp_ip_arc_application](img/tcp_ip_arc.PNG)
+![tcp_ip_arc_application](img/tcp_ip_arc_application.PNG)
 
 总结：
 
@@ -152,35 +181,6 @@ Session相当于程序在服务器上建立的一份客户档案，客户来访�
 
 参考 -> 4 种分布式一致性 Session 实现方式 <https://www.cnblogs.com/goodAndyxublog/p/13327412.html>
 
-## HTTP的方法
-
-- `GET`（获取资源）：请求访问已被 URI 标识的资源。响应返回经服务器解析后的内容
-- `POST`（传输实体主题）：GET 和 POST 都可以传输实体的主题，但一般使用 POST 方法来传输。区别在意 POST 的主要目的并不是获取响应的主体内容。
-- `PUT`（传输文件）：用来传输文件。将文件内容放到请求报文的主题之中，然后放到请求的 URI 中
-- `HEAD`（获得报文首部）：HEAD 方法和 GET 方法一样，但不返回报文主体的部分。用于确认 URI 是否有效及更新资源的时间等。
-- `DELETED`（删除文件）：用来删除文件，与 PUT 方法相反。DELETED 根据请求删除 URI 内指定的资源
-- `OPTIONS`（询问支持的方法）：查询根据请求 URI 指定的资源支持方法
-- `TRACE`（路径追踪）：让 Web 服务器端将之前的请求返回个客户端的方法
-- `CONNECT`（用隧道协议连接代理）：与代理服务器通信时建立隧道，使用 SSL 和 TLS 协议把加密后的通信内容经网络隧道进行传输。
-
-GET 和 POST 的区别是什么？
-- 从服务器获取信息一般使用 GET，想服务器发送信息一般用 POST。
-- GET 和 POST 数据提交方式不同，GET 通过在 URL 请求后面增加 filed=value 的封装形式来进行；POST 则利用协议 BODY 来进行数据的封装。
-- GET 传输数据量比较小，效率也不高；而 POST 可以传输比较大的数据量。
-- GET 不安全，可以被外部看见，造成信息泄露的风险，POST 相对来说安全一些。
-
-## HTTP状态码
-
-1XX Informational（信息性状态码）： 服务器正在处理当前的请求。
-
-2XX Success（成功状态码）：请求被服务器正确接收，并正确执行。
-
-3XX Redirection（重定向状态码）：需要再次操作，才能完成整个访问操作。
-
-4XX Client Error（客户端错误状态码）：客户端的请求出现问题，服务端无法响应（例如，访问不存在的资源）。
-
-5XX Server Error（服务器错误状态码）：服务器内部处理访问请求的时候出现异常。
-
 ## HTTP 2.0
 
 HTTP 2.0 与 HTTP 1.1 的区别
@@ -201,7 +201,9 @@ HTTP + SSL （加密 + 认证 + 完整性保护） = HTTPS
 
 HTTPS通过公钥（Public Key）+私钥（Private Key）的机制保证安全性。
 
-## 网络安全 - SQL Injection
+## 网络安全
+
+### SQL Injection
 
 SQL注入
 
@@ -214,7 +216,7 @@ SQL注入
 - 禁止直接向用户显示数据库错误。
 - 对访问数据库的 Web 服务，使用 Web 应用程序防火墙。
 
-## 网络安全 - XSS
+### XSS
 
 Cross Site Scripting 跨站脚本攻击
 
@@ -230,7 +232,7 @@ http://www.attack.com/search.asp?input=<script>alert(document.cookie);</script>
 - 在信息提交或者 url 参数传递前，对需要的参数进行过滤
 - 过滤用户输入，检查用户输入的内容中是否有非法内容。如 <>（尖括号）、""（引号）、''（单引号）
 
-## 网络安全 - CSRF
+### CSRF
 
 Cross-site request forgery 跨站请求伪造
 
