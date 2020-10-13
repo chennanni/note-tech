@@ -48,6 +48,22 @@ Work Flow
 - Again, configured interceptors are applied to do any post-processing if required.
 - Finally the result is prepared by the view and returns the result to the user.
 
+## Hello World Example
+
+一个最简单的应用，可以分为三个部分，真好对应了MVC的三个点。
+
+- Controller, 服务器接收到一串URL，应该被分配到哪里去处理，在 `Config` 里面配置。
+- Model, 接收到请求之后，进行业务逻辑处理，访问数据库，得出结果，一般是 `Action` 的工作。
+- View, 把data组装在一个页面，最终返回给用户，一般是 `jsp` 的格式。
+
+参考 -> <http://www.tutorialspoint.com/struts_2/struts_examples.htm>
+
+对比Struts2和Spring MVC，其实整个workflow是很类似的。为什么最终大多数人选择了Spring？个人感觉有以下几个原因。
+- Spring MVC 的 flow 更加容易理解一点点。跳转和业务逻辑放在Controller里，（或者，业务逻辑可以独立出来做一层也可以，更加清晰），Model就是数据层。
+- Struts 2 的 flow 有一点点搞。跳转放到了Controller里，业务逻辑和数据访问放到了Model里，也就是Action。（其实，使用的时候稍微注意下，也可以达到上面一样的架构，不过有更好的选择，为什么要费这个功夫呢？）
+- View 其实都差不多。
+- 最后，Spring IoC的概念太火，很多开发团队开始使用Spring，进而使用Spring全家桶，包括Spring MVC。
+
 ## Configuration
 
 ### web.xml
@@ -315,10 +331,6 @@ Struts 2 Tags
 - Form
 - Ajax
 
-## Hello World Example
-
-http://www.tutorialspoint.com/struts_2/struts_examples.htm
-
 ## Form Validation
 
 ### Validation in Action Class using validate()
@@ -428,9 +440,43 @@ key point: `result input`
 
 ## Database Access
 
-very similer to spring-jdbc
+就是在 Action Class 里面直接使用 Java JDBC API 连接数据库。
 
-http://www.tutorialspoint.com/struts_2/struts_database_access.htm
+~~~ java
+public String execute() {
+   String ret = ERROR;
+   Connection conn = null;
+
+   try {
+      String URL = "jdbc:mysql://localhost/struts_tutorial";
+      Class.forName("com.mysql.jdbc.Driver");
+      conn = DriverManager.getConnection(URL, "root", "root123");
+      String sql = "SELECT name FROM login WHERE";
+      sql+=" user = ? AND password = ?";
+      PreparedStatement ps = conn.prepareStatement(sql);
+      ps.setString(1, user);
+      ps.setString(2, password);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+         name = rs.getString(1);
+         ret = SUCCESS;
+      }
+   } catch (Exception e) {
+      ret = ERROR;
+   } finally {
+      if (conn != null) {
+         try {
+            conn.close();
+         } catch (Exception e) {
+         }
+      }
+   }
+   return ret;
+}
+~~~
+
+<http://www.tutorialspoint.com/struts_2/struts_database_access.htm>
 
 ## Struts2 V.S. Struts 1
 
