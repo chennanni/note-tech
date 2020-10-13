@@ -1,15 +1,17 @@
 ---
 layout: default
-title: Struts 2
+title: Web Framework - Struts 2
 folder: struts
 permalink: /archive/struts/
 ---
 
-# Struts 2
+# Web Framework - Struts 2
 
 ## MVC Architecture
 
 ![struts_architecture](img/struts_architecture.png)
+TODO
+https://www.guru99.com/images/1/122118_0445_MVCTutorial1.png
 
 MVC is popular as it isolates the application logic from the user interface layer
 
@@ -51,9 +53,9 @@ Work Flow
 ### web.xml
 
 - Function: define necessary servlet/filter to process incoming request (e.g. define `FilterDispatcher` to process HTTP request)
-- File location: WebContent/WEB-INF
+- File location: `WebContent/WEB-INF`
 
-```
+~~~ xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xmlns="http://java.sun.com/xml/ns/javaee"
@@ -80,14 +82,14 @@ Work Flow
       <url-pattern>/*</url-pattern>
    </filter-mapping>
 </web-app>
-```
+~~~
 
 ### struts.xml
 
 - Function: map `action` class to `view` (in struts 1, it also maps `action` to `form`)
-- File location: WEB-INF/classes
+- File location: `WEB-INF/classes`
 
-```
+~~~ xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
@@ -104,32 +106,9 @@ Work Flow
 
    </package>
 </struts>
-```
+~~~
 
-### struts.properties (Optional)
-
-- Function: provides a mechanism to change the default behavior of the framework
-- File location: WEB-INF/classes
-
-```
-When set to true, Struts will act much more friendly for developers
-struts.devMode = true
-
-Enables reloading of internationalization files
-struts.i18n.reload = true
-
-Enables reloading of XML configuration files
-struts.configuration.xml.reload = true
-
-Sets the port that the server is run on
-struts.url.http.port = 8080
-```
-
-Notice: Actually all of the properties contained within the `struts.properties` configuration file 
-can also be configured in the `web.xml` using the `init-param`, 
-as well using the `constant` tag in the `struts.xml` configuration file.
-
-## Annotation
+### Annotation
 
 an alternative to `struts.xml`
 
@@ -137,7 +116,7 @@ EXAMPLE:
 
 key point: extend `ActionSupport`class; `@Results`, `@Result`, `@Action`, `@RequiredFieldValidator`, `@IntRangeFieldValidator`
 
-```
+~~~ java
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
@@ -175,7 +154,30 @@ public class Employee extends ActionSupport{
        this.age = age;
    }
 }
-```
+~~~
+
+### struts.properties (Optional)
+
+- Function: provides a mechanism to change the default behavior of the framework
+- File location: `WEB-INF/classes`
+
+~~~ 
+When set to true, Struts will act much more friendly for developers
+struts.devMode = true
+
+Enables reloading of internationalization files
+struts.i18n.reload = true
+
+Enables reloading of XML configuration files
+struts.configuration.xml.reload = true
+
+Sets the port that the server is run on
+struts.url.http.port = 8080
+~~~ 
+
+Notice: Actually all of the properties contained within the `struts.properties` configuration file 
+can also be configured in the `web.xml` using the `init-param`, 
+as well using the `constant` tag in the `struts.xml` configuration file.
 
 ## Action
 
@@ -195,7 +197,7 @@ view page(.jsp)
 
 EXAMPLE:
 
-```
+~~~ java
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HelloWorldAction extends ActionSupport{
@@ -218,7 +220,7 @@ public class HelloWorldAction extends ActionSupport{
       this.name = name;
    }
 }
-```
+~~~
 
 ## Interceptor
 
@@ -230,7 +232,7 @@ e.g. struts.xml:
 - use `params` interceptor to send the request parameters to the action (MUST HAVE)
 - use `timer` interceptor to measure how long it took to execute an action method
 
-```
+~~~ xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
@@ -247,7 +249,9 @@ e.g. struts.xml:
       </action>
    </package>
 </struts>
-```
+~~~
+
+->
 
 ```
 INFO: Executed action [//hello!execute] took 109 ms.
@@ -267,13 +271,13 @@ result type:
 
 e.g. type = dispatcher:
 
-```
+~~~ xml
 <result name="success" type="dispatcher">
    <param name="location">
       /HelloWorld.jsp
    </param>
 </result>
-```
+~~~
 
 ## Value Stack/OGNL
 
@@ -281,28 +285,30 @@ a stack where keeps all the model data
 
 e.g. get value stack and store something in action class
 
-```
+~~~ java
 ValueStack stack = ActionContext.getContext().getValueStack();
 stack.push(...);
-```
+~~~ 
 
 e.g. get some value from the stack in jsp
 
-```
+~~~ xml
 <s:property value="name"/>
-```
+~~~
 
 e.g. store some data into the stack in jsp
 
-```
+~~~ xml
    <form action="hello">
       <input type="text" name="name"/>
       <input type="submit" value="Say Hello"/>
    </form>
    <!--name must match the property in action class-->
-```
+~~~
 
-## View Technology (Struts 2 Tags)
+## View Technology
+
+Struts 2 Tags
 
 - Control
 - Data
@@ -334,7 +340,7 @@ fail: <result name="input">not validated</result>
 
 EXAMPLE: (key point: `validate()`)
 
-```
+~~~ java
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Employee extends ActionSupport{
@@ -364,11 +370,11 @@ public class Employee extends ActionSupport{
          addFieldError("age","Age must be in between 28 and 65");
    }
 }
-```
+~~~
 
 key point: `result input`
 
-```
+~~~ xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
@@ -388,13 +394,13 @@ key point: `result input`
    </package>
 
 </struts>
-```
+~~~ 
 
 ### Validation using XML
 
 `'[action-class]'-validation.xml`
 
-```
+~~~ xml
 <!DOCTYPE validators PUBLIC
 "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
 "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
@@ -418,7 +424,7 @@ key point: `result input`
       </field-validator>
    </field>
 </validators>
-```
+~~~ 
 
 ## Database Access
 
