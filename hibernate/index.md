@@ -468,6 +468,23 @@ hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 
 参考 -> Hibernate最全面试题 <https://www.cnblogs.com/Java3y/p/8535459.html>
 
+### JDBC hibernate 和 ibatis 的区别
+
+jdbc:手动
+- 手动写sql
+- delete、insert、update要将对象的值一个一个取出传到sql中,不能直接传入一个对象。
+- select:返回的是一个resultset，要从ResultSet中一行一行、一个字段一个字段的取出，然后封装到一个对象中，不直接返回一个对象。
+
+ibatis的特点:半自动化
+- sql要手动写
+- delete、insert、update:直接传入一个对象
+- select:直接返回一个对象
+
+hibernate:全自动
+- 不写sql,自动封装
+- delete、insert、update:直接传入一个对象
+- select:直接返回一个对象
+
 ## Links
 
 - [viralpatel hibernate tutorial](http://viralpatel.net/blogs/introduction-to-hibernate-framework-architecture/)
