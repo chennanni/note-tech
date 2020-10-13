@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Software Development - Scrum
+title: Scrum / Agile
 folder: scrum
 permalink: /archive/scrum/
 ---
 
-# Software Development - Scrum
+# Scrum / Agile
 
 ## Agile
 
