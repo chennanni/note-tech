@@ -215,7 +215,9 @@ public class Employee {
 </class>  
 ~~~
 
-## Annotations
+## Syntax
+
+### Annotations
 
 **@Entity**
 
@@ -265,7 +267,7 @@ in the hibernate configuration file
 
 `<property name="show_sql">true</property>`
 
-## HQL
+### HQL
 
 Hibernate Query Language, HQL works with persistent objects and their properties.
 
@@ -340,19 +342,68 @@ String hql = "INSERT INTO Employee(firstName, lastName, salary)"
 - Query setFirstResult(int startPosition)
 - Query setMaxResults(int maxResult)
 
+## Load Type
+
+The fetch type essentially decides whether or not to load all of the relationships of a particular object/table as soon as the object/table is initially fetched.
+
+- (fetch=FetchType.**EAGER**): load it in the first place
+- (fetch=FetchType.**LAZY**): load it only when the object is needed
+
+by default, primitive values are fetched EAGER, **collection objects are fetched LAZY**.
+
+当Hibernate在查询数据的时候，数据并没有存在与内存中。当程序真正对数据操作时，对象才存在与内存中，实现了延迟加载。这样节省了服务器的内存开销，从而提高了服务器的性能。
+
+e.g.
+
+~~~ xml
+  import javax.persistence.FetchType;
+  //....
+  @OneToOne(fetch=FetchType.EAGER)
+  @JoinColumn(name="user_profile_id")
+  private Profile getUserProfile()
+  {
+    return userProfile;
+  }
+~~~ 
+
+see more here: <http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence>
+
+## Object Type
+
+Hibernate中对象的三种状态：
+
+- 临时/瞬时状态
+  - 直接new出来的对象就是临时/瞬时状态的
+- 持久化状态
+  - 当调用session的`save/saveOrUpdate/get/load/list`等方法的时候，对象就是持久化状态
+  - 当对对象属性进行更改的时候，会反映到数据库中
+- 游离状态
+  - 当Session关闭了以后，持久化的对象就变成了游离状态
+
 ## Caching
 
 ![hibernate_caching](img/hibernate_caching.png)
 
-**First Level**
+### First Level
 
 The first-level cache is the **Session** cache and is a mandatory cache through which all requests must pass.
 
-**Second Level**
+一级缓存只在Session范围有效。Session关闭，一级缓存失效。
+
+Session的缓存由 hibernate 维护，用户不能操作缓存内容。如果想操作缓存内容，必须通过 hibernate 提供的`evit`/`clear`方法操作。
+
+### Second Level
 
 The second-level cache can be configured on a per-class and per-collection basis and mainly responsible for caching objects across sessions. It is **Session Factory** cache.
 
-Step 1: decide which concurrency strategy to use
+由于一次缓存Session关闭失效，有些常用的静态对象/类，更加适合放在二级缓存中。
+
+二级缓存是基于应用程序的缓存，所有的Session都可以使用。
+
+Hibernate提供的二级缓存有默认的实现，且是一种可**插配**的缓存框架！如果用户想用二级缓存，只需要在`hibernate.cfg.xml`中配置即可。不想用，直接移除，不影响代码。
+如果觉得默认的不好用，也可以使用其它缓存框架。
+
+***Step 1***: decide which concurrency strategy to use
 
 ~~~ xml
 <hibernate-mapping>
@@ -364,7 +415,7 @@ Step 1: decide which concurrency strategy to use
 </hibernate-mapping>
 ~~~ 
 
-Step 2: configure cache expiration and physical cache attributes using the cache provider
+***Step 2***: configure cache expiration and physical cache attributes using the cache provider
 
 Cache provider
 
@@ -408,38 +459,6 @@ overflowToDisk="false"
 />
 ~~~ 
 
-use `Big Memory Go(Ehcache)` in hibernate as second level cache
-
-- Download and install BigMemory Go into your project
-- Configure BigMemory Go as a cache provider in your project's Hibernate configuration.
-- Configure second-level caching in your project's Hibernate configuration.
-- Configure Hibernate caching for each entity, collection, or query you wish to cache.
-- Configure the `ehcache.xml` file as necessary for each entity, collection, or query configured for caching.
-
-## Load Type
-
-The fetch type essentially decides whether or not to load all of the relationships of a particular object/table as soon as the object/table is initially fetched.
-
-- (fetch=FetchType.**EAGER**): load it in the first place
-- (fetch=FetchType.**LAZY**): load it only when the object is needed
-
-by default, primitive values are fetched EAGER, collection objects are fetched LAZY.
-
-e.g.
-
-~~~ xml
-  import javax.persistence.FetchType;
-  //....
-  @OneToOne(fetch=FetchType.EAGER)
-  @JoinColumn(name="user_profile_id")
-  private Profile getUserProfile()
-  {
-    return userProfile;
-  }
-~~~ 
-
-see more here: <http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence>
-
 ## Connection Pooling
 
 Hibernate comes with internal connection pool, but not suitable for production use. 
@@ -468,7 +487,7 @@ hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 
 参考 -> Hibernate最全面试题 <https://www.cnblogs.com/Java3y/p/8535459.html>
 
-### JDBC hibernate 和 ibatis 的区别
+### JDBC 和 ibatis 和 hibernate 的区别
 
 jdbc:手动
 - 手动写sql
@@ -484,6 +503,22 @@ hibernate:全自动
 - 不写sql,自动封装
 - delete、insert、update:直接传入一个对象
 - select:直接返回一个对象
+
+### hibernate 里 sorted collection 和 ordered collection 有什么区别
+
+sorted collection
+- 是在内存中通过Java比较器进行排序的
+
+ordered collection
+- 是在数据库中通过order by进行排序的
+
+对于比较大的数据集，为了避免在内存中对它们进行排序而出现 Java中的OutOfMemoryError，最好使用ordered collection。
+
+### hibernate get和 load 区别
+
+- `get()`如果没有找到会返回null，`load()`如果没有找到会抛出异常。
+- `get()`是立即查询，`load()`是懒加载。
+- `get()`会先查一级缓存，再查二级缓存，然后查数据库；`load()`会先查一级缓存，如果没有找到，就创建代理对象，等需要的时候去查询二级缓存和数据库。
 
 ## Links
 
