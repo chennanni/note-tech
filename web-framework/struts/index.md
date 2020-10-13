@@ -2,7 +2,7 @@
 layout: default
 title: Web Framework - Struts 2
 folder: struts
-permalink: /archive/struts/
+permalink: /archive/web-framework/struts/
 ---
 
 # Web Framework - Struts 2

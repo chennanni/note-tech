@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Web Framework - Spring MVC
-folder: mvc
-permalink: /archive/spring/mvc/
+folder: springmvc
+permalink: /archive/web-framework/springmvc/
 ---
 
 # Web Framework - Spring MVC
