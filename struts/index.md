@@ -485,7 +485,7 @@ Action Class
 - In Struts 1 it's mandatory to extend `org.apache.struts.action.Action` and  implement `execute()` method which returns `ActionForward` and accept `HttpServletRequest` and `HttpServletResponse`.
 - In Struts 2, Action class can be a simple POJO or Java object with `execute()` method. Also `execute()` method returns `String` rather than returning `ActionForward` object.
 
-Thread Modeling
+**Thread Modeling**
 
 - Struts 1 Actions are singletons and must be thread-safe since there will only be one instance of a class to handle all requests for that Action.
 - Struts 2 Action objects are instantiated for each request, so there are no thread-safety issues.
