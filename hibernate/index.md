@@ -21,28 +21,39 @@ converting data between **relational databases** and **object oriented programmi
 - Provides simple APIs for storing and retrieving Java objects directly to and from the database.
 - Minimize database access with smart fetching strategies.
 
+总结：千言万语汇成一句，就是用起来方便。对于数据库的读写，Dev不需要写那么多SQL，而是直接进行Object操作就可以。
+
 ## Architecture
 
-Hibernate.Properties(hibernate.cfg.xml) -> link hibernate to database
+宏观上看，Hibernate连接了Java Applicaiton和DB。更细节地说，这种linkage通过以下两个方面实现：
 
-XML Mapping(Entity.xml or using Annotation) -> link object to table
+- Hibernate.Properties(`hibernate.cfg.xml`) -> link hibernate to database
+- XML Mapping(`Entity.xml` or using `Annotation`) -> link object to table
 
 ![hibernate_arch_1](img/hibernate_arch_1.png)
+
+更加深入地看：
+
+- Hibernate和DB之间其实还是通过JDBC等连接起来的
+- Hibernate自身也可以分为多个模块：Configuration，Session，Query，Txn等等，这些都是我们编程的时候会接触到的
 
 ![hibernate_arch_2](img/hibernate_arch_2.png)
 
 ## Steps to use Hibernate
 
-- pre
+- pre 
+  - （把需要map的两个东西准备好）
   - create persisted classes
   - create database tables
 - core
-  - jar & import
-  - create hibernate.cfg.xml
-  - mapping (xml / annotation)
-  - create transaction class
+  - dependency: jar / import
+  - link Hibernate to DB: create `hibernate.cfg.xml`
+  - do mapping: create xml / annotation
+  - start query: create transaction class
 
 **Persistent Class**
+
+需要persist的类
 
 Java classes whose objects or instances will be stored in database tables are called persistent classes in Hibernate.
 
@@ -232,7 +243,7 @@ attributes
 - nullable
 - unique
 
-```
+~~~ java
 import javax.persistence.*;
 
 @Entity
@@ -246,7 +257,7 @@ public class Employee {
      private String firstName;
      ...
 }
-```
+~~~ 
 
 **Logger**
 
@@ -268,15 +279,6 @@ Query query = session.createQuery(hql);
 List results = query.list();
 ```
 
-**AS**
-
-assign aliases to the classes in your HQL queries
-
-```
-String hql = "FROM Employee AS E";
-
-```
-
 **SELECT**
 
 obtain properties of objects
@@ -284,31 +286,6 @@ obtain properties of objects
 ```
 String hql = "SELECT E.firstName FROM Employee E";
 
-```
-
-**WHERE**
-
-narrow the specific objects
-
-```
-String hql = "FROM Employee E WHERE E.id = 10";
-```
-
-**ORDER BY**
-
-set either ascending (ASC) or descending (DESC)
-
-```
-String hql = "FROM Employee E WHERE E.id > 10 ORDER BY E.salary DESC";
-```
-
-**GROUP BY**
-
-use the result to include an aggregate value
-
-```
-String hql = "SELECT SUM(E.salary), E.firtName FROM Employee E " +
-"GROUP BY E.firstName";
 ```
 
 **Using Named Parameter**
@@ -339,14 +316,15 @@ System.out.println("Rows affected: " + result);
 **DELETE**
 
 ```
-String hql = "DELETE FROM Employee "  + 
-             "WHERE id = :employee_id";
+String hql = "DELETE FROM Employee "  
+	+ "WHERE id = :employee_id";
 ```
 
 **INSERT**
 
 ```
-String hql = "INSERT INTO Employee(firstName, lastName, salary)"  + "SELECT firstName, lastName, salary FROM old_employee";
+String hql = "INSERT INTO Employee(firstName, lastName, salary)"  
+	+ "SELECT firstName, lastName, salary FROM old_employee";
 ```
 
 **Aggregate Methods**
@@ -376,7 +354,7 @@ The second-level cache can be configured on a per-class and per-collection basis
 
 Step 1: decide which concurrency strategy to use
 
-```
+~~~ xml
 <hibernate-mapping>
    <class name="Employee" table="EMPLOYEE">
       ...
@@ -384,7 +362,7 @@ Step 1: decide which concurrency strategy to use
      ...
    </class>
 </hibernate-mapping>
-```
+~~~ 
 
 Step 2: configure cache expiration and physical cache attributes using the cache provider
 
@@ -397,7 +375,7 @@ Cache provider
 
 e.g. choose EHCache as our second-level cache provider
 
-```
+~~~ xml
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.cache.provider_class">
@@ -405,13 +383,13 @@ e.g. choose EHCache as our second-level cache provider
         </property>
     </session-factory>
 </hibernate-configuration>
-```
+~~~ 
 
 e.g. specify the properties of the cache regions, like the code below
 
 (EHCache has its own configuration file, ehcache.xml, which should be in the CLASSPATH of the application.)
 
-```
+~~~ xml
 <diskStore path="java.io.tmpdir"/>
 <defaultCache
 maxElementsInMemory="1000"
@@ -428,7 +406,7 @@ timeToIdleSeconds="0"
 timeToLiveSeconds="0"
 overflowToDisk="false"
 />
-```
+~~~ 
 
 use `Big Memory Go(Ehcache)` in hibernate as second level cache
 
@@ -442,14 +420,14 @@ use `Big Memory Go(Ehcache)` in hibernate as second level cache
 
 The fetch type essentially decides whether or not to load all of the relationships of a particular object/table as soon as the object/table is initially fetched.
 
-- (fetch=FetchType.EAGER): load it in the first place
-- (fetch=FetchType.LAZY): load it only when the object is needed
+- (fetch=FetchType.**EAGER**): load it in the first place
+- (fetch=FetchType.**LAZY**): load it only when the object is needed
 
 by default, primitive values are fetched EAGER, collection objects are fetched LAZY.
 
 e.g.
 
-```
+~~~ xml
   import javax.persistence.FetchType;
   //....
   @OneToOne(fetch=FetchType.EAGER)
@@ -458,17 +436,18 @@ e.g.
   {
     return userProfile;
   }
-```
-see more here: http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence
+~~~ 
+
+see more here: <http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence>
 
 ## Connection Pooling
 
 Hibernate comes with internal connection pool, but not suitable for production use. 
-It's recommended to use a third party connection pool such as C3P0.
+It's recommended to use a third party connection pool such as `C3P0`.
 
-e.g. hibernate.cfg.xml
+e.g. `hibernate.cfg.xml`
 
-```
+~~~ 
 hibernate.connection.driver_class = org.postgresql.Driver
 hibernate.connection.url = jdbc:postgresql://localhost/mydatabase
 hibernate.connection.username = myuser
@@ -480,14 +459,14 @@ hibernate.c3p0.timeout=1800
 hibernate.c3p0.max_statements=50
 
 hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
-```
+~~~ 
 
-- https://docs.jboss.org/hibernate/orm/3.3/reference/en-US/html/session-configuration.html
-- http://www.mkyong.com/hibernate/how-to-configure-the-c3p0-connection-pool-in-hibernate/
+- <https://docs.jboss.org/hibernate/orm/3.3/reference/en-US/html/session-configuration.html>
+- <http://www.mkyong.com/hibernate/how-to-configure-the-c3p0-connection-pool-in-hibernate>
 
-## Misc
+## Questions
 
-hibernate query.list() does not return null, instead it returns an empty list
+参考 -> Hibernate最全面试题 <https://www.cnblogs.com/Java3y/p/8535459.html>
 
 ## Links
 
