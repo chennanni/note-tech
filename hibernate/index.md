@@ -483,6 +483,53 @@ hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
 - <https://docs.jboss.org/hibernate/orm/3.3/reference/en-US/html/session-configuration.html>
 - <http://www.mkyong.com/hibernate/how-to-configure-the-c3p0-connection-pool-in-hibernate>
 
+## Txn
+
+Hibernate本身不提供事务控制行为（没有添加任何附加锁定的行为），而是直接在 Hibernate 底层使用：
+- JDBC事务
+- JTA事务（分布式事务）
+- CMT事务（容器事务）
+
+所以，一般来说，只要为JDBC连接指定一下隔离级别，就够了。
+
+### 隔离级别
+
+~~~
+1：Read Uncommitted 
+2：Read Committed 
+4：Repeatable Read 
+8：Serializable 
+~~~
+
+例如，把`hibernate.cfg.xml`文件中的隔离级别设为Read Committed： 
+
+~~~
+hibernate.connection.isolation=2 
+~~~
+
+### 锁
+
+进阶地，也可以给query语句加锁。这里分为两种：
+
+- 乐观锁：不锁定表，一般是通过version实现，如果发现version更新了，就放弃写入。
+- 悲观锁：锁定表，只需我自己操作，不许别人操作。
+
+一个悲观锁的例子是：
+
+~~~ java
+String hqlStr="from TUser user where user.name='Erica'";  
+Query query=session.createQuery(hqlStr);    
+query.setLockMode("user"，LockModel.UPGRADE);
+~~~
+
+### 操作单元
+
+Unit of work, 有这样一个问题，多久开一次Session？
+
+是每一次数据库读写都开一个Session吗？（也就是`session-per-operation`）显然这样浪费资源。
+
+比较合理是`session-per-request`，每一个请求进来，我们开一个Session，然后把所有数据库读写放一起做。
+
 ## Questions
 
 参考 -> Hibernate最全面试题 <https://www.cnblogs.com/Java3y/p/8535459.html>
@@ -514,11 +561,24 @@ ordered collection
 
 对于比较大的数据集，为了避免在内存中对它们进行排序而出现 Java中的OutOfMemoryError，最好使用ordered collection。
 
-### hibernate get和 load 区别
+### hibernate get 和 load 区别
 
 - `get()`如果没有找到会返回null，`load()`如果没有找到会抛出异常。
 - `get()`是立即查询，`load()`是懒加载。
 - `get()`会先查一级缓存，再查二级缓存，然后查数据库；`load()`会先查一级缓存，如果没有找到，就创建代理对象，等需要的时候去查询二级缓存和数据库。
+
+### hibernate persist 和 save 区别
+
+- `persist()`不保证立即执行，可能要等到`flush()`；`save()`会立即执行 sql insert
+- `persist()`不更新缓存；`save()`更新缓存
+- `persist()`无返回值；`save()`有返回值（一般是对应记录的主键值）
+
+参考 -> <http://blog.csdn.net/u010739551/article/details/47253881>
+
+### hibernate getCurrentSession 和 openSession 区别
+
+- `getCurrentSession()` 是使用当前Session Factory里面的Session，Session由Factory管理；`openSession()`是创建一个新的Session，且需要我们手动关闭。
+- `getCurrentSession()`事务是有spring来控制的；而`openSession()`需要我们手动开启和手动提交事务。
 
 ## Links
 
