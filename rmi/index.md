@@ -1,11 +1,11 @@
 ---
 layout: default
-title: RMI
+title: RMI/RPC
 folder: rmi
 permalink: /archive/rmi/
 ---
 
-# RMI
+# RMI/RPC
 
 Remote Mehtod Invokation
 
