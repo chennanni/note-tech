@@ -33,7 +33,7 @@ permalink: /archive/build/basic
 - Buildr
 - Gradle
 
-## Tool Development
+## Tools Development
 
 ### Make
 
