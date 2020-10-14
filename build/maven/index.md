@@ -124,6 +124,8 @@ A -> C (v2)
 - 短路优先；在上例中，C是v2。
 - （相同路径的情况下）先声明优先。
 
+参考以下：
+
 - [Maven依赖传递、依赖传递排除、依赖冲突](https://www.cnblogs.com/ygj0930/p/6628429.html)
 - [Maven依赖版本冲突的分析及解决小结](https://www.cnblogs.com/godtrue/p/6220512.html)
 
