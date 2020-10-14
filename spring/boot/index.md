@@ -33,10 +33,13 @@ Pivotal公司一向擅长做框架。之前的Spring版图中，除了核心的I
 
 1. 为所有 Spring 开发提供一个更快更广泛的入门体验。
 2. 零配置。无冗余代码生成和XML 强制配置，遵循“约定大于配置” 。
-3. 集成了大量常用的第三方库的配置， Spring Boot 应用为这些第三方库提供了几乎可以零配置的开箱即用的能力。
+3. **集成了大量常用的第三方库的配置**， Spring Boot 应用为这些第三方库提供了几乎可以零配置的开箱即用的能力。
 4. 提供一系列大型项目常用的非功能性特征，如嵌入式服务器、安全性、度量、运行状况检查、外部化配置等。
 
-<https://blog.csdn.net/qq_40147863/article/details/84194493>
+总结来说，最大的一个好处，比如我要开发一个Web应用，Maven里面要导入十几个dependency，很麻烦。
+使用Spring Boot之后，我只需要导入一个"spring-boot-web-starter"就可以了，方便！
+
+参考 -> <https://blog.csdn.net/qq_40147863/article/details/84194493>
 
 ## SpringBootApplication
 
