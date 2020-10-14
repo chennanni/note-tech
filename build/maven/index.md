@@ -112,22 +112,41 @@ in `pom.xml`, add:
 
 ## Dependency Conflict
 
-问题：项目中，A有两个dependency，但是C的version在两个地方配置得不一样，如下。那么，实际生效的C的version是哪个呢？
+依赖冲突 问题：项目中，A有两个dependency，但是C的version在两个地方配置得不一样，如下。那么，实际生效的C的version是哪个呢？
 
 ~~~
 A -> B -> C (v1)
 A -> C (v2)
 ~~~
 
-依赖冲突解决：
-
+规则
 - 短路优先；在上例中，C是v2。
 - （相同路径的情况下）先声明优先。
+
+另外，如果想要指定一个version，可以在pom中把其它的exlcude掉。
 
 参考以下：
 
 - [Maven依赖传递、依赖传递排除、依赖冲突](https://www.cnblogs.com/ygj0930/p/6628429.html)
 - [Maven依赖版本冲突的分析及解决小结](https://www.cnblogs.com/godtrue/p/6220512.html)
+
+## Cyclic Dependency
+
+依赖循环 问题：项目中，`A -> B -> C -> A`，这时编译会报错。怎么解决呢？
+
+如果都是自己部门的项目，可以修改代码，将共同依赖提取出来。如下：
+
+~~~
+A -> D
+B -> D
+C -> D
+~~~
+
+如果都是第三方类库，这个情况应该不会出现，因为过不了编译，无法发布到线上。
+
+如果一个是自己部门的项目，其余是第三方类库，这个情况也不成立，因为第三方类库不会依赖于私有的项目。
+
+注：网上有说使用`build-helper-maven-plugin`插件解决，感觉像是第一种情况。
 
 ## Cheat Cheet
 
