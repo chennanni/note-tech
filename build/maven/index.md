@@ -13,7 +13,7 @@ Maven is a **build** automation tool used primarily for Java projects.
 
 ![maven_path](img/maven_path.png)
 
-## Feature
+## Features
 
 - **Making the build process easy**
 - **Providing a uniform build system**
@@ -21,22 +21,30 @@ Maven is a **build** automation tool used primarily for Java projects.
 - Providing guidelines for best practices development
 - Allowing transparent migration to new features
 
-## How to Add Dependency
+## Concept
 
-in pom.xml, add:
+### Repository
 
-``` xml
-<dependencies>
-	...
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>4.1.6.RELEASE</version>
-	</dependency>
-</dependencies>
-```
+- Local Repository: a folder location on your machine.
+- Central Repository: This repository is managed by Maven community.
+- Remote Repository: user defined, see below example.
 
-## Phase
+~~~ xml
+<project>
+   <repositories>
+      <repository>
+         <id>companyname.lib1</id>
+         <url>http://download.companyname.org/maven2/lib1</url>
+      </repository>
+   </repositories>
+</project>
+~~~
+
+Search sequence: local repository -> central repository -> remote repository
+
+- [https://www.tutorialspoint.com/maven/maven_repositories.htm](https://www.tutorialspoint.com/maven/maven_repositories.htm)
+
+### Phase
 
 Build LifeCycle
 - **validate**: validate the project is correct and all necessary information is available
@@ -51,7 +59,24 @@ Build LifeCycle
 
 - [https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)
 
-## Plugin
+## Build
+
+### Add Dependency
+
+in `pom.xml`, add:
+
+``` xml
+<dependencies>
+	...
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>4.1.6.RELEASE</version>
+	</dependency>
+</dependencies>
+```
+
+### Plugin
 
 作用：在整个build的lifeCycle之间，插入一些job，做一些其它的工作。
 
@@ -85,30 +110,18 @@ Build LifeCycle
 
 - [http://maven.apache.org/plugins/maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin)
 
-## Repository
-
-- Local Repository: a folder location on your machine.
-- Central Repository: This repository is managed by Maven community.
-- Remote Repository: user defined, see below example.
-
-~~~ xml
-<project>
-   <repositories>
-      <repository>
-         <id>companyname.lib1</id>
-         <url>http://download.companyname.org/maven2/lib1</url>
-      </repository>
-   </repositories>
-</project>
-~~~
-
-Search sequence: local repository -> central repository -> remote repository
-
-- [https://www.tutorialspoint.com/maven/maven_repositories.htm](https://www.tutorialspoint.com/maven/maven_repositories.htm)
-
 ## Dependency Conflict
 
-依赖冲突解决：短路优先，先声明优先
+问题：项目中，A有两个dependency，但是C的version在两个地方配置得不一样，如下。那么，实际生效的C的version是哪个呢？
+
+~~~
+A -> B -> C (v1)
+A -> C (v2)
+~~~
+
+依赖冲突解决：
+1. 短路优先；在上例中，C是v2。
+2.（相同路径的情况下）先声明优先。
 
 - [Maven依赖传递、依赖传递排除、依赖冲突](https://www.cnblogs.com/ygj0930/p/6628429.html)
 - [Maven依赖版本冲突的分析及解决小结](https://www.cnblogs.com/godtrue/p/6220512.html)
