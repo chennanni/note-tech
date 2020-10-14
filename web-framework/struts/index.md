@@ -10,8 +10,6 @@ permalink: /archive/web-framework/struts/
 ## MVC Architecture
 
 ![struts_architecture](img/struts_architecture.png)
-TODO
-https://www.guru99.com/images/1/122118_0445_MVCTutorial1.png
 
 MVC is popular as it isolates the application logic from the user interface layer
 
