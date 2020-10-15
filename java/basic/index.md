@@ -190,12 +190,6 @@ search:
 	}
 ~~~
 
-
-### volatile
-
-- volatile is used to indicate that a variable's value will be modified by different threads
-- The value of this variable will never be cached thread-locally: all reads and writes will go to "main memory"
-
 ### transient
 
 - marks a member variable not to be serialized when it is persisted to streams of bytes
