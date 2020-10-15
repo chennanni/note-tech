@@ -405,7 +405,7 @@ create a class without naming the class
 new ServiceImpl().doSomething();  // ServiceImpl is a Class
 
 // interface
-Arrays.sort(input[], new Comparator<Integer>() {  // Comparator is an Interface, here it creates an anonymous class implementing the Interface
+Arrays.sort(input[], new Comparator<Integer>() {  // anonymous class
     @Override
     public int compare(int a, int b) {
         return (a-b);
