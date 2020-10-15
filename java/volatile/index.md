@@ -230,10 +230,20 @@ OK，效率提高了，但是这样也存在问题。下面讲。
 
 上面谈到了 Store Buffer + Store Forwarding 以及 Invalid Queue，它们的本质都是采用了异步的形式，来提高运行效率。
 
-但是，异步和一致性，本来就是不可兼得的。
-会带来一系列问题。这里就不分析了，比较复杂，需要结合代码看时序图。
+但是，异步和一致性，本来就是不可兼得的。会带来一系列问题。简单描述如下：
 
-Store Buffer里面的值，
+以Store Buffer为例，Invalid Queue也是类似的：
+
+~~~
+CPU1要对a进行写操作，把值存在Store Buffer里面，记为CPU1_SB_a = 1。
+
+然后，CPU2要对a进行读操作，会直接读CPU1_SB_a的值（由于Store Forwarding），这里没有问题。
+
+但是CPU3，之前已经读取过a的初始值，还在缓存中，记为CPU3_a = 0。而CPU1给它的Invalidate消息，它还没来得及处理。
+这时，CPU3又碰到一个读取a的指令，返回的值就是CPU3_a = 0。（因为缓存还未失效）
+
+所以，CPU1的Store Buffer的值，和CPU3的缓存的值，就不一致了。
+~~~
 
 参考这里 -> 为什么需要内存屏障 <https://blog.csdn.net/chen19870707/article/details/39896655>
 
