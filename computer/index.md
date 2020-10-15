@@ -1,3 +1,10 @@
+---
+layout: default
+title: Computer
+folder: computer
+permalink: /archive/computer/
+---
+
 # Computer
 
 ## 计算机硬件架构
