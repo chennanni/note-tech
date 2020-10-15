@@ -19,6 +19,8 @@ volatile 挥发性的，不稳定的
 
 在解释之前，需要普及很多知识点。
 
+参考了 -> 细说 Volatile <https://gitbook.cn/books/5db54b448190041c0d50b530/index.html#volatile>
+
 ## 重排序
 
 首先要讲一个点，我们写的代码，编译成字节码指令，最终到CPU中的执行顺序，可能不是原来的顺序，
