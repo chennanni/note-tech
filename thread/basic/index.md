@@ -295,44 +295,6 @@ Thread safety: The program state (fields/objects/variables) behaves correctly wh
 
 - [https://www.cnblogs.com/lixinjie/p/a-answer-about-thread-safety-in-a-interview.html](https://www.cnblogs.com/lixinjie/p/a-answer-about-thread-safety-in-a-interview.html)
 
-## Synchronization
-
-同步，实现的手法是加 Multual Exclusive 互斥锁。
-
-- 是可重入的。
-- 是映射到操作系统级别的操作，是一个重量级锁。
-
-synchronized关键字加在不同地方，效果也不同，[这里](https://github.com/pzxwhc/MineKnowContainer/issues/7) 总结得很好：
-
-- 类
-  - 修饰一个类，作用的对象是这个类的所有对象
-  - 修改一个静态的方法（相当于修饰了一个类），作用的对象是这个方法所属于的类的所有对象
-- 方法
-  - 修饰一个方法，作用的对象是**调用**这个方法的对象
-  - 修饰一个代码块（相当于修饰了一个匿名方法），作用的对象是**调用**这个代码块的对象
-
-e.g. synchronized class
-
-~~~ java
-class ClassName {
-  public void method() {
-    synchronized(ClassName.class) {
-      // todo
-    }
-  }
-}
-~~~
-
-e.g. synchronized method
-
-~~~ java
-public synchronized void method() {
-  // todo
-}
-~~~
-
-那么到底同步方法有什么用呢？-> <https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html>
-
 ## Deadlock Prevention
 
 **Lock Ordering**: make sure that all locks are always taken in the same order by any thread
