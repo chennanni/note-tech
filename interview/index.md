@@ -120,11 +120,3 @@ Git
 - Release branch is applied several ad-hoc fix commits, how to apply that to current dev branch? - Cherry-pick.
 
 [http://chennanni.github.io/note-tech/archive/git](http://chennanni.github.io/note-tech/archive/git)
-
-## Framework - Design Pattern
-
-- Singleton
-- Factory
-- Template
-- Decorator
-- Proxy
