@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Java - Synchronized
+title: Thread - Synchronized
 folder: synchronized
-permalink: /archive/java/synchronized/
+permalink: /archive/thread/synchronized/
 ---
 
-# Java - Synchronized
+# Thread - Synchronized
 
 ## 什么是Synchronized
 
