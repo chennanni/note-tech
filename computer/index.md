@@ -22,8 +22,6 @@ permalink: /archive/computer/
 ~~~
 
 ![computer_arc_1](img/computer_arc_1.jpg)
-TODO
-https://pic2.zhimg.com/80/v2-7aa71f73aebf90d03d5d80c112fd03b1_720w.jpg
 
 ### 哈佛架构
 
@@ -34,8 +32,6 @@ https://pic2.zhimg.com/80/v2-7aa71f73aebf90d03d5d80c112fd03b1_720w.jpg
 ~~~
 
 ![computer_arc_2](img/computer_arc_2.jpg)
-TODO
-https://pic3.zhimg.com/80/v2-8d2e823f1afb86667634bc7739d34d76_720w.jpg
 
 这样的好处是：读写分开。将一部分静态的只读数据剥离出来。
 这样，计算机读取指令，和读写数据两个过程，就可以分开 / 并行。
@@ -53,8 +49,6 @@ https://pic3.zhimg.com/80/v2-8d2e823f1afb86667634bc7739d34d76_720w.jpg
 其核心逻辑是牺牲速度，换取容量（反之亦然）。见下图，金字塔越往上，和CPU越近，交互速度越快，但是存储容量越小。
 
 ![computer_arc_3](img/computer_arc_3.jpg)
-TODO
-https://pic3.zhimg.com/80/v2-f6b440ae54d16616d6e9f093726d496a_720w.jpg
 
 ### 其它组成设备
 
@@ -103,16 +97,12 @@ https://pic3.zhimg.com/80/v2-f6b440ae54d16616d6e9f093726d496a_720w.jpg
 这样有一个问题：比如一个I/O操作需要做1秒，而一个内存读写操作只要0.00001秒，让后者等前者，等得“花儿都谢了”。
 
 ![bus_1](img/bus_1.PNG)
-TODO
-https://img-blog.csdn.net/20161108093849082
 
 ### 双总线结构
 
 分为两条线，一条I/O总线，一条内存总线。即可以一边I/O，一边读写内存，并行操作。
 
 ![bus_2](img/bus_2.PNG)
-TODO
-https://img-blog.csdn.net/20161108094359418
 
 ### 多总线结构
 
