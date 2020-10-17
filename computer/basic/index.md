@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Computer
-folder: computer
-permalink: /archive/computer/
+title: Computer - Basic
+folder: basic
+permalink: /archive/computer/basic/
 ---
 
-# Computer
+# Computer - Basic
 
 ## 计算机硬件架构
 
