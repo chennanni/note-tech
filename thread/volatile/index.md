@@ -243,7 +243,7 @@ Thread-3: 96001
 
 有可能，线程1执行完1，2步，然后就被线程2打断。线程2执行完了1，2，3步，然后再切换回线程1。线程1再执行步骤3，将线程2的结果覆盖了（总体里看，相当于少自增一次）。
 
-### 什么时候用volatile
+### 怎么用volatile
 
 由于volatile不保证原子性，使用起来要很小心。
 
@@ -251,3 +251,48 @@ Thread-3: 96001
 
 - 对 volatile 变量的 写 操作，不依赖于当前值（比如，自增操作是不行的）
 - 对 volatile 变量的 读 操作，不能用于计算其它变量（比如，y = x + 1 是不行的，x 是 volatile 变量）
+
+### volatile的常用场景
+
+1. 状态量标记，多线程中需要共享一个flag
+
+~~~ java
+volatile boolean flag = false;
+ 
+while(!flag){
+    doSomething();
+}
+ 
+public void setFlag() {
+    flag = true;
+}
+~~~
+
+2. 双重检查锁 double checked locking
+
+~~~ java
+public class Singleton {
+    private volatile static Singleton uniqueSingleton;
+
+    private Singleton() {
+    }
+
+    public Singleton getInstance() {
+        if (null == uniqueSingleton) {
+            synchronized (Singleton.class) {
+                if (null == uniqueSingleton) {
+                    uniqueSingleton = new Singleton();
+                }
+            }
+        }
+        return uniqueSingleton;
+    }
+}
+~~~
+
+几个注意点：
+- 使用`synchronized`保证多线程下，不会创建多个实例。
+- 使用两个check null语句，保证第二次，第三次访问的时候，不需要再获取`synchronized`锁。
+- 使用`volatile`，禁止创建实例对象时执行发生重排序，而导致问题。
+
+参考 -> Java中的双重检查锁（double checked locking） <https://www.cnblogs.com/xz816111/p/8470048.html>
