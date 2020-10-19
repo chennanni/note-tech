@@ -115,7 +115,7 @@ startProcess(context);
 
 为了应对并发编程的三个问题，JMM - `Java Memory Model` - `Java内存模型` 做出了一些规定。
 
-### 原子性
+### 保证 - 原子性
 
 在Java中，对基本数据类型的变量的读取和赋值操作是原子性操作，即这些操作是不可被中断的，要么执行，要么不执行。
 
@@ -130,13 +130,13 @@ x = x + 1;     //语句4
 
 如果要实现更大范围操作的原子性，可以通过`synchronized`和`Lock`来实现。
 
-### 可见性
+### 保证 - 可见性
 
 Java提供了`volatile`关键字来保证可见性。
 
 另外，通过`synchronized`和`Lock`也能够保证可见性，`synchronized`和`Lock`能保证同一时刻只有一个线程获取锁然后执行同步代码，并且在释放锁之前会将对变量的修改刷新到主存当中。因此可以保证可见性。
 
-### 有序性
+### 保证 - 有序性
 
 Java通过volatile关键字来保证一定的"有序性"。
 
@@ -180,3 +180,65 @@ LoadLoadBarrier
 
 具体的实现是：在编译成字节码时，涉及变量a的读/写操作周围会加一层内存屏障。（但其实这里采用的是Lock锁来实现的，为啥？更方便，虽然性能差一点。）
 
+### volatile的原子性问题
+
+需要注意的是，volatile无法保证原子性。
+看下例：创建了10个线程，每个线程对一个共享 volatile 变量执行自增1万次。理论上，最后结果输出应该是10万次。
+
+~~~ java
+public class Test {
+    public volatile int inc = 0;
+
+    public void increase() {
+        inc++;
+    }
+
+    public static void main(String[] args) {
+        final Test test = new Test();
+        for(int i=0;i<10;i++){
+            new Thread(){
+                public void run() {
+                    for(int j=0;j<10000;j++) {
+                        test.increase();
+                    }
+                    System.out.println(Thread.currentThread().getName() + ": " + test.inc);
+                };
+            }.start();
+        }
+
+        while(Thread.activeCount()>2) {
+            //保证前面的线程都执行完
+            //System.out.println(Thread.activeCount());
+            Thread.yield();
+        }
+
+        System.out.println(test.inc);
+    }
+}
+~~~
+
+实际结果（值是小于10万次的随机数） ->
+
+~~~
+Thread-2: 19420
+Thread-4: 30130
+Thread-0: 38377
+Thread-1: 47181
+Thread-5: 57181
+Thread-7: 67600
+Thread-8: 76001
+Thread-9: 86001
+Thread-6: 96001
+Thread-3: 96001
+96001
+~~~
+
+原因：`inc++`这个操作不是原子性的。可以分为三步：
+
+~~~
+步骤1：读取inc的值
+步骤2：将inc的值+1
+步骤3：将新的值赋予inc
+~~~
+
+有可能，线程1执行完1，2步，然后就被线程2打断。线程2执行完了1，2，3步，然后再切换回线程1。线程1再执行步骤3，将线程2的结果覆盖了（总体里看，相当于少自增一次）。
