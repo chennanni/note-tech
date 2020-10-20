@@ -66,11 +66,11 @@ https://img-blog.csdnimg.cn/20200327113745994.png?x-oss-process=image/watermark,
 - 是否为偏向锁
 - 锁标志位
 
-通过这两个flag，我们可以判断一个锁是什么类型的。
-- 无锁： 0 + 01
-- 偏向锁： 1 + 01
-- 轻量级锁： N/A + 00
-- 重量级锁： N/A + 10
+通过这两个flag，我们可以判断一个锁是什么类型的：
+- 无锁： `0 + 01`
+- 偏向锁： `1 + 01`
+- 轻量级锁： `N/A + 00`
+- 重量级锁： `N/A + 10`
 
 ![java_mark_word](img/java_mark_word.PNG)
 TODO
