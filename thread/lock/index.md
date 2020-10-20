@@ -15,38 +15,98 @@ permalink: /archive/thread/lock/
 
 ### 共享锁 v.s. 独享锁
 
-共享锁：该锁可被多个线程持有。一种实现是互斥锁，在Java中就是`ReadWriteLock`。读共享，写互斥。
+共享锁
+- 该锁可被多个线程持有。
+- 举例：Java中的`ReentrantReadWriteLock`的读锁。读共享。
 
-独享锁：该锁一次只能被一个线程持有。一种实现是互斥锁，在Java中就是`ReentrantLock`。
+独享锁
+- 该锁一次只能被一个线程持有。
+- 举例：Java中的`ReentrantReadWriteLock`的写锁。写互斥。
+
+~~~ java
+public class ReentrantReadWriteLockTest {
+
+    private static ReentrantReadWriteLock reentrantLock = new ReentrantReadWriteLock();
+    private static ReentrantReadWriteLock.ReadLock readLock = reentrantLock.readLock();
+    private static ReentrantReadWriteLock.WriteLock writeLock = reentrantLock.writeLock();
+
+    public static void read() {
+        readLock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + "###获取读锁，开始执行");
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            readLock.unlock();
+            System.out.println(Thread.currentThread().getName() + "###释放读锁");
+        }
+    }
+
+    public static void write() {
+        writeLock.lock();
+        try {
+            System.out.println(Thread.currentThread().getName() + "获取写锁，开始执行");
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            writeLock.unlock();
+            System.out.println(Thread.currentThread().getName() + "释放写锁");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Thread(() -> read(), "Thread1").start();
+        new Thread(() -> read(), "Thread2").start();
+        new Thread(() -> write(), "Thread3").start();
+        new Thread(() -> write(), "Thread4").start();
+    }
+}
+~~~
+
+参考 -> Java中的共享锁和排他锁 <https://blog.csdn.net/fanrenxiang/article/details/104312606>
 
 ### 公平锁 v.s. 非公平锁
 
-公平锁：多个线程 按照 申请锁的顺序 来 获取锁。
+公平锁：多个线程 按照 申请锁的顺序 来 获取锁。（背后的实现是一个队列）
 
-非公平锁：多个线程 不 按照 申请锁的顺序 来 获取锁。（有可能后申请的线程比先申请的线程优先获取锁。）
+非公平锁：多个线程 不 按照 申请锁的顺序 来 获取锁。（获取不到锁的时候，会自动加入队列，等待线程释放锁后所有等待的线程**同时去竞争**）
 
 举例1：`ReentrantLock`，通过构造函数指定该锁是否是公平锁，默认是非公平锁。
 
 举例2：`Synchronized`是非公平锁。
 
-问题：非公平锁是通过什么来分配的呢？TODO
+### 悲观锁 v.s. 乐观锁
+
+悲观锁
+- 总是假设最坏的情况，每次取数据都认为会被其它人修改，所以一定先加锁。
+
+乐观锁
+- 在操作时乐观，认为不会发生并发问题，因此不把资源锁住，而是最后写入的时候判断是否被修改过。一般使用 version 或者 CAS 实现。
+
+参考 -> 乐观锁、悲观锁，这一篇就够了 <https://segmentfault.com/a/1190000016611415>
+
+### 自旋锁 v.s. 阻塞锁
+
+自旋锁
+- 采用循环的方式（CAS）不停尝试获取锁。
+- 好处是响应速度更快，缺点是（自旋）消耗性能。
+- 举例：`Synchronized`中的 偏向锁 与 轻量级锁。
+
+阻塞锁
+- 使用 CPU 阻塞实现同步。
+- 举例：`Synchronized`中的 重量级锁
+
+参考
+- [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
+- [java自旋锁](http://ifeve.com/java_lock_see1)
 
 ### 分段锁
 
 其实是一种锁的设计，将一个大的对象切分为多个小的对象，在细微粒度下加锁，即可达到并发操作这一整个对象的目的。
 
 举例：`ConcurrentHashMap`。
-
-### 自旋锁
-
-尝试获取锁的线程不会立即阻塞，而是采用循环的方式不停尝试获取锁。
-好处是响应速度更快，缺点是（自旋）消耗性能。
-
-举例：`Synchronized`中的 偏向锁 与 轻量级锁。
-
-参考
-- [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
-- [java锁的种类以及辨析（一）：自旋锁](http://ifeve.com/java_lock_see1)
 
 ## Java对象结构
 
