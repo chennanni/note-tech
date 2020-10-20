@@ -115,9 +115,7 @@ public class ReentrantReadWriteLockTest {
 
 为了分析加锁的底层实现，先看一下Java对象是怎么构成的。
 
-![java_object_struc](img/java_object_struc.PNG)
-TODO
-https://img-blog.csdnimg.cn/20200327113745994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poZW5nd2FuZ3p3,size_16,color_FFFFFF,t_70
+![java_object_struc](img/java_object_struc.png)
 
 - 对象头
   - Mark Word: 存储对象的hashCode，锁信息，分代年龄，GC标志等信息
@@ -135,9 +133,7 @@ https://img-blog.csdnimg.cn/20200327113745994.png?x-oss-process=image/watermark,
 - 轻量级锁： `N/A + 00`
 - 重量级锁： `N/A + 10`
 
-![java_mark_word](img/java_mark_word.PNG)
-TODO
-https://img-blog.csdnimg.cn/20200327115200860.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poZW5nd2FuZ3p3,size_16,color_FFFFFF,t_70
+![java_mark_word](img/java_mark_word.png)
 
 ## Java并发锁的类型
 
@@ -149,9 +145,7 @@ https://img-blog.csdnimg.cn/20200327115200860.png?x-oss-process=image/watermark,
 重量级锁：轻量级锁自旋达到一定次数，就会升级成重量级锁。
 使用CPU级别阻塞实现锁，消耗大。
 
-![java_lock](img/java_lock.PNG)
-TODO
-https://img-blog.csdn.net/2018032217003676
+![java_lock](img/java_lock.png)
 
 ## Java并发锁的锁升级
 
@@ -166,9 +160,7 @@ https://img-blog.csdn.net/2018032217003676
 
 如果不能写，表明有竞争，就会把锁升级成轻量级锁。
 
-![java_bias_lock_process](img/java_bias_lock_process.PNG)
-TODO
-https://img-blog.csdnimg.cn/20200327124825135.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poZW5nd2FuZ3p3,size_16,color_FFFFFF,t_70
+![java_bias_lock_process](img/java_bias_lock_process.png)
 
 ### 偏向锁 -> 轻量级锁
 
