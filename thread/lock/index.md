@@ -48,9 +48,9 @@ permalink: /archive/thread/lock/
 - [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
 - [java锁的种类以及辨析（一）：自旋锁](http://ifeve.com/java_lock_see1)
 
-## 加锁的底层实现
+## Java对象结构
 
-### Java对象结构
+为了分析加锁的底层实现，先看一下Java对象是怎么构成的。
 
 ![java_object_struc](img/java_object_struc.PNG)
 TODO
