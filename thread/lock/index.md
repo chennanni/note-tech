@@ -44,9 +44,9 @@ permalink: /archive/thread/lock/
 
 举例：`Synchronized`中的 偏向锁 与 轻量级锁。
 
-[java锁的种类以及辨析（一）：自旋锁](http://ifeve.com/java_lock_see1)
-
-参考 -> [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
+参考
+- [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
+- [java锁的种类以及辨析（一）：自旋锁](http://ifeve.com/java_lock_see1)
 
 ## 加锁的底层实现
 
