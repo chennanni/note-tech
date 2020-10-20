@@ -40,8 +40,9 @@ permalink: /archive/thread/lock/
 ### 自旋锁
 
 尝试获取锁的线程不会立即阻塞，而是采用循环的方式不停尝试获取锁。
+好处是响应速度更快，缺点是（自旋）消耗性能。
 
-好处是响应速度更快，缺点是消耗性能。
+举例：`Synchronized`中的 偏向锁 与 轻量级锁。
 
 [java锁的种类以及辨析（一）：自旋锁](http://ifeve.com/java_lock_see1)
 
