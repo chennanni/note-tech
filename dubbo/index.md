@@ -87,8 +87,169 @@ A机器的function_A调用B机器的function_B怎么办？这就需要Dubbo。
 
 ## 实战
 
-TODO
+### 启动Zookeeper
 
-https://github.com/apache/dubbo
+首先，下载Zookeeper <https://zookeeper.apache.org/releases.html#download>
 
-https://my.oschina.net/wangmengjun/blog/903967
+然后，解压缩。
+
+修改配置文件：一般位于根目录下的`conf\`目录下。
+
+把`zoo_sample.conf`改名为`zoo.cfg`或者`zoo.conf`，Windows和Linux可能不一样。
+
+简单使用的话，里面的内容可以不用修改。
+
+然后，Windows系统的话，打开cmd，运行：
+
+~~~
+D:\codebase\apache-zookeeper-3.6.2-bin\bin>zkServer.cmd
+~~~
+
+运行成功的话，可以在stdout里看到zk的logo。
+
+~~~
+2020-10-21 20:13:35,251 [myid:] - INFO  [main:ZookeeperBanner@42] -
+2020-10-21 20:13:35,251 [myid:] - INFO  [main:ZookeeperBanner@42] -   ______                  _
+2020-10-21 20:13:35,252 [myid:] - INFO  [main:ZookeeperBanner@42] -  |___  /                 | |
+2020-10-21 20:13:35,253 [myid:] - INFO  [main:ZookeeperBanner@42] -     / /    ___     ___   | | __   ___    ___   _ __     ___   _ __
+2020-10-21 20:13:35,255 [myid:] - INFO  [main:ZookeeperBanner@42] -    / /    / _ \   / _ \  | |/ /  / _ \  / _ \ | '_ \   / _ \ | '__|
+2020-10-21 20:13:35,255 [myid:] - INFO  [main:ZookeeperBanner@42] -   / /__  | (_) | | (_) | |   <  |  __/ |  __/ | |_) | |  __/ | |
+2020-10-21 20:13:35,256 [myid:] - INFO  [main:ZookeeperBanner@42] -  /_____|  \___/   \___/  |_|\_\  \___|  \___| | .__/   \___| |_|
+2020-10-21 20:13:35,256 [myid:] - INFO  [main:ZookeeperBanner@42] -                                               | |
+2020-10-21 20:13:35,257 [myid:] - INFO  [main:ZookeeperBanner@42] -                                               |_|
+2020-10-21 20:13:35,257 [myid:] - INFO  [main:ZookeeperBanner@42] -
+~~~
+
+继续往下，可以看到在某个的address开始service的log。
+
+~~~
+2020-10-21 20:13:35,789 [myid:] - INFO  [main:AbstractConnector@330] - Started ServerConnector@73ad2d6{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
+2020-10-21 20:13:35,790 [myid:] - INFO  [main:Server@399] - Started @932ms
+2020-10-21 20:13:35,791 [myid:] - INFO  [main:JettyAdminServer@182] - Started AdminServer on address 0.0.0.0, port 8080 and command URL /commands
+2020-10-21 20:13:35,799 [myid:] - INFO  [main:ServerCnxnFactory@169] - Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory
+2020-10-21 20:13:35,800 [myid:] - WARN  [main:ServerCnxnFactory@309] - maxCnxns is not configured, using default value 0.
+2020-10-21 20:13:35,803 [myid:] - INFO  [main:NIOServerCnxnFactory@666] - Configuring NIO connection handler with 10s sessionless connection timeout, 1 selector thread(s), 8 worker threads, and 64 kB direct buffers.
+2020-10-21 20:13:35,806 [myid:] - INFO  [main:NIOServerCnxnFactory@674] - binding to port 0.0.0.0/0.0.0.0:2181
+~~~
+
+### Dubbo代码
+
+Maven dependency
+
+~~~ xml
+<properties>
+    <dubbo.version>2.7.8</dubbo.version>
+</properties>
+    
+<dependencies>
+    <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
+    </dependency>
+</dependencies>
+~~~
+
+Service interfaces
+
+~~~ java
+package org.apache.dubbo.samples.api;
+
+public interface GreetingsService {
+    String sayHi(String name);
+}
+~~~
+
+Provider - implement service interface
+
+~~~ java
+package org.apache.dubbo.samples.provider;
+
+import org.apache.dubbo.samples.api.GreetingsService;
+
+public class GreetingsServiceImpl implements GreetingsService {
+    @Override
+    public String sayHi(String name) {
+        return "hi, " + name;
+    }
+}
+~~~
+
+Provider - Application: register service in Zookeeper and start serving `sayHi()` method
+
+~~~ java
+package org.apache.dubbo.samples.provider;
+
+import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.config.ServiceConfig;
+import org.apache.dubbo.samples.api.GreetingsService;
+
+import java.util.concurrent.CountDownLatch;
+
+public class Application {
+    private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
+
+    public static void main(String[] args) throws Exception {
+        ServiceConfig<GreetingsService> service = new ServiceConfig<>();
+        service.setApplication(new ApplicationConfig("first-dubbo-provider"));
+        service.setRegistry(new RegistryConfig("zookeeper://" + zookeeperHost + ":2181"));
+        service.setInterface(GreetingsService.class);
+        service.setRef(new GreetingsServiceImpl());
+        service.export();
+
+        System.out.println("dubbo service started");
+        new CountDownLatch(1).await();
+    }
+}
+~~~
+
+Consumer - Application: find service in Zookeeper and call `sayHi()` method
+
+~~~ java
+package org.apache.dubbo.samples.client;
+
+
+import org.apache.dubbo.config.ApplicationConfig;
+import org.apache.dubbo.config.ReferenceConfig;
+import org.apache.dubbo.config.RegistryConfig;
+import org.apache.dubbo.samples.api.GreetingsService;
+
+public class Application {
+    private static String zookeeperHost = System.getProperty("zookeeper.address", "127.0.0.1");
+
+    public static void main(String[] args) {
+        ReferenceConfig<GreetingsService> reference = new ReferenceConfig<>();
+        reference.setApplication(new ApplicationConfig("first-dubbo-consumer"));
+        reference.setRegistry(new RegistryConfig("zookeeper://" + zookeeperHost + ":2181"));
+        reference.setInterface(GreetingsService.class);
+        GreetingsService service = reference.get();
+        String message = service.sayHi("dubbo");
+        System.out.println(message);
+    }
+}
+~~~
+
+运行Server Applicaton，会看到:
+
+~~~
+dubbo service started
+~~~
+
+运行Consumer Application，会看到:
+
+~~~
+hi, dubbo
+~~~
+
+服务调用成功。
+
+参考
+- Dubbo github page <https://github.com/apache/dubbo>
+- 一步步完成Maven+Spring+Dubbo+Zookeeper的整合示例 <https://my.oschina.net/wangmengjun/blog/903967>
