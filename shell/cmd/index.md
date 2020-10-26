@@ -196,6 +196,14 @@ du -h [path]
 ls -lhS
 ~~~
 
+### 查看运行中的进程
+
+~~~
+查看运行中的进程
+jps
+ps aux | grep java | grep [keyword]
+~~~
+
 ## Links
 
 - [Linux and Unix top 10 commands](http://www.computerhope.com/unixtop1.htm)
