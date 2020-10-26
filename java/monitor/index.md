@@ -126,33 +126,6 @@ Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.45-b02 mixed mode):
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
         at org.apache.geode.internal.cache.tier.sockets.AcceptorImpl$1$1.run(AcceptorImpl.java:523)
         at java.lang.Thread.run(Thread.java:745)
-
-"ServerConnection on port 40404 Thread 7" #667 prio=5 os_prio=0 tid=0x00007fcba4006800 nid=0x9a1c waiting on condition [0x00007fcf58fb4000]
-   java.lang.Thread.State: WAITING (parking)
-        at sun.misc.Unsafe.park(Native Method)
-        - parking to wait for  <0x00007fd29ea652b8> (a java.util.concurrent.SynchronousQueue$TransferStack)
-        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
-        at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:458)
-        at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
-        at java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:924)
-        at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1067)
-        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1127)
-        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-        at org.apache.geode.internal.cache.tier.sockets.AcceptorImpl$1$1.run(AcceptorImpl.java:523)
-        at java.lang.Thread.run(Thread.java:745)
-
-"locator request thread[8]" #664 daemon prio=5 os_prio=0 tid=0x00007fcf50003000 nid=0x9a19 waiting on condition [0x00007fcce8df9000]
-   java.lang.Thread.State: WAITING (parking)
-        at sun.misc.Unsafe.park(Native Method)
-        - parking to wait for  <0x00007fd1f80cf428> (a java.util.concurrent.SynchronousQueue$TransferStack)
-        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
-        at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:458)
-        at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
-        at java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:924)
-        at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1067)
-        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1127)
-        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-        at java.lang.Thread.run(Thread.java:745)
 ~~~
 
 ## 总结
