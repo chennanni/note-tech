@@ -155,6 +155,20 @@ Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.45-b02 mixed mode):
         at java.lang.Thread.run(Thread.java:745)
 ~~~
 
+## 总结
+
+查看进程情况 `top `
+
+查看线程情况 `top -H p[java_process_id]`
+
+查看 heapdump `jmap -histo [java_process_id] head -20 `
+
+查看 threaddump `jstack [java_process_id] > [thread_dump_file_name.txt]`
+
+查看基本GC情况 `jstat -gcutil [java_process_id] [interval_in_ms] [try_times] `
+
+查看详细GC情况 `vim [path_to_gc_log]` + 使用工具 (GCeasy) 分析
+
 ## 参考
 
 - Java性能排查实战模拟 <https://www.cnblogs.com/maxstack/p/12988744.html>
