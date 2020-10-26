@@ -185,6 +185,17 @@ cat input.txt | xargs -I {} echo {}: use {} to replace the input cmd
 
 -> DONE
 
+### 查看 disk space 容量
+
+~~~
+# check path disk space
+df -h [path]
+# check folder size
+du -h [path]
+# sort by file size
+ls -lhS
+~~~
+
 ## Links
 
 - [Linux and Unix top 10 commands](http://www.computerhope.com/unixtop1.htm)
