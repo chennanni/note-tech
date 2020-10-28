@@ -294,7 +294,7 @@ public class WordCount01 {
         ImoocMapper mapper = (ImoocMapper)clazz.newInstance();
 
         // 获取要操作的HDFS文件系统
-        FileSystem fs = FileSystem.get(new URI("hdfs://woklxd00361:8020"), new Configuration(),"eufiudwq");
+        FileSystem fs = FileSystem.get(new URI("hdfs://hostname:8020"), new Configuration(),"username");
 
         RemoteIterator<LocatedFileStatus> iterator = fs.listFiles(input, false);
         while(iterator.hasNext()) {
