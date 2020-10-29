@@ -49,9 +49,7 @@ Linux以文件的形式对计算机中的数据和硬件资源进行管理，也
 
 `var`: variable，`/var/log` 下记录了系统的日志
 
-TODO
-![linux_tree_index](img/linux_tree_index.PNG)
-https://pic1.zhimg.com/80/v2-778dec6bdfcd5c3d868f4a7f0f72ae60_720w.jpg
+![linux_tree_index](img/linux_tree_index.jpg)
 
 参考 -> Linux 文件系统详解 <https://zhuanlan.zhihu.com/p/38802277>
 
