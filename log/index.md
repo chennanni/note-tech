@@ -53,6 +53,40 @@ log4j.appender.testlog.layout=org.apache.log4j.PatternLayout
 log4j.appender.testlog.layout.conversionPattern=%m%n
 ~~~
 
+## 问题解决 - Log4j没有配置
+
+Error: `log4j:WARN No appenders could be found for logger`
+
+Fix：将`log4j.perperties`文件放到
+
+~~~
+src/
+~~~
+
+OR
+
+~~~
+src/main/resources/
+src/test/resources/
+~~~
+
+文件内容如下：直接输出log到控制台
+
+~~~
+log4j.rootLogger=info, stdout
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n
+
+log4j.appender.logfile=org.apache.log4j.FileAppender
+log4j.appender.logfile.File=target/spring.log
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n
+~~~
+
+参考 -> log4j问题解决 <https://blog.csdn.net/m0_37874657/article/details/80536086>
+
 ## Link
 
 - [日志级别的选择：Debug、Info、Warn、Error还是Fatal？](https://www.cnblogs.com/shwen99/archive/2007/12/29/1019853.html)
