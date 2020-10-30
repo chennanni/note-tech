@@ -34,8 +34,8 @@ Hadoop MapReduce是Google MapReduce的克隆版
 InputFormat
 (Split)
 (RecordReaders)
-(Paritioner)
 (Combiner)
+(Paritioner)
 OutputFormat
 ~~~
 
@@ -204,3 +204,37 @@ public class WordCountApp {
     }
 }
 ~~~
+
+## Combiner
+
+聚合操作，即在Map做完了之后，Shuffle之前，先在"Map端"把结果Aggregate一下，然后再分发下去。
+
+举例，词频统计的应用，2个Map，做完之后结果是这样的：
+
+~~~
+Map 1
+(hello, 1)
+(world, 1)
+(hello, 1)
+(hello, 1)
+
+Map 2
+(hello, 1)
+(world, 1)
+(world, 1)
+(hello, 1)
+~~~
+
+可以看到，有很多相同的词条，可以做一次Aggregate。做完Combiner的操作，结果是这样的：
+
+~~~
+Map 1
+(hello, 3)
+(world, 1)
+
+Map 2
+(hello, 2)
+(world, 2)
+~~~
+
+好处是，减少了输出（网络传输）的数据量。
