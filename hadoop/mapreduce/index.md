@@ -19,21 +19,27 @@ Hadoop MapReduce是Google MapReduce的克隆版
 
 ## 执行步骤
 
-- 准备输入数据
-- Mapper处理
+- Input 准备输入数据
+- (Split)
+- Mapper 处理
 - Shuffle
-- Reduce处理
-- 结果输出
+- Reduce 处理
+- Output 结果输出
+
+![mapreduce_arc](img/mapreduce_arc.PNG)
 
 ## 编程核心概念
 
 ~~~
-Split
 InputFormat
+(Split)
+(RecordReaders)
+(Paritioner)
+(Combiner)
 OutputFormat
-Combiner
-Paritioner
 ~~~
+
+![mapreduce_process](img/mapreduce_process.PNG)
 
 ## 实战
 
