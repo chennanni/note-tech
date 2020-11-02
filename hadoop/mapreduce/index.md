@@ -39,6 +39,8 @@ InputFormat
 OutputFormat
 ~~~
 
+TODO
+https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/08/Working-of-Hadoop-MapReduce.jpg
 ![mapreduce_process](img/mapreduce_process.PNG)
 
 ## 实战 - Word Count
