@@ -123,6 +123,10 @@ sbin/stop-yarn.sh
 hadoop jar example.jar wordccount /input/hello.txt /output/helloCount.txt
 ~~~
 
+## 端口号
+
+![yarn_port](img/yarn_port.PNG)
+
 ## 参考
 
 - 文档 <https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html>
