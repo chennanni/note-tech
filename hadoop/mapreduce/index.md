@@ -41,7 +41,7 @@ OutputFormat
 
 ![mapreduce_process](img/mapreduce_process.PNG)
 
-## 实战
+## 实战 - Word Count
 
 Mapper
 
@@ -205,7 +205,15 @@ public class WordCountApp {
 }
 ~~~
 
-## Combiner
+## 改进 - Local Run
+
+在本地跑很简单，不需要在Configuration中指定`HDFS_PATH`；
+
+另外，Input和Output的Path也需要改一下；然后就可以跑了。
+
+（注：如果是Windows系统的话，需要成功安装Hadoop。）
+
+## 改进 - Combiner
 
 聚合操作，即在Map做完了之后，Shuffle之前，先在"Map端"把结果Aggregate一下，然后再分发下去。
 
@@ -238,3 +246,9 @@ Map 2
 ~~~
 
 好处是，减少了输出（网络传输）的数据量。
+
+实践：在Local App的基础上，加上下述代码即可。
+
+~~~
+job.setCombinerClass(WordCountReducer.class);
+~~~
