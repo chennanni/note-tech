@@ -15,9 +15,7 @@ Hadoop Map Reduce 1 还不是很成熟，有各种各样的问题。
 
 Hadoop Map Reduce 2 这个版本引出了Yarn。
 
-TODO
-https://www.edureka.co/blog/wp-content/uploads/2018/06/Hadoop-v1.0-vs-Hadoop-v2.0.png
-![yarn_history](img/yarn_history.PNG)
+![yarn_history](img/yarn_history.png)
 
 它的核心思想是：统一管理整个集群的资源调度，从而提高资源利用率。
 
@@ -30,9 +28,7 @@ https://www.edureka.co/blog/wp-content/uploads/2018/06/Hadoop-v1.0-vs-Hadoop-v2.
 
 总体上是 master / slave 结构，在整个资源管理框架中， ResourceManager 为 master， NodeManager 是 slave。
 
-TODO
-https://blogs.bmc.com/wp-content/uploads/2019/06/graphs-05.png
-![yarn_arc](img/yarn_arc.PNG)
+![yarn_arc](img/yarn_arc.png)
 
 - ResourceManager
 - NodeManager
@@ -75,9 +71,7 @@ YARN 会为每个任务分配一个 Container，且该任务只能使用该 Cont
 
 ## 流程
 
-TODO
-https://img2018.cnblogs.com/blog/1271254/201910/1271254-20191008161506376-61248447.png
-![yarn_process](img/yarn_process.PNG)
+![yarn_process](img/yarn_process.png)
 
 1. 客户端程序向 ResourceManager 提交应用并请求一个 ApplicationMaster 实例；
 2. ResourceManager 找到一个可以运行一个 Container 的 NodeManager，并在这个 Container 中启动 ApplicationMaster 实例；
