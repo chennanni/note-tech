@@ -204,7 +204,7 @@ jps
 ps aux | grep java | grep [keyword]
 ~~~
 
-## 清理 Buffer / Cache
+### 清理 Buffer / Cache
 
 ~~~
 仅清除页面缓存（PageCache）
