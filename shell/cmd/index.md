@@ -204,6 +204,21 @@ jps
 ps aux | grep java | grep [keyword]
 ~~~
 
+## 清理 Buffer / Cache
+
+~~~
+仅清除页面缓存（PageCache）
+# sync; echo 1 > /proc/sys/vm/drop_caches       
+
+清除目录项和inode
+# sync; echo 2 > /proc/sys/vm/drop_caches       
+
+清除页面缓存，目录项和inode
+# sync; echo 3 > /proc/sys/vm/drop_caches 
+~~~
+
+参考 -> 在 Linux 上如何清除内存的 Cache、Buffer 和交换空间 <https://linux.cn/article-5627-1.html>
+
 ## Links
 
 - [Linux and Unix top 10 commands](http://www.computerhope.com/unixtop1.htm)
