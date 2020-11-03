@@ -73,14 +73,33 @@ YARN 会为每个任务分配一个 Container，且该任务只能使用该 Cont
 
 ![yarn_process](img/yarn_process.png)
 
-1. 客户端程序向 ResourceManager 提交应用并请求一个 ApplicationMaster 实例；
-2. ResourceManager 找到一个可以运行一个 Container 的 NodeManager，并在这个 Container 中启动 ApplicationMaster 实例；
-3. ApplicationMaster 向 ResourceManager 进行注册，注册之后客户端就可以查询 ResourceManager 获得自己 ApplicationMaster 的详细信息，以后就可以和自己的 ApplicationMaster 直接交互了（这个时候，客户端主动和 ApplicationMaster 交流，应用先向 ApplicationMaster 发送一个满足自己需求的资源请求）；
-4. 在平常的操作过程中，ApplicationMaster 根据 resource-request协议 向 ResourceManager 发送 resource-request请求；
-5. 当 Container 被成功分配后，ApplicationMaster 通过向 NodeManager 发送 container-launch-specification信息 来启动Container，container-launch-specification信息包含了能够让Container 和 ApplicationMaster 交流所需要的资料；
-6. 应用程序的代码以 task 形式在启动的 Container 中运行，并把运行的进度、状态等信息通过 application-specific协议 发送给ApplicationMaster；
-7. 在应用程序运行期间，提交应用的客户端主动和 ApplicationMaster 交流获得应用的运行状态、进度更新等信息，交流协议也是 application-specific协议；
-8. 一旦应用程序执行完成并且所有相关工作也已经完成，ApplicationMaster 向 ResourceManager 取消注册然后关闭，用到所有的 Container 也归还给系统。
+启动 AM
+
+~~~
+1. Client -> RM，提交应用并请求一个 AM 实例
+2. RM 找到一个 NM，（启动 Container，）并启动 AM
+3. AM 向 RM 注册
+~~~
+
+启动 Container
+
+~~~
+4. AM 向 RM 发送 resource-request 请求
+5. 获得资源后，AM 向 NM 发送信息，启动 Container
+~~~
+
+工作中
+
+~~~
+6. Container <-> AM，应用程序在 Container 中，把运行状态等信息报告给AM
+7. Client <-> AM，交流应用的运行状态等信息
+~~~
+
+结束
+
+~~~
+8. 应用跑完之后， AM 向 RM 取消注册然后关闭，归还 Container
+~~~
 
 ## 实战
 
