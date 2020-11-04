@@ -28,10 +28,13 @@ permalink: /archive/hadoop/hive/
 
 ## 架构
 
-TODO
-https://3.bp.blogspot.com/-aZAMQztmmy0/WqbtksLeDpI/AAAAAAAACKg/hD8H0UsQGM8SulDBy1nR1Hr_Ra8IcTxSACLcBGAs/s1600/hivearchitecture.png
-https://img2018.cnblogs.com/blog/1439125/201910/1439125-20191024204756338-1982632301.jpg
-![hive_arc](img/hive_arc.PNG)
+1
+
+![hive_arc_1](img/hive_arc_1.PNG)
+
+2
+
+![hive_arc_2](img/hive_arc_2.PNG)
 
 Hive Client
 - CLI(shell)
@@ -52,8 +55,6 @@ Hadoop
 
 Hive具有sql数据库外表，但应用场景完全不同，hive只适合用来做批量数据统计分析。
 
-TODO
-https://img2018.cnblogs.com/blog/1439125/201910/1439125-20191024210453742-1528459807.png
 ![hive_compare](img/hive_compare.png)
 
 ## 存储格式
