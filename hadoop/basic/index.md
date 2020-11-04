@@ -68,6 +68,8 @@ Hadoop：提供分布式的**存储**（一个文件被拆分成很多个块，�
 
 生态圈
 
+TODO
+https://mindmajix.com/docs/images/Hadoop%20EcoStystem.png
 ![hadoop_eco](img/hadoop_eco.PNG)
 
 常用版本
@@ -100,6 +102,8 @@ node3：blk1  blk2
 
 基本架构如下：
 
+TODO
+https://www.edureka.co/blog/wp-content/uploads/2013/05/Apache-Hadoop-HDFS-Architecture-Edureka.png
 ![hadoop_arch](img/hadoop_arch.PNG)
 
 ## Map Reduce
