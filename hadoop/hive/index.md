@@ -166,7 +166,6 @@ export HADOOP_HOME=/root/hadoop/hadoop-2.7.1
 (create if not there) `/conf/hive-site.xml` 
 
 ~~~ xml
-
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
@@ -191,7 +190,6 @@ export HADOOP_HOME=/root/hadoop/hadoop-2.7.1
 	  <value>123456</value>
 	</property>
 </configuration>
-
 ~~~
 
 4. 拷贝MySQL驱动包到 `$HIVE_HOME/lib`
