@@ -28,11 +28,11 @@ permalink: /archive/hadoop/hive/
 
 ## 架构
 
-1
+流程
 
 ![hive_arc_1](img/hive_arc_1.PNG)
 
-2
+模块
 
 ![hive_arc_2](img/hive_arc_2.PNG)
 
@@ -144,18 +144,18 @@ mysql> flush privileges;
 
 ## 部署 Hive
 
-1. 下载+解压：http://archive.apache.org/dist/hive/
+1.下载+解压：<http://archive.apache.org/dist/hive/>
 
-（注：如果是CDH版本的，version应该保持一致；如果是apache版本的，version可能不一致，如Hadoop 2.7.2 对应 hive-2.3.6）
+（注：如果是CDH版本的，version应该保持一致；如果是apache版本的，version可能不一致，如`hadoop-2.7.2` 对应 `hive-2.3.6`）
 
-2. 添加`HIVE_HOME`到系统环境变量
+2.添加`HIVE_HOME`到系统环境变量
 
 ~~~
 export HIVE_HOME=$HOME/hive/apache-hive-2.3.6-bin
 export PATH=$PATH:$HIVE_HOME/bin
 ~~~
 
-3. 修改配置
+3.修改配置
 
 (create if not there) `/conf/hive-env.sh` 
 
@@ -192,7 +192,7 @@ export HADOOP_HOME=/root/hadoop/hadoop-2.7.1
 </configuration>
 ~~~
 
-4. 拷贝MySQL驱动包到 `$HIVE_HOME/lib`
+4.拷贝MySQL驱动包到 `$HIVE_HOME/lib`
 
 下载地址： <https://dev.mysql.com/downloads/connector/j/8.0.html>
 
@@ -215,40 +215,67 @@ $ hive
 
 ~~~
 hive> DROP TABLE invites;
-
-hive> CREATE TABLE invites (foo INT, bar STRING) PARTITIONED BY (ds STRING);
-
+hive> CREATE TABLE invites (foo INT, bar STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
 hive> ALTER TABLE invites ADD COLUMNS (new_col2 INT COMMENT 'a comment');
-
 hive> DESCRIBE invites;
 
-CREATE TABLE emp(
-	no int,
-	name string,
-) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+CREATE (DATABASE|SCHEMA) [IF NOT EXISTS] database_name
+  [COMMENT database_comment]
+  [LOCATION hdfs_path]
+  [WITH DBPROPERTIES (property_name=property_value, ...)];
+
+CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name    -- (Note: TEMPORARY available in Hive 0.14.0 and later)
+  [(col_name data_type [COMMENT col_comment], ... [constraint_specification])]
+  [COMMENT table_comment]
+  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
+  [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
+  [SKEWED BY (col_name, col_name, ...)                  -- (Note: Available in Hive 0.10.0 and later)]
+     ON ((col_value, col_value, ...), (col_value, col_value, ...), ...)
+     [STORED AS DIRECTORIES]
+  [
+   [ROW FORMAT row_format] 
+   [STORED AS file_format]
+     | STORED BY 'storage.handler.class.name' [WITH SERDEPROPERTIES (...)]  -- (Note: Available in Hive 0.6.0 and later)
+  ]
+  [LOCATION hdfs_path]
+  [TBLPROPERTIES (property_name=property_value, ...)]   -- (Note: Available in Hive 0.6.0 and later)
+  [AS select_statement];   -- (Note: Available in Hive 0.5.0 and later; not supported for external tables)
 ~~~
+
+注：`/user/hive/warehouse`是Hive默认的存储在HDFS上的路径
 
 ### DML
 
-LOCAL：本地系统，如果没有local那么就是指的HDFS的路径
-OVERWRITE：是否数据覆盖，如果没有那么就是数据追加
+- `LOCAL`：本地系统，如果没有local那么就是指的HDFS的路径
+- `OVERWRITE`：是否数据覆盖，如果没有那么就是数据追加
 
 ~~~
-hive> LOAD DATA LOCAL INPATH './examples/files/invites_test.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');
+# 导入数据
+hive> LOAD DATA LOCAL INPATH './examples/files/invites_test.txt' OVERWRITE INTO TABLE invites;
 hive> LOAD DATA INPATH '/user/file/emp_test.txt' OVERWRITE INTO TABLE emp;
+
+LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE] INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)]
 ~~~
 
 ### Query
 
 ~~~
-hive> SELECT a.foo FROM invites a WHERE a.ds='2008-08-15';
+# 查询数据
+select deptno, avg(sal) from emp group by deptno;
 
+# 导出数据到文件
 INSERT OVERWRITE LOCAL DIRECTORY '/tmp/hive/'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-select empno,ename,sal,deptno from emp;
+select * from emp;
+
+# 查看执行计划
+explain EXTENDED
+select e.empno,e.ename,e.sal,e.deptno,d.dname
+from emp e join dept d
+on e.deptno=d.deptno;
 ~~~
 
-参考 -> <https://cwiki.apache.org/confluence/display/Hive/GettingStarted>
+参考 -> <https://cwiki.apache.org/confluence/display/HIVE#Home-UserDocumentation>
 
 ## 参考
 
