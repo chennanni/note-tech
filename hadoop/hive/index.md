@@ -217,7 +217,7 @@ $ hive
 hive> DROP TABLE invites;
 hive> CREATE TABLE invites (foo INT, bar STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
 hive> ALTER TABLE invites ADD COLUMNS (new_col2 INT COMMENT 'a comment');
-hive> DESCRIBE invites;
+hive> DESCRIBE FORMATTED invites;
 
 CREATE (DATABASE|SCHEMA) [IF NOT EXISTS] database_name
   [COMMENT database_comment]
