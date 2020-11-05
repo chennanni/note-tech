@@ -324,9 +324,9 @@ LOAD DATA LOCAL INPATH '/home/hadoop/data/emp.txt' OVERWRITE INTO TABLE emp_exte
 
 ## 常见工作流程
 
-- 在Hadoop上**定时**运行ETL作业
+- 在Hadoop上**定时**运行ETL作业（初步数据处理+清洗）
 - 将ETL结果导入到Hive中进行分析
-- 将各个维度的分析结果导入到指定表中
+- 将各个维度的分析统计结果导入到指定表中
 - 导出数据到文件/RDBMS
 
 ### 定时任务调度
