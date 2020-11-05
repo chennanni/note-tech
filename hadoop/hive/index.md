@@ -32,9 +32,7 @@ permalink: /archive/hadoop/hive/
 
 ![hive_arc_1](img/hive_arc_1.PNG)
 
-模块
-
-![hive_arc_2](img/hive_arc_2.PNG)
+模块（3个）
 
 Hive Client
 - CLI(shell)
@@ -50,6 +48,8 @@ HIve Service
 Hadoop
 - Yarn
 - HDFS
+
+![hive_arc_2](img/hive_arc_2.PNG)
 
 ## Hive v.s. RDBMS
 
@@ -276,6 +276,65 @@ on e.deptno=d.deptno;
 ~~~
 
 参考 -> <https://cwiki.apache.org/confluence/display/HIVE#Home-UserDocumentation>
+
+## 内部表 v.s. 外部表
+
+**MANAGED_TABLE**:内部表；删除表：HDFS上的数据被删除 & Meta也被删除
+
+（一般普通建表语句创建的就是内部表）
+
+~~~
+CREATE TABLE emp(
+empno int,
+ename string,
+job string,
+mgr int,
+hiredate string,
+sal double,
+comm double,
+deptno int
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+LOAD DATA LOCAL INPATH '/home/hadoop/data/emp.txt' OVERWRITE INTO TABLE emp;
+~~~
+
+**EXTERNAL_TABLE**:外部表；HDFS上的数据不被删除 & Meta被删除
+
+（建表时，需要加上`EXTERNAL`关键字，并指定数据存放位置）
+
+~~~
+CREATE EXTERNAL TABLE emp_external(
+empno int,
+ename string,
+job string,
+mgr int,
+hiredate string,
+sal double,
+comm double,
+deptno int
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+location '/external/emp/';
+
+LOAD DATA LOCAL INPATH '/home/hadoop/data/emp.txt' OVERWRITE INTO TABLE emp_external;
+~~~
+
+## 其它工具
+
+### 定时任务调度
+
+crontab
+
+-> <https://www.runoob.com/linux/linux-comm-crontab.html>
+
+Azkaban
+
+-> <https://azkaban.readthedocs.io/en/latest/>
+
+### Hive数据导出到RDBMS
+
+sqoop
+
+-> <https://sqoop.apache.org/>
 
 ## 参考
 
