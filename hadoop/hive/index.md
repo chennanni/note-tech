@@ -59,6 +59,8 @@ Hive具有sql数据库外表，但应用场景完全不同，hive只适合用来
 
 ![hive_compare](img/hive_compare.png)
 
+Hive数据导出到RDBMS：`sqoop` -> <https://sqoop.apache.org/>
+
 ## 存储格式
 
 - Hive中所有的数据都存储在 HDFS 中，没有专门的数据存储格式
@@ -320,7 +322,12 @@ location '/external/emp/';
 LOAD DATA LOCAL INPATH '/home/hadoop/data/emp.txt' OVERWRITE INTO TABLE emp_external;
 ~~~
 
-## 其它工具
+## 常见工作流程
+
+- 在Hadoop上**定时**运行ETL作业
+- 将ETL结果导入到Hive中进行分析
+- 将各个维度的分析结果导入到指定表中
+- 导出数据到文件/RDBMS
 
 ### 定时任务调度
 
@@ -331,12 +338,6 @@ crontab
 Azkaban
 
 -> <https://azkaban.readthedocs.io/en/latest/>
-
-### Hive数据导出到RDBMS
-
-sqoop
-
--> <https://sqoop.apache.org/>
 
 ## 参考
 
