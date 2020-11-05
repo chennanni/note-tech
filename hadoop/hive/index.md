@@ -30,24 +30,26 @@ permalink: /archive/hadoop/hive/
 
 流程
 
+- Client 发出 query
+- Hive 进行 parse，最终转化为 MapReduce 作业
+- 在 HDFS 上执行
+
 ![hive_arc_1](img/hive_arc_1.PNG)
 
-模块（3个）
+模块
 
-Hive Client
-- CLI(shell)
-- Thrift
-- JDBC/ODBC driver
-- Web UI (HUE/Zeppelin)
-
-HIve Service
-- Server
-- Metastore
-- Driver
-
-Hadoop
-- Yarn
-- HDFS
+- Hive Client
+  - CLI(shell)
+  - Thrift
+  - JDBC/ODBC driver
+  - Web UI (HUE/Zeppelin)
+- Hive Service
+  - Server
+  - Metastore
+  - Driver
+- Hadoop
+  - Yarn
+  - HDFS
 
 ![hive_arc_2](img/hive_arc_2.PNG)
 
