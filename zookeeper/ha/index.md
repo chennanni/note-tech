@@ -185,7 +185,7 @@ public class HAAction {
 
 `Client.java`
 
-~~~
+~~~ java
 package com.ha.client;
 
 import com.common.ZkConnect;
