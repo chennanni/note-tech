@@ -15,8 +15,8 @@ Client查询Properties文件，或者DB，获取Provider的信息，进而调用
 
 ~~~
 Client -> Properties / DB -> Provider_1
-                          -> Provider_2
-                          -> Provider_3
+-------------------------- -> Provider_2
+-------------------------- -> Provider_3
 ~~~
 
 这里主要有两个挑战：
