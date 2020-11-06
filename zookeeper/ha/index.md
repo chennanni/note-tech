@@ -20,14 +20,10 @@ permalink: /archive/zookeeper/ha/
 
 平时的流程
 
-TODO
-https://images.gitbook.cn/4754e2e0-becd-11ea-bfba-6fcc0154bbf2
 ![zk_2_1](img/zk_2_1.png)
 
 宕机后流程
 
-TODO
-https://images.gitbook.cn/08af0980-bed2-11ea-9efc-ab9a6caf88c6
 ![zk_2_2](img/zk_2_2.png)
 
 ## 代码实现 - Provider

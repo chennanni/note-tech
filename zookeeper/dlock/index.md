@@ -21,8 +21,6 @@ permalink: /archive/zookeeper/dlock/
 - 第一个顺序节点抢到了锁，执行业务逻辑，完了释放锁，删除临时节点。
 - 第二个顺序节点被通知，抢到锁，执行业务逻辑，新一轮的循环开始。
 
-TODO
-https://images.gitbook.cn/83609b30-c04e-11ea-afbb-efb02d22a4d9
 ![zk_lock](img/zk_lock.png)
 
 ## 代码实现 - 锁

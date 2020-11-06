@@ -32,20 +32,14 @@ Client -> Properties / DB -> Provider_1
 
 大致流程如下：
 
-TODO
-https://images.gitbook.cn/0fb191e0-be09-11ea-b96f-cbd921d57de1
 ![zk_register_1](img/zk_register_1.png)
 
 新增节点流程如下：
 
-TODO
-https://images.gitbook.cn/d0556400-be11-11ea-809d-01f3be381c22
 ![zk_register_2](img/zk_register_2.png)
 
 负载均衡策略放在了Consumer端：
 
-TODO
-https://images.gitbook.cn/77ff9950-be67-11ea-b619-db0cf7b7dda7
 ![zk_register_3](img/zk_register_3.png)
 
 ## 代码实现 - Provider
