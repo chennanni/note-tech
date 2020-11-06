@@ -9,10 +9,10 @@ permalink: /archive/zookeeper/basic/
 
 ## 概述
 
-Zookeeper像是一个分布式的nginx，也称为分布式协调系统。
+Zookeeper是**分布式协调系统**（可以理解为像是一个分布式的nginx）。
 
 ~~~
-Client <-> Zookeeper（集群） <-> Hadoop集群（Master + Slave）
+Client   <->   Zookeeper（集群）  <->   Hadoop集群（Master + Slave）
 ~~~
 
 - Client发出一个query，到了Zookeeper，Zookeeper负责将这个request"转发"到后端的某一个Master或者Slave上。（功能上类似nginx）
@@ -184,8 +184,6 @@ ZAB 协议分为两种模式：
 
 - 崩溃恢复模式：当服务启动或 leader 服务器崩溃退出与重启，会进入崩溃恢复模式，然后选举 leader 服务器，当 leader 被选举出来后，且集群中有过半的机器完成与 leader 服务器的状态同步，就会退出恢复模式。
 - 消息广播模式：当集群中有过半的 follower 完成 与 leader 的状态同步，就进入消息广播模式。当有新的 server 加入到 zookeeper 服务中，会以恢复模式启动，找到 leader 服务器，完成状态同步，然后一起参与到消息广播模式。
-
-===
 
 ## 编程实战
 
