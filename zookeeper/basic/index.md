@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Zookeeper - Basic
@@ -119,9 +118,7 @@ Mode: standalone
 
 最终，组合起来所有节点就像一颗树一样，如下：
 
-TODO
-https://zookeeper.apache.org/doc/r3.1.2/images/zknamespace.jpg
-![zookeeper_node](img/zookeeper_node.png)
+![zookeeper_node](img/zookeeper_node.jpg)
 
 ## 常用命令
 
@@ -163,8 +160,6 @@ setAcl /myNode1 world:anyone:rda
 
 ## 读写流程
 
-TODO
-https://lh3.googleusercontent.com/proxy/uPoPa0skw7NuOsZvBrcQLP1F9AMBLYgIjueSYZvoje4lSBQ6WGy_IFeoCo2EQmadltTCKo4FnBpV7pE7jtxYJo5djLw6moSvwqO7hv9BkMHz_4qlg-Myp5Iq7H4DGg
 ![zookeeper_process](img/zookeeper_process.png)
 
 写：
