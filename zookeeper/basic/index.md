@@ -304,3 +304,8 @@ public class ZkConnect {
 3. Get node data: test data 1
 4. Modify node data: test data 2
 ~~~
+
+## 参考
+
+- <https://gitbook.cn/books/5ef47a1690c794640abd37d4/index.html>
+- <https://stackoverflow.com/questions/33524537/good-zookeeper-hello-world-program-with-java-client>
