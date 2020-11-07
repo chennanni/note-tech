@@ -92,7 +92,7 @@ server.3=192.168.56.104:2888:3888
 
 启动服务器：`/bin/zkServer.sh start`
 
-启动客户端：`/bin/zkClicerate.sh`
+启动客户端：`/bin/zkCli.sh`
 
 查看状态：`/bin/zkServer.sh status`
 
@@ -197,20 +197,110 @@ ZAB 协议分为两种模式：
 </dependency>
 ~~~
 
-简单的应用，连接到ZK服务器上，创建节点，查看节点数据，删除节点
+简单的应用，连接到ZK服务器上，创建节点，查看节点数据，修改节点数据
 
 ~~~ java
-import com.common.ZkConnect;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
-public class HelloZk {
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.Watcher.Event.KeeperState;
+import org.apache.zookeeper.ZooDefs.Ids;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
-    public static void main(String[] args) throws Exception {
-        ZkConnect connection = new ZkConnect();
-        connection.connect("54.169.132.0,52.74.51.0");//连接 zookeeper 服务
-        connection.createPersistentNode("/HelloMyZKxxo","888");//创建一个路径名 HelloMyZKxxo 的持久化节点
-        String zkData = connection.getData("/HelloMyZKxxo");//获取 HelloMyZKxxo 节点数据
-        System.out.println(zkData);
-        connection.deleteNode("/HelloMyZKxxo");//删除 HelloMyZKxxo
+public class ZkConnect {
+    private ZooKeeper zk;
+    private CountDownLatch connSignal = new CountDownLatch(0);
+    
+    public ZooKeeper connect(String host) throws Exception {
+        zk = new ZooKeeper(host, 3000, new Watcher() {
+            public void process(WatchedEvent event) {
+                if (event.getState() == KeeperState.SyncConnected) {
+                    connSignal.countDown();
+                }
+            }
+        });
+        connSignal.await();
+        return zk;
     }
+
+    public void close() throws InterruptedException {
+        zk.close();
+    }
+
+    public void createNode(String path, byte[] data) throws Exception
+    {
+        zk.create(path, data, Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+    }
+
+    public void updateNode(String path, byte[] data) throws Exception
+    {
+        zk.setData(path, data, zk.exists(path, true).getVersion());
+    }
+
+    public void deleteNode(String path) throws Exception
+    {
+        zk.delete(path,  zk.exists(path, true).getVersion());
+    }
+
+    public static void main (String args[]) throws Exception
+    {
+        ZkConnect connector = new ZkConnect();
+        ZooKeeper zk = connector.connect("aliyun");
+
+        // delete if existing
+        String newNode = "/myTestNode" + new Date().getTime();
+        Stat stat = zk.exists(newNode, false);
+        if (stat != null) {
+            System.out.println("0. Delete existing node: " + newNode);
+            connector.deleteNode(newNode);
+        }
+        // create node
+        connector.createNode(newNode, "test data 1".getBytes());
+        System.out.println("1. Create node: " + newNode);
+
+        // get all nodes
+        System.out.println("2. Get all nodes...");
+        List<String> zNodes = zk.getChildren("/", true);
+        for (String zNode: zNodes)
+        {
+            System.out.println("### ChildrenNode: " + zNode);
+        }
+
+        // get node data
+        byte[] data = zk.getData(newNode, true, zk.exists(newNode, true));
+        System.out.print("3. Get node data: ");
+        for ( byte dataPoint : data)
+        {
+            System.out.print ((char)dataPoint);
+        }
+        System.out.print("\n");
+
+        // change node data
+        connector.updateNode(newNode, "test data 2".getBytes());
+        data = zk.getData(newNode, true, zk.exists(newNode, true));
+        System.out.print("4. Modify node data: ");
+        for ( byte dataPoint : data)
+        {
+            System.out.print ((char)dataPoint);
+        }
+        System.out.print("\n");
+    }
+
 }
+~~~
+
+结果 ->
+
+~~~
+1. Create node: /myTestNode1604716130278
+2. Get all nodes...
+### ChildrenNode: myTestNode1604716130278
+### ChildrenNode: zookeeper
+3. Get node data: test data 1
+4. Modify node data: test data 2
 ~~~
