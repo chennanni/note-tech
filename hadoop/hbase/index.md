@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Hbase
+title: Hadoop - Hbase
 folder: hbase
-permalink: /archive/hbase/
+permalink: /archive/hadoop/hbase/
 ---
 
-# Hbase
+# Hadoop - Hbase
 
 Use Apache HBase when you need random, realtime read/write access to your Big Data.
 
@@ -42,9 +42,7 @@ Use Apache HBase when you need random, realtime read/write access to your Big Da
 
 ## HBase数据结构
 
-TODO
-https://www.stratapps.net/images/ColumnQualifier.jpg
-![hbase_datamodel](img/hbase_datamodel.png)
+![hbase_datamodel](img/hbase_datamodel.jpg)
 
 - Row Key 行键
 - Column Family 列族
