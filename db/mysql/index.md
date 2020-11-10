@@ -7,8 +7,6 @@ permalink: /archive/db/mysql/
 
 # DB - Mysql
 
-Hive的Metadata一般存在MySQL，所以需要先在服务器上安装好MySQL数据库。
-
 使用`yum`安装步骤如下：
 
 ~~~
