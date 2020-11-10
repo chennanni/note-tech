@@ -92,6 +92,11 @@ server.3=192.168.56.104:2888:3888
 
 启动服务器：`/bin/zkServer.sh start`
 
+~~~
+> jps
+QuorumPeerMain
+~~~
+
 启动客户端：`/bin/zkCli.sh`
 
 查看状态：`/bin/zkServer.sh status`
