@@ -146,6 +146,9 @@ hadoop000
 ~~~
 $ ./bin/start-hbase.sh
 $ ./bin/stop-hbase.sh
+
+-> HMaster
+-> HRegionServer
 ~~~
 
 启/停 Client
