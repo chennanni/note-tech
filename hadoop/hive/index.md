@@ -78,6 +78,8 @@ Hive 中包含以下数据模型：
 
 ## 安装 MySQL
 
+Hive的Metadata一般存在MySQL，所以需要先在服务器上安装好MySQL数据库。
+
 参考 -> <https://github.com/chennanni/note-tech/blob/master/db/mysql/index.md>
 
 ## 部署 Hive
