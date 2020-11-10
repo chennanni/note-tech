@@ -165,7 +165,7 @@ status
 Create table
 
 ~~~
-> list 'table'
+> list
 > create 'member', 'info'
 > count 'member'
 > desc 'member'
