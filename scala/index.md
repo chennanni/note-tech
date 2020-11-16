@@ -572,6 +572,7 @@ def matchTest(x: Int): String = x match {
   case 2 => "two"
   case _ => "many"
 }
+~~~
 
 ## Exception
 
