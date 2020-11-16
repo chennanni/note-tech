@@ -1,3 +1,10 @@
+---
+layout: default
+title: Scala
+folder: scala
+permalink: /archive/scala/
+---
+
 # Scala
 
 Scala和Java语法非常像。下面着重介绍Scala与Java的不同之处。
