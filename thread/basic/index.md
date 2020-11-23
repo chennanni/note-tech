@@ -71,7 +71,7 @@ Cost
 
 注：有的地方把 waiting 和 blocked 都看作是阻塞，需要注意。
 
-![concurrency-thread-state.png](img/concurrency-thread-state-2.png)
+![concurrency-thread-state](img/concurrency-thread-state-2.jpg)
 
 总结：
 
