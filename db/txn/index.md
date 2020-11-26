@@ -100,9 +100,10 @@ SET [SESSION | GLOBAL] TRANSACTION ISOLATION LEVEL {READ UNCOMMITTED | READ COMM
 Read Uncommited
 - 读不加锁
 - 写不加锁
+
 Read Committed
 - 读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务读取该行数据
-- 读加 表级排他锁RX，读完立即释放
+- 读加 行级排他锁RX，读完立即释放
 - 写加 行级共享锁RS，直到事务结束才释放
 
 Repeatable Read
