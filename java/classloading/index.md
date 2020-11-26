@@ -19,14 +19,16 @@ Java类加载机制
 五步：
 
 - 加载 Loading
-- 连接 Linking
-  - 验证 Verification
-  - 准备 Preparation
-  - 解析 Resolution
+  - 加载 class 文件
+- 验证 Verification
+  - 检查 class 文件格式
+- 准备 Preparation
+  - 分配内存空间
+- 解析 Resolution
+  - 将（常量池中的）符号引用变为直接引用
 - 初始化 Initialization
-- 使用 Using
-- 卸载 Unloading
-
+  - 对 static 变量/常量赋予初始化值
+  
 ![java-classloading-process](img/java-classloading-process.gif)
 
 ## 加载
@@ -52,7 +54,7 @@ Java类加载机制
 - 如果`Bootstrap Class Loader`也没有加载该类，将尝试进行加载，加载成功则返回；如果失败，抛出`ClassNotFoundException`；
 - 子类加载器**捕捉异常**后尝试加载，如果成功则返回，如果失败则抛出`ClassNotFoundException`，一路向下，直到发起加载的子类加载器。
 
-![java-classloading-parent-first](img/java-classloading-parent-first.gif)
+![java-classloading-parent-first](img/java-classloading-parent-first.png)
 
 为什么采用Parent First代理模式？为了保证Java核心库都是由Java自己的加载器`Bootstrap classloader`加载完成的。
 因为判断两个类是否相同，有两个因素：1是类文件的内容，2是由什么加载器加载。
