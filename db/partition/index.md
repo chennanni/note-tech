@@ -72,6 +72,8 @@ https://img-blog.csdnimg.cn/20190903074531453.png?x-oss-process=image/watermark,
 
 一般来说，如果数据量增长很大，可以采用水平分库解决。
 
+工具： ShardingSphere <https://shardingsphere.apache.org/document/legacy/4.x/document/cn/overview>
+
 ## 水平分表
 
 在同一个数据库内，把同一个表的数据按一定规则拆到多个表中。这样做能小幅提升性能，它仅仅作为水平分库的一个补充优化。
