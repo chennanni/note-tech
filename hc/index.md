@@ -22,19 +22,19 @@ permalink: /archive/hc/
 
 1. Reverse Proxy Layer可以通过“DNS轮询”的方式来进行水平扩展。
 
-https://images.gitbook.cn/e0821d80-cb73-11e6-8f9b-e39f8bb41b44
+![hc_1](img/hc_1.png)
 
 2. Web Application Layer可以通过nginx来进行水平扩展；
 
-https://images.gitbook.cn/ea1a2b80-cb73-11e6-8f9b-e39f8bb41b44
+![hc_2](img/hc_2.png)
 
 3. Service Layer 可以通过服务连接池来进行水平扩展；
 
-https://images.gitbook.cn/f8268390-cb73-11e6-8f9b-e39f8bb41b44
+![hc_3](img/hc_3.png)
 
 4. DB Layer 可以按照数据范围，或者数据哈希的方式来进行水平扩展。
 
-https://images.gitbook.cn/060478a0-cb74-11e6-8f9b-e39f8bb41b44
+![hc_4](img/hc_4.png)
 
 ## 参考
 
