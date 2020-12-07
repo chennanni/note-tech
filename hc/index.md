@@ -1,3 +1,10 @@
+---
+layout: default
+title: High Concurrency
+folder: hc
+permalink: /archive/hc/
+---
+
 # High Concurrency
 
 ## 什么是 HC
