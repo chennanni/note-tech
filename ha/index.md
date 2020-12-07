@@ -23,29 +23,29 @@ permalink: /archive/ha/
 
 1. **Client**到**Reverse Proxy**的高可用，是通过反向代理层的冗余实现的，常见实践是keepalived + virtual IP自动故障转移。
 
-https://images.gitbook.cn/b8464de0-b55d-11e6-8958-6df649f5f67c
+![ha_1](img/ha_1.png)
 
 2. **Reverse Proxy**到**Web Application**的高可用，是通过站点层的冗余实现的，常见实践是nginx与web-server之间的存活性探测与自动故障转移。
 
-https://images.gitbook.cn/e698d320-b55d-11e6-8958-6df649f5f67c
+![ha_2](img/ha_2.png)
 
 3. **Web Application**到**Service Layer**的高可用，是通过服务层的冗余实现的，常见实践是通过service-connection-pool来保证自动故障转移。
 
-https://images.gitbook.cn/fcdb1120-b55d-11e6-8958-6df649f5f67c
+![ha_3](img/ha_3.png)
 
 4. **Service Layer**到**Cache**的高可用，是通过缓存数据的冗余实现的，常见实践是缓存客户端双读双写，或者利用缓存集群的主从数据同步与sentinel保活与自动故障转移
 
-https://images.gitbook.cn/0a18a780-b55e-11e6-8958-6df649f5f67c
+![ha_4_1](img/ha_4_1.png)
 
-https://images.gitbook.cn/150521f0-b55e-11e6-8958-6df649f5f67c
+![ha_4_2](img/ha_4_2.png)
 
 5. **Service Layer**到**DB**“读”的高可用，是通过读库的冗余实现的，常见实践是通过db-connection-pool来保证自动故障转移。
 
-https://images.gitbook.cn/4e28f880-b55e-11e6-8958-6df649f5f67c
+![ha_5](img/ha_5.png)
 
 6. **Service Layer**到**DB**“写”的高可用，是通过写库的冗余实现的，常见实践是keepalived + virtual IP自动故障转移。
 
-https://images.gitbook.cn/628c6460-b55e-11e6-8958-6df649f5f67c
+![ha_6](img/ha_6.png)
 
 ## 参考
 
