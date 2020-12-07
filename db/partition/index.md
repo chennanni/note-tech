@@ -42,7 +42,7 @@ permalink: /archive/db/sharding/
 
 将一个表按照字段分成多表，每个表存储其中一部分字段。
 
-https://img-blog.csdnimg.cn/20190903074236479.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDA2MjMzOQ==,size_16,color_FFFFFF,t_70
+![dbp_1](img/dbp_1.png)
 
 举例：
 
@@ -58,7 +58,7 @@ PRODUCT 表中有一个字段 DETAILS ，信息量非常大，但是不常访问
 
 按照业务将表进行分类，分布到不同的数据库上面，每个库可以放在不同的服务器上，它的核心理念是专库专用。
 
-https://img-blog.csdnimg.cn/20190903074403726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDA2MjMzOQ==,size_16,color_FFFFFF,t_70
+![dbp_2](img/dbp_2.png)
 
 它需要解决跨库带来的所有复杂问题：
 - 如何将读写请求分发到对应的数据库上
@@ -68,7 +68,7 @@ https://img-blog.csdnimg.cn/20190903074403726.png?x-oss-process=image/watermark,
 
 把同一个表的数据按一定规则拆到不同的数据库中，每个库可以放在不同的服务器上。从而使访问压力被多服务器负载，大大提升性能。它也需要解决跨库带来的所有复杂问题
 
-https://img-blog.csdnimg.cn/20190903074531453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDA2MjMzOQ==,size_16,color_FFFFFF,t_70
+![dbp_3](img/dbp_3.png)
 
 一般来说，如果数据量增长很大，可以采用水平分库解决。
 
@@ -78,7 +78,7 @@ https://img-blog.csdnimg.cn/20190903074531453.png?x-oss-process=image/watermark,
 
 在同一个数据库内，把同一个表的数据按一定规则拆到多个表中。这样做能小幅提升性能，它仅仅作为水平分库的一个补充优化。
 
-https://img-blog.csdnimg.cn/20190903074656538.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDA2MjMzOQ==,size_16,color_FFFFFF,t_70
+![dbp_4](img/dbp_4.png)
 
 ## 部署
 
