@@ -16,23 +16,25 @@ permalink: /archive/db/tuning/
 - Parallelize the Workload
 
 ## 数据库优化的基本层次
-- 减少数据访问（减少磁盘访问）
-  - 使用索引
-- 返回更少数据（减少网络传输或磁盘访问）
-  - 数据分页处理
-  - 只返回需要的字段
-- 减少交互次数（减少网络传输）
-  - batch DML
-  - 设置fetch size
+
+- 减少数据库访问
+  - 使用/优化缓存
   - 优化业务逻辑
-  - 使用ResultSet游标处理记录
-- 减少服务器CPU开销（减少CPU及内存开销）
-  - 使用绑定变量
+- 减少数据访问
+  - 只返回需要的字段
+  - 数据分页展示
+- 减少网络传输
+  - update: batch update
+  - select: increase fetch size
+- 减少CPU开销 / 加速运算
+  - 使用索引 index
+  - 使用分区 partition
+  - 使用绑定变量 Preparestatement（重复利用执行计划）
   - 合理使用排序
-  - 减少比较操作
-- 利用更多资源（增加资源）
-  - 客户端多进程并行访问
-  - 数据库并行处理
+  - 减少比较操作或者模糊查询
+- 利用更多资源
+  - 客户端多线程并行访问 + threads
+  - 数据库并行处理 select parallel
 
 <http://www.cnblogs.com/easypass/archive/2010/12/08/1900127.html>
 
