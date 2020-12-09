@@ -133,6 +133,8 @@ JVM可以对对象进行逃逸分析。
 -XX:-EliminateLocks 关闭锁消除
 ~~~
 
+参考 -> <https://blog.csdn.net/m0_37609579/article/details/105288090>
+
 ## 常见提问
 
 1
