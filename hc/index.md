@@ -20,19 +20,19 @@ permalink: /archive/hc/
 
 ## 实践
 
-1. Reverse Proxy Layer可以通过“DNS轮询”的方式来进行水平扩展。
+1.**Reverse Proxy Layer** 可以通过“DNS轮询”的方式来进行水平扩展。
 
 ![hc_1](img/hc_1.png)
 
-2. Web Application Layer可以通过nginx来进行水平扩展；
+2.**Web Application Layer** 可以通过nginx来进行水平扩展；
 
 ![hc_2](img/hc_2.png)
 
-3. Service Layer 可以通过服务连接池来进行水平扩展；
+3.**Service Layer** 可以通过服务连接池来进行水平扩展；
 
 ![hc_3](img/hc_3.png)
 
-4. DB Layer 可以按照数据范围，或者数据哈希的方式来进行水平扩展。
+4.**DB Layer** 可以按照数据范围，或者数据哈希的方式来进行水平扩展。
 
 ![hc_4](img/hc_4.png)
 
