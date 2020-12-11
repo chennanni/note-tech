@@ -21,7 +21,7 @@ ACID
 
 即使用`TransactionTemplate`或者`PlatformTransactionManager`，显示地将事务操作包裹在其中。如下：
 
-~~~
+~~~ java
 EntityManagerFactory factory = Persistence.createEntityManagerFactory("PERSISTENCE_UNIT_NAME");
 EntityManager entityManager = entityManagerFactory.createEntityManager();
 Transaction transaction = entityManager.getTransaction()
@@ -45,7 +45,7 @@ catch(Exception ex)
 > 声明式事务管理建立在AOP之上，其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，执行完目标方法之后根据执行的情况提交或者回滚。
 
 Step 1: Config
-~~~
+~~~ xml
 <!--  Transaction Manager --> 
 <bean id="txManager" class= "org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"/>
@@ -56,7 +56,7 @@ Step 1: Config
 
 Step 2: Use
 
-~~~
+~~~ java
 public class SomeDAO {
     @Transactional(propagation= Propagation.REQUIRES_NEW, isolation= Isolation.READ_COMMITTED, readOnly=false)
     public void insert(JdbcTemplate jdbcTemplate) {
@@ -73,9 +73,14 @@ public class SomeDAO {
 ## 事务的传播机制 - PROPAGATION
 
 Spring事务传播机制：规定了事务方法发生”嵌套调用”时事务如何进行传播。
+举例来说，Service_A中调用了Service_B，这时，由几种情况：
+
+- 两者都是事务，Txn_A失败，Txn_B成功，怎么办？
+- 两者都是事务，Txn_B失败，Txn_A成功，怎么办？
+- Txn_A是事务，Txn_B不是事务，需要把Txn_B也加入Txn_A的事务一起执行嘛？
 
 1
-- `PROPAGATION_REQUIRED`，如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。
+- `PROPAGATION_REQUIRED`（默认），如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。
 - `PROPAGATION_REQUIRES_NEW`，总是新建事务，如果当前存在事务，把当前事务挂起。
 - `PROPAGATION_NESTED`，如果当前存在事务，则在嵌套事务内执行。
 
@@ -87,7 +92,7 @@ Spring事务传播机制：规定了事务方法发生”嵌套调用”时事�
 - `PROPAGATION_MANDATORY`，必须被拥有事务的业务方法调用。
 - `PROPAGATION_NEVER`，不能被拥有事务的其它业务方法调用。
 
-参考 -> <http://www.cnblogs.com/softidea/p/5962612.html>
+参考 -> <https://segmentfault.com/a/1190000020386113>
 
 ## 事务的隔离级别 - ISOLATION
 
