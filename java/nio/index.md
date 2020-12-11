@@ -7,6 +7,33 @@ permalink: /archive/java/nio/
 
 # Java NIO
 
+## IO v.s. NIO
+
+功能
+- IO 面向流 Stream ；NIO 面向缓冲区 Buffer
+- IO 是阻塞式的；NIO 是非阻塞的
+
+使用场景
+- IO 适用，连接数目比较小，并且一次发送大量数据的场景
+- NIO 适用，服务器需要支持**大量长连接**。比如10000个连接以上，并且每个客户端并不会频繁地发送太多数据
+
+## NIO 原理
+
+实现 NIO 的主要原理是**轮询**。即，一个线程，同时监听多个接口，如果这个接口有数据就读取，没有就检查下一个。
+
+但是，轮询的缺点是浪费CPU资源，因为大部分时间可能都是无数据可读的。
+所以，一种常用的改进方案是**I/O多路复用**（IOmultiplexing），即监听时，由事件驱动，当某个接口的数据好了，再过去读。
+
+## NIO 的三种模型
+
+- Reactor 单线程模型
+- Reactor 多线程模型
+- 主从 Reactor 多线程模型
+
+参考 -> <https://blog.csdn.net/jiyiqinlovexx/article/details/51204726>
+
+## NIO API
+
 Core components
 
 - Channels
@@ -18,7 +45,7 @@ Core components
 
 Multiple sources read/write from multiple channels into buffer(s), thus non-blocking.
 
-## Channel
+### Channel
 
 Channel is similar to Stream, it is the gate for read/write.
 
@@ -50,7 +77,7 @@ while (bytesRead != -1) {
 aFile.close();
 ~~~
 
-## Buffer
+### Buffer
 
 A buffer is essentially a block of memory into which you can write data, which you can then later read again.
 
@@ -71,7 +98,7 @@ Buffer implementation
 - LongBuffer
 - ShortBuffer
 
-## Selector
+### Selector
 
 - It can examine one or more NIO Channel's, and determine which channels are ready for reading/writing. 
 - This way a single thread can manage multiple channels, and thus multiple network connections.
@@ -115,13 +142,6 @@ while(true) {
   }
 }
 ~~~
-
-## IO v.s. NIO
-
-- IO is blocking while NIO is non-blocking
-  - When dealing with multiple connections, IO have to open multiple threads while NIO can use one thread
-- IO is Stream oriented	while NIO is Buffer oriented
-- When processing the data, Stream(IO) is easier then Buffer(NIO)
 
 ## Links
 - <http://tutorials.jenkov.com/java-nio/overview.html>
