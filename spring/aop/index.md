@@ -41,7 +41,7 @@ But the key unit of modularity is **aspect** than class.
 - JDK动态代理：通过”接口”的方式实现动态代理
 - CGLIB动态代理：通过”继承”的方式实现动态代理
 
-## Spring AOP Concepts
+## Spring AOP - API
 
 - Cross-Cutting Concern
 - Aspect：类似于Java的类声明，包含了pointcuts和advice
@@ -98,7 +98,7 @@ Advice represents an action taken by an aspect at a particular join point. There
     }
 ```
 
-## Spring AOP in action
+## Spring AOP - in Action
 
 ![spring-aop-flow](img/spring-aop-flow.PNG)
 
