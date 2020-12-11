@@ -15,11 +15,6 @@ ACID
 - 隔离性（Isolation）
 - 持久性（Durability）
 
-说明：
-- 前两项，AC，其实是一个意思，即事务要么全部完成，要么全部失败。比如我在一个事务里插入10条数据，要么全部都进到DB了，要么一条都没进。不可能出现进了一部分的情况。
-- I，隔离性，即不同事务之间是隔离的，防止并发时发生问题。
-- D，持久性，即事务完一旦成了数据就被记录下来了，即使之后宕机也没关系。
-
 ## 配置模式
 
 ### 1. 编程式事务管理
@@ -79,32 +74,34 @@ public class SomeDAO {
 
 Spring事务传播机制：规定了事务方法发生”嵌套调用”时事务如何进行传播。
 
+1
 - `PROPAGATION_REQUIRED`，如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。
 - `PROPAGATION_REQUIRES_NEW`，总是新建事务，如果当前存在事务，把当前事务挂起。
 - `PROPAGATION_NESTED`，如果当前存在事务，则在嵌套事务内执行。
 
+2
 - `PROPAGATION_SUPPORTS`，支持当前事务，如果当前没有事务，就以非事务方式执行。
 - `PROPAGATION_NOT_SUPPORTED`，不支持当前事务，如果当前存在事务，就把当前事务挂起，以非事务方式执行操作。
 
+3
 - `PROPAGATION_MANDATORY`，必须被拥有事务的业务方法调用。
 - `PROPAGATION_NEVER`，不能被拥有事务的其它业务方法调用。
 
-<http://www.cnblogs.com/softidea/p/5962612.html>
+参考 -> <http://www.cnblogs.com/softidea/p/5962612.html>
 
 ## 事务的隔离级别 - ISOLATION
 
-并发可能导致的问题
+并发可能导致的问题：
 - 脏读（Dirty read）
 - 不可重复读（Nonrepeatable read）
 - 幻读（Phantom reads）
 
-~~~
-ISOLATION_DEFAULT：使用后端数据库默认的隔离级别
-ISOLATION_READ_UNCOMMITTED：允许读取尚未提交的更改。可能导致脏读、幻读或不可重复读。
-ISOLATION_READ_COMMITTED：（Oracle 默认级别）允许从已经提交的并发事务读取。可防止脏读，但幻读和不可重复读仍可能会发生。
-ISOLATION_REPEATABLE_READ：（MYSQL默认级别）对相同字段的多次读取的结果是一致的，除非数据被当前事务本身改变。可防止脏读和不可重复读，但幻读仍可能发生。
-ISOLATION_SERIALIZABLE：完全服从ACID的隔离级别，确保不发生脏读、不可重复读和幻影读。这在所有隔离级别中也是最慢的，因为它通常是通过完全锁定当前事务所涉及的数据表来完成的。
-~~~
+隔离级别：
+- `ISOLATION_DEFAULT`：使用后端数据库默认的隔离级别
+- `ISOLATION_READ_UNCOMMITTED`：允许读取尚未提交的更改。可能导致脏读、幻读或不可重复读。
+- `ISOLATION_READ_COMMITTED`：（Oracle 默认级别）允许从已经提交的并发事务读取。可防止脏读，但幻读和不可重复读仍可能会发生。
+- `ISOLATION_REPEATABLE_READ`：（MYSQL默认级别）对相同字段的多次读取的结果是一致的，除非数据被当前事务本身改变。可防止脏读和不可重复读，但幻读仍可能发生。
+- `ISOLATION_SERIALIZABLE`：完全服从ACID的隔离级别，确保不发生脏读、不可重复读和幻影读。这在所有隔离级别中也是最慢的，因为它通常是通过完全锁定当前事务所涉及的数据表来完成的。
 
 ## 链接
 
