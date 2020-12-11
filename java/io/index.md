@@ -9,12 +9,6 @@ permalink: /archive/java/io/
 
 ## Source and Destination
 
-```
-Source -> Program -> Destination
-
-Source -> InputStream/Reader -> Program -> OutputStream/Writer -> Destination
-```
-
 The most common sources and destinations are these:
 
 - Files
@@ -31,24 +25,6 @@ Java IO streams are typically either byte based or character based.
 - mostly [XXX]Reader/Writer is **character based**
 
 ![java-io-class](img/java-io-class.PNG)
-
-## Release resource
-
-Streams and Readers / Writers need to be closed properly when you are done using them.
-
-~~~ java
-try{
-  ...
-}catch(IOException e){
-  ...
-} finally {
-  try{
-    if(input != null) input.close();
-  } catch(IOException e){
-    ...
-  }
-}
-~~~
 
 ## Example
 
