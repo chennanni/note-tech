@@ -11,7 +11,7 @@ Scala和Java语法非常像。下面着重介绍Scala与Java的不同之处。
 
 ## 分号
 
-Scala 与 Java 的最大区别是：Scala 语句末尾的分号 `;` 是**可选**的。
+Scala 与 Java 的一个区别是：Scala 语句末尾的分号 `;` 是**可选**的。
 
 ## 引用
 
@@ -21,7 +21,19 @@ import java.awt.{Color, Font} // 引入多个类
 import java.util.{HashMap => JavaHashMap} // 引入并重命名
 ~~~
 
-## 变量
+## 类型声明
+
+Scala在写代码的时候，不需要显式声明数据类型。在编译阶段，编译器会根据赋值自动给变量确定类型。
+
+~~~
+scala> var name = 2
+name: Int = 2
+
+scala> var name = "Alex"
+name: String = Alex
+~~~
+
+## 变量与常量
 
 使用关键词 "var" 声明**变量**
 
@@ -150,7 +162,7 @@ Scala 的方法和 Java 可以看成是一样的，只是多了点语法糖。
 
 代码举例如下：
 
-~~~
+~~~ scala
 object add{
    def addInt( a:Int, b:Int ) : Int = {
       var sum:Int = 0
@@ -164,7 +176,7 @@ object add{
 
 如果方法没有返回值，可以返回为 `Unit` ，这个类似于 Java 的 `void` ，如下：
 
-~~~
+~~~ scala
 object Hello{
    def printMe( ) : Unit = {
       println("Hello, Scala!")
@@ -176,7 +188,7 @@ object Hello{
 
 可以为函数参数指定默认值，如果使用时没有传参，就用默认值。
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
         println( "result : " + addInt() );
@@ -218,7 +230,7 @@ Scala 中的函数，和 Java 中的函数式编程 Lambda Expression 非常类�
 
 常用定义形式如下：
 
-~~~
+~~~ scala
 val fun1 = new Function2[Int,Int,Int]() {
   override def apply(v1: Int, v2: Int): Int = {
     v1+v2
@@ -247,7 +259,7 @@ def fun4Method(v1:Int,v2:Int): Int = {
 
 定义示例1：
 
-~~~
+~~~ scala
 var more = 1
 val addMore = (x: Int) => x + more
 
@@ -259,7 +271,7 @@ res: Int = 11
 
 实际示例2：
 
-~~~
+~~~ scala
 def makeIncreaser(more: Int) = (x: Int) => x + more
 
 scala> val inc1 = makeIncreaser(1)
@@ -308,7 +320,7 @@ val myMatrix = Array.ofDim[Int](3, 4)
 
 连接 List
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
    
@@ -335,7 +347,7 @@ object Test {
 
 输出 Map 的 keys 和 values
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
       val sites = Map("1" -> "111",
@@ -355,7 +367,7 @@ Scala Option(选项)类型用来表示一个值是可选的（有值或无值)�
 
 例1
 
-~~~
+~~~ scala
 val myMap: Map[String, String] = Map("key1" -> "value")
 val value1: Option[String] = myMap.get("key1")
 val value2: Option[String] = myMap.get("key2")
@@ -366,7 +378,7 @@ println(value2) // 输出为None
 
 例2： getOrElse
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
       val a:Option[Int] = Some(5)
@@ -380,7 +392,7 @@ object Test {
 
 例3： isEmpty
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
       val a:Option[Int] = Some(5)
@@ -401,14 +413,14 @@ object Test {
 
 定义
 
-~~~
+~~~ scala
 val t = (1, 3.14, "Fred")  
 val t = new Tuple3(1, 3.14, "Fred")
 ~~~
 
 访问：使用`t._1`, `t._2`
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
       val t = (4,3,2,1)
@@ -422,7 +434,7 @@ object Test {
 
 迭代：使用`Tuple.productIterator()`
 
-~~~
+~~~ scala
 object Test {
    def main(args: Array[String]) {
       val t = (4,3,2,1)
@@ -455,7 +467,7 @@ class Employee extends Person {
 
 ### 实现 main 方法
 
-~~~
+~~~ scala
 object HelloWorld {
   def main(args: Array[String]) {
     println("Hello World!!!")
@@ -467,7 +479,7 @@ object HelloWorld {
 
 object继承抽象类，并重写抽象类中的方法
 
-~~~
+~~~ scala
 abstract class Hello(var message: String) {
   def sayHello(name: String): Unit
 }
@@ -486,7 +498,7 @@ HelloImpl.sayHello("Tom")
 
 让对象创建更加简洁
 
-~~~
+~~~ scala
 // 示例1
 
 class Person(val name: String)
@@ -510,16 +522,18 @@ val person = Person
 
 ### 作为伴生对象
 
-相当于把所有 static 的属性，方法，代码块儿等进行了汇总
+Companion Object，相当于把所有 static 的属性，方法，代码块儿等进行了汇总
 
-~~~
+~~~ scala
 object Person {
   private val eyeNum = 2
   def getEyeNum = eyeNum
 }
 
 class Person(val name: String, val age: Int) {
-  def sayHello = println("Hi, " + name + ", I guess you are " + age + " years old!" + ", and usually you must have " + Person.eyeNum + " eyes.")
+  def sayHello = println("Hi, " + name 
+      + ", I guess you are " + age + " years old!" 
+      + ", and usually you must have " + Person.eyeNum + " eyes.")
 }
 
 val person = new Person("Tom",23)
@@ -528,7 +542,7 @@ person.sayHello
 
 ### 实现枚举值
 
-~~~
+~~~ scala
 // 示例1
 
 object Season extends Enumeration {
