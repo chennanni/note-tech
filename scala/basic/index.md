@@ -11,14 +11,14 @@ permalink: /archive/basic/scala/
 
 前置条件：Java8
 
-下载：download scala https://www.scala-lang.org/download/
+下载：<https://www.scala-lang.org/download>
 
 Linux：
 - unzip
 - set SCALA_HOME and PATH
 
 Windows：
-- install
+- install from .msi
 
 ## Hello World
 
@@ -39,7 +39,7 @@ scalac HelloWorld.scala
 scala -classpath . HelloWorld
 ~~~
 
-参考 -> https://bk.tw.lvfukeji.com/wiki/Scala
+参考 -> <https://bk.tw.lvfukeji.com/wiki/Scala>
 
 ## 分号
 
