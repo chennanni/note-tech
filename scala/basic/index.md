@@ -294,9 +294,9 @@ scala > info
 
 ## 循环表达式
 
-- to
-- Range
-- until
+- to，前后都包
+- Range，前包后不包
+- until，前包后不包
 
 ~~~ scala
 1 to 10
@@ -353,7 +353,7 @@ def main(args: Array[String]) {
 
 for + yeild 记录
 
-~~~
+~~~ scala
 def main(args: Array[String]) {
 	var a = 0;
 	val numList = List(1,2,3,4,5,6,7,8,9,10);
@@ -371,7 +371,7 @@ def main(args: Array[String]) {
 
 ## Break
 
-~~~
+~~~ scala
 // 导入以下包
 import scala.util.control._
 
