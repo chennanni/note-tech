@@ -20,6 +20,9 @@ Linux：
 Windows：
 - install from .msi
 
+IDE: 
+- Intellij Scala Plugin
+
 ## Hello World
 
 代码
@@ -289,55 +292,80 @@ scala > info
     res1 : String = "..."
 ~~~
 
+## 循环表达式
+
+- to
+- Range
+- until
+
+~~~ scala
+1 to 10
+1.to(10)
+~~~
+
+-> 1...10
+
+~~~ scala
+Range(1,10)
+Range(1,10,1) // step = 1
+~~~
+
+-> 1...9
+
+~~~ scala
+1 until 10
+1.until(10)
+~~~
+
+-> 1...9
+
 ## For
 
-语法 和 常见示例
+语法
 
-~~~
+~~~ scala
 for( var x <- Range ){
-   statement(s);
+   ...
 }
+~~~
 
-for( a <- 1 to 10) // 遍历1-10
-for( a <- 1 to 3; b <- 1 to 3) // 遍历a，b两个数，1-3的所有组合
+常见示例
+
+~~~ scala
+for( a <- 1 to 10 ) // 遍历1-10
+for( a <- 1 to 3; b <- 1 to 3 ) // 遍历a，b两个数，1-3的所有组合
 for( a <- numList ) // 遍历一个List
 ~~~
 
 for + if 过滤
 
-~~~
-object Test {
-   def main(args: Array[String]) {
-      var a = 0;
-      val numList = List(1,2,3,4,5,6,7,8,9,10);
+~~~ scala
+def main(args: Array[String]) {
+	var a = 0;
+	val numList = List(1,2,3,4,5,6,7,8,9,10);
 
-      // for 循环
-      for( a <- numList
-           if a != 3; if a < 8 ){
-         println( "Value of a: " + a );
-      }
-   }
+	// for 循环
+	for( a <- numList if a != 3; if a < 8 ){
+		println( "Value of a: " + a );
+	}
 }
 ~~~
 
 for + yeild 记录
 
 ~~~
-object Test {
-   def main(args: Array[String]) {
-      var a = 0;
-      val numList = List(1,2,3,4,5,6,7,8,9,10);
+def main(args: Array[String]) {
+	var a = 0;
+	val numList = List(1,2,3,4,5,6,7,8,9,10);
 
-      // for 循环
-      var retVal = for{ a <- numList
-                        if a != 3; if a < 8
-                      }yield a
+	// for 循环
+	var retVal = for{ a <- numList if a != 3; if a < 8
+	}yield a
 
-      // 输出返回值
-      for( a <- retVal){
-         println( "Value of a: " + a );
-      }
-   }
+	// 输出返回值
+	for( a <- retVal){
+		println( "Value of a: " + a );
+	}
 }
 ~~~
 
