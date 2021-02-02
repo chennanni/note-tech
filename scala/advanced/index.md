@@ -13,51 +13,60 @@ Scala 的方法和 Java 可以看成是一样的，只是多了点语法糖。
 
 使用 `def` 语句定义方法 Method 。
 
-代码举例如下：
+例
 
 ~~~ scala
-object add{
-   def addInt( a:Int, b:Int ) : Int = {
-      var sum:Int = 0
-      sum = a + b
-      return sum
-   }
+def addInt( a:Int, b:Int ) : Int = {
+   var sum:Int = 0
+   sum = a + b
+   return sum
 }
 ~~~
+
+注：最后一行不用 `return` 也可以返回值
 
 ### Unit
 
 如果方法没有返回值，可以返回为 `Unit` ，这个类似于 Java 的 `void` ，如下：
 
 ~~~ scala
-object Hello{
-   def printMe( ) : Unit = {
-      println("Hello, Scala!")
-   }
+def printMe( ) : Unit = {
+   println("Hello, Scala!")
 }
 ~~~
 
-### 默认值
+### 没有传参
+
+如果没有传入参数，调用时的括号可以省略
+
+~~~ scala
+// 花括号（有时）可以省略
+// 返回值类型声明（有时）可以省略
+def three() : = 1+2
+
+println(three)
+~~~
+
+### 默认传参
 
 可以为函数参数指定默认值，如果使用时没有传参，就用默认值。
 
 ~~~ scala
-object Test {
-   def main(args: Array[String]) {
-        println( "result : " + addInt() );
-   }
-   def addInt( a:Int=5, b:Int=7 ) : Int = {
-      var sum:Int = 0
-      sum = a + b
-      return sum
-   }
+def main(args: Array[String]) {
+     println( "result : " + addInt() ); // 这里的括号不能省略
+}
+
+def addInt( a:Int=5, b:Int=7 ) : Int = {
+   var sum:Int = 0
+   sum = a + b
+   return sum
 }
 ~~~
 
-### 指定传参的名称
+### 命名传参
 
-在 Java 中，是根据位置来判断某个参数是什么的（传入参数的顺序必须和定义时的顺序一致）。
-在 Scala 中，一般也是这样。但除此之外，实际调用时，还可以指定参数的名称，并不需要依照原来的顺序。
+- 在 Java 中，是根据位置来判断某个参数是什么的（传入参数的顺序必须和定义时的顺序一致）。
+- 在 Scala 中，一般也是这样。但除此之外，实际调用时，还可以指定参数的名称，并不需要依照原来的顺序。
 
 ~~~
 object Test {
@@ -69,6 +78,25 @@ object Test {
       println("Value of b : " + b );
    }
 }
+~~~
+
+## 可变参数
+
+和Java类似，传入参数的个数可以变化，一个或者多个
+
+~~~ scala
+def sum(numbers:Int*) = {
+    var result = 0
+    for(number <- numbers) {
+      result += number
+    }
+    result
+}
+
+// 调用
+println(sum(1,2))
+println(sum(1,2,3))
+println(sum(1,2,3,4))
 ~~~
 
 ## Function
