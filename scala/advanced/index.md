@@ -169,22 +169,69 @@ res: Int = 15
 
 参考 -> scala 方法&函数 <https://www.cnblogs.com/ulysses-you/p/7551188.html>
 
-## 类 - 继承
+## 构造器
 
-- 重写一个非抽象方法必须使用 override 关键字。
-- 子类重写父类的抽象方法时，不需要使用 override 关键字。
+主构造器 Constructor 和 附属构造器 Alternative Constructor
 
+用途：对于一个类，我们可以有多个 Constructor ，其输入参数是不同的，这点和 Java 类似，但是语法有些区别。
+
+~~~ scala
+// 主构造器
+class Person(val name:String, val age:Int) {
+  val school = "ustc"
+  var gender:String = _
+
+  // 附属构造器
+  def this(name:String, age:Int, gender:String) {
+    this(name, age) // 附属构造器的第一行代码必须要调用主构造器或者其他附属构造器
+    this.gender = gender
+  }
+}
+
+object ConstructorApp {
+  def main(args: Array[String]): Unit = {
+	// 使用 主构造器
+    val person = new Person("zhangsan", 30)
+    // 使用 附属构造器
+	val person2 = new Person("PK", 18, "M")
+  }
+}
 ~~~
+
+## 类 - basic
+
+### 继承
+
+~~~ scala
+class Person(val name:String, val age:Int) {
+  val school = "ustc"
+}
+
+class Student(name:String, age:Int, var major:String) extends Person(name, age) {
+}
+
+val student = new Student("PK", 18, "Math")
+~~~
+
+### 重写
+
+子类重写父类的方法或者变量时，必须使用 `override` 关键字！（ 抽象 abstract 类型的除外）
+
+~~~ scala
 class Person {
   var name = ""
-  override def toString = getClass.getName + "[name=" + name + "]"
 }
 
 class Employee extends Person {
+  override var name = "zhangsan"
   var salary = 0.0
-  override def toString = super.toString + "[salary=" + salary + "]"
+  override def toString = name + salary
 }
 ~~~
+
+### 抽象类
+
+
 
 ## 类 - Object
 
