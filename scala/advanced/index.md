@@ -266,6 +266,27 @@ object HelloImpl extends Hello("hello") {
 HelloImpl.sayHello("Tom")
 ~~~
 
+### 作为伴生对象
+
+- Companion Object，伴生对象。一般用法是：把所有 static 的属性，方法，代码块儿等进行了汇总
+- Companion Class，伴生类。
+
+~~~ scala
+object Person {
+  private val eyeNum = 2
+  def getEyeNum = eyeNum
+}
+
+class Person(val name: String, val age: Int) {
+  def sayHello = println("Hi, " + name 
+      + ", I guess you are " + age + " years old!" 
+      + ", and usually you must have " + Person.eyeNum + " eyes.")
+}
+
+val person = new Person("Tom",23)
+person.sayHello
+~~~
+
 ### 实现特殊的 apply 方法
 
 让对象创建更加简洁
@@ -292,24 +313,11 @@ object Person {
 val person = Person
 ~~~
 
-### 作为伴生对象
+注：apply 方法在 object 和 class 中都可以定义。那使用时具体是调用了那个呢？规则如下：
 
-Companion Object，相当于把所有 static 的属性，方法，代码块儿等进行了汇总
-
-~~~ scala
-object Person {
-  private val eyeNum = 2
-  def getEyeNum = eyeNum
-}
-
-class Person(val name: String, val age: Int) {
-  def sayHello = println("Hi, " + name 
-      + ", I guess you are " + age + " years old!" 
-      + ", and usually you must have " + Person.eyeNum + " eyes.")
-}
-
-val person = new Person("Tom",23)
-person.sayHello
+~~~
+类名() ==> Object.apply
+对象() ==> Class.apply
 ~~~
 
 ### 实现枚举值
