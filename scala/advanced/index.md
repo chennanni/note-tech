@@ -351,10 +351,18 @@ Season.withName("spring")
 
 Scala `Trait` 特征 相当于 Java 的 `Interface` 接口（加强版），它还可以定义属性和方法的实现。
 
-~~~
+~~~ scala
 trait Equal {
   def isEqual(x: Any): Boolean
   def isNotEqual(x: Any): Boolean = !isEqual(x)
+}
+~~~
+
+实现 `Trait` 使用 `extends` 关键字，如果有多个使用 `with` 关键字连接。
+
+~~~
+class Person(name: String) extends Equal with Logger {
+
 }
 ~~~
 
