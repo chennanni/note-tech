@@ -231,7 +231,9 @@ class Employee extends Person {
 
 ### 抽象类
 
+和 Java 类似，抽象类中可以有没有实现的方法或者没有赋值的参数。
 
+实现类必须实现这些方法和参数。
 
 ## 类 - Object
 
