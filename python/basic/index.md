@@ -9,6 +9,13 @@ permalink: /archive/python/basic/
 
 主要列出了Python和Java不同的一些地方。
 
+## 安装
+
+- Windows环境使用安装文件
+- Linux环境使用 yum/pip 等命令
+
+下面说个硬核的，直接 build from source，然后安装，参考这篇文章 -> <https://passingcuriosity.com/2015/installing-python-from-source/>
+
 ## 标识符
 
 - 以双下划线开头的 `__foo` 代表类的私有成员（private）；
