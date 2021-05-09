@@ -71,3 +71,32 @@ mysql> CREATE USER 'root'@'172.19.183.99' IDENTIFIED BY '123456';
 mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.19.183.99' WITH GRANT OPTION;
 mysql> flush privileges;
 ~~~
+
+## 卸载
+
+查看安装版本
+
+~~~
+rpm -qa|grep -i mysql
+~~~
+
+卸载
+
+~~~
+rpm -ev MySQL-client-5.5.25a-1.rhel5 
+~~~
+
+查找并删除残余文件
+
+~~~
+find / -name mysql
+rm -rf ...
+~~~
+
+删除配置文件
+
+~~~
+rm -rf /etc/my.cnf
+~~~
+
+参考 -> https://www.cnblogs.com/nicknailo/articles/8563456.html
