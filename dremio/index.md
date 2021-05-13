@@ -78,7 +78,7 @@ https://docs.dremio.com/
 
 ![dremio_datatype](img/dremio_datatype.JPG)
 
-## 实战
+## 实战101
 
 注：The 64-bit Java Development Kit version 1.8 is required.
 
