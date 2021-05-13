@@ -120,6 +120,16 @@ https://docs.dremio.com/
 - https://www.dremio.com/tutorials/working-with-your-first-dataset/
 - https://blog.csdn.net/vkingnew/article/details/89009086
 
+## 使用 Dremio 加载外部数据案例
+
+加载Elasticserch数据分析
+
+- https://developer.aliyun.com/article/714472
+
+加载HDFS文件数据分析
+
+- https://developer.aliyun.com/article/713924
+
 ## 反射
 
 Dremio的数据反射是基于Apache Parquet和Apache Arrow的高性能柱状数据结构，用来维护源数据的物理优化，可直观理解为关系数据库中的索引；Data Reflections使用列化，压缩，排序，分区和聚合数据等技术，组织和优化Dremio查询执行引擎的数据。
