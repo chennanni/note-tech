@@ -28,7 +28,7 @@ Dremio是一个非常灵活，功能强大的Query Engine。后端可以对接�
 - Powerful JOIN capability
   - 比如我在S3上面有数据源A，在Oracle上有数据源B，用Dremio可以把这两个直接join起来看数据，从而省去了ETL的过程。
 
-https://docs.dremio.com/
+参考 -> <https://docs.dremio.com>
 
 ## 竞争对手
 
@@ -46,7 +46,7 @@ https://docs.dremio.com/
 
 简言之，首先，数据写入OLTP系统，然后，通过ETL过程，汇总到OLAP系统中，最后，分析师通过一些BI工具从OLAP系统中查看数据。
 
-- https://www.stitchdata.com/resources/oltp-vs-olap/
+参考 -> <https://www.stitchdata.com/resources/oltp-vs-olap>
 
 ## 原理
 
@@ -66,9 +66,10 @@ https://docs.dremio.com/
 
 ![dremio_columnar](img/dremio_columnar.JPG)
 
-- https://www.zhihu.com/question/29380943
-- https://developer.aliyun.com/article/715004
-- https://www.infoq.cn/article/columnar-databases-and-vectorization/
+参考以下：
+- <https://www.zhihu.com/question/29380943>
+- <https://developer.aliyun.com/article/715004>
+- <https://www.infoq.cn/article/columnar-databases-and-vectorization>
 
 ## 数据源
 
@@ -87,7 +88,7 @@ https://docs.dremio.com/
 - 如果是Mac，就是dmg文件
 - 如果是Linux，就是rpm或者tar文件
 
-参考这个链接 https://docs.dremio.com/quickstart/standalone-quickstart.html
+参考 -> <https://docs.dremio.com/quickstart/standalone-quickstart.html>
 
 装好之后，就可以启动了，
 
@@ -117,28 +118,32 @@ https://docs.dremio.com/
 
 ![(dremio_action_6)](img/dremio_action_6.png)
 
-- https://www.dremio.com/tutorials/working-with-your-first-dataset/
-- https://blog.csdn.net/vkingnew/article/details/89009086
+参考以下：
+
+- <https://www.dremio.com/tutorials/working-with-your-first-dataset>
+- <https://blog.csdn.net/vkingnew/article/details/89009086>
 
 ## 使用 Dremio 加载外部数据案例
 
 加载Elasticserch数据分析
 
-- https://developer.aliyun.com/article/714472
+参考 -> <https://developer.aliyun.com/article/714472>
 
 加载HDFS文件数据分析
 
-- https://developer.aliyun.com/article/713924
+参考 -> <https://developer.aliyun.com/article/713924>
 
 ## 反射
 
 Dremio的数据反射是基于Apache Parquet和Apache Arrow的高性能柱状数据结构，用来维护源数据的物理优化，可直观理解为关系数据库中的索引；Data Reflections使用列化，压缩，排序，分区和聚合数据等技术，组织和优化Dremio查询执行引擎的数据。
 
-- https://www.dremio.com/tutorials/getting-started-with-data-reflections/
-- https://developer.aliyun.com/article/715647
-- https://blog.csdn.net/hjw199089/article/details/82813833
+参考以下：
 
-## 参考
+- <https://www.dremio.com/tutorials/getting-started-with-data-reflections>
+- <https://developer.aliyun.com/article/715647>
+- <https://blog.csdn.net/hjw199089/article/details/82813833>
+
+## 引用
 
 - [Dremio Tutorials](https://www.dremio.com/tutorials/)
 - [Dremio - working with your first dataset](https://www.dremio.com/tutorials/working-with-your-first-dataset/)
