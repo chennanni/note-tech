@@ -8,7 +8,7 @@ matrix:
       script: bash ./update-ghpages.sh
 
     - language: ruby
-      rvm: 2.1
+      rvm: 2.2
       gemfile: Gemfile
       script: 
       - bundle install
