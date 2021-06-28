@@ -2,7 +2,7 @@
 published: false
 ---
 
-@ auto built using <https://travis-ci.org/>
+@ auto built using <https://www.travis-ci.com/>
 
 # My Tech Note
 
