@@ -12,8 +12,8 @@ These beans are created with the configuration metadata that you supply to the c
 
 ## Different types of Spring Beans
 
-- Bean（万金油1）
-- Component（万金油2）
+- Bean（万金油1，用于method）
+- Component（万金油2，用于class）
 - Configuration（配置）
 - Service（服务）
 - Controller（Web App控制层）
