@@ -12,12 +12,12 @@ These beans are created with the configuration metadata that you supply to the c
 
 ## Different types of Spring Beans
 
-- Bean
-- Configuration
-- Service
-- Component
-- Controller
-- Repository
+- Bean（万金油1）
+- Component（万金油2）
+- Configuration（配置）
+- Service（服务）
+- Controller（Web App控制层）
+- Repository（DAO层）
 
 ![spring-bean-types](img/spring-bean-types.png)
 
