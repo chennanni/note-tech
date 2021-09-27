@@ -5,7 +5,7 @@ folder: basic
 permalink: /archive/editor/emacs/
 ---
 
-# Emacs
+# Editor - Emacs
 
 C-Ctrl
 <br>
