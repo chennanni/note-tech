@@ -25,6 +25,10 @@ permalink: /archive/dev/reference/
 - <https://mvnrepository.com/>
 - <https://search.maven.org/>
 
+## MySql
+
+- <https://dev.mysql.com/doc/refman/8.0/en/>
+
 ## Spring Boot
 
 - <https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/>
