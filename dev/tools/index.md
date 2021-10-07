@@ -12,7 +12,7 @@ permalink: /archive/dev/tools/
 ## Draw
 
 - WPS
-- PlantUML (IntelliJ Plugin)
+- PlantUML (IntelliJ Plugin) <https://plantuml.com/>
 
 ## IDE
 
