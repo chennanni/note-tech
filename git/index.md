@@ -77,6 +77,13 @@ git pull <origin> <master>
 git push <origin> <master>
 ```
 
+### upload a new local branch to remote
+
+~~~
+git checkout -b local_branch_name
+git push -u origin local_branch_name
+~~~
+
 ### git fetch vs pull
 
 `git pull` = `git fetch` + `git merge`
@@ -204,11 +211,6 @@ By default it will prompt you on the terminal for this information so the server
 
 If you don’t want to type it every single time you push, you can set up a “credential cache”. The simplest is just to keep it in memory for a few minutes, which you can easily set up by running `git config --global credential.helper cache`.
 For more information on the various credential caching options available, see Credential Storage.
-
-### commit emoji for my system
-
-- :heart: `:heart:` major commit
-- :green_heart: `:green_heart:` minor commit
 
 ## Links
 - <https://www.atlassian.com/git/tutorials/what-is-version-control>
