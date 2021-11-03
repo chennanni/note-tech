@@ -5,7 +5,7 @@ folder: stream
 permalink: /archive/java/stream/
 ---
 
-# Java - Stream
+# Java 8 - Stream
 
 ## 什么是Stream
 
