@@ -7,8 +7,6 @@ permalink: /archive/bitcoin/
 
 # Bitcoin
 
-Test
-
 ## 比特币支付系统
 
 核心：去中心化(decentralized)，没有被任何公司和组织集中控制和操作
