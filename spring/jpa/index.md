@@ -38,15 +38,15 @@ Spring Data JPA is a library / framework that adds an extra layer of abstraction
 
 Create an interface that extends the `CrudRepository` interface
 
-```
+~~~ java
 import org.springframework.data.repository.CrudRepository;
 interface TodoRepository extends CrudRepository<TypeOfEntity, TypeOfEntityId> {
 }
-```
+~~~
 
 Create Query from Method Name
 
-```
+~~~ java
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
@@ -59,11 +59,11 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
      */
     public List<Person> findByLastName(String lastName);
 }
-```
+~~~
 
 Using Created Query Methods
 
-```
+~~~ java
 @Service
 public class someServices() {
      @Resource
@@ -72,7 +72,7 @@ public class someServices() {
         return personRepository.findAll(lastNameIsLike(searchTerm));
     }
 }
-```
+~~~
 
 ## Links
 

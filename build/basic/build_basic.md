@@ -27,9 +27,9 @@ permalink: /archive/build/basic
 ## Build Tools
 
 - GNU Make
-- Ant -> [[build_ant]]
-- Maven -> [[build_maven]]
-- Ivy -> [[build_ivy]]
+- Ant -> [[ant]]
+- Maven -> [[maven]]
+- Ivy -> [[ivy]]
 - Rake
 - Buildr
 - Gradle

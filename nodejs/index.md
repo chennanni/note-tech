@@ -111,22 +111,22 @@ console.log("Program Ended");
 
 ## Npm command
 
-```
-Mac install location
+``` shell
+# Mac install location
 usr/local/bin/npm
 usr/local/bin/node
 
-Login
+# Login
 npm whoami
 npm adduser
 
-Start a project
+# Start a project
 npm init --scope=<username>
 
-Install a module
+# Install a module
 npm install <modulename>
 
-Listing dependencies
+# Listing dependencies
 npm ls
 ```
 
