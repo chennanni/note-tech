@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Computer - Basic
+title: Computer
 folder: basic
 permalink: /archive/computer/basic/
 ---
 
-# Computer - Basic
+# Computer
 
 ## 计算机硬件架构
 

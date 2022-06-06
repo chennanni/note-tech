@@ -74,6 +74,9 @@ public class someServices() {
 }
 ~~~
 
+## Spring Data JPA, Hibernate
+https://baijiahao.baidu.com/s?id=1661937038552348304&wfr=spider&for=pc
+
 ## Links
 
 - [Spring Data JPA Tutorial](http://www.petrikainulainen.net/spring-data-jpa-tutorial/)

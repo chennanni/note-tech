@@ -5,11 +5,14 @@ folder: mysql
 permalink: /archive/db/mysql/
 ---
 
-# DB - Mysql in Linux
+# DB - Mysql
+## Use in Linux
+
+### Install 安装
 
 使用`yum`安装步骤如下：
 
-~~~
+~~~ shell
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
 sudo yum install mysql-server
@@ -17,9 +20,9 @@ sudo yum install mysql-server
 
 参考 -> <https://www.cnblogs.com/julyme/p/5969626.html>
 
-## 验证
+### Verify 验证
 
-~~~
+~~~ shell
 // 启动
 sudo service mysqld start
 sudo service mysqld restart
@@ -40,13 +43,13 @@ show tables;
 update user set password=password('123456') where user='root';
 ~~~
 
-## 配置 - 绑定IP
+### Setup IP 配置 - 绑定IP
 
 默认MySQL是起在localhost上的，也就是127.0.0.1，为了和Hive协同工作，我们可能需要让它起在特定的IP上，比如服务器内网IP：172.19.183.99。
 
 我们需要修改MySQL的配置文件：`my.cnf`，一般位于系统`/etc`目录下。
 
-~~~
+~~~ properties
 # 加上以下内容
 port = 3306
 bind-address=172.19.183.99
@@ -54,7 +57,7 @@ bind-address=172.19.183.99
 
 重启
 
-~~~
+~~~ shell
 shell > service mysqld restart
 shell > service mysqld status
 shell > netstat -tunlp
@@ -62,50 +65,50 @@ shell > netstat -tunlp
 
 参考 -> mysql 绑定内网ip <https://blog.csdn.net/qq_25385555/article/details/91047856>
 
-## 配置 - 创建权限
+### Setup Account 配置 - 创建权限
 
 然后，我们要在MySQL中给添加的IP创建访问权限。
 
-~~~
+~~~ sql
 mysql> CREATE USER 'root'@'172.19.183.99' IDENTIFIED BY '123456';
 mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.19.183.99' WITH GRANT OPTION;
 mysql> flush privileges;
 ~~~
 
-## 卸载
+### Uninstall 卸载
 
 查看安装版本
 
-~~~
+~~~ shell
 rpm -qa|grep -i mysql
 ~~~
 
 卸载
 
-~~~
+~~~ shell
 rpm -ev MySQL-client-5.5.25a-1.rhel5 
 ~~~
 
 查找并删除残余文件
 
-~~~
+~~~ shell
 find / -name mysql
 rm -rf ...
 ~~~
 
 删除配置文件
 
-~~~
+~~~ shell
 rm -rf /etc/my.cnf
 ~~~
 
 参考 -> https://www.cnblogs.com/nicknailo/articles/8563456.html
 
-# DB - Mysql in Windows
+## Install in Windows
 
 以下介绍 MySQL 在 Windows 下的使用
 
-## Setup MySQL Server
+### Setup MySQL Server 安装
 
 1.download and install
 
@@ -113,7 +116,7 @@ rm -rf /etc/my.cnf
 
 3.配置 `my.ini`
 
-~~~
+~~~ properties
 [mysql]
  
 # 设置mysql客户端默认字符集
@@ -143,7 +146,7 @@ default-storage-engine=INNODB
 - my.ini的详细步骤 <https://www.jb51.net/article/172172.htm>
 - MYSQL报错 -- 出现Failed to find valid data directory <https://blog.csdn.net/guyue35/article/details/107828255>
 
-## Use MySQL Server
+### Use MySQL Server 使用
 
 开始使用：
 
@@ -154,11 +157,12 @@ default-storage-engine=INNODB
 
 修改密码：`ALTER USER 'root'@'localhost' IDENTIFIED BY '123';`
 
-## Setup MySQL Workbench
+### Setup MySQL Workbench
 
-Serach for MySQL Workbench; Download and install
+- Serach for MySQL Workbench
+- Download and install
 
-- MySQL Workbench的使用 <https://www.cnblogs.com/hahayixiao/p/9849742.html>
+MySQL Workbench的使用 -> <https://www.cnblogs.com/hahayixiao/p/9849742.html>
 
 ## 数据库设计
 

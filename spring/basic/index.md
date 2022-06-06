@@ -257,3 +257,6 @@ Purpose of `ContextLoaderListener`
 - to automate the creation of the `ApplicationContext`
 
 <http://stackoverflow.com/questions/11815339/role-purpose-of-contextloaderlistener-in-spring>
+
+## Ref
+- Spring全家桶：https://gitbook.cn/gitchat/column/5d2daffbb81adb3aa8cab878

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Editor - IntelliJ
-folder: basic
+folder: intellij
 permalink: /archive/editor/intellij/
 ---
 

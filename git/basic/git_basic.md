@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Git
-folder: git
-permalink: /archive/git/
+title: Git - Basic
+folder: basic
+permalink: /archive/git/basic
 ---
 
-# Git
+# Git - Basic
 
 ## Types of Verson Control System
 
@@ -31,7 +31,7 @@ Git store snapshots, not differences
 - staging area
 - repository
 
-![git_three_stages](img/git_three_stages.png)
+![git_three_stages](git_three_stages.png)
 
 ## Life Cycle of File in the Working Directory
 
@@ -41,7 +41,7 @@ Git store snapshots, not differences
 - finally you commit the file, the file becomes **unmodified**
 - or you can remove the file, then the file becomes **untracked**
 
-![git_lifecycle](img/git_lifecycle.png)
+![git_lifecycle](git_lifecycle.png)
 
 ## Git Command
 
@@ -141,18 +141,18 @@ options:
   - `--no-ff`
   - if there's merge conflict
 
-![git-merge-ff](img/git-merge-ff.PNG)
+![git-merge-ff](git-merge-ff.PNG)
 
 When using no fast-forward, git automatically identifies the best common-ancestor 
 and creates a new commit object that contains the merged work.
 
-![git-merge-branch](img/git-merge-branch.png)
+![git-merge-branch](git-merge-branch.png)
 
 When merging, some problems are not easy to detect. For example, someone made a commit "10-master" in master branch then reverted it. 
 But the revert didn't go into dev branch. When the dev branch merges back into master branch, everything seems ok. 
 The problem is: the dev teams might have dependency on the "10-master" commit but they never knew about the revert.
 
-![git-merge-conflict](img/git-merge-conflict.PNG)
+![git-merge-conflict](git-merge-conflict.PNG)
 
 Best practice: add an "admin" role for the major branches. For example, release branch should have a release admin, 
 everything goes into the release branch goes through the admin first.
@@ -188,6 +188,12 @@ after
 rebase v.s. merge
 - `git merge` is "non-destructive", "the existing branches are not changed in any way".
 - `git rebase` "re-writes the project history by creating brand new commits for each commit in the original branch".
+
+## Tools
+- Git Bash
+- IDE embeded Git Tools
+- Tortoise Git [[tortoise-git]]
+- Source Tree
 
 ## Misc
 

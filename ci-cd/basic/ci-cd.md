@@ -1,19 +1,21 @@
 ---
 layout: default
-title: CI
-folder: ci
-permalink: /archive/ci/
+title: CI/CD
+folder: basic
+permalink: /archive/ci-cd/basic
 ---
 
-# Continous Intergration
-
+# CI/CD
+## Continous Intergration
 Continuous Integration (CI) is a development practice that requires developers to **integrate code into a shared repository several times a day**.
 
 Each check-in is then verified by an automated build, allowing teams to detect problems early.
 
+## Continous Deployment
+Continous Deployment (CD) is to accomodate with CI, when new packages are ready, automatically deploy them to servers.
+
 ## Motivation
 When many people are working on a project in parallel, there's an "intergration problem"
-
 - Merge conflicts
 - Compile conflicts
 - Test confilicts
@@ -21,12 +23,10 @@ When many people are working on a project in parallel, there's an "intergration 
 ## How to do it
 
 Phase 1
-
 - Developers check out code into their private workspaces.
 - When done, the commit changes to the repository.
 
 Phase 2
-
 - The CI server monitors the repository and checks out changes when they occur.
 - The CI server builds the system and runs unit and integration tests.
 - The CI server releases deployable artefacts for testing.
@@ -34,17 +34,14 @@ Phase 2
 - The CI server informs the team of the successful build.
 
 Phase 3
-
 - If the build or tests fail, the CI server alerts the team.
 - The team fix the issue at the earliest opportunity.
 
 Phase 4
-
 - Continue to continually integrate and test throughout the project.
 
 ## Tools
-
-- Jenkins
+- [[jenkins]]
 - Bamboo
 - Snap CI
 - Cruise Control

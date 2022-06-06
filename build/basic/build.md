@@ -1,12 +1,11 @@
 ---
 layout: default
-title: Build - Basic
+title: Build
 folder: basic
 permalink: /archive/build/basic
 ---
 
-
-# Build - Basic
+# Build
 
 ## What is "Build"
 

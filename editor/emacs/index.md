@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Editor - Emacs
-folder: basic
+folder: emacs
 permalink: /archive/editor/emacs/
 ---
 
