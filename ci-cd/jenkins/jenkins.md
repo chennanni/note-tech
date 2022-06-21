@@ -1,11 +1,11 @@
 ---
 layout: default
-title: CI - Jenkins
+title: CI/CD - Jenkins
 folder: jenkins
-permalink: /archive/ci/jenkins
+permalink: /archive/ci-cd/jenkins
 ---
 
-# Jenkins
+# CI/CD - Jenkins
 
 ## Build
 ...
