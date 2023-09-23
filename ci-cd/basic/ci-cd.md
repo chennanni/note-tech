@@ -7,18 +7,26 @@ permalink: /archive/ci-cd/basic
 
 # CI/CD
 ## Continous Intergration
-Continuous Integration (CI) is a development practice that requires developers to **integrate code into a shared repository several times a day**.
+自动化 持续 集成（包括 BUILD，UT，发布等）
 
-Each check-in is then verified by an automated build, allowing teams to detect problems early.
+> Continuous Integration (CI) is a development practice that requires developers to **integrate code into a shared repository several times a day**.
+> 
+> Each check-in is then verified by an automated build, allowing teams to detect problems early.
 
 ## Continous Deployment
-Continous Deployment (CD) is to accomodate with CI, when new packages are ready, automatically deploy them to servers.
+自动化 持续 部署
 
-## Motivation
+> Continous Deployment (CD) is to accomodate with CI, when new packages are ready, automatically deploy them to servers.
+
+## Motivation / Why
 When many people are working on a project in parallel, there's an "intergration problem"
 - Merge conflicts
 - Compile conflicts
 - Test confilicts
+
+简单来说，是为实现：“我” commit 完代码，很快就能部署上开发环境并测试。有没有问题，立刻知道。
+
+具体地说，是为了解决多人协作时的代码合并问题，提高开发效率。
 
 ## How to do it
 
@@ -41,11 +49,15 @@ Phase 4
 - Continue to continually integrate and test throughout the project.
 
 ## Tools
+**CI / CD 平台**
 - [[jenkins]]
 - Bamboo
 - Snap CI
 - Cruise Control
 
-## Links
+**容器化**
+- [[docker]]
+- kubernates
 
+## Links
 - http://www.thoughtworks.com/cn/continuous-integration

@@ -45,12 +45,13 @@ Hadoop：提供分布式的**存储**（一个文件被拆分成很多个块，�
 模块
 - 分布式文件系统：`HDFS`实现将文件分布式存储在很多的服务器上
 	- [[hdfs]]
-		- [[hdfsjavaapi]]
-		- [[hdfswindows]]
+		- [[hdfs-javaapi]]
+		- [[hdfs-windows]]
 	- [[hbase]]
 	- [[hive]]
 - 分布式计算框架：`MapReduce`实现在很多机器上分布式并行计算
 	- [[mapreduce]]
+	- [[spark]]
 - 分布式资源调度框架：`YARN`实现集群资源管理以及作业的调度
 	- [[yarn]]
 

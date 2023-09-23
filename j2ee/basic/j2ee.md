@@ -35,11 +35,11 @@ EXAMPLE:
 ## J2EE API
 - EJB
 - Servlet
-- Java Message Service (JMS) -> [[jms]]
+- Java Message Service (JMS) -> [[j2ee/jms/jms]]
 - Java Server Faces (JSF)
 - Java Server Pages (JSP)
 - Java Server Tag Library (JSTL)
-- Java Persistence API (JPA) -> [[jpa]]
+- Java Persistence API (JPA) -> [[j2ee/jpa/jpa]]
 - Java Transaction API (JTA)
 - Java API for Web Services (JAX-RS)
 - Java Message Service API (JMS)

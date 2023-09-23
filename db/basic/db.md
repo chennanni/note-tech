@@ -64,14 +64,6 @@ Sequence will allow you to populate primary key with a unique, serialized number
 
 A synonym is an alias or alternate name for a table, view, sequence, or other schema object.
 
-### Index
-
-索引，参考 -> [[db/index/index]]
-
-### Sharding
-
-分片，参考 -> [[sharding]]
-
 ### Null
 
 - Null表示的是未知，不确定
@@ -80,3 +72,22 @@ A synonym is an alias or alternate name for a table, view, sequence, or other sc
   - `select * from users where deleted_at is null;  -- some results`
 - 将Null值转化为其它值
   - `NVL(value,0)`
+
+## Other Topic
+
+### Index
+
+索引，参考 -> [[db/index/index]]
+
+### Sharding
+
+分片，参考 -> [[sharding]]
+
+### Txn
+
+事务，参考 -> [[db/txn/txn]]
+
+### Turning
+
+调优，参考 -> [[turning]]
+
