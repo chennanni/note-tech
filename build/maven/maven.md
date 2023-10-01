@@ -109,7 +109,14 @@ in `pom.xml`, add:
 ~~~
 
 - [http://maven.apache.org/plugins/maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin)
+### Cmd
+~~~ shell
+mvn clean install -e -U
 
+-e 详细异常
+-U 强制更新
+~~~
+https://blog.csdn.net/yiguoxiaohai/article/details/125708088
 ## Dependency Conflict
 
 依赖冲突 问题：项目中，A有两个dependency，但是C的version在两个地方配置得不一样，如下。那么，实际生效的C的version是哪个呢？
@@ -135,7 +142,6 @@ A -> C (v2)
 依赖循环 问题：项目中，`A -> B -> C -> A`，这时编译会报错。怎么解决呢？
 
 如果都是自己部门的项目，可以修改代码，将共同依赖提取出来。如下：
-
 ~~~
 A -> D
 B -> D
@@ -147,7 +153,59 @@ C -> D
 如果一个是自己部门的项目，其余是第三方类库，这个情况也不成立，因为第三方类库不会依赖于私有的项目。
 
 注：网上有说使用`build-helper-maven-plugin`插件解决，感觉像是第一种情况。
+## Settings
+一个例子
+~~~ xml
+<!-- 本地仓库的位置，即Maven将下载的依赖项存储在本地的位置 -->
+<localRepository>/path/to/local/repo</localRepository>
 
+<!-- 镜像设置，用于指定中央仓库的镜像，以提高依赖项下载的速度 -->
+<mirrors>
+  <mirror>
+    <id>mirrorId</id>
+    <name>mirrorName</name>
+    <url>http://mirror.example.com/maven2/</url>
+    <mirrorOf>central</mirrorOf>
+  </mirror>
+</mirrors>
+
+<!-- 代理服务器设置，如果您需要使用代理服务器来访问互联网，则可以在此处进行配置 -->
+<proxies>
+  <proxy>
+    <id>proxyId</id>
+    <active>true</active>
+    <protocol>http</protocol>
+    <host>proxy.example.com</host>
+    <port>8080</port>
+    <username>proxyUsername</username>
+    <password>proxyPassword</password>
+    <nonProxyHosts>localhost|*.example.com</nonProxyHosts>
+  </proxy>
+</proxies>
+
+<!-- Profile设置，可根据需要创建多个Profile进行不同的配置 -->
+<profiles>
+  <!-- development Profile，设置为默认Profile -->
+  <profile>
+    <id>development</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+      <environment>dev</environment>
+    </properties>
+  </profile>
+  
+  <!-- production Profile -->
+  <profile>
+    <id>production</id>
+    <properties>
+      <environment>prod</environment>
+    </properties>
+  </profile>
+</profiles>
+~~~
+https://blog.csdn.net/hlzdbk/article/details/129822239
 ## Cheat Cheet
 
 ```
