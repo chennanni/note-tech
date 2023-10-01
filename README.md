@@ -47,3 +47,4 @@ https://github.com/chennanni/note-cheat-sheet/blob/master/cs-jekyll.md
 ## Updates
 
 - 2018/09/28 | v1.1: Add table of content function. - refer [jekyll-toc](https://github.com/allejo/jekyll-toc)
+- 2023/10/01 | v2.1: Change from travis ci web build to manual one click local build.
