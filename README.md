@@ -2,8 +2,6 @@
 published: false
 ---
 
-@ auto built using <https://www.travis-ci.com/> (migrate from travis-ci.org) 
-
 # My Tech Note
 
 This is the place where I keep my tech note. 
